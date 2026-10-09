@@ -1,0 +1,10 @@
+{
+  "nombre": "Pareja con bebé",
+  "presupuesto": 7000,
+  "miembros": [
+    {"nombre": "Ana", "edad": 29, "sexo": "F"},
+    {"nombre": "Luis", "edad": 31, "sexo": "M"},
+    {"nombre": "Bebé", "edad": 1}
+  ],
+  "alergias": ["lácteos"]
+}

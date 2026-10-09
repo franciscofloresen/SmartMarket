@@ -1,0 +1,182 @@
+id,nombre,departamento,necesidad,contenido,unidad,precio,alergenos,etiquetas,vida_util_dias,congelable
+C001,Pechuga de pollo sin hueso 1 kg,carnes,carne_aves,1,kg,149,,pollo;carne,4,1
+C002,Pierna y muslo de pollo 1 kg,carnes,carne_aves,1,kg,75,,pollo;carne,4,1
+C003,Pollo entero aprox. 1.8 kg,carnes,carne_aves,1.8,kg,115,,pollo;carne,4,1
+C004,Milanesa de pollo empanizada 1 kg,carnes,carne_aves,1,kg,165,gluten;huevo,pollo;carne;empanizado,4,1
+C005,Fajitas de pollo 1 kg,carnes,carne_aves,1,kg,155,,pollo;carne,4,1
+C006,Carne molida de res 90/10 1 kg,carnes,carne_aves,1,kg,185,,res;carne,3,1
+C007,Bistec de res 1 kg,carnes,carne_aves,1,kg,205,,res;carne,3,1
+C008,Chuleta de cerdo 1 kg,carnes,carne_aves,1,kg,119,,cerdo;carne,4,1
+C009,Pulpa de cerdo 1 kg,carnes,carne_aves,1,kg,129,,cerdo;carne,4,1
+C010,Carne molida mixta res y cerdo 1 kg,carnes,carne_aves,1,kg,139,,res;cerdo;carne,3,1
+C011,Salchicha de pavo 1 kg,carnes,carne_aves,1,kg,89,soya,pavo;carne;embutido,30,1
+C012,Jamón de pavo rebanado 1 kg,carnes,carne_aves,1,kg,149,soya,pavo;carne;embutido,15,1
+C013,Filete de tilapia congelado 1 kg,congelados,carne_aves,1,kg,135,pescado,pescado;tilapia,180,1
+C014,Atún en agua 4 latas de 140 g,despensa,carne_aves,0.4,kg,99,pescado,pescado;atun;enlatado,720,0
+C015,Sardinas en salsa de tomate 425 g,despensa,carne_aves,0.42,kg,39,pescado,pescado;sardina;enlatado,720,0
+C016,Camarón crudo congelado 1 kg,congelados,carne_aves,1,kg,289,mariscos,mariscos;camaron,180,1
+H001,Huevo blanco 30 piezas,lacteos_huevo,huevo,30,pz,92,huevo,huevo,30,0
+H002,Huevo blanco 18 piezas,lacteos_huevo,huevo,18,pz,59,huevo,huevo,30,0
+H003,Huevo blanco 12 piezas,lacteos_huevo,huevo,12,pz,43,huevo,huevo,30,0
+H004,Huevo rojo 18 piezas,lacteos_huevo,huevo,18,pz,68,huevo,huevo,30,0
+L001,Leche entera Great Value 1 L,lacteos_huevo,leche,1,L,24,lacteos,leche,90,0
+L002,Leche entera Lala 1 L,lacteos_huevo,leche,1,L,29,lacteos,leche,90,0
+L003,Leche entera Lala 6 x 1 L,lacteos_huevo,leche,6,L,165,lacteos,leche,90,0
+L004,Leche deslactosada Lala 1 L,lacteos_huevo,leche,1,L,30,lacteos,leche;deslactosada,90,0
+L005,Leche semidescremada Great Value 1 L,lacteos_huevo,leche,1,L,24,lacteos,leche,90,0
+L006,Bebida de almendra sin azúcar 946 ml,lacteos_huevo,leche,0.946,L,52,nueces,almendra;bebida vegetal,180,0
+L007,Bebida de soya 946 ml,lacteos_huevo,leche,0.946,L,42,soya,soya;bebida vegetal,180,0
+L008,Bebida de avena 1 L,lacteos_huevo,leche,1,L,49,gluten,avena;bebida vegetal,180,0
+Q001,Queso panela 400 g,lacteos_huevo,queso_yogur,0.4,kg,85,lacteos,queso,15,0
+Q002,Queso Oaxaca 400 g,lacteos_huevo,queso_yogur,0.4,kg,99,lacteos,queso,20,0
+Q003,Queso fresco 400 g,lacteos_huevo,queso_yogur,0.4,kg,72,lacteos,queso,12,0
+Q004,Queso amarillo 12 rebanadas 288 g,lacteos_huevo,queso_yogur,0.288,kg,52,lacteos,queso,30,0
+Q005,Yogur natural Great Value 1 kg,lacteos_huevo,queso_yogur,1,kg,42,lacteos,yogur,20,0
+Q006,Yogur batido sabor fresa 1 kg,lacteos_huevo,queso_yogur,1,kg,48,lacteos,yogur,20,0
+Q007,Yogur bebible 6 piezas de 220 g,lacteos_huevo,queso_yogur,1.32,kg,69,lacteos,yogur,20,0
+Q008,Crema ácida 450 ml,lacteos_huevo,queso_yogur,0.45,kg,42,lacteos,crema,20,0
+G001,Frijol negro Great Value 1 kg,despensa,leguminosas,1,kg,36,,frijol,365,0
+G002,Frijol pinto Verde Valle 1 kg,despensa,leguminosas,1,kg,45,,frijol,365,0
+G003,Frijol bayo 1 kg,despensa,leguminosas,1,kg,42,,frijol,365,0
+G004,Lenteja 500 g,despensa,leguminosas,0.5,kg,24,,lenteja,365,0
+G005,Garbanzo 500 g,despensa,leguminosas,0.5,kg,29,,garbanzo,365,0
+G006,Frijoles refritos bayos lata 580 g,despensa,leguminosas,0.2,kg,24,,frijol;enlatado,720,0
+T001,Tortilla de maíz de tortillería 1 kg,panaderia_tortilleria,tortilla_pan,1,kg,22,,tortilla;maiz,3,0
+T002,Harina de maíz nixtamalizado 1 kg (rinde 1.7 kg de tortilla),despensa,tortilla_pan,1.7,kg,26,,harina;maiz;tortilla;hecho en casa,180,0
+T003,Tortillas de harina 22 piezas 715 g,panaderia_tortilleria,tortilla_pan,0.715,kg,49,gluten,tortilla;harina,30,1
+T004,Pan blanco de caja grande 680 g,panaderia_tortilleria,tortilla_pan,0.68,kg,56,gluten,pan,7,1
+T005,Pan integral de caja 680 g,panaderia_tortilleria,tortilla_pan,0.68,kg,62,gluten,pan;integral,7,1
+T006,Bolillo 6 piezas,panaderia_tortilleria,tortilla_pan,0.36,kg,18,gluten,pan;bolillo,2,1
+T007,Tostadas de maíz 300 g,despensa,tortilla_pan,0.3,kg,32,,tostada;maiz,60,0
+A001,Arroz Great Value 1 kg,despensa,arroz_pasta,1,kg,29,,arroz,365,0
+A002,Arroz Verde Valle 1 kg,despensa,arroz_pasta,1,kg,39,,arroz,365,0
+A003,Pasta para sopa fideo 200 g,despensa,arroz_pasta,0.2,kg,9.5,gluten,pasta;fideo,365,0
+A004,Pasta para sopa codito 200 g,despensa,arroz_pasta,0.2,kg,9.5,gluten,pasta;codito,365,0
+A005,Pasta spaghetti 500 g,despensa,arroz_pasta,0.5,kg,24,gluten,pasta;spaghetti,365,0
+D001,Avena en hojuelas 1 kg,despensa,cereal_desayuno,1,kg,38,gluten,avena;cereal,365,0
+D002,Cereal de hojuelas de maíz Great Value 650 g,despensa,cereal_desayuno,0.65,kg,49,gluten,cereal;maiz,365,0
+D003,Cereal de hojuelas azucaradas 640 g,despensa,cereal_desayuno,0.64,kg,85,gluten,cereal,365,0
+D004,Cereal de arroz inflado 450 g,despensa,cereal_desayuno,0.45,kg,55,,cereal;arroz,365,0
+D005,Granola con nuez 800 g,despensa,cereal_desayuno,0.8,kg,95,gluten;nueces,granola;cereal;nuez,180,0
+F001,Plátano 1 kg,frutas_verduras,frutas,1,kg,25,,platano,6,0
+F002,Manzana roja 1 kg,frutas_verduras,frutas,1,kg,49,,manzana,21,0
+F003,Naranja 1 kg,frutas_verduras,frutas,1,kg,24,,naranja,14,0
+F004,Papaya maradol 1 kg,frutas_verduras,frutas,1,kg,32,,papaya,5,0
+F005,Guayaba 1 kg,frutas_verduras,frutas,1,kg,38,,guayaba,7,0
+F006,Mandarina 1 kg,frutas_verduras,frutas,1,kg,35,,mandarina,10,0
+F007,Sandía 1 kg,frutas_verduras,frutas,1,kg,17,,sandia,7,0
+F008,Piña pieza aprox. 1.8 kg,frutas_verduras,frutas,1.8,kg,45,,pina,7,0
+F009,Melón 1 kg,frutas_verduras,frutas,1,kg,28,,melon,7,0
+F010,Limón sin semilla 1 kg,frutas_verduras,frutas,1,kg,38,,limon,20,0
+F011,Mango Ataulfo 1 kg,frutas_verduras,frutas,1,kg,45,,mango,6,0
+F012,Fresa congelada 1 kg,congelados,frutas,1,kg,79,,fresa,180,1
+V001,Jitomate saladet 1 kg,frutas_verduras,verduras,1,kg,29,,jitomate;tomate,7,0
+V002,Cebolla blanca 1 kg,frutas_verduras,verduras,1,kg,32,,cebolla,21,0
+V003,Papa blanca 1 kg,frutas_verduras,verduras,1,kg,33,,papa,30,0
+V004,Zanahoria 1 kg,frutas_verduras,verduras,1,kg,21,,zanahoria,21,0
+V005,Calabacita 1 kg,frutas_verduras,verduras,1,kg,29,,calabacita,7,0
+V006,Brócoli 1 kg,frutas_verduras,verduras,1,kg,48,,brocoli,5,0
+V007,Coliflor 1 kg,frutas_verduras,verduras,1,kg,45,,coliflor,7,0
+V008,Chile serrano 250 g,frutas_verduras,verduras,0.25,kg,14,,chile;serrano,10,0
+V009,Lechuga romana pieza aprox. 500 g,frutas_verduras,verduras,0.5,kg,22,,lechuga,6,0
+V010,Pepino 1 kg,frutas_verduras,verduras,1,kg,24,,pepino,7,0
+V011,Chayote 1 kg,frutas_verduras,verduras,1,kg,26,,chayote,14,0
+V012,Ejote 1 kg,frutas_verduras,verduras,1,kg,42,,ejote,6,0
+V013,Espinaca 300 g,frutas_verduras,verduras,0.3,kg,26,,espinaca,4,0
+V014,Aguacate Hass 1 kg,frutas_verduras,verduras,1,kg,75,,aguacate,5,0
+V015,Tomate verde 1 kg,frutas_verduras,verduras,1,kg,32,,tomate verde,10,0
+V016,Nopal limpio 1 kg,frutas_verduras,verduras,1,kg,28,,nopal,7,0
+V017,Mezcla de verduras congeladas 1 kg,congelados,verduras,1,kg,58,,zanahoria;chicharo;elote;ejote,180,1
+V018,Chícharo con zanahoria congelado 500 g,congelados,verduras,0.5,kg,32,,chicharo;zanahoria,180,1
+O001,Aceite vegetal Great Value 1 L,despensa,aceite,1,L,36,,aceite,365,0
+O002,Aceite de canola 850 ml,despensa,aceite,0.85,L,49,,aceite;canola,365,0
+O003,Aceite de soya 1 L,despensa,aceite,1,L,42,soya,aceite;soya,365,0
+O004,Aceite de oliva extra virgen 500 ml,despensa,aceite,0.5,L,125,,aceite;oliva,365,0
+Z001,Azúcar estándar 2 kg,despensa,azucar,2,kg,58,,azucar,720,0
+Z002,Azúcar refinada 1 kg,despensa,azucar,1,kg,34,,azucar,720,0
+Z003,Azúcar mascabado 1 kg,despensa,azucar,1,kg,42,,azucar;mascabado,720,0
+Z004,Miel de abeja 500 g,despensa,azucar,0.5,kg,89,,miel,720,0
+K001,Café soluble clásico 225 g,despensa,cafe_te,0.225,kg,149,,cafe,365,0
+K002,Café soluble Great Value 200 g,despensa,cafe_te,0.2,kg,89,,cafe,365,0
+K003,Café molido Great Value 400 g,despensa,cafe_te,0.4,kg,99,,cafe,365,0
+K004,Té de manzanilla 25 sobres,despensa,cafe_te,0.025,kg,24,,te;manzanilla,365,0
+E001,Puré de tomate condimentado 1 kg,despensa,enlatados_salsas,1,kg,29,,tomate;pure,365,0
+E002,Chiles jalapeños en escabeche 800 g,despensa,enlatados_salsas,0.8,kg,42,,chile;jalapeno;enlatado,720,0
+E003,Elote amarillo en lata 400 g,despensa,enlatados_salsas,0.4,kg,22,,elote;enlatado,720,0
+E004,Salsa picante 1 L,despensa,enlatados_salsas,1,kg,36,,salsa;picante;chile,365,0
+E005,Mayonesa 390 g,despensa,enlatados_salsas,0.39,kg,46,huevo,mayonesa,180,0
+E006,Catsup 1 kg,despensa,enlatados_salsas,1,kg,44,,catsup;tomate,365,0
+E007,Salsa inglesa 145 ml,despensa,enlatados_salsas,0.145,kg,45,pescado,salsa inglesa;salsa,720,0
+E008,Aderezo César 237 ml,despensa,enlatados_salsas,0.24,kg,49,pescado;huevo;lacteos,aderezo,180,0
+E009,Mole poblano en pasta 235 g,despensa,enlatados_salsas,0.235,kg,55,cacahuate;ajonjoli,mole,365,0
+E010,Chiles chipotles adobados 210 g,despensa,enlatados_salsas,0.21,kg,22,,chile;chipotle;enlatado,720,0
+E011,Champiñones rebanados en lata 380 g,despensa,enlatados_salsas,0.38,kg,32,,champinon;enlatado,720,0
+E012,Salsa verde 453 g,despensa,enlatados_salsas,0.45,kg,32,,salsa;tomate verde;chile,365,0
+S001,Sal de mesa 1 kg,despensa,condimentos,1,kg,14,,sal,1000,0
+S002,Consomé de pollo en polvo 225 g,despensa,condimentos,0.225,kg,52,,consome,365,0
+S003,Pimienta negra molida 50 g,despensa,condimentos,0.05,kg,32,,pimienta;especia,365,0
+S004,Ajo 250 g,frutas_verduras,condimentos,0.25,kg,28,,ajo,60,0
+S005,Comino molido 40 g,despensa,condimentos,0.04,kg,24,,comino;especia,365,0
+S006,Orégano 15 g,despensa,condimentos,0.015,kg,18,,oregano;especia,365,0
+S007,Canela en raja 30 g,despensa,condimentos,0.03,kg,28,,canela;especia,365,0
+B001,Galletas Marías 680 g,despensa,botanas_galletas,0.68,kg,52,gluten,galleta,180,0
+B002,Galletas saladas 500 g,despensa,botanas_galletas,0.5,kg,45,gluten,galleta,180,0
+B003,Galletas sándwich de chocolate 360 g,despensa,botanas_galletas,0.36,kg,48,gluten;lacteos;soya,galleta;chocolate,180,0
+B004,Papas fritas 240 g,despensa,botanas_galletas,0.24,kg,72,,papas fritas;botana,90,0
+B005,Palomitas para microondas 3 piezas 270 g,despensa,botanas_galletas,0.27,kg,36,lacteos,palomitas;botana,180,0
+B006,Cacahuates japoneses 500 g,despensa,botanas_galletas,0.5,kg,59,cacahuate;gluten;soya,cacahuate;botana,180,0
+R001,Jugo de naranja 1 L,bebidas,bebidas,1,L,28,,jugo;naranja,180,0
+R002,Néctar de mango 1 L,bebidas,bebidas,1,L,25,,jugo;mango,180,0
+R003,Refresco de cola 3 L,bebidas,bebidas,3,L,52,,refresco,180,0
+R004,Refresco sabor naranja Great Value 3 L,bebidas,bebidas,3,L,34,,refresco,180,0
+R005,Bebida en polvo sabor naranja 10 sobres (rinde 20 L),bebidas,bebidas,20,L,55,,polvo;naranja,365,0
+R006,Agua mineral 2 L,bebidas,bebidas,2,L,26,,agua mineral,365,0
+P001,Papel higiénico 4 rollos,limpieza,papel_higienico,4,rollo,32,,papel,1000,0
+P002,Papel higiénico 12 rollos,limpieza,papel_higienico,12,rollo,82,,papel,1000,0
+P003,Papel higiénico Great Value 24 rollos,limpieza,papel_higienico,24,rollo,129,,papel,1000,0
+P004,Papel higiénico 32 rollos,limpieza,papel_higienico,32,rollo,225,,papel,1000,0
+P005,Toallas de papel para cocina 3 rollos,limpieza,servitoallas,3,rollo,49,,papel;servitoalla,1000,0
+P006,Toallas de papel para cocina 6 rollos,limpieza,servitoallas,6,rollo,92,,papel;servitoalla,1000,0
+J001,Lavatrastes líquido Great Value 1 L,limpieza,jabon_trastes,1,L,33,,lavatrastes,1000,0
+J002,Lavatrastes líquido 900 ml,limpieza,jabon_trastes,0.9,L,52,,lavatrastes,1000,0
+J003,Lavatrastes en pasta 900 g,limpieza,jabon_trastes,0.9,L,44,,lavatrastes,1000,0
+J004,Detergente en polvo 1 kg,limpieza,detergente_ropa,1,kg,36,,detergente,1000,0
+J005,Detergente en polvo Great Value 5 kg,limpieza,detergente_ropa,5,kg,129,,detergente,1000,0
+J006,Detergente en polvo 5 kg,limpieza,detergente_ropa,5,kg,155,,detergente,1000,0
+J007,Detergente líquido 4.65 L,limpieza,detergente_ropa,4.65,kg,265,,detergente,1000,0
+J008,Suavizante de telas 2.8 L,limpieza,suavizante,2.8,L,79,,suavizante,1000,0
+J009,Suavizante de telas 850 ml,limpieza,suavizante,0.85,L,32,,suavizante,1000,0
+J010,Limpiador multiusos aroma lavanda 2 L,limpieza,limpieza_hogar,2,L,49,,limpiador,1000,0
+J011,Limpiador desinfectante de pino 2 L,limpieza,limpieza_hogar,2,L,58,,limpiador;pino,1000,0
+J012,Blanqueador cloro 3.75 L,limpieza,limpieza_hogar,3.75,L,49,,cloro,1000,0
+J013,Limpiador multiusos Great Value 1 L,limpieza,limpieza_hogar,1,L,24,,limpiador,1000,0
+J014,Bolsas para basura jumbo 10 piezas,limpieza,bolsas_basura,10,pz,36,,bolsas,1000,0
+J015,Bolsas para basura medianas 30 piezas,limpieza,bolsas_basura,30,pz,69,,bolsas,1000,0
+J016,Bolsas para basura Great Value 50 piezas,limpieza,bolsas_basura,50,pz,95,,bolsas,1000,0
+I001,Jabón de tocador 3 barras,higiene,jabon_corporal,3,pz,45,,jabon,1000,0
+I002,Jabón de tocador Great Value 6 barras,higiene,jabon_corporal,6,pz,79,,jabon,1000,0
+I003,Jabón líquido corporal 1 L,higiene,jabon_corporal,4,pz,99,,jabon,1000,0
+I004,Shampoo 620 ml,higiene,shampoo,0.62,L,62,,shampoo,1000,0
+I005,Shampoo anticaspa 375 ml,higiene,shampoo,0.375,L,89,,shampoo,1000,0
+I006,Shampoo familiar 1 L,higiene,shampoo,1,L,59,,shampoo,1000,0
+I007,Pasta dental 3 piezas de 100 ml,higiene,pasta_dental,3,pz,75,,pasta dental,1000,0
+I008,Pasta dental 150 ml,higiene,pasta_dental,1.5,pz,45,,pasta dental,1000,0
+I009,Pasta dental infantil 50 ml,higiene,pasta_dental,0.5,pz,39,,pasta dental;infantil,1000,0
+I010,Desodorante en aerosol 150 ml,higiene,desodorante,1,pz,69,,desodorante,1000,0
+I011,Desodorante en barra 2 piezas,higiene,desodorante,2,pz,99,,desodorante,1000,0
+I012,Toallas femeninas 32 piezas,higiene,toallas_femeninas,32,pz,62,,toallas femeninas,1000,0
+I013,Toallas femeninas nocturnas 10 piezas,higiene,toallas_femeninas,10,pz,45,,toallas femeninas,1000,0
+N001,Pañales premium 40 piezas,bebe,panales,40,pz,289,,panal,1000,0
+N002,Pañales económicos 40 piezas,bebe,panales,40,pz,249,,panal,1000,0
+N003,Pañales Great Value 50 piezas,bebe,panales,50,pz,219,,panal,1000,0
+N004,Toallitas húmedas 80 piezas,bebe,toallitas_humedas,80,pz,49,,toallitas,1000,0
+N005,Toallitas húmedas 3 paquetes 240 piezas,bebe,toallitas_humedas,240,pz,129,,toallitas,1000,0
+M001,Alimento para perro adulto 4 kg (marca líder),mascotas,croquetas_perro,4,kg,349,,croquetas;perro,365,0
+M002,Alimento para perro adulto 4 kg (económico),mascotas,croquetas_perro,4,kg,259,,croquetas;perro,365,0
+M003,Alimento para perro adulto 8 kg,mascotas,croquetas_perro,8,kg,689,,croquetas;perro,365,0
+M004,Alimento para perro adulto 25 kg (económico),mascotas,croquetas_perro,25,kg,999,,croquetas;perro,365,0
+M005,Alimento para gato adulto 3 kg,mascotas,croquetas_gato,3,kg,319,,croquetas;gato,365,0
+M006,Alimento para gato adulto 1.3 kg,mascotas,croquetas_gato,1.3,kg,109,,croquetas;gato,365,0
+M007,Alimento para gato adulto 3 kg (premium),mascotas,croquetas_gato,3,kg,369,,croquetas;gato,365,0
+M008,Arena para gato 9 kg,mascotas,arena_gato,9,kg,139,,arena;gato,1000,0
+M009,Arena para gato 4.5 kg,mascotas,arena_gato,4.5,kg,79,,arena;gato,1000,0

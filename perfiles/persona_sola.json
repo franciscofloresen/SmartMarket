@@ -1,0 +1,7 @@
+{
+  "nombre": "Persona sola",
+  "presupuesto": 3000,
+  "periodo_dias": 15,
+  "miembros": [{"edad": 27, "sexo": "M"}],
+  "mascotas": [{"tipo": "gato"}]
+}

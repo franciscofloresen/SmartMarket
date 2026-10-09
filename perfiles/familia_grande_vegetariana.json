@@ -1,0 +1,15 @@
+{
+  "nombre": "Familia extendida vegetariana",
+  "presupuesto": 6000,
+  "miembros": [
+    {"nombre": "Abuela", "edad": 68, "sexo": "F"},
+    {"nombre": "Mamá", "edad": 42, "sexo": "F"},
+    {"nombre": "Papá", "edad": 45, "sexo": "M"},
+    {"nombre": "Hija", "edad": 15, "sexo": "F"},
+    {"nombre": "Hijo", "edad": 12, "sexo": "M"},
+    {"nombre": "Hijo", "edad": 5, "sexo": "M"}
+  ],
+  "mascotas": [{"tipo": "perro", "tamano": "grande"}, {"tipo": "gato"}],
+  "dieta": "vegetariana",
+  "excluir": ["chiles"]
+}

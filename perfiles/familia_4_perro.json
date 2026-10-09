@@ -1,0 +1,14 @@
+{
+  "nombre": "Familia con 2 hijos y perro",
+  "presupuesto": 10000,
+  "periodo_dias": 30,
+  "miembros": [
+    {"nombre": "Mamá", "edad": 38, "sexo": "F"},
+    {"nombre": "Papá", "edad": 40, "sexo": "M"},
+    {"nombre": "Hijo", "edad": 10, "sexo": "M"},
+    {"nombre": "Hija", "edad": 7, "sexo": "F"}
+  ],
+  "mascotas": [{"tipo": "perro", "tamano": "mediano"}],
+  "alergias": ["pescado"],
+  "excluir": ["brócoli", "coliflor"]
+}
