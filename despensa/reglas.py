@@ -126,6 +126,26 @@ ALIAS_ALERGENOS = {
     "ajonjoli": "ajonjoli", "sesamo": "ajonjoli",
 }
 
+# Nombres para mostrar en la app.
+NOMBRES_ALERGENOS = {
+    "pescado": "Pescado",
+    "mariscos": "Mariscos",
+    "lacteos": "Lácteos",
+    "huevo": "Huevo",
+    "gluten": "Gluten (trigo)",
+    "cacahuate": "Cacahuate",
+    "nueces": "Nueces y almendras",
+    "soya": "Soya",
+    "ajonjoli": "Ajonjolí",
+}
+NOMBRES_DIETAS = {"vegetariana": "Vegetariana", "pescetariana": "Pescetariana", "sin_cerdo": "Sin cerdo"}
+NOMBRES_TAMANOS_PERRO = {
+    "chico": "Chico (hasta 10 kg)",
+    "mediano": "Mediano (10 a 25 kg)",
+    "grande": "Grande (25 a 45 kg)",
+    "gigante": "Gigante (más de 45 kg)",
+}
+
 # Dietas predefinidas: etiquetas de producto que excluyen.
 DIETAS = {
     "vegetariana": ["carne", "pescado", "mariscos"],

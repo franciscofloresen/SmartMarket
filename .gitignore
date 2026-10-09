@@ -1,3 +1,6 @@
 .venv/
 __pycache__/
 .pytest_cache/
+data/reportes/
+web/dist/
+web/node_modules/

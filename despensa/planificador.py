@@ -10,6 +10,18 @@ from .reglas import NECESIDADES
 
 # Máximo de visitas sugeridas para productos frescos dentro del periodo.
 MAX_VISITAS = 4
+MOTIVO_QUITADO = "quitado por ti"
+
+
+class AjusteInvalido(ValueError):
+    pass
+
+
+@dataclass
+class Ajustes:
+    """Cambios del usuario sobre una lista ya generada, para recalcularla."""
+    excluir_productos: set[str] = field(default_factory=set)
+    fijar: dict[str, int] = field(default_factory=dict)  # id -> paquetes
 
 
 @dataclass
@@ -18,6 +30,7 @@ class LineaCompra:
     paquetes: int
     # Visitas en que conviene repartir la compra (frescos que no se congelan).
     visitas: int
+    fijado: bool = False
 
     @property
     def subtotal(self) -> float:
@@ -71,6 +84,9 @@ class Plan:
                     "precio_unitario": l.producto.precio,
                     "subtotal": l.subtotal,
                     "visitas": l.visitas,
+                    "fijado": l.fijado,
+                    "fuente_precio": l.producto.fuente_precio,
+                    "fecha_precio": l.producto.fecha_precio,
                 }
                 for l in self.lineas
             ],
@@ -88,9 +104,38 @@ def _visitas(producto: Producto, periodo_dias: int) -> int:
     return min(MAX_VISITAS, math.ceil(periodo_dias / producto.vida_util_dias))
 
 
-def planear(hogar: Hogar, catalogo: list[Producto], tiempo_limite: int = 30) -> Plan:
+def _validar_ajustes(ajustes: Ajustes, catalogo: list[Producto], aptos: list[Producto], presupuesto: float) -> None:
+    por_id = {p.id: p for p in catalogo}
+    aptos_ids = {p.id for p in aptos}
+    desconocidos = sorted((ajustes.excluir_productos | ajustes.fijar.keys()) - por_id.keys())
+    if desconocidos:
+        raise AjusteInvalido(f"Productos que no existen en el catálogo: {', '.join(desconocidos)}")
+    for pid, n in ajustes.fijar.items():
+        if n < 0:
+            raise AjusteInvalido(f"La cantidad fijada de {por_id[pid].nombre} no puede ser negativa.")
+        if pid not in aptos_ids:
+            raise AjusteInvalido(f"{por_id[pid].nombre} no es compatible con las restricciones del hogar.")
+    costo_fijo = sum(por_id[pid].precio * n for pid, n in ajustes.fijar.items())
+    if costo_fijo > presupuesto:
+        raise AjusteInvalido(
+            f"Los productos fijados suman ${costo_fijo:,.2f} y superan el presupuesto de ${presupuesto:,.2f}."
+        )
+
+
+def planear(
+    hogar: Hogar, catalogo: list[Producto], ajustes: Ajustes | None = None, tiempo_limite: int = 30
+) -> Plan:
+    ajustes = ajustes or Ajustes()
     demandas = calcular_necesidades(hogar)
     aptos, excluidos = filtrar(catalogo, hogar)
+    _validar_ajustes(ajustes, catalogo, aptos, hogar.presupuesto)
+
+    # Fijar 0 paquetes equivale a quitar el producto; fijar manda sobre quitar.
+    quitados = (ajustes.excluir_productos | {pid for pid, n in ajustes.fijar.items() if n == 0})
+    fijos = {pid: n for pid, n in ajustes.fijar.items() if n > 0}
+    quitados -= fijos.keys()
+    excluidos += [(p, MOTIVO_QUITADO) for p in aptos if p.id in quitados]
+    aptos = [p for p in aptos if p.id not in quitados]
 
     con_opciones = {p.necesidad for p in aptos}
     sin_opciones = {clave for clave in demandas if clave not in con_opciones}
@@ -98,13 +143,13 @@ def planear(hogar: Hogar, catalogo: list[Producto], tiempo_limite: int = 30) -> 
     # Un sustituto puede no tener tampoco opciones; esos se reportan pero no se optimizan.
     demandas = {k: v for k, v in demandas.items() if k in con_opciones}
 
-    resultado = optimizar(aptos, demandas, hogar.presupuesto, tiempo_limite)
+    resultado = optimizar(aptos, demandas, hogar.presupuesto, tiempo_limite, fijos)
     if resultado.estado != "Optimal":
         notas.append("El optimizador alcanzó el tiempo límite; la lista es buena pero puede no ser la óptima.")
 
     por_id = {p.id: p for p in aptos}
     lineas = [
-        LineaCompra(por_id[pid], n, _visitas(por_id[pid], hogar.periodo_dias))
+        LineaCompra(por_id[pid], n, _visitas(por_id[pid], hogar.periodo_dias), pid in fijos)
         for pid, n in resultado.paquetes.items()
     ]
     lineas.sort(key=lambda l: (l.producto.departamento, l.producto.necesidad, l.producto.nombre))

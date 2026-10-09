@@ -37,22 +37,33 @@ def optimizar(
     demandas: dict[str, float],
     presupuesto: float,
     tiempo_limite: int = 30,
+    fijos: dict[str, int] | None = None,
 ) -> ResultadoOptimizacion:
+    """`fijos` son cantidades de paquetes que el usuario fijó (id -> paquetes); se respetan tal cual."""
+    fijos = fijos or {}
     por_necesidad: dict[str, list[Producto]] = defaultdict(list)
+    # Productos fijados cuya necesidad no hace falta en este hogar: solo suman al costo.
+    extras: list[Producto] = []
     for p in productos:
         if demandas.get(p.necesidad, 0) > 0:
             por_necesidad[p.necesidad].append(p)
-    candidatos = [p for ps in por_necesidad.values() for p in ps]
+        elif p.id in fijos:
+            extras.append(p)
+    candidatos = [p for ps in por_necesidad.values() for p in ps] + extras
 
     topes: dict[str, float] = {}
     for clave, ps in por_necesidad.items():
-        topes[clave] = demandas[clave] * (1 + EXCESO_PERMITIDO) + max(p.contenido for p in ps)
+        tope = demandas[clave] * (1 + EXCESO_PERMITIDO) + max(p.contenido for p in ps)
+        fijado = sum(p.contenido * fijos[p.id] for p in ps if p.id in fijos)
+        topes[clave] = max(tope, fijado)
 
     prob = pulp.LpProblem("despensa", pulp.LpMinimize)
-    x = {
-        p.id: prob.add_variable(f"x_{p.id}", 0, math.floor(topes[p.necesidad] / p.contenido), cat="Integer")
-        for p in candidatos
-    }
+    x = {}
+    for p in candidatos:
+        if p.id in fijos:
+            x[p.id] = prob.add_variable(f"x_{p.id}", fijos[p.id], fijos[p.id], cat="Integer")
+        else:
+            x[p.id] = prob.add_variable(f"x_{p.id}", 0, math.floor(topes[p.necesidad] / p.contenido), cat="Integer")
     tramos = {
         clave: [
             prob.add_variable(f"falta_{clave}_{i}", 0, ancho * demandas[clave])
@@ -73,6 +84,8 @@ def optimizar(
         variedad = max(NECESIDADES[clave].variedad_max, 1 / len(ps))
         if variedad < 1:
             for p in ps:
+                if p.id in fijos:
+                    continue  # lo que el usuario fijó manda sobre la variedad
                 prob += p.contenido * x[p.id] <= variedad * demandas[clave] + p.contenido, f"variedad_{p.id}"
 
     # Básicos: castigar no cubrir la proporción mínima de cada uno (si hay productos compatibles).
@@ -128,6 +141,7 @@ def _resolver(prob: pulp.LpProblem, tiempo_limite: int) -> str:
     prob.solve(_solver(tiempo_limite))
     estado = pulp.LpStatus[prob.status]
     if estado not in ("Optimal", "Not Solved"):
-        # El problema siempre es factible (comprar nada cumple todo), así que esto indica un bug.
+        # Es factible siempre que lo fijado quepa en el presupuesto (planear() lo valida),
+        # así que esto indica un bug.
         raise RuntimeError(f"El optimizador terminó en estado inesperado: {estado}")
     return estado

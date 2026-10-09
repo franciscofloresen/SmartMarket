@@ -26,6 +26,8 @@ class Producto:
     etiquetas: frozenset[str]
     vida_util_dias: int
     congelable: bool
+    fuente_precio: str = "estimado"  # "estimado" o de dónde se verificó (ej. "walmart.com.mx")
+    fecha_precio: str = ""           # AAAA-MM-DD
 
 
 def _lista(campo: str) -> frozenset[str]:
@@ -50,6 +52,8 @@ def cargar_catalogo(ruta: str | Path = CATALOGO_DEFAULT) -> list[Producto]:
                 etiquetas=_lista(fila["etiquetas"]),
                 vida_util_dias=int(fila["vida_util_dias"]),
                 congelable=fila["congelable"] == "1",
+                fuente_precio=fila.get("fuente_precio") or "estimado",
+                fecha_precio=fila.get("fecha_precio") or "",
             )
             if p.contenido <= 0 or p.precio <= 0:
                 raise ValueError(f"Línea {n}: contenido y precio deben ser mayores a 0 ({p.id})")
