@@ -96,6 +96,12 @@ def test_exclusion_no_confunde_palabras_parecidas(catalogo):
     assert not coincide_exclusion("sal", _producto(catalogo, "E004"))   # salsa
 
 
+def test_exclusion_alcanza_productos_mixtos(catalogo):
+    # La mezcla congelada trae brócoli: excluir brócoli debe quitarla.
+    _, excluidos = filtrar(catalogo, _hogar(excluir=["brócoli"]))
+    assert "V017" in {p.id for p, _ in excluidos}
+
+
 def test_harina_para_tortilla_solo_si_las_hacen_en_casa(catalogo):
     aptos, _ = filtrar(catalogo, _hogar())
     assert "T002" not in {p.id for p in aptos}
@@ -155,3 +161,22 @@ def test_alergia_a_lacteos_usa_bebidas_vegetales(catalogo):
 def test_plan_serializa_a_dict(catalogo):
     datos = planear(_hogar(), catalogo).a_dict()
     assert datos["total"] == pytest.approx(sum(l["subtotal"] for l in datos["lineas"]))
+
+
+def test_mapeo_qqp_es_consistente(catalogo):
+    import csv
+    import re
+
+    ids = {p.id for p in catalogo}
+    ruta = Path(__file__).resolve().parent.parent / "data" / "mapeo_qqp.csv"
+    with open(ruta, encoding="utf-8") as f:
+        filas = list(csv.DictReader(f))
+    assert len({m["id"] for m in filas}) == len(filas), "ids repetidos en el mapeo"
+    for m in filas:
+        assert m["id"] in ids, m["id"]
+        re.compile(m["presentacion"])
+        if m["marca"]:
+            re.compile(m["marca"])
+        assert float(m["factor"]) > 0
+        if m["contenido"]:
+            assert float(m["contenido"]) > 0

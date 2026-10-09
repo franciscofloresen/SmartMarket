@@ -66,17 +66,38 @@ perfil ──► necesidades ──► filtro ──► optimizador ──► li
 
 ## Datos
 
-`data/catalogo_walmart.csv`: 181 productos. Columnas: necesidad que cubren, contenido en
-la unidad de esa necesidad, precio, alérgenos, etiquetas, vida útil y si se congela.
+`data/catalogo_walmart.csv`: 192 productos. Columnas: necesidad que cubren, contenido en la unidad
+de esa necesidad, precio, alérgenos, etiquetas, vida útil, si se congela, y de dónde sale el precio
+(`fuente_precio`, `fecha_precio`).
 
-> ⚠ **Los precios son aproximados y no se han verificado** contra la tienda. Antes de usar el
-> motor con familias reales hay que cargar precios actuales. Fuentes posibles: datos abiertos
-> de Profeco ("Quién es Quién en los Precios"), tickets escaneados o un convenio con la cadena.
-> La información de alérgenos debe validarse con la etiqueta de cada producto.
+**149 precios vienen de Profeco** ("Quién es Quién en los Precios", datos abiertos, cadena
+Wal-mart, segunda quincena de julio 2026): la mediana de lo que Profeco registró en tiendas
+Walmart de todo el país. **43 siguen estimados**, porque Profeco no los levanta: alimento y arena
+de mascotas, bolsas de basura, toallas de cocina, bebidas vegetales, toallitas húmedas y algunos
+condimentos. Esos hay que verificarlos a mano.
+
+### Actualizar precios
+
+1. Descarga el ZIP del año en https://datos.profeco.gob.mx/datos_abiertos/qqp.php
+2. Revisa el reporte y luego aplica:
+
+```bash
+.venv/bin/python herramientas/precios_qqp.py RUTA/QQP_2026.zip            # solo reporte
+.venv/bin/python herramientas/precios_qqp.py RUTA/QQP_2026.zip --aplicar  # escribe el catálogo
+```
+
+`data/mapeo_qqp.csv` asocia cada producto del catálogo con los registros de Profeco: producto
+exacto, expresiones regulares para presentación y marca, y un factor (ej. 6 bolillos = 6 × precio
+por pieza). El reporte marca para revisión los cambios de más del 50% y los productos con pocos
+registros. Si cambias el nombre de un producto, **revisa sus etiquetas y alérgenos**, porque de
+ellas dependen los filtros.
+
+> ⚠ Profeco publica precios de referencia; cada sucursal puede variar. La información de alérgenos
+> debe validarse con la etiqueta de cada producto.
 
 ## Pendientes sugeridos
 
-- Precios reales y actualización periódica del catálogo.
+- Verificar a mano los 43 precios estimados (mascotas, bolsas, toallas de cocina...).
 - API (FastAPI) sobre `planear()` usando `Plan.a_dict()` y app móvil.
 - Modo "aprovechar presupuesto": usar el sobrante en marcas preferidas o productos de mejor
   calidad (requiere una calificación por producto).

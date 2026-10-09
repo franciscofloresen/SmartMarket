@@ -76,5 +76,11 @@ def formatear(plan: Plan) -> str:
             out.append("  ⚠ Revisa siempre la etiqueta: la información de alérgenos del catálogo puede no estar completa.")
 
     out.append("")
-    out.append("Precios de referencia aproximados; pueden variar por sucursal y fecha.")
+    de_profeco = [l for l in plan.lineas if l.producto.fuente_precio == "profeco_qqp"]
+    fecha = max((l.producto.fecha_precio for l in de_profeco), default="")
+    out.append(
+        f"Precios: {len(de_profeco)} de {len(plan.lineas)} productos con precio de referencia de Profeco"
+        + (f" (al {fecha})" if fecha else "")
+        + "; el resto son estimados. Pueden variar por sucursal."
+    )
     return "\n".join(out)
