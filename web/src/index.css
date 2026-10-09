@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-stone-50 text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-100;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    overscroll-behavior-y: none;
+  }
+  /* 16px evita que Safari en iPhone haga zoom al enfocar un campo. */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-marca-600 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-950;
+  }
+}
+
+@layer utilities {
+  .pt-seguro {
+    padding-top: max(env(safe-area-inset-top), 0.75rem);
+  }
+  .pb-seguro {
+    padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

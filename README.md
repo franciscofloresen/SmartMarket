@@ -15,6 +15,32 @@ uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r requi
 .venv/bin/python -m pytest
 ```
 
+## Web app (beta)
+
+La app para el celular está en `web/` (React + TypeScript + Vite + Tailwind, instalable como PWA).
+
+**Probar en tu iPhone (desarrollo).** La Mac y el iPhone deben estar en la misma red Wi-Fi:
+
+```bash
+.venv/bin/uvicorn api.app:app --port 8000          # terminal 1: API
+cd web && npm install && npm run dev                # terminal 2: web app
+```
+
+Vite muestra una dirección `Network: http://192.168.x.x:5173`. Ábrela en Safari del iPhone.
+Las llamadas a `/api` se reenvían a la API local.
+
+**Producción.** `npm run build` genera `web/dist`, y la API la sirve en `/` (misma URL). El
+`Dockerfile` hace las dos cosas en una sola imagen.
+
+Pantallas:
+- Bienvenida
+- Asistente del hogar (personas, mascotas, alimentación, presupuesto)
+- Lista: quitar o fijar cantidades y recalcular, reportar precios
+- Modo compra: lista para marcar, funciona sin conexión
+- Más: editar hogar, comentarios, respaldo y borrar datos
+
+Todo se guarda en el teléfono (`localStorage`); el servidor no guarda perfiles.
+
 ## Perfil del hogar (JSON)
 
 ```json
@@ -98,7 +124,7 @@ ellas dependen los filtros.
 ## Pendientes sugeridos
 
 - Verificar a mano los 43 precios estimados (mascotas, bolsas, toallas de cocina...).
-- API (FastAPI) sobre `planear()` usando `Plan.a_dict()` y app móvil.
+- Publicar la beta (Render, Railway o Fly.io) y compartir con familias de prueba.
 - Modo "aprovechar presupuesto": usar el sobrante en marcas preferidas o productos de mejor
   calidad (requiere una calificación por producto).
 - Fórmula infantil, etapas de pañal por edad y más tipos de mascota.

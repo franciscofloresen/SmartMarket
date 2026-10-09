@@ -4,3 +4,6 @@
 .pytest_cache
 data/reportes
 web/node_modules
+web/dist
+web/dev-dist
+.claude
