@@ -1,5 +1,6 @@
 """Consultas sobre el catálogo para la app: buscar, alternativas y comparar tiendas."""
 import math
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
 
 from .catalogo import Producto, cargar_catalogo, catalogo_de, filtrar
@@ -87,8 +88,9 @@ def comparar_tiendas(hogar: Hogar, ajustes: Ajustes | None = None, tiempo_limite
     Los productos fijados solo se respetan en la tienda del hogar: en otra tienda pueden no existir.
     """
     ajustes = ajustes or Ajustes()
-    filas = []
-    for tienda, nombre in TIENDAS.items():
+
+    def calcular(tienda: str) -> dict:
+        nombre = TIENDAS[tienda]
         h = replace(hogar, tienda=tienda)
         catalogo = cargar_catalogo(tienda, hogar.estado)
         ids = {p.id for p in catalogo}
@@ -99,7 +101,7 @@ def comparar_tiendas(hogar: Hogar, ajustes: Ajustes | None = None, tiempo_limite
         )
         plan: Plan = planear(h, catalogo, propios, tiempo_limite)
         esenciales = [c.porcentaje for c in plan.cobertura if c.prioridad == 1]
-        filas.append({
+        return {
             "clave": tienda,
             "tienda": nombre,
             "total": plan.total,
@@ -107,7 +109,11 @@ def comparar_tiendas(hogar: Hogar, ajustes: Ajustes | None = None, tiempo_limite
             "cobertura_completa": all(c.porcentaje >= 95 for c in plan.cobertura),
             "cobertura_esencial_minima": round(min(esenciales, default=100.0), 1),
             "actual": tienda == hogar.tienda,
-        })
+        }
+
+    # El solver suelta el GIL mientras resuelve, así que las tiendas se calculan en paralelo.
+    with ThreadPoolExecutor(max_workers=len(TIENDAS)) as ejecutor:
+        filas = list(ejecutor.map(calcular, TIENDAS))
     # Con cobertura incompleta el total no es comparable: esas tiendas van al final.
     filas.sort(key=lambda f: (not f["cobertura_completa"], f["total"]))
     return filas
