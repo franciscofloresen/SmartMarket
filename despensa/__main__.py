@@ -3,7 +3,8 @@ import argparse
 import json
 import sys
 
-from .catalogo import CATALOGO_DEFAULT, cargar_catalogo
+from .catalogo import catalogo_de
+from .reglas import TIENDAS
 from .perfil import PerfilInvalido, cargar_hogar
 from .planificador import planear
 from .reporte import formatear
@@ -12,7 +13,8 @@ from .reporte import formatear
 def main() -> int:
     parser = argparse.ArgumentParser(description="Genera una despensa optimizada para tu hogar.")
     parser.add_argument("perfil", help="Archivo JSON con el perfil del hogar")
-    parser.add_argument("--catalogo", default=str(CATALOGO_DEFAULT), help="CSV del catálogo de la tienda")
+    parser.add_argument("--tienda", choices=list(TIENDAS), help="Sobrescribe la tienda del perfil")
+    parser.add_argument("--estado", help="Estado para usar precios locales (ej. Jalisco)")
     parser.add_argument("--presupuesto", type=float, help="Sobrescribe el presupuesto del perfil")
     parser.add_argument("--json", action="store_true", help="Salida en JSON (para la app/API)")
     args = parser.parse_args()
@@ -25,7 +27,12 @@ def main() -> int:
     if args.presupuesto is not None:
         hogar.presupuesto = args.presupuesto
 
-    plan = planear(hogar, cargar_catalogo(args.catalogo))
+    if args.tienda:
+        hogar.tienda = args.tienda
+    if args.estado:
+        hogar.estado = args.estado
+
+    plan = planear(hogar, catalogo_de(hogar))
     if args.json:
         print(json.dumps(plan.a_dict(), ensure_ascii=False, indent=2))
     else:

@@ -1,0 +1,16 @@
+id,nombre,marca,tipo,departamento,necesidad,contenido,unidad,precio,alergenos,posibles,etiquetas,vida_util_dias,congelable,nivel,fuente_precio,fecha_precio,registros
+L006,Bebida de almendra sin azúcar 946 ml,,Bebida vegetal,lacteos_huevo,leche,0.946,L,52,nueces,,almendra;bebida vegetal,180,0,premium,estimado,2026-10-09,0
+L007,Bebida de soya 946 ml,,Bebida vegetal,lacteos_huevo,leche,0.946,L,42,soya,,soya;bebida vegetal,180,0,economico,estimado,2026-10-09,0
+L008,Bebida de avena 1 L,,Bebida vegetal,lacteos_huevo,leche,1,L,49,gluten,,avena;bebida vegetal,180,0,medio,estimado,2026-10-09,0
+J014,Bolsas para basura jumbo 10 piezas,,Bolsas para basura,limpieza,bolsas_basura,10,pz,36,,,bolsas,1000,0,medio,estimado,2026-10-09,0
+J015,Bolsas para basura medianas 30 piezas,,Bolsas para basura,limpieza,bolsas_basura,30,pz,69,,,bolsas,1000,0,medio,estimado,2026-10-09,0
+J016,Bolsas para basura Great Value 50 piezas,,Bolsas para basura,limpieza,bolsas_basura,50,pz,95,,,bolsas,1000,0,economico,estimado,2026-10-09,0
+M001,Alimento para perro adulto 4 kg (marca líder),,Alimento para perro,mascotas,croquetas_perro,4,kg,349,,,croquetas;perro,365,0,premium,estimado,2026-10-09,0
+M002,Alimento para perro adulto 4 kg (económico),,Alimento para perro,mascotas,croquetas_perro,4,kg,259,,,croquetas;perro,365,0,economico,estimado,2026-10-09,0
+M003,Alimento para perro adulto 8 kg,,Alimento para perro,mascotas,croquetas_perro,8,kg,689,,,croquetas;perro,365,0,medio,estimado,2026-10-09,0
+M004,Alimento para perro adulto 25 kg (económico),,Alimento para perro,mascotas,croquetas_perro,25,kg,999,,,croquetas;perro,365,0,economico,estimado,2026-10-09,0
+M005,Alimento para gato adulto 3 kg,,Alimento para gato,mascotas,croquetas_gato,3,kg,319,,,croquetas;gato,365,0,medio,estimado,2026-10-09,0
+M006,Alimento para gato adulto 1.3 kg,,Alimento para gato,mascotas,croquetas_gato,1.3,kg,109,,,croquetas;gato,365,0,economico,estimado,2026-10-09,0
+M007,Alimento para gato adulto 3 kg (premium),,Alimento para gato,mascotas,croquetas_gato,3,kg,369,,,croquetas;gato,365,0,premium,estimado,2026-10-09,0
+M008,Arena para gato 9 kg,,Arena para gato,mascotas,arena_gato,9,kg,139,,,arena;gato,1000,0,economico,estimado,2026-10-09,0
+M009,Arena para gato 4.5 kg,,Arena para gato,mascotas,arena_gato,4.5,kg,79,,,arena;gato,1000,0,medio,estimado,2026-10-09,0

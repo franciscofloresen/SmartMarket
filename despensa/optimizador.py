@@ -19,6 +19,9 @@ from .reglas import NECESIDADES, PESO_BASICO, PESO_PRIORIDAD
 # solo ocurre si sale más barato en total, porque la fase 2 minimiza el costo.
 EXCESO_PERMITIDO = 0.25
 TOLERANCIA_FASE_1 = 1e-4
+# En la fase 2 cada paquete "cuesta" un poco más: ante precios casi iguales se prefieren
+# menos paquetes, más grandes (1 yogur de 1 kg en vez de 5 de 220 g).
+PENALIZACION_PAQUETE = 0.75
 # Tramos del faltante (fracción de la necesidad, multiplicador de castigo). Al ser
 # crecientes, conviene recortar un poco de varias cosas antes que eliminar una por completo.
 TRAMOS_FALTANTE = [(0.2, 1.0), (0.3, 3.0), (0.5, 10.0)]
@@ -88,6 +91,32 @@ def optimizar(
                     continue  # lo que el usuario fijó manda sobre la variedad
                 prob += p.contenido * x[p.id] <= variedad * demandas[clave] + p.contenido, f"variedad_{p.id}"
 
+    # Variedad por tipo: todo el pollo o todos los yogures juntos tampoco pueden dominar.
+    for clave, ps in por_necesidad.items():
+        por_tipo: dict[str, list[Producto]] = defaultdict(list)
+        for p in ps:
+            if p.id not in fijos:
+                por_tipo[p.tipo or p.id].append(p)
+        variedad_tipo = max(NECESIDADES[clave].variedad_tipo_max, 1 / max(1, len(por_tipo)))
+        if variedad_tipo < 1:
+            for n, del_tipo in enumerate(por_tipo.values()):
+                prob += (
+                    pulp.lpSum(p.contenido * x[p.id] for p in del_tipo)
+                    <= variedad_tipo * demandas[clave] + min(p.contenido for p in del_tipo),
+                    f"variedad_tipo_{clave}_{n}",
+                )
+
+    # Topes por etiqueta (ej. embutidos <= 20% de las carnes), más un paquete de holgura.
+    for clave, ps in por_necesidad.items():
+        for etiqueta, fraccion in NECESIDADES[clave].limites.items():
+            con_etiqueta = [p for p in ps if etiqueta in p.etiquetas and p.id not in fijos]
+            if con_etiqueta:
+                holgura = min(p.contenido for p in con_etiqueta)
+                prob += (
+                    pulp.lpSum(p.contenido * x[p.id] for p in con_etiqueta) <= fraccion * demandas[clave] + holgura,
+                    f"limite_{clave}_{etiqueta}",
+                )
+
     # Básicos: castigar no cubrir la proporción mínima de cada uno (si hay productos compatibles).
     sin_basico = []
     for clave, ps in por_necesidad.items():
@@ -116,7 +145,8 @@ def optimizar(
 
     # Fase 2: misma cobertura (con tolerancia), al menor costo.
     prob += penalizacion <= mejor + TOLERANCIA_FASE_1 * max(1.0, mejor), "cobertura_fase_1"
-    prob.setObjective(costo)
+    libres = [x[p.id] for p in candidatos if p.id not in fijos]
+    prob.setObjective(costo + PENALIZACION_PAQUETE * pulp.lpSum(libres))
     estado = _resolver(prob, tiempo_limite)
 
     paquetes = {pid: int(round(v.value() or 0)) for pid, v in x.items()}

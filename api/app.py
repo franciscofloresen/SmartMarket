@@ -22,17 +22,16 @@ from fastapi.responses import JSONResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from despensa.catalogo import cargar_catalogo
+from despensa.catalogo import cargar_catalogo, catalogo_de, estados_de
 from despensa.perfil import PerfilInvalido, hogar_desde_dict
 from despensa.planificador import AjusteInvalido, Ajustes, planear
-from despensa.reglas import NOMBRES_ALERGENOS, NOMBRES_DIETAS, NOMBRES_TAMANOS_PERRO
+from despensa.reglas import NOMBRES_ALERGENOS, NOMBRES_DIETAS, NOMBRES_TAMANOS_PERRO, TIENDA_DEFAULT, TIENDAS
 
 RAIZ = Path(__file__).resolve().parent.parent
-TIENDA = "Walmart Supercenter"
 TIEMPO_LIMITE_SOLVER = 10
 
-CATALOGO = cargar_catalogo()
-CATALOGO_IDS = {p.id for p in CATALOGO}
+# Se cargan todas las tiendas al arrancar: valida los CSV y deja los catálogos en caché.
+CATALOGO_IDS = {p.id for tienda in TIENDAS for p in cargar_catalogo(tienda)}
 REPORTES_PATH = Path(os.environ.get("REPORTES_PATH", RAIZ / "data" / "reportes" / "reportes.jsonl"))
 REPORTES_TOKEN = os.environ.get("REPORTES_TOKEN", "")
 _reportes_lock = threading.Lock()
@@ -62,6 +61,8 @@ class PerfilIn(BaseModel):
     excluir: list[Annotated[str, Field(max_length=40)]] = Field(default_factory=list, max_length=30)
     dieta: str | None = None
     tortillas_caseras: bool = False
+    tienda: str = Field(TIENDA_DEFAULT, max_length=30)
+    estado: str | None = Field(None, max_length=40)
 
 
 class AjustesIn(BaseModel):
@@ -104,12 +105,16 @@ def _error_validacion(_: Request, exc: RequestValidationError) -> JSONResponse:
     return JSONResponse(status_code=422, content={"detail": f"Datos inválidos: {resumen}", "errores": errores})
 
 
-def _info_catalogo() -> dict:
-    verificados = [p for p in CATALOGO if p.fuente_precio != "estimado"]
-    fechas = sorted(p.fecha_precio for p in CATALOGO if p.fecha_precio)
+def _info_catalogo(tienda: str = TIENDA_DEFAULT, estado: str | None = None) -> dict:
+    catalogo = cargar_catalogo(tienda)
+    verificados = [p for p in catalogo if p.fuente_precio != "estimado"]
+    fechas = sorted(p.fecha_precio for p in catalogo if p.fecha_precio)
     return {
-        "tienda": TIENDA,
-        "productos": len(CATALOGO),
+        "clave": tienda,
+        "tienda": TIENDAS[tienda],
+        # Solo se reporta el estado si la tienda tiene precios propios ahí.
+        "estado": estado if estado in estados_de(tienda) else None,
+        "productos": len(catalogo),
         "precios_verificados": len(verificados),
         "fecha_precio_mas_antigua": fechas[0] if fechas else None,
         "fecha_precio_mas_reciente": fechas[-1] if fechas else None,
@@ -126,6 +131,10 @@ def opciones() -> dict:
     """Catálogos para construir los formularios de la app."""
     return {
         "catalogo": _info_catalogo(),
+        "tiendas": [
+            {"clave": clave, "nombre": nombre, "productos": len(cargar_catalogo(clave)), "estados": estados_de(clave)}
+            for clave, nombre in TIENDAS.items()
+        ],
         "alergias": [{"clave": k, "nombre": v} for k, v in NOMBRES_ALERGENOS.items()],
         "dietas": [{"clave": k, "nombre": v} for k, v in NOMBRES_DIETAS.items()],
         "tamanos_perro": [{"clave": k, "nombre": v} for k, v in NOMBRES_TAMANOS_PERRO.items()],
@@ -142,10 +151,10 @@ def plan(entrada: PlanIn) -> dict:
             excluir_productos=set(entrada.ajustes.excluir_productos),
             fijar=dict(entrada.ajustes.fijar),
         )
-        resultado = planear(hogar, CATALOGO, ajustes, tiempo_limite=TIEMPO_LIMITE_SOLVER)
+        resultado = planear(hogar, catalogo_de(hogar), ajustes, tiempo_limite=TIEMPO_LIMITE_SOLVER)
     except (PerfilInvalido, AjusteInvalido) as e:
         raise HTTPException(status_code=422, detail=str(e)) from e
-    return {**resultado.a_dict(), "catalogo": _info_catalogo()}
+    return {**resultado.a_dict(), "catalogo": _info_catalogo(hogar.tienda, hogar.estado)}
 
 
 @app.post("/api/reporte", status_code=201)
