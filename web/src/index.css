@@ -1,0 +1,128 @@
+/* Solo el subconjunto latino de Baloo 2 (cubre el español); el paquete completo trae alfabetos que no usamos. */
+@font-face {
+  font-family: "Baloo 2 Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 800;
+  src: url("@fontsource-variable/baloo-2/files/baloo-2-latin-wght-normal.woff2") format("woff2-variations");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Neutros claros con un solo color de marca (verde nopal). Los acentos comparten
+       luminosidad y saturación para que combinen entre sí. Valores R G B. */
+    --fondo: 246 247 244;
+    --tarjeta: 255 255 255;
+    --hundido: 236 239 234;
+    --linea: 224 228 221;
+    --tinta: 23 32 27;
+    --suave: 96 107 100;
+    --sobre: 255 255 255;
+    --sombra: 23 43 32;
+    --nopal: 21 128 61;
+    --nopal-fuerte: 15 95 45;
+    --nopal-tenue: 225 243 231;
+    --maiz: 180 118 9;
+    --maiz-tenue: 252 241 212;
+    --rosa: 201 56 78;
+    --rosa-tenue: 252 230 233;
+    --papaya: 204 96 32;
+    --papaya-tenue: 253 234 220;
+    --cielo: 37 110 184;
+    --cielo-tenue: 224 237 250;
+    --uva: 110 86 190;
+    --uva-tenue: 236 232 250;
+    color-scheme: light;
+  }
+  /* El tema oscuro es opcional: tema.ts pone data-tema según lo elegido en "Más". */
+  :root[data-tema="oscuro"] {
+    --fondo: 15 19 17;
+    --tarjeta: 25 31 28;
+    --hundido: 36 43 39;
+    --linea: 50 59 54;
+    --tinta: 236 241 237;
+    --suave: 152 164 156;
+    --sobre: 12 24 17;
+    --sombra: 0 0 0;
+    --nopal: 74 201 124;
+    --nopal-fuerte: 40 146 84;
+    --nopal-tenue: 24 54 38;
+    --maiz: 232 180 76;
+    --maiz-tenue: 62 48 18;
+    --rosa: 240 124 140;
+    --rosa-tenue: 70 30 37;
+    --papaya: 238 150 96;
+    --papaya-tenue: 68 40 22;
+    --cielo: 112 176 236;
+    --cielo-tenue: 24 46 70;
+    --uva: 168 150 236;
+    --uva-tenue: 44 38 78;
+    color-scheme: dark;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-fondo text-tinta antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    overscroll-behavior-y: none;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-titulo;
+  }
+  /* 16px evita que Safari en iPhone haga zoom al enfocar un campo. */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-nopal ring-offset-2 ring-offset-fondo;
+  }
+}
+
+@layer utilities {
+  .pt-seguro {
+    padding-top: max(env(safe-area-inset-top), 0.75rem);
+  }
+  .pb-seguro {
+    padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .sin-barra {
+    scrollbar-width: none;
+  }
+  .sin-barra::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Deslizador de presupuesto */
+input[type="range"].deslizador {
+  @apply h-3 w-full cursor-pointer appearance-none rounded-full bg-hundido;
+}
+input[type="range"].deslizador::-webkit-slider-thumb {
+  @apply h-8 w-8 appearance-none rounded-full border-4 border-tarjeta bg-nopal shadow-suave;
+}
+input[type="range"].deslizador::-moz-range-thumb {
+  @apply h-7 w-7 rounded-full border-4 border-tarjeta bg-nopal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

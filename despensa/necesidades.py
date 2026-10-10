@@ -33,6 +33,20 @@ def calcular_necesidades(hogar: Hogar) -> dict[str, float]:
     return {clave: round(cant * escala, 3) for clave, cant in mensual.items() if cant > 0}
 
 
+def _antojos_mensuales(hogar: Hogar) -> dict[str, float]:
+    mensual = {
+        clave: sum(reglas.ANTOJOS[clave].por_persona.get(m.grupo, 0.0) for m in hogar.miembros)
+        for clave in hogar.antojos
+    }
+    return {clave: cant for clave, cant in mensual.items() if cant > 0}
+
+
+def calcular_antojos(hogar: Hogar) -> dict[str, float]:
+    """Cantidad de cada antojo que el hogar pidió (en la unidad de su necesidad) para el periodo."""
+    escala = hogar.periodo_dias / 30
+    return {clave: round(cant * escala, 3) for clave, cant in _antojos_mensuales(hogar).items()}
+
+
 def aplicar_sustitutos(demandas: dict[str, float], sin_opciones: set[str]) -> tuple[dict[str, float], list[str]]:
     """Pasa la cantidad de necesidades sin productos compatibles a sus sustitutos.
 
@@ -62,3 +76,70 @@ def aplicar_sustitutos(demandas: dict[str, float], sin_opciones: set[str]) -> tu
             textos.append(f"+{extra:.1f} {nec.unidad} de {nec.nombre.lower()}")
         notas.append(f"{nombre}: sin productos compatibles, se sustituye con {', '.join(textos)}.")
     return ajustadas, notas
+
+
+_NOMBRES_GRUPO = {
+    reglas.BEBE: ("bebé", "bebés"),
+    reglas.NINO: ("niño", "niños"),
+    reglas.ADOLESCENTE: ("adolescente", "adolescentes"),
+    reglas.ADULTO: ("adulto", "adultos"),
+    reglas.MAYOR: ("adulto mayor", "adultos mayores"),
+}
+
+
+def _cantidad(valor: float, unidad: str) -> str:
+    return f"{valor:.1f}".rstrip("0").rstrip(".") + f" {unidad}"
+
+
+def explicar_necesidades(hogar: Hogar, antojos: set[str] | None = None) -> dict[str, str]:
+    """Por qué se pide cada cantidad, en palabras: '2 adultos × 7 L + 2 niños × 12 L al mes'.
+
+    `antojos` son los que sí se sumaron a la lista; si no se indica, todos los que pidió el hogar.
+    """
+    antojos_por_necesidad: dict[str, list[str]] = defaultdict(list)
+    for clave, cant in _antojos_mensuales(hogar).items():
+        antojo = reglas.ANTOJOS[clave]
+        if antojos is None or clave in antojos:
+            unidad = reglas.NECESIDADES[antojo.necesidad].unidad
+            antojos_por_necesidad[antojo.necesidad].append(f"antojo de {antojo.nombre.lower()}: {_cantidad(cant, unidad)}")
+    grupos: dict[str, int] = defaultdict(int)
+    for m in hogar.miembros:
+        grupos[m.grupo] += 1
+    textos: dict[str, str] = {}
+
+    for clave, nec in reglas.NECESIDADES.items():
+        partes = []
+        if nec.base_hogar:
+            partes.append(f"{_cantidad(nec.base_hogar, nec.unidad)} por hogar")
+        for grupo in _NOMBRES_GRUPO:  # orden fijo: de bebés a mayores
+            n, por_persona = grupos.get(grupo, 0), nec.por_persona.get(grupo, 0.0)
+            if n and por_persona:
+                singular, plural = _NOMBRES_GRUPO[grupo]
+                partes.append(f"{n} {singular if n == 1 else plural} × {_cantidad(por_persona, nec.unidad)}")
+        partes += antojos_por_necesidad.get(clave, [])
+        if partes:
+            textos[clave] = " + ".join(partes) + " al mes"
+
+    edad_min, edad_max = reglas.EDAD_TOALLAS_FEMENINAS
+    mujeres = sum(1 for m in hogar.miembros if m.sexo == "F" and edad_min <= m.edad <= edad_max)
+    if mujeres:
+        textos["toallas_femeninas"] = f"{mujeres} × {reglas.TOALLAS_FEMENINAS_MES} piezas al mes"
+    en_panal = [m for m in hogar.miembros if m.edad in reglas.PANALES_MES_POR_EDAD]
+    if en_panal:
+        textos["panales"] = " + ".join(
+            f"{reglas.PANALES_MES_POR_EDAD[m.edad] // 30} al día ({m.edad} {'año' if m.edad == 1 else 'años'})" for m in en_panal
+        )
+        textos["toallitas_humedas"] = f"{len(en_panal)} × {reglas.TOALLITAS_MES} piezas al mes"
+    perros = [m for m in hogar.mascotas if m.tipo == "perro"]
+    if perros:
+        textos["croquetas_perro"] = " + ".join(
+            f"perro {m.tamano}: {int(reglas.CROQUETAS_PERRO_DIA[m.tamano] * 1000)} g al día" for m in perros
+        )
+    gatos = len(hogar.mascotas) - len(perros)
+    if gatos:
+        textos["croquetas_gato"] = f"{gatos} × {int(reglas.CROQUETAS_GATO_DIA * 1000)} g al día"
+        textos["arena_gato"] = f"{gatos} × {_cantidad(reglas.ARENA_GATO_MES, 'kg')} al mes"
+
+    if hogar.periodo_dias != 30:
+        textos = {k: f"{v}, ajustado a {hogar.periodo_dias} días" for k, v in textos.items()}
+    return textos

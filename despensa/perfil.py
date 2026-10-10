@@ -3,7 +3,17 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .reglas import ALIAS_ALERGENOS, CROQUETAS_PERRO_DIA, DIETAS, grupo_edad
+from .reglas import (
+    ALIAS_ALERGENOS,
+    ANTOJOS,
+    CROQUETAS_PERRO_DIA,
+    DIETAS,
+    NIVEL_DEFAULT,
+    NIVELES,
+    TIENDA_DEFAULT,
+    TIENDAS,
+    grupo_edad,
+)
 from .texto import normalizar
 
 
@@ -40,7 +50,14 @@ class Hogar:
     dieta: str | None = None
     # Si hacen tortillas en casa, la harina de maíz cuenta como tortilla.
     tortillas_caseras: bool = False
+    tienda: str = TIENDA_DEFAULT
+    # Estado de la República para usar precios locales; None = mediana nacional.
+    estado: str | None = None
+    # ahorro | equilibrado | premium: qué tanto del sobrante se usa en mejores marcas.
+    nivel: str = NIVEL_DEFAULT
     nombre: str = ""
+    # Gustos no necesarios que sí quieren en la lista (claves de reglas.ANTOJOS).
+    antojos: list[str] = field(default_factory=list)
 
     @property
     def terminos_excluidos(self) -> list[str]:
@@ -97,6 +114,19 @@ def hogar_desde_dict(datos: dict) -> Hogar:
         if dieta not in DIETAS:
             raise PerfilInvalido(f"Dieta no reconocida: {dieta}. Opciones: {', '.join(DIETAS)}")
 
+    tienda = datos.get("tienda") or TIENDA_DEFAULT
+    if tienda not in TIENDAS:
+        raise PerfilInvalido(f"Tienda no reconocida: {tienda}. Opciones: {', '.join(TIENDAS)}")
+    estado = (datos.get("estado") or "").strip() or None
+    nivel = datos.get("nivel") or NIVEL_DEFAULT
+    if nivel not in NIVELES:
+        raise PerfilInvalido(f"Nivel de marcas no reconocido: {nivel}. Opciones: {', '.join(NIVELES)}")
+
+    antojos = list(dict.fromkeys(datos.get("antojos") or []))
+    desconocidos = [a for a in antojos if a not in ANTOJOS]
+    if desconocidos:
+        raise PerfilInvalido(f"Antojo no reconocido: {', '.join(map(str, desconocidos))}. Opciones: {', '.join(ANTOJOS)}")
+
     return Hogar(
         miembros=miembros,
         presupuesto=presupuesto,
@@ -106,7 +136,11 @@ def hogar_desde_dict(datos: dict) -> Hogar:
         excluir=[normalizar(e) for e in datos.get("excluir", [])],
         dieta=dieta,
         tortillas_caseras=bool(datos.get("tortillas_caseras", False)),
+        tienda=tienda,
+        estado=estado,
+        nivel=nivel,
         nombre=datos.get("nombre", ""),
+        antojos=antojos,
     )
 
 

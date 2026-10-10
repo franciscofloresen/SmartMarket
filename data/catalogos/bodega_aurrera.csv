@@ -1,0 +1,862 @@
+id,nombre,marca,tipo,departamento,necesidad,contenido,unidad,precio,alergenos,posibles,etiquetas,vida_util_dias,congelable,nivel,fuente_precio,fecha_precio,registros
+Pb964f357,"Fórmula infantil Nan 1 Optimal Pro · Lata 400 g, para lactante",Nan 1. Optimal Pro,Fórmula Láctea,bebe,extras,1,pz,219,lacteos,soya,formula infantil,365,0,medio,profeco_qqp,2026-07-31,74
+Pd025b6aa,"Fórmula infantil Nan 2 Optimal Pro · Lata 400 g, para lactante",Nan 2. Optimal Pro,Fórmula Láctea,bebe,extras,1,pz,200,lacteos,soya,formula infantil,365,0,medio,profeco_qqp,2026-07-31,79
+P11d0da06,"Jabón para bebé Baby Dove · Caja con barra 90 g, humectación enriquecida",Baby Dove,Jabón de Tocador para Bebé,bebe,extras,1,pz,24,,,jabon;bebe,365,0,medio,profeco_qqp,2026-07-31,39
+P7ea34161,Jabón para bebé Baby Magic Mennen · Caja con barra 90 g,Baby Magic. Mennen,Jabón de Tocador para Bebé,bebe,extras,1,pz,20,,,jabon;bebe,365,0,medio,profeco_qqp,2026-07-31,73
+Pc3824416,"Jabón para bebé Grisi Ricitos de Oro · Caja con barra 100 g, manzanilla",Grisi. Ricitos de Oro,Jabón de Tocador para Bebé,bebe,extras,1,pz,25,,,jabon;bebe,365,0,premium,profeco_qqp,2026-07-31,83
+Pacd8ae24,"Jabón para bebé Johnson´s Baby · Caja con barra 75 g, original, hipoalergénico",Johnson´s Baby,Jabón de Tocador para Bebé,bebe,extras,1,pz,19,,,jabon;bebe,365,0,economico,profeco_qqp,2026-07-31,79
+P7e1ac804,"Papilla Gerber · Frasco 113 g, a partir de los 6 meses, manzana",Gerber,Alimento Preparado para Niños,bebe,extras,1,pz,17,,lacteos;gluten;soya;huevo,papilla,365,0,medio,profeco_qqp,2026-07-31,72
+P705cee1a,"Papilla Gerber · Frasco 170 g, a partir de los 8 meses, manzana",Gerber,Alimento Preparado para Niños,bebe,extras,1,pz,22,,lacteos;gluten;soya;huevo,papilla,365,0,medio,profeco_qqp,2026-07-31,71
+P6f09c790,Shampoo para bebé Grisi · Botella 250 ml ricitos de oro con manzanilla,Grisi,Shampoo para Bebés/niños,bebe,extras,1,pz,79,,,shampoo;bebe,365,0,medio,profeco_qqp,2026-07-31,80
+P1eb52c0a,"Shampoo para bebé L Oreal Kids · Botella 265 ml, 2 en 1, mango naranja",L Oreal Kids,Shampoo para Bebés/niños,bebe,extras,1,pz,102,,,shampoo;bebe,365,0,medio,profeco_qqp,2026-07-31,24
+Pc3066338,Shampoo para bebé Mennen Protección y Suavidad · Botella 200 ml,Mennen. Protección y Suavidad,Shampoo para Bebés/niños,bebe,extras,1,pz,30,,,shampoo;bebe,365,0,economico,profeco_qqp,2026-07-31,68
+P75d36267,"Talco para Bebé Baby Magic Mennen · Botella 200 g, azul",Baby Magic. Mennen,Talco para Bebé,bebe,extras,1,pz,79,,,talco;bebe,365,0,medio,profeco_qqp,2026-07-31,75
+Pd705afb2,"Talco para Bebé Baby Magic Mennen · Botella 200 g, rosa",Baby Magic. Mennen,Talco para Bebé,bebe,extras,1,pz,79,,,talco;bebe,365,0,medio,profeco_qqp,2026-07-31,76
+Pdc723e2d,"Pañales Chicolastic Kiddies · Paquete 40 piezas, antifugas, talla 4",Chicolastic. Kiddies,Pañales Desechables,bebe,panales,40,pz,175,,,panal,1000,0,economico,profeco_qqp,2026-07-31,54
+P15bf0adc,"Pañales Huggies Ultra Confort · Paquete 40 piezas, etapa 3, niña",Huggies. Ultra Confort,Pañales Desechables,bebe,panales,40,pz,307,,,panal,1000,0,medio,profeco_qqp,2026-07-31,70
+P5c6e29d3,"Pañales Huggies Ultra Confort · Paquete 40 piezas, etapa 3, niño",Huggies. Ultra Confort,Pañales Desechables,bebe,panales,40,pz,307,,,panal,1000,0,medio,profeco_qqp,2026-07-31,61
+P7b886b70,"Pañales Huggies Ultra Confort · Paquete 40 piezas, etapa 4, niña",Huggies. Ultra Confort,Pañales Desechables,bebe,panales,40,pz,366,,,panal,1000,0,premium,profeco_qqp,2026-07-31,75
+P99e4498b,"Pañales Huggies Ultra Confort · Paquete 40 piezas, etapa 4, niño",Huggies. Ultra Confort,Pañales Desechables,bebe,panales,40,pz,366,,,panal,1000,0,premium,profeco_qqp,2026-07-31,71
+Pe09a7759,"Pañales Huggies Ultra Confort · Paquete 60 piezas, etapa 4, niña",Huggies. Ultra Confort,Pañales Desechables,bebe,panales,60,pz,399,,,panal,1000,0,medio,profeco_qqp,2026-07-31,69
+P4f5a213a,"Pañales Huggies Ultra Confort · Paquete 60 piezas, etapa 4, niño",Huggies. Ultra Confort,Pañales Desechables,bebe,panales,60,pz,423,,,panal,1000,0,medio,profeco_qqp,2026-07-31,72
+P607e8777,"Pañales Kleen Bebé Absorsec Ultra · Paquete 80 piezas, grande",Kleen Bebé. Absorsec Ultra,Pañales Desechables,bebe,panales,80,pz,257.5,,,panal,1000,0,economico,profeco_qqp,2026-07-31,68
+P5ca71849,"Pañales Kleen Bebé Comodisec · Paquete 40 piezas, grande",Kleen Bebé. Comodisec,Pañales Desechables,bebe,panales,40,pz,179,,,panal,1000,0,economico,profeco_qqp,2026-07-31,51
+P0d6fe0d6,"Pañales Kleen Bebé Suavelastic · Paquete 40 o 44 piezas, grande",Kleen Bebé. Suavelastic,Pañales Desechables,bebe,panales,40,pz,308,,,panal,1000,0,premium,profeco_qqp,2026-07-31,83
+Pe3089ff2,"Pañales Kleen Bebé Suavelastic · Paquete 60 o 66 piezas, grande",Kleen Bebé. Suavelastic,Pañales Desechables,bebe,panales,60,pz,287,,,panal,1000,0,medio,profeco_qqp,2026-07-31,70
+P087e8bd1,"Toallitas húmedas Huggies · Paquete 80 piezas, cuidado hidratante",Huggies,Toallita Húmeda Limpiadora,bebe,toallitas_humedas,80,pz,45,,,toallitas,1000,0,medio,profeco_qqp,2026-07-31,76
+Pfd4df33b,"Toallitas húmedas Huggies · Paquete 80 piezas, supreme",Huggies,Toallita Húmeda Limpiadora,bebe,toallitas_humedas,80,pz,59,,,toallitas,1000,0,medio,profeco_qqp,2026-07-31,74
+P89c9d03d,"Toallitas húmedas Kleen Bebé · Paquete 120 piezas, absorsec",Kleen Bebé,Toallita Húmeda Limpiadora,bebe,toallitas_humedas,120,pz,22,,,toallitas,1000,0,economico,profeco_qqp,2026-07-31,82
+P25f0c2d6,"Agua Be-light · Botella 1.5 L, limon",Be-light,Agua Sin Gas,bebidas,bebidas,1.5,L,20,,,agua,180,0,premium,profeco_qqp,2026-07-31,64
+P2fa25203,"Agua Bonafont Levité · Botella 1.4 L, infusionada, fresa",Bonafont. Levité,Agua Sin Gas,bebidas,bebidas,1.4,L,20,,,agua,180,0,premium,profeco_qqp,2026-07-31,48
+P5d6e4615,Agua Bonafont · Botella 1 L,Bonafont,Agua Sin Gas,bebidas,bebidas,1,L,10,,,agua,180,0,medio,profeco_qqp,2026-07-31,80
+P84bf2fbc,Agua Bonafont · Botella 1.5 L,Bonafont,Agua Sin Gas,bebidas,bebidas,1.5,L,13.5,,,agua,180,0,medio,profeco_qqp,2026-07-31,77
+P78ca5165,"Agua Bonafont · Garrafón 20 L, (sólo liquido)",Bonafont,Agua Sin Gas,bebidas,bebidas,20,L,64,,,agua,180,0,economico,profeco_qqp,2026-07-31,30
+P279533b3,Agua Ciel · Botella 1 L,Ciel,Agua Sin Gas,bebidas,bebidas,1,L,10,,,agua,180,0,medio,profeco_qqp,2026-07-31,68
+P7f59765f,Agua Ciel · Botella 1.5 L,Ciel,Agua Sin Gas,bebidas,bebidas,1.5,L,17,,,agua,180,0,medio,profeco_qqp,2026-07-31,30
+Pb8ca33a6,Agua Ciel · Garrafón 10 L,Ciel,Agua Sin Gas,bebidas,bebidas,10,L,52,,,agua,180,0,medio,profeco_qqp,2026-07-31,23
+P9f1852cc,"Agua Ciel · Garrafón 20 L, (sólo líquido)",Ciel,Agua Sin Gas,bebidas,bebidas,20,L,65,,,agua,180,0,economico,profeco_qqp,2026-07-31,29
+Pe37b6035,Agua Epura · Botella 1 L,Epura,Agua Sin Gas,bebidas,bebidas,1,L,12,,,agua,180,0,premium,profeco_qqp,2026-07-31,74
+P844c3167,"Agua Epura · Garrafón 20 L, (sólo líquido)",Epura,Agua Sin Gas,bebidas,bebidas,20,L,65,,,agua,180,0,economico,profeco_qqp,2026-07-31,30
+Pc4682e5d,Agua mineral Ciel · Botella 2 L,Ciel,Agua con Gas,bebidas,bebidas,2,L,29,,,agua mineral,180,0,economico,profeco_qqp,2026-07-31,48
+P1bf1be28,"Agua mineral Del Valle · Botella 600 ml, limon-ada, fizz",Del Valle,Agua con Gas,bebidas,bebidas,0.6,L,12,,,agua mineral,180,0,medio,profeco_qqp,2026-07-31,35
+Pb524cf21,"Agua mineral Del Valle · Botella 600 ml, naranj-ada fizz",Del Valle,Agua con Gas,bebidas,bebidas,0.6,L,12,,,agua mineral,180,0,medio,profeco_qqp,2026-07-31,35
+P66860c99,Agua mineral Peñafiel · Botella 2 L,Peñafiel,Agua con Gas,bebidas,bebidas,2,L,31.5,,,agua mineral,180,0,economico,profeco_qqp,2026-07-31,72
+P03afa159,Agua mineral Peñafiel · Botella 600 ml,Peñafiel,Agua con Gas,bebidas,bebidas,0.6,L,19.5,,,agua mineral,180,0,medio,profeco_qqp,2026-07-31,68
+P2c99d996,Agua mineral Peñafiel · Canastilla c/6 botellas de 296 ml,Peñafiel,Agua con Gas,bebidas,bebidas,1.776,L,80,,,agua mineral,180,0,premium,profeco_qqp,2026-07-31,14
+P15c11dc4,"Bebida en polvo Clight · Sobre 7 g, naranja",Clight,Polvo P/preparar Bebidas,bebidas,bebidas,1,L,6.5,,,bebida en polvo,365,0,medio,profeco_qqp,2026-07-31,69
+Pe3de9fc5,"Bebida en polvo Splenda · Sobre 7 g, naranja",Splenda,Polvo P/preparar Bebidas,bebidas,bebidas,1,L,7.5,,,bebida en polvo,365,0,medio,profeco_qqp,2026-07-31,69
+P20d018bb,"Bebida en polvo Tang · Sobre 13 g, naranja, no necesita azúcar",Tang,Polvo P/preparar Bebidas,bebidas,bebidas,1,L,6,,,bebida en polvo,365,0,economico,profeco_qqp,2026-07-29,16
+Pa0df0d98,"Bebida en polvo Zuko · Sobre 13 g, naranja, no requiere azúcar",Zuko,Polvo P/preparar Bebidas,bebidas,bebidas,1,L,8.5,,,bebida en polvo,365,0,premium,profeco_qqp,2026-07-31,75
+P501dab4a,"Bebida hidratante Powerade · Botella 1 L, naranja",Powerade,Bebidas Hidratantes,bebidas,bebidas,1,L,26,,,bebida hidratante,180,0,medio,profeco_qqp,2026-07-31,73
+Pca4a0ce2,"Bebida hidratante Powerade · Botella 500 ml, frutas",Powerade,Bebidas Hidratantes,bebidas,bebidas,0.5,L,17,,,bebida hidratante,180,0,medio,profeco_qqp,2026-07-31,58
+P5a8b8af2,"Jugo Ades · Caja 946 ml, soya y mango",Ades,Jugo de Fruta,bebidas,bebidas,0.946,L,31,,soya,jugo,180,0,medio,profeco_qqp,2026-07-31,46
+Pabb1fb94,"Jugo Bida Jumex · Caja 946 ml, mango",Bida. Jumex,Jugo de Fruta,bebidas,bebidas,0.946,L,19.5,,soya,jugo,180,0,economico,profeco_qqp,2026-07-31,66
+Pf5a571c4,"Jugo Boing! · Caja 1 L, mango",Boing!,Jugo de Fruta,bebidas,bebidas,1,L,28,,soya,jugo,180,0,medio,profeco_qqp,2026-07-31,80
+Pe37ddb66,"Jugo Boing! · Caja 250 ml, mango",Boing!,Jugo de Fruta,bebidas,bebidas,0.25,L,12,,soya,jugo,180,0,premium,profeco_qqp,2026-07-31,76
+Pf081d830,"Jugo Del Valle Frut · Botella 600 ml, sabor cítricos",Del Valle. Frut,Jugo de Fruta,bebidas,bebidas,0.6,L,20,,soya,jugo,180,0,premium,profeco_qqp,2026-07-31,74
+P2c351ccd,"Jugo Florida 7 · Caja 946 ml, naranja, (con pulpa)",Florida 7,Jugo de Fruta,bebidas,bebidas,0.946,L,17,,soya,jugo,180,0,economico,profeco_qqp,2026-07-31,68
+Pd68f2ef2,"Jugo Jumex · Caja 960 ml, naranja",Jumex,Jugo de Fruta,bebidas,bebidas,0.96,L,30,,soya,jugo,180,0,medio,profeco_qqp,2026-07-31,82
+P72fafda4,"Refresco 7 Up · Botella 2 L, no retornable, sin calorias",7 Up,Refresco,bebidas,bebidas,2,L,33,,,refresco,180,0,medio,profeco_qqp,2026-07-31,53
+Pafbb1afa,"Refresco Coca Cola Light · Botella 2 L, no retornable",Coca Cola. Light,Refresco,bebidas,bebidas,2,L,42,,,refresco,180,0,medio,profeco_qqp,2026-07-31,48
+P68d72f25,Refresco Coca Cola Light · Botella 600 ml,Coca Cola. Light,Refresco,bebidas,bebidas,0.6,L,19,,,refresco,180,0,premium,profeco_qqp,2026-07-31,76
+P9a6dfb9d,Refresco Coca Cola Zero · Botella 600 ml,Coca Cola. Zero,Refresco,bebidas,bebidas,0.6,L,15,,,refresco,180,0,premium,profeco_qqp,2026-07-31,74
+P6e92e697,"Refresco Coca Cola · Botella 1 L, no retornable",Coca Cola,Refresco,bebidas,bebidas,1,L,30,,,refresco,180,0,premium,profeco_qqp,2026-07-31,60
+P4e12ac8b,"Refresco Coca Cola · Botella 2.75 L, no retornable",Coca Cola,Refresco,bebidas,bebidas,2.75,L,45,,,refresco,180,0,medio,profeco_qqp,2026-07-31,43
+P7fd49429,Refresco Coca Cola · Botella 600 ml,Coca Cola,Refresco,bebidas,bebidas,0.6,L,20,,,refresco,180,0,premium,profeco_qqp,2026-07-31,82
+P701142b1,Refresco Coca Cola · Lata 355 ml,Coca Cola,Refresco,bebidas,bebidas,0.355,L,20,,,refresco,180,0,premium,profeco_qqp,2026-07-31,74
+P38dc98c2,"Refresco Fanta · Botella 2 L, no retornable, naranja",Fanta,Refresco,bebidas,bebidas,2,L,29,,,refresco,180,0,economico,profeco_qqp,2026-07-31,57
+Pf560ceeb,"Refresco Fanta · Botella 3 L, no retornable, naranja",Fanta,Refresco,bebidas,bebidas,3,L,41,,,refresco,180,0,economico,profeco_qqp,2026-07-31,62
+Ped0d03d8,"Refresco Fanta · Botella 600 ml, naranja",Fanta,Refresco,bebidas,bebidas,0.6,L,15,,,refresco,180,0,premium,profeco_qqp,2026-07-31,78
+Pa6c7c6e1,"Refresco Fresca · Botella 2 L, no retornable",Fresca,Refresco,bebidas,bebidas,2,L,29,,,refresco,180,0,economico,profeco_qqp,2026-07-31,53
+P115b9697,"Refresco Fresca · Botella 3 L, no retornable",Fresca,Refresco,bebidas,bebidas,3,L,43,,,refresco,180,0,economico,profeco_qqp,2026-07-31,70
+P990a3339,Refresco Fresca · Botella 600 ml,Fresca,Refresco,bebidas,bebidas,0.6,L,15,,,refresco,180,0,premium,profeco_qqp,2026-07-31,83
+Pb9ff61a6,"Refresco Jarritos · Botella 2 L, no retornable, tamarindo",Jarritos,Refresco,bebidas,bebidas,2,L,27.5,,,refresco,180,0,economico,profeco_qqp,2026-07-31,64
+Pcb5c0bc9,"Refresco Manzanita Sol · Botella 2 L, no retornable",Manzanita Sol,Refresco,bebidas,bebidas,2,L,32,,,refresco,180,0,medio,profeco_qqp,2026-07-31,67
+Pc03581d5,"Refresco Mirinda · Botella 2 L, no retornable",Mirinda,Refresco,bebidas,bebidas,2,L,32,,,refresco,180,0,medio,profeco_qqp,2026-07-31,58
+P8bd27526,"Refresco Mirinda · Botella 3 L, no retornable",Mirinda,Refresco,bebidas,bebidas,3,L,49,,,refresco,180,0,medio,profeco_qqp,2026-07-31,22
+P565ef871,"Refresco Orange Crush · Botella 2 L, no retornable",Orange Crush,Refresco,bebidas,bebidas,2,L,35,,,refresco,180,0,medio,profeco_qqp,2026-07-31,26
+P01c8dffc,"Refresco Pepsi Light · Botella 2.5 L, no retornable",Pepsi. Light,Refresco,bebidas,bebidas,2.5,L,37,,,refresco,180,0,medio,profeco_qqp,2026-07-31,17
+Paa823987,"Refresco Pepsi · Botella 3 L, no retornable",Pepsi,Refresco,bebidas,bebidas,3,L,45,,,refresco,180,0,medio,profeco_qqp,2026-07-31,70
+P891a79b9,Refresco Pepsi · Lata 355 ml,Pepsi,Refresco,bebidas,bebidas,0.355,L,19,,,refresco,180,0,premium,profeco_qqp,2026-07-31,63
+Pae419ed6,"Refresco Peñafiel · Botella 2 L, no retornable, manzanita",Peñafiel,Refresco,bebidas,bebidas,2,L,35,,,refresco,180,0,medio,profeco_qqp,2026-07-31,44
+P9ac90084,"Refresco Red Cola · Botella 3 L, no retornable",Red Cola,Refresco,bebidas,bebidas,3,L,35,,,refresco,180,0,economico,profeco_qqp,2026-07-31,37
+P9119ce43,"Refresco Sidral Mundet Light · Botella 2 L, no retornable",Sidral Mundet Light,Refresco,bebidas,bebidas,2,L,25,,,refresco,180,0,economico,profeco_qqp,2026-07-31,10
+P7e7bf54f,"Refresco Sidral Mundet · Botella 2 L, no retornable",Sidral Mundet,Refresco,bebidas,bebidas,2,L,29,,,refresco,180,0,economico,profeco_qqp,2026-07-31,56
+Pe99bd5c7,Refresco Sidral Mundet · Botella 600 ml,Sidral Mundet,Refresco,bebidas,bebidas,0.6,L,15,,,refresco,180,0,premium,profeco_qqp,2026-07-31,71
+P217cc36b,"Refresco Sprite · Botella 2 L, no retornable",Sprite,Refresco,bebidas,bebidas,2,L,29,,,refresco,180,0,economico,profeco_qqp,2026-07-31,59
+Pe6a03b07,"Refresco Sprite · Botella 3 L, no retornable",Sprite,Refresco,bebidas,bebidas,3,L,41,,,refresco,180,0,economico,profeco_qqp,2026-07-31,65
+P2b5c53ef,Refresco Sprite · Botella 600 ml,Sprite,Refresco,bebidas,bebidas,0.6,L,15,,,refresco,180,0,premium,profeco_qqp,2026-07-31,78
+P703f77b2,"Refresco Squirt · Botella 2 L, no retornable",Squirt,Refresco,bebidas,bebidas,2,L,32,,,refresco,180,0,medio,profeco_qqp,2026-07-31,65
+P6937dd76,"Refresco Squirt · Botella 2.5 L, no retornable",Squirt,Refresco,bebidas,bebidas,2.5,L,37,,,refresco,180,0,medio,profeco_qqp,2026-07-29,15
+P2f01f55c,"Refresco Squirt · Botella 3 L, no retornable",Squirt,Refresco,bebidas,bebidas,3,L,49,,,refresco,180,0,medio,profeco_qqp,2026-07-31,50
+P0cdf87dc,"Té preparado Fuze Tea · Botella 600 ml, té, verde, sabor limón",Fuze Tea,Té Preparado,bebidas,bebidas,0.6,L,19,,,te,180,0,medio,profeco_qqp,2026-07-31,72
+P429c5364,Brandy Azteca de Oro · Botella 700 ml,Azteca de Oro,Brandy,bebidas,extras,1,pz,232,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,70
+P672582f5,Brandy Torres 10 · Botella 700 ml,Torres 10,Brandy,bebidas,extras,1,pz,418.68,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,34
+P8ceee765,Cerveza Barrilito · Canasta con 6 botellas de 325 ml,Barrilito,Cerveza,bebidas,cerveza,1,pz,67,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,83
+P30f5232e,"Cerveza Bohemia Pilsner · Canasta con 6 botellas de 355 ml, no retornable (clara)",Bohemia. Pilsner,Cerveza,bebidas,cerveza,1,pz,129,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,38
+P95dbdeba,"Cerveza Corona · Botella 940 ml, retornable, familiar",Corona,Cerveza,bebidas,cerveza,1,pz,48,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,69
+P4a4563c6,"Cerveza Dos Equis Lager Especial · Canasta con 6 botellas de 355 ml, no retornable",Dos Equis Lager. Especial,Cerveza,bebidas,cerveza,1,pz,126,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-30,18
+Pd42164d9,"Cerveza Dos Equis Lager Especial · Paquete, con 12 latas de 355 ml, c/u",Dos Equis Lager. Especial,Cerveza,bebidas,cerveza,1,pz,224,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-29,8
+Pe5c9ed16,"Cerveza Heineken · Canasta con 6 botellas de 355 ml, no retornable",Heineken,Cerveza,bebidas,cerveza,1,pz,147,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,65
+P25a3a1d5,"Cerveza Indio · Canasta con 6 botellas de 355 ml, no retornable",Indio,Cerveza,bebidas,cerveza,1,pz,126,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,53
+Pbc6f30ef,Cerveza Indio · Paquete con 12 latas de 355 ml,Indio,Cerveza,bebidas,cerveza,1,pz,192,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-30,17
+P9792c5ee,"Cerveza Michelob Ultra · Canasta con 6 botellas de 355 ml, no retornable",Michelob Ultra,Cerveza,bebidas,cerveza,1,pz,120,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,70
+Pb60a9813,"Cerveza Modelo Especial · Paquete con 12 latas de 355 ml, c/u",Modelo Especial,Cerveza,bebidas,cerveza,1,pz,248,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,61
+P3b7787c9,"Cerveza Negra Modelo · Canasta con 6 botellas de 355 ml, no retornable",Negra Modelo,Cerveza,bebidas,cerveza,1,pz,144,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,76
+Pfbc824fa,Cerveza Tecate · Paquete con 12 latas de 355 ml,Tecate,Cerveza,bebidas,cerveza,1,pz,206,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,80
+P8d65407d,"Cerveza Victoria · Botella 1.2 L, retornable",Victoria,Cerveza,bebidas,cerveza,1,pz,49,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,80
+Pb450b17b,"Cerveza Victoria · Caja con 12 botellas de 355 ml, no retornable",Victoria,Cerveza,bebidas,cerveza,1,pz,250,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,48
+Pe5f01de3,Ron Bacardí Añejo · Botella 980 ml,Bacardí. Añejo,Ron,bebidas,extras,1,pz,488,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,73
+Pef05c9ed,Ron Bacardí Solera · Botella 750 ml,Bacardí. Solera,Ron,bebidas,extras,1,pz,592,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,58
+P3aedee98,"Tequila Cazadores · Botella 950 ml, reposado 100% de agave",Cazadores,Tequila,bebidas,extras,1,pz,339,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,40
+P84656b6c,"Tequila El Jimador · Botella 700 ml, reposado 100% de agave",El Jimador,Tequila,bebidas,extras,1,pz,315,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,47
+Paecdffb0,"Tequila José Cuervo Especial · Botella 990 ml, reposado",José Cuervo. Especial,Tequila,bebidas,extras,1,pz,255,,,alcohol,365,0,economico,profeco_qqp,2026-07-31,82
+Pa3b249eb,"Tequila José Cuervo Tradicional · Botella 950 ml, reposado 100% de agave azul",José Cuervo. Tradicional,Tequila,bebidas,extras,1,pz,429,,,alcohol,365,0,premium,profeco_qqp,2026-07-31,46
+Pcc11d3f7,Whisky Johnnie Walker Red Label · Botella 700 ml,Johnnie Walker. Red Label,Whisky,bebidas,extras,1,pz,289,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,53
+Pc03015c9,Whisky William Lawson´s · Botella 700 ml,William Lawson´s,Whisky,bebidas,extras,1,pz,179,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,67
+Pd263fa63,"Cerdo · 1 kg, granel, chuleta",,Carne Cerdo,carnes,carne_aves,1,kg,96,,,carne;cerdo,4,1,economico,profeco_qqp,2026-07-31,82
+Pf69a04bd,"Cerdo · 1 kg, granel, chuleta arriera o chuleta mixta",,Carne Cerdo,carnes,carne_aves,1,kg,76,,,carne;cerdo,4,1,economico,profeco_qqp,2026-07-31,91
+P6687194a,"Cerdo · 1 kg, granel, costilla",,Carne Cerdo,carnes,carne_aves,1,kg,136,,,carne;cerdo,4,1,premium,profeco_qqp,2026-07-31,87
+P92bab8b9,"Cerdo · 1 kg, granel, milanesa o milanesa de pierna",,Carne Cerdo,carnes,carne_aves,1,kg,118,,,carne;cerdo,4,1,medio,profeco_qqp,2026-07-31,83
+Pcf567f3e,"Cerdo · 1 kg, granel, molida o pulpa molida",,Carne Cerdo,carnes,carne_aves,1,kg,108,,,carne;cerdo,4,1,medio,profeco_qqp,2026-07-31,37
+P239e3ba1,"Pollo Bachoco · 1 kg, granel, entero",Bachoco,Carne Pollo,carnes,carne_aves,1,kg,36,,,carne;pollo,4,1,medio,profeco_qqp,2026-07-31,61
+P38c84f6a,"Pollo Pilgrim`s · 1 kg, granel, entero",Pilgrim`s,Carne Pollo,carnes,carne_aves,1,kg,36,,,carne;pollo,4,1,medio,profeco_qqp,2026-07-31,19
+P07616686,"Pollo · 1 kg, granel, muslo (con piel)",,Carne Pollo,carnes,carne_aves,1,kg,102,,,carne;pollo,4,1,medio,profeco_qqp,2026-07-31,44
+Pf9b53536,"Pollo · 1 kg, granel, muslo (sin piel) o light",,Carne Pollo,carnes,carne_aves,1,kg,109,,,carne;pollo,4,1,premium,profeco_qqp,2026-07-31,18
+Pd052d11f,"Pollo · 1 kg, granel, pechuga, corte americano",,Carne Pollo,carnes,carne_aves,1,kg,89,,,carne;pollo,4,1,medio,profeco_qqp,2026-07-31,62
+Pbd8b45c6,"Pollo · 1 kg, granel, pechuga, filete",,Carne Pollo,carnes,carne_aves,1,kg,170,,,carne;pollo,4,1,premium,profeco_qqp,2026-07-30,15
+Pe9881223,"Pollo · 1 kg, granel, pierna con muslo, corte americano",,Carne Pollo,carnes,carne_aves,1,kg,30,,,carne;pollo,4,1,economico,profeco_qqp,2026-07-31,93
+Pcad62f16,"Pollo · 1 kg, granel, pierna o pierna bate",,Carne Pollo,carnes,carne_aves,1,kg,102,,,carne;pollo,4,1,medio,profeco_qqp,2026-07-31,43
+P01cdd6ac,"Res · 1 kg, granel, bistec corte delgado o bistec",,Carne Res,carnes,carne_aves,1,kg,249,,,carne;res,4,1,medio,profeco_qqp,2026-07-31,40
+Pcef27ca0,"Res · 1 kg, granel, carne para asar",,Carne Res,carnes,carne_aves,1,kg,261,,,carne;res,4,1,premium,profeco_qqp,2026-07-31,57
+P97443eb8,"Res · 1 kg, granel, carne para asar, para el asador",,Carne Res,carnes,carne_aves,1,kg,250,,,carne;res,4,1,premium,profeco_qqp,2026-07-30,9
+Pa8bd2965,"Res · 1 kg, granel, falda o para deshebrar o deshebrada",,Carne Res,carnes,carne_aves,1,kg,209,,,carne;res,4,1,economico,profeco_qqp,2026-07-30,13
+Pd0aecd34,"Res · 1 kg, granel, milanesa",,Carne Res,carnes,carne_aves,1,kg,223,,,carne;res,4,1,economico,profeco_qqp,2026-07-31,51
+P8255f922,"Res · 1 kg, granel, milanesa de bola",,Carne Res,carnes,carne_aves,1,kg,248,,,carne;res,4,1,medio,profeco_qqp,2026-07-31,66
+Pbc36ec50,"Res · 1 kg, granel, milanesa de bola para el sartén",,Carne Res,carnes,carne_aves,1,kg,248,,,carne;res,4,1,medio,profeco_qqp,2026-07-30,9
+P8a397096,"Res · 1 kg, granel, molida especial 80/20",,Carne Res,carnes,carne_aves,1,kg,136,,,carne;res,4,1,economico,profeco_qqp,2026-07-30,10
+Pd45ce1dd,"Res · 1 kg, granel, molida top sirlion 90/10",,Carne Res,carnes,carne_aves,1,kg,238,,,carne;res,4,1,medio,profeco_qqp,2026-07-30,9
+Pb57793c2,"Pollo rostizado · Pieza (charola o bolsa, no incluye complementos)",,Pollo Rostizado. Tradicional,carnes,extras,1,pz,135,,soya;gluten;lacteos;huevo,pollo;carne;pollo rostizado,365,0,medio,profeco_qqp,2026-07-31,69
+Pbe46200d,"Helado Holanda Cremíssimo · Bote 624 g, (1.17 L.) sabor napolitano",Holanda. Cremíssimo,Helado,congelados,botanas_galletas,1.17,kg,65,lacteos,nueces;cacahuate;soya;huevo;gluten,helado;postre,180,1,medio,profeco_qqp,2026-07-31,60
+P4706a8ff,"Combinado Primavera La Huerta · Bolsa 500 g, hortalizas congeladas",La Huerta,Combinado Primavera,congelados,verduras,0.5,kg,50,,,zanahoria;chicharo;elote,180,1,medio,profeco_qqp,2026-07-31,48
+P10a9bad2,"Guarnición de Verduras La Huerta · Bolsa 500 g, hortalizas congeladas",La Huerta,Guarnición de Verduras,congelados,verduras,0.5,kg,34,,,zanahoria;chicharo;elote;papa,180,1,medio,profeco_qqp,2026-07-31,48
+P482a8a7d,"Mezcla California La Huerta · Bolsa 500 g, hortalizas congeladas",La Huerta,Mezcla California,congelados,verduras,0.5,kg,37,,,brocoli;coliflor;zanahoria,180,1,medio,profeco_qqp,2026-07-31,53
+P852021d9,"Mezcla Campesina La Huerta · Bolsa 500 g, hortalizas congeladas",La Huerta,Mezcla Campesina,congelados,verduras,0.5,kg,44,,,zanahoria;chicharo;elote;ejote,180,1,medio,profeco_qqp,2026-07-31,57
+P786bcc9d,"Aceite 1_2_3 · Botella 1 L, vegetal",1_2_3,Aceite,despensa,aceite,1,L,39,,soya,aceite,365,0,medio,profeco_qqp,2026-07-31,91
+P91c375dd,"Aceite Aurrera · Botella 800 ml, vegetal",Aurrera,Aceite,despensa,aceite,0.8,L,27,,soya,aceite,365,0,economico,profeco_qqp,2026-07-31,12
+P866c5e7b,"Aceite Ave · Botella 850 ml, vegetal",Ave,Aceite,despensa,aceite,0.85,L,30,,soya,aceite,365,0,economico,profeco_qqp,2026-07-31,27
+P8a83dc9e,"Aceite Canoil · Botella 946 ml, canola",Canoil,Aceite,despensa,aceite,0.946,L,38,,soya,aceite,365,0,medio,profeco_qqp,2026-07-31,117
+Peb43bedf,"Aceite Capullo · Botella 750 ml, canola",Capullo,Aceite,despensa,aceite,0.75,L,49,,soya,aceite,365,0,premium,profeco_qqp,2026-07-31,79
+Pbe08af81,"Aceite Gran Tradición · Botella 850 ml, vegetal",Gran Tradición,Aceite,despensa,aceite,0.85,L,30,,soya,aceite,365,0,economico,profeco_qqp,2026-07-31,144
+P6c340712,"Aceite Great Value · Botella 946 ml, soya",Great Value,Aceite,despensa,aceite,0.946,L,42,soya,,aceite;soya,365,0,medio,profeco_qqp,2026-07-31,188
+Pfe64ec59,"Aceite Nutrioli · Botella 946 ml, soya",Nutrioli,Aceite,despensa,aceite,0.946,L,47,soya,,aceite;soya,365,0,premium,profeco_qqp,2026-07-31,80
+P3549760c,"Aceite Oleico · Botella 825 ml, cártamo",Oleico,Aceite,despensa,aceite,0.825,L,72,,soya,aceite,365,0,premium,profeco_qqp,2026-07-31,77
+Pfd9df55b,"Aceite Sabrosano · Botella 850 ml, vegetal, sabor mantequilla",Sabrosano,Aceite,despensa,aceite,0.85,L,39,,soya,aceite,365,0,medio,profeco_qqp,2026-07-31,83
+P75760b9e,Grasa Comestible Inca · Paquete 1 kg,Inca,Grasa Comestible,despensa,aceite,1,L,80,,soya,manteca vegetal,365,0,medio,profeco_qqp,2026-07-31,77
+P660f4ef8,Manteca de Cerdo Proan · Envase 400 g,Proan,Manteca de Cerdo,despensa,aceite,0.4,L,44,,,manteca;cerdo;carne,365,0,medio,profeco_qqp,2026-07-31,8
+P05a8e31f,"Arroz Aurrera · Bolsa 900 g, extra",Aurrera,Arroz,despensa,arroz_pasta,0.9,kg,14,,,arroz,365,0,economico,profeco_qqp,2026-07-31,104
+P8e9f4863,"Arroz Aurrera · Bolsa 900 g, super extra",Aurrera,Arroz,despensa,arroz_pasta,0.9,kg,14,,,arroz,365,0,economico,profeco_qqp,2026-07-31,97
+P28fd37d3,"Arroz La Merced · Bolsa 750 g, integral",La Merced,Arroz,despensa,arroz_pasta,0.75,kg,25,,,arroz,365,0,medio,profeco_qqp,2026-07-31,49
+P5433f400,"Arroz La Merced · Bolsa 907 g, super extra",La Merced,Arroz,despensa,arroz_pasta,0.907,kg,20,,,arroz,365,0,medio,profeco_qqp,2026-07-31,81
+P9eb666ea,"Arroz Schettino · Bolsa 907 g, super extra",Schettino,Arroz,despensa,arroz_pasta,0.907,kg,18,,,arroz,365,0,medio,profeco_qqp,2026-07-31,183
+P5a0250f6,"Arroz Verde Valle · Bolsa 1 kg, super extra",Verde Valle,Arroz,despensa,arroz_pasta,1,kg,35,,,arroz,365,0,premium,profeco_qqp,2026-07-31,78
+P29979bd5,"Pasta para Sopa Aurrera · Paquete 200 g, fideo mediano",Aurrera,Pasta para Sopa,despensa,arroz_pasta,0.2,kg,6.5,gluten,huevo,pasta,365,0,economico,profeco_qqp,2026-07-31,81
+Pf2abc6b1,"Pasta para Sopa Barilla · Paquete 200 g, fideo no, 2",Barilla,Pasta para Sopa,despensa,arroz_pasta,0.2,kg,10.5,gluten,huevo,pasta,365,0,medio,profeco_qqp,2026-07-31,20
+Paee304ab,"Pasta para Sopa Barilla · Paquete 200 g, lengüita",Barilla,Pasta para Sopa,despensa,arroz_pasta,0.2,kg,10.5,gluten,huevo,pasta,365,0,medio,profeco_qqp,2026-07-31,24
+P57839bcf,"Pasta para Sopa Barilla · Paquete 200 g, spaghetti no, 5",Barilla,Pasta para Sopa,despensa,arroz_pasta,0.2,kg,10.5,gluten,huevo,pasta,365,0,medio,profeco_qqp,2026-07-31,53
+Pc9afb9fa,"Pasta para Sopa Italpasta · Paquete 200 g, fideo cortado no, 1",Italpasta,Pasta para Sopa,despensa,arroz_pasta,0.2,kg,7.5,gluten,huevo,pasta,365,0,economico,profeco_qqp,2026-07-31,89
+P4d2cbf5e,"Pasta para Sopa La Moderna · Paquete 200 g, spaghetti",La Moderna,Pasta para Sopa,despensa,arroz_pasta,0.2,kg,13,gluten,huevo,pasta,365,0,premium,profeco_qqp,2026-07-31,16
+Pb420859d,"Azúcar Aurrera · Bolsa plástico 2 kg, estándar",Aurrera,Azúcar,despensa,azucar,2,kg,42,,,azucar,720,0,economico,profeco_qqp,2026-07-31,66
+P27c7758e,"Azúcar Aurrera · Bolsa plástico 900 g, estándar",Aurrera,Azúcar,despensa,azucar,0.9,kg,22,,,azucar,720,0,medio,profeco_qqp,2026-07-31,177
+P52dfca6a,"Azúcar Domino · Caja 200 g, (50 sobres de 4 g, c/u), mascabado",Domino,Azúcar,despensa,azucar,0.2,kg,27,,,azucar,720,0,premium,profeco_qqp,2026-07-31,54
+P37ea0989,"Azúcar Great Value · Bolsa plástico 2 kg, refinada",Great Value,Azúcar,despensa,azucar,2,kg,82,,,azucar,720,0,medio,profeco_qqp,2026-07-31,67
+P29f22917,"Azúcar Zulka · Bolsa 500 g, mascabado",Zulka,Azúcar,despensa,azucar,0.5,kg,25,,,azucar,720,0,premium,profeco_qqp,2026-07-31,64
+P64fc367f,"Azúcar Zulka · Bolsa plástico 2 kg, estándar o morena",Zulka,Azúcar,despensa,azucar,2,kg,45,,,azucar,720,0,economico,profeco_qqp,2026-07-31,65
+Pd49e48c0,"Azúcar Zulka · Bolsa plástico 900 g, estándar",Zulka,Azúcar,despensa,azucar,0.9,kg,27,,,azucar,720,0,medio,profeco_qqp,2026-07-31,180
+P58a11b31,"Cajeta Coronado · Botella 333 g, de leche, quemada",Coronado,Cajeta,despensa,azucar,0.333,kg,75,lacteos,,cajeta,365,0,medio,profeco_qqp,2026-07-31,72
+Pc57ee886,"Cajeta Coronado · Botella 594 g, de leche, envinada",Coronado,Cajeta,despensa,azucar,0.594,kg,115,lacteos,,cajeta,365,0,medio,profeco_qqp,2026-07-31,19
+Pa261c98d,"Cajeta Coronado · Botella 594 g, de leche, quemada",Coronado,Cajeta,despensa,azucar,0.594,kg,115,lacteos,,cajeta,365,0,medio,profeco_qqp,2026-07-31,67
+Pf463b8df,Crema de Avellanas con Cacao Nutella · Frasco 350 g,Nutella,Crema de Avellanas con Cacao,despensa,azucar,0.35,kg,93,nueces;lacteos;soya,,avellana;chocolate,365,0,medio,profeco_qqp,2026-07-31,72
+Pc6e97277,"Mermelada Clemente Jacques · Frasco 470 g, fresa",Clemente Jacques,Mermelada,despensa,azucar,0.47,kg,42,,,mermelada,365,0,medio,profeco_qqp,2026-07-31,73
+P83063d6f,"Mermelada Mc Cormick · Frasco 270 g, fresa",Mc Cormick,Mermelada,despensa,azucar,0.27,kg,30,,,mermelada,365,0,medio,profeco_qqp,2026-07-31,80
+Pcf56602a,"Miel de Abeja Carlota · Frasco 300 g, natural",Carlota,Miel de Abeja,despensa,azucar,0.3,kg,62,,,miel,720,0,medio,profeco_qqp,2026-07-31,77
+P29e44fec,"Miel de Abeja Carlota · Frasco 500 g, natural",Carlota,Miel de Abeja,despensa,azucar,0.5,kg,95,,,miel,720,0,medio,profeco_qqp,2026-07-31,86
+P5ea1d59a,Almendras Don Zabor · Bolsa 100 g,Don Zabor,Almendras,despensa,botanas_galletas,0.1,kg,50,nueces,cacahuate,almendra,180,0,medio,profeco_qqp,2026-07-31,24
+Pb39ebd84,"Amaranto Cereales Don Luis · Bolsa 250 g, natural",Cereales Don Luis,Amaranto,despensa,botanas_galletas,0.25,kg,30,,nueces;cacahuate;gluten,amaranto,180,0,medio,profeco_qqp,2026-07-31,39
+P963cf862,"Botana Barcel · Bolsa 160 g, chip´s, papas fritas, fuego chile y limón ardiente",Barcel,Papas Fritas y Similares,despensa,botanas_galletas,0.16,kg,50,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,medio,profeco_qqp,2026-07-31,76
+P585ce6c5,"Botana Barcel · Bolsa 160 g, chip´s, papas fritas, jalapeño",Barcel,Papas Fritas y Similares,despensa,botanas_galletas,0.16,kg,50,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,medio,profeco_qqp,2026-07-31,80
+P20cdd6d7,"Botana Barcel · Bolsa 160 g, chip´s, papas fritas, sabor sal",Barcel,Papas Fritas y Similares,despensa,botanas_galletas,0.16,kg,50,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,medio,profeco_qqp,2026-07-31,77
+P29440462,"Botana Sabritas · Bolsa 145 g, cheetos torciditos",Sabritas,Papas Fritas y Similares,despensa,botanas_galletas,0.145,kg,42,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,medio,profeco_qqp,2026-07-31,36
+Pc07bd926,"Botana Sabritas · Bolsa 160 g, papas fritas, con sal, original",Sabritas,Papas Fritas y Similares,despensa,botanas_galletas,0.16,kg,50,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,medio,profeco_qqp,2026-07-31,73
+P6a71eaa7,"Botana Sabritas · Bolsa 170 g, fritos, sal y limón",Sabritas,Papas Fritas y Similares,despensa,botanas_galletas,0.17,kg,42,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,medio,profeco_qqp,2026-07-31,44
+Pb91cca18,"Botana Sabritas · Bolsa 185 g, churrumais, con limoncito",Sabritas,Papas Fritas y Similares,despensa,botanas_galletas,0.185,kg,42,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,economico,profeco_qqp,2026-07-31,50
+Pfcd934bf,"Botana Sabritas · Bolsa 185 g, ruffles, original, (azul)",Sabritas,Papas Fritas y Similares,despensa,botanas_galletas,0.185,kg,55,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,medio,profeco_qqp,2026-07-31,37
+P4056786f,"Botana Sabritas · Bolsa 208 g, paketaxo, quexo",Sabritas,Papas Fritas y Similares,despensa,botanas_galletas,0.208,kg,50,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,medio,profeco_qqp,2026-07-31,76
+Pfc151d35,"Botana Sabritas · Bolsa 223 g, doritos, nachos",Sabritas,Papas Fritas y Similares,despensa,botanas_galletas,0.223,kg,50,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,economico,profeco_qqp,2026-07-31,74
+P77d27d87,"Botana Sabritas · Bolsa 225 g, rancheritos",Sabritas,Papas Fritas y Similares,despensa,botanas_galletas,0.225,kg,50,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,economico,profeco_qqp,2026-07-31,42
+P9d9fdb13,"Botana Sabritas · Bolsa 400 g, tostitos, nachos",Sabritas,Papas Fritas y Similares,despensa,botanas_galletas,0.4,kg,56.48,,lacteos;soya;gluten;cacahuate,botana;frituras,180,0,economico,profeco_qqp,2026-07-31,47
+P78bea115,"Cacahuates Barcel · Bolsa 200 g, hot nuts",Barcel,Cacahuates,despensa,botanas_galletas,0.2,kg,44,cacahuate,nueces;soya;gluten,cacahuate;botana,180,0,medio,profeco_qqp,2026-07-31,63
+P178f3174,"Cacahuates Sabritas · Bolsa 185 g, kacang, flamin hot",Sabritas,Cacahuates,despensa,botanas_galletas,0.185,kg,43,cacahuate,nueces;soya;gluten,cacahuate;botana,180,0,medio,profeco_qqp,2026-07-30,13
+P4a7fcf8f,"Chocolate M&m´s · Pieza 43.8 g, con leche confitados",M&m´s,Chocolate,despensa,botanas_galletas,0.0438,kg,26,lacteos;soya,nueces;cacahuate;gluten;huevo,chocolate,180,0,medio,profeco_qqp,2026-07-31,9
+P8ca5a2a8,"Chocolate M&m´s · Pieza 44.3 g, con leche confitados con cacahuate",M&m´s,Chocolate,despensa,botanas_galletas,0.0443,kg,26,lacteos;soya,nueces;cacahuate;gluten;huevo,chocolate,180,0,medio,profeco_qqp,2026-07-31,9
+P56b47214,"Chocolate en polvo Choco Milk · Bolsa 350 g, con cocoa",Choco Milk,Polvo P/preparar Bebidas Sabor Chocolate,despensa,botanas_galletas,0.35,kg,48,,lacteos;soya;gluten,chocolate en polvo,180,0,economico,profeco_qqp,2026-07-31,85
+P32057056,"Chocolate en polvo Choco Milk · Lata 400 g, con cocoa",Choco Milk,Polvo P/preparar Bebidas Sabor Chocolate,despensa,botanas_galletas,0.4,kg,76,,lacteos;soya;gluten,chocolate en polvo,180,0,premium,profeco_qqp,2026-07-31,83
+Pa2e58df7,Chocolate en polvo Great Value · Bolsa 350 g,Great Value,Polvo P/preparar Bebidas Sabor Chocolate,despensa,botanas_galletas,0.35,kg,49,,lacteos;soya;gluten,chocolate en polvo,180,0,medio,profeco_qqp,2026-07-31,73
+P48ba2e3a,Chocolate en polvo Morelia Presidencial · Bolsa 357 g,Morelia. Presidencial,Polvo P/preparar Bebidas Sabor Chocolate,despensa,botanas_galletas,0.357,kg,38,,lacteos;soya;gluten,chocolate en polvo,180,0,economico,profeco_qqp,2026-07-31,77
+Pd7c1d8c9,Chocolate en polvo Nesquik · Bolsa 357 g,Nesquik,Polvo P/preparar Bebidas Sabor Chocolate,despensa,botanas_galletas,0.357,kg,50,,lacteos;soya;gluten,chocolate en polvo,180,0,medio,profeco_qqp,2026-07-31,81
+P112b4469,Chocolate en polvo Nesquik · Lata 400 g,Nesquik,Polvo P/preparar Bebidas Sabor Chocolate,despensa,botanas_galletas,0.4,kg,60,,lacteos;soya;gluten,chocolate en polvo,180,0,medio,profeco_qqp,2026-07-31,81
+P03cc2af6,"Flan D´gari · Caja 84 g, (50 g caramelo), con caramelo, sabor vainilla",D´gari,Flan,despensa,botanas_galletas,0.084,kg,19,lacteos,huevo;soya,flan;postre,180,0,medio,profeco_qqp,2026-07-31,78
+Pe7683979,"Flan Jell-o · Caja 85 g, (35 g, flan y 50 g, caramelo), con caramelo, sabor vainilla",Jell-o,Flan,despensa,botanas_galletas,0.085,kg,15,lacteos,huevo;soya,flan;postre,180,0,medio,profeco_qqp,2026-07-31,72
+P4353fd5a,"Flan Pronto · Caja 136 g, con caramelo, sabor vainilla",Pronto,Flan,despensa,botanas_galletas,0.136,kg,14,lacteos,huevo;soya,flan;postre,180,0,economico,profeco_qqp,2026-07-31,81
+P754a85ea,"Galletas Dulces Gamesa · Caja 228 g, chokis, clásica",Gamesa,Galletas Dulces,despensa,botanas_galletas,0.228,kg,35,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,medio,profeco_qqp,2026-07-30,17
+P08b2dda3,"Galletas Dulces Gamesa · Paquete 75 g, arcoiris",Gamesa,Galletas Dulces,despensa,botanas_galletas,0.075,kg,15,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,premium,profeco_qqp,2026-07-31,11
+P52e7388c,"Galletas Dulces Marinela · Caja 268 g, barritas con relleno con fresa",Marinela,Galletas Dulces,despensa,botanas_galletas,0.268,kg,35,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,medio,profeco_qqp,2026-07-31,77
+Pbaa1b1eb,"Galletas Dulces Marinela · Caja 268 g, barritas con relleno con piña",Marinela,Galletas Dulces,despensa,botanas_galletas,0.268,kg,42,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,medio,profeco_qqp,2026-07-31,76
+Pd7d59645,"Galletas Dulces Marinela · Paquete 210 g, príncipe",Marinela,Galletas Dulces,despensa,botanas_galletas,0.21,kg,34,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,premium,profeco_qqp,2026-07-31,81
+Pef6d8d55,"Galletas Dulces Marinela · Paquete 215 g, triki trakes",Marinela,Galletas Dulces,despensa,botanas_galletas,0.215,kg,34,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,medio,profeco_qqp,2026-07-31,79
+P328878dc,"Galletas Dulces Marinela · Paquete 310 g, polvorones",Marinela,Galletas Dulces,despensa,botanas_galletas,0.31,kg,25,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,economico,profeco_qqp,2026-07-31,79
+P82f10098,"Galletas Dulces Nabisco · Caja 252 g, sandwich, oreo, chocolate con relleno cremoso sabor vainilla",Nabisco,Galletas Dulces,despensa,botanas_galletas,0.252,kg,25,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,economico,profeco_qqp,2026-07-31,75
+Pa5f08b03,"Galletas Dulces Nabisco · Caja 257.6 g, chips ahoy",Nabisco,Galletas Dulces,despensa,botanas_galletas,0.2576,kg,30,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,economico,profeco_qqp,2026-07-31,72
+Pdf316d9d,"Galletas Gamesa · Caja 720 g, marias",Gamesa,Galletas Populares,despensa,botanas_galletas,0.72,kg,80,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,medio,profeco_qqp,2026-07-31,75
+P59ccae3d,"Galletas Gamesa · Paquete 144 g, marias",Gamesa,Galletas Populares,despensa,botanas_galletas,0.144,kg,21,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,medio,profeco_qqp,2026-07-31,67
+P95bffe2a,"Galletas Saladas Gamesa · Caja 424 g, habaneras, clásica",Gamesa,Galletas Saladas,despensa,botanas_galletas,0.424,kg,66,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,premium,profeco_qqp,2026-07-31,48
+P7cd91ab3,"Galletas Saladas Gamesa · Caja 504 g, saladitas",Gamesa,Galletas Saladas,despensa,botanas_galletas,0.504,kg,69,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,medio,profeco_qqp,2026-07-31,75
+P7e51e516,"Galletas Saladas Gamesa · Paquete 186 g, saladitas",Gamesa,Galletas Saladas,despensa,botanas_galletas,0.186,kg,22,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,economico,profeco_qqp,2026-07-31,75
+Pd025b9d4,"Galletas Saladas Nabisco · Caja 356 g, ritz",Nabisco,Galletas Saladas,despensa,botanas_galletas,0.356,kg,49,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,galleta,180,0,medio,profeco_qqp,2026-07-31,73
+Pb49e1b5e,"Gelatina en Polvo D´gari · Bolsa 120 g, leche, chocolate",D´gari,Gelatina en Polvo,despensa,botanas_galletas,0.12,kg,12,,lacteos;soya,gelatina;postre,180,0,medio,profeco_qqp,2026-07-31,59
+P2abb64e2,"Gelatina en Polvo D´gari · Bolsa 120 g, leche, fresa",D´gari,Gelatina en Polvo,despensa,botanas_galletas,0.12,kg,12,,lacteos;soya,gelatina;postre,180,0,medio,profeco_qqp,2026-07-31,61
+P723c22df,"Gelatina en Polvo D´gari · Bolsa 120 g, leche, pistache",D´gari,Gelatina en Polvo,despensa,botanas_galletas,0.12,kg,12,,lacteos;soya,gelatina;postre,180,0,medio,profeco_qqp,2026-07-31,56
+Pc8206854,"Gelatina en Polvo D´gari · Bolsa 120 g, limón",D´gari,Gelatina en Polvo,despensa,botanas_galletas,0.12,kg,15,,lacteos;soya,gelatina;postre,180,0,medio,profeco_qqp,2026-07-31,82
+Pa462f734,"Gelatina en Polvo Jell-o · Bolsa 25 g, agua, limón",Jell-o,Gelatina en Polvo,despensa,botanas_galletas,0.025,kg,14.5,,lacteos;soya,gelatina;postre,180,0,premium,profeco_qqp,2026-07-31,83
+Pc9039a8c,"Gelatina en Polvo Pronto · Caja 84 g, agua, limón",Pronto,Gelatina en Polvo,despensa,botanas_galletas,0.084,kg,18,,lacteos;soya,gelatina;postre,180,0,medio,profeco_qqp,2026-07-31,84
+P03e5e88d,Maíz Palomero Schettino · Bolsa 500 g,Schettino,Maíz Palomero,despensa,botanas_galletas,0.5,kg,15,,,palomitas;maiz,180,0,medio,profeco_qqp,2026-07-31,78
+P0cb5af46,Maíz Palomero Verde Valle · Bolsa 500 g,Verde Valle,Maíz Palomero,despensa,botanas_galletas,0.5,kg,25,,,palomitas;maiz,180,0,medio,profeco_qqp,2026-07-31,82
+P6a64f870,"Pastelitos Bimbo · Paquete 280 g, panqué con pasas",Bimbo,Pastelillos y Pan Dulce Empaquetado,despensa,botanas_galletas,0.28,kg,51,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce;pastelito,180,0,economico,profeco_qqp,2026-07-31,86
+P1d3dff88,"Pastelitos Bimbo · Paquete 280 g, panqué nuez",Bimbo,Pastelillos y Pan Dulce Empaquetado,despensa,botanas_galletas,0.28,kg,51,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce;pastelito,180,0,economico,profeco_qqp,2026-07-31,86
+P003d06e9,Pastelitos Bimbo · Paquete con 1 nito (62 g.),Bimbo,Pastelillos y Pan Dulce Empaquetado,despensa,botanas_galletas,0.062,kg,22,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce;pastelito,180,0,premium,profeco_qqp,2026-07-31,81
+P6e914359,"Pastelitos Bimbo · Paquete con 6 mantecadas, vainilla (188 g.)",Bimbo,Pastelillos y Pan Dulce Empaquetado,despensa,botanas_galletas,0.188,kg,39,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce;pastelito,180,0,medio,profeco_qqp,2026-07-31,80
+P1980f0df,"Pastelitos Bimbo · Paquete con 6 roles de canela, con pasas (365 g.)",Bimbo,Pastelillos y Pan Dulce Empaquetado,despensa,botanas_galletas,0.365,kg,50,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce;pastelito,180,0,economico,profeco_qqp,2026-07-31,75
+P626e31b6,"Pastelitos Bimbo · Paquete con 8 donitas, espolvoreadas (140 g.)",Bimbo,Pastelillos y Pan Dulce Empaquetado,despensa,botanas_galletas,0.14,kg,27,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce;pastelito,180,0,medio,profeco_qqp,2026-07-31,81
+Pb92dc508,Pastelitos Marinela · Paquete con 1 gansito (50 g.),Marinela,Pastelillos y Pan Dulce Empaquetado,despensa,botanas_galletas,0.05,kg,15,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce;pastelito,180,0,medio,profeco_qqp,2026-07-31,55
+P83d08c78,Pastelitos Marinela · Paquete con 2 chocoroles (100 g.),Marinela,Pastelillos y Pan Dulce Empaquetado,despensa,botanas_galletas,0.1,kg,27,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce;pastelito,180,0,medio,profeco_qqp,2026-07-31,55
+Paf01bae6,Pastelitos Marinela · Paquete con 2 pinguinos (80 g.),Marinela,Pastelillos y Pan Dulce Empaquetado,despensa,botanas_galletas,0.08,kg,25.5,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce;pastelito,180,0,premium,profeco_qqp,2026-07-31,54
+Pb90681db,Café Soluble Great Value · Frasco 200 g.gourmet colombiano,Great Value,Café Soluble,despensa,cafe_te,0.2,kg,160,,,cafe,365,0,medio,profeco_qqp,2026-07-31,65
+P2bdec066,"Café Soluble Los Portales de Córdoba · Frasco 85 g, tradicional",Los Portales de Córdoba,Café Soluble,despensa,cafe_te,0.085,kg,95,,,cafe,365,0,premium,profeco_qqp,2026-07-31,48
+Pc59397d8,Café Soluble Nescafé Clásico · Frasco 120 g,Nescafé. Clásico,Café Soluble,despensa,cafe_te,0.12,kg,115,,,cafe,365,0,medio,profeco_qqp,2026-07-31,82
+P40d405a5,Café Soluble Nescafé Clásico · Frasco 200 g,Nescafé. Clásico,Café Soluble,despensa,cafe_te,0.2,kg,159,,,cafe,365,0,economico,profeco_qqp,2026-07-31,32
+P17a26afc,"Café Soluble Nescafé Decaf · Frasco 120 g, sin cafeína, descafeinado",Nescafé. Decaf,Café Soluble,despensa,cafe_te,0.12,kg,120,,,cafe,365,0,premium,profeco_qqp,2026-07-31,75
+Pfc5fad7f,"Café Soluble Nescafé Decaf · Frasco 170 g, sin cafeína, descafeinado",Nescafé. Decaf,Café Soluble,despensa,cafe_te,0.17,kg,159,,,cafe,365,0,medio,profeco_qqp,2026-07-31,86
+Pdcf486a0,"Café Soluble Nescafé Dolca · Frasco 170 g, mezclado con caramelo",Nescafé. Dolca,Café Soluble,despensa,cafe_te,0.17,kg,109,,,cafe,365,0,economico,profeco_qqp,2026-07-31,78
+P0e8887dc,"Café Soluble Nescafé Dolca · Frasco 80 g, mezclado con caramelo",Nescafé. Dolca,Café Soluble,despensa,cafe_te,0.08,kg,70,,,cafe,365,0,medio,profeco_qqp,2026-07-31,86
+P4d81f729,"Café molido Legal · Bolsa 200 g, mezclado con caramelo",Legal,Café Tostado y Molido,despensa,cafe_te,0.2,kg,55,,,cafe,365,0,medio,profeco_qqp,2026-07-31,79
+P39233e95,"Café molido Legal · Bolsa 400 g, mezclado con caramelo",Legal,Café Tostado y Molido,despensa,cafe_te,0.4,kg,89,,,cafe,365,0,medio,profeco_qqp,2026-07-31,80
+P6657d54e,Chocolate de mesa Ibarra · Paquete 540 g,Ibarra,Chocolate en Tablillas,despensa,cafe_te,0.54,kg,132,,lacteos;soya;nueces;cacahuate,chocolate,365,0,medio,profeco_qqp,2026-07-31,25
+P1ded2fb2,"Atún Dolores · Bolsa 110 g, ensalada",Dolores,Atún,despensa,carne_aves,0.11,kg,21,pescado,soya,pescado;atun;enlatado,720,0,premium,profeco_qqp,2026-07-31,85
+P29d4a9ae,"Atún Dolores · Bolsa 74 g, aleta amarilla en trozos en agua",Dolores,Atún,despensa,carne_aves,0.074,kg,21,pescado,soya,pescado;atun;enlatado,720,0,premium,profeco_qqp,2026-07-31,10
+P8c52df8b,"Atún Dolores · Bolsa 78 g, aleta amarilla, en trozos en agua",Dolores,Atún,despensa,carne_aves,0.078,kg,21,pescado,soya,pescado;atun;enlatado,720,0,premium,profeco_qqp,2026-07-31,85
+P65460a39,"Atún Dolores · Lata 140 g, aleta amarilla en hojuelas en agua",Dolores,Atún,despensa,carne_aves,0.14,kg,20,pescado,soya,pescado;atun;enlatado,720,0,medio,profeco_qqp,2026-07-31,89
+P4029f6c5,"Atún Dolores · Lata 140 g, aleta amarilla en hojuelas en agua con aceite",Dolores,Atún,despensa,carne_aves,0.14,kg,20,pescado,soya,pescado;atun;enlatado,720,0,medio,profeco_qqp,2026-07-31,87
+P24433bb4,"Atún El Dorado · Lata 130 g, con 30% de soya en agua",El Dorado,Atún,despensa,carne_aves,0.13,kg,16,pescado,soya,pescado;atun;enlatado,720,0,economico,profeco_qqp,2026-07-30,10
+P06d9270b,"Atún El Dorado · Lata 130 g, con 30% de soya en agua con aceite",El Dorado,Atún,despensa,carne_aves,0.13,kg,16,pescado,soya,pescado;atun;enlatado,720,0,economico,profeco_qqp,2026-07-30,10
+P7195d941,"Atún Fisha Tuna · Lata 140 g, en agua",Fisha Tuna,Atún,despensa,carne_aves,0.14,kg,9,pescado,soya,pescado;atun;enlatado,720,0,economico,profeco_qqp,2026-07-31,61
+P0a4b1a00,"Atún Great Value · Lata 140 g, en hojuelas en agua",Great Value,Atún,despensa,carne_aves,0.14,kg,19,pescado,soya,pescado;atun;enlatado,720,0,medio,profeco_qqp,2026-07-31,103
+P24ef204b,"Atún Mazatún · Lata 130 g, en hojuelas en agua",Mazatún,Atún,despensa,carne_aves,0.13,kg,21,pescado,soya,pescado;atun;enlatado,720,0,medio,profeco_qqp,2026-07-30,18
+P1371bd94,"Atún Mazatún · Lata 130 g, en hojuelas en agua con aceite",Mazatún,Atún,despensa,carne_aves,0.13,kg,21,pescado,soya,pescado;atun;enlatado,720,0,medio,profeco_qqp,2026-07-31,21
+P38630cff,"Sardina Aurrera · Lata 425 g, en tomate",Aurrera,Sardina,despensa,carne_aves,0.425,kg,15,pescado,soya,pescado;sardina;enlatado,720,0,economico,profeco_qqp,2026-07-31,104
+P8e2ac103,"Sardina Dolores · Lata 425 g, en tomate",Dolores,Sardina,despensa,carne_aves,0.425,kg,47,pescado,soya,pescado;sardina;enlatado,720,0,medio,profeco_qqp,2026-07-31,85
+P8d5a9d5c,"Sardina Guaymex · Lata 425 g, en tomate",Guaymex,Sardina,despensa,carne_aves,0.425,kg,47,pescado,soya,pescado;sardina;enlatado,720,0,medio,profeco_qqp,2026-07-31,179
+Pe561ea68,"Avena 3 Minutos · Bote 400 g, y sémola de trigo, fortificada",3 Minutos,Avena,despensa,cereal_desayuno,0.4,kg,40,gluten,nueces;lacteos;soya,avena;cereal,365,0,medio,profeco_qqp,2026-07-31,73
+P01b37f11,"Avena Granvita 0% · Caja 280 g, integral, arándanos",Granvita 0%,Avena,despensa,cereal_desayuno,0.28,kg,53,gluten,nueces;lacteos;soya,avena;cereal,365,0,medio,profeco_qqp,2026-07-30,10
+Pc976b2ce,"Avena Granvita 0% · Caja 280 g, integral, fresas con crema",Granvita 0%,Avena,despensa,cereal_desayuno,0.28,kg,53,gluten,nueces;lacteos;soya,avena;cereal,365,0,medio,profeco_qqp,2026-07-31,67
+P48a02236,Avena Granvita · Bolsa 400 g,Granvita,Avena,despensa,cereal_desayuno,0.4,kg,10,gluten,nueces;lacteos;soya,avena;cereal,365,0,economico,profeco_qqp,2026-07-31,72
+Paf42ccb1,"Avena Quaker Oats · Bote 475 g, hojuela integral",Quaker Oats,Avena,despensa,cereal_desayuno,0.475,kg,70,gluten,nueces;lacteos;soya,avena;cereal,365,0,medio,profeco_qqp,2026-07-31,66
+P3026d24a,"Cereal All-bran Kellogg´s · Caja 570 g, flakes",All-bran. Kellogg´s,Cereales,despensa,cereal_desayuno,0.57,kg,103,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,medio,profeco_qqp,2026-07-31,77
+P9bf13cee,Cereal Choco Krispis Kellogg´s · Caja 38 g,Choco Krispis. Kellogg´s,Cereales,despensa,cereal_desayuno,0.038,kg,10.5,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,premium,profeco_qqp,2026-07-31,76
+P37dcac90,Cereal Choco Krispis Kellogg´s · Caja 560 g,Choco Krispis. Kellogg´s,Cereales,despensa,cereal_desayuno,0.56,kg,69,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,economico,profeco_qqp,2026-07-31,78
+P97a549fd,"Cereal Corn Flakes Kellogg´s · Caja 275 g, el original",Corn Flakes. Kellogg´s,Cereales,despensa,cereal_desayuno,0.275,kg,36,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,medio,profeco_qqp,2026-07-31,8
+Pb8620db6,"Cereal Corn Flakes Kellogg´s · Caja 385 g, el original",Corn Flakes. Kellogg´s,Cereales,despensa,cereal_desayuno,0.385,kg,57,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,medio,profeco_qqp,2026-07-31,69
+P47373ea9,Cereal Corn Flakes Nestlé · Caja 530 g,Corn Flakes. Nestlé,Cereales,despensa,cereal_desayuno,0.53,kg,55,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,economico,profeco_qqp,2026-07-31,77
+P88289053,Cereal Corn Pops Kellogg´s · Caja 450 g,Corn Pops. Kellogg´s,Cereales,despensa,cereal_desayuno,0.45,kg,93,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,premium,profeco_qqp,2026-07-31,80
+P4a3b2dfe,Cereal Froot Loops Kellogg´s · Caja 515 g,Froot Loops. Kellogg´s,Cereales,despensa,cereal_desayuno,0.515,kg,117,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,premium,profeco_qqp,2026-07-31,51
+P354add59,"Cereal Nesquik Nestlé · Caja 650 g, choco crujiente",Nesquik. Nestlé,Cereales,despensa,cereal_desayuno,0.65,kg,65,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,economico,profeco_qqp,2026-07-31,70
+P6f19abd5,"Cereal Special K Kellogg´s · Caja 530 g, original",Special K. Kellogg´s,Cereales,despensa,cereal_desayuno,0.53,kg,73,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,medio,profeco_qqp,2026-07-31,78
+Pf7ce18b2,Cereal Zucaritas Kellogg´s · Caja 30 g,Zucaritas. Kellogg´s,Cereales,despensa,cereal_desayuno,0.03,kg,10.5,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,premium,profeco_qqp,2026-07-31,71
+Pbb28a7c9,Cereal Zucaritas Kellogg´s · Caja 380 g,Zucaritas. Kellogg´s,Cereales,despensa,cereal_desayuno,0.38,kg,65,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,medio,profeco_qqp,2026-07-31,74
+P8e7b9b3b,Cereal Zucaritas Kellogg´s · Caja 620 g,Zucaritas. Kellogg´s,Cereales,despensa,cereal_desayuno,0.62,kg,70,gluten,nueces;lacteos;soya;cacahuate,cereal,365,0,economico,profeco_qqp,2026-07-31,79
+P13013c87,"Harina para hot cakes Pronto · Caja 800 g, tradicionales",Pronto,Harina Hot Cakes,despensa,cereal_desayuno,0.8,kg,55,gluten,lacteos;huevo;soya,hot cakes;harina,365,0,medio,profeco_qqp,2026-07-31,77
+P3938ad03,"Harina para hot cakes Tres Estrellas · Caja 800 g, tradicionales",Tres Estrellas,Harina Hot Cakes,despensa,cereal_desayuno,0.8,kg,30,gluten,lacteos;huevo;soya,hot cakes;harina,365,0,medio,profeco_qqp,2026-07-31,81
+Pe593d391,"Canela Mc Cormick · Frasco 63 g, molida",Mc Cormick,Canela,despensa,condimentos,0.063,kg,47,,,canela;especia,365,0,medio,profeco_qqp,2026-07-31,65
+P1b11fac6,"Canela Verde Valle · Bolsa 50 g, en rama",Verde Valle,Canela,despensa,condimentos,0.05,kg,52,,,canela;especia,365,0,medio,profeco_qqp,2026-07-31,58
+P817ee187,"Consomé de pollo Knorr · Bolsa 950 g, caldo",Knorr,Concentrado de Pollo,despensa,condimentos,0.95,kg,140,,soya;gluten;lacteos;huevo,consome,365,0,economico,profeco_qqp,2026-07-31,73
+Pc2acdcc2,"Consomé de pollo Knorr · Caja 12 cubos de 10.5 g, c/u, caldo",Knorr,Concentrado de Pollo,despensa,condimentos,0.126,kg,28,,soya;gluten;lacteos;huevo,consome,365,0,premium,profeco_qqp,2026-07-31,67
+Pde178c8e,"Consomé de pollo Knorr · Frasco 450 g, caldo",Knorr,Concentrado de Pollo,despensa,condimentos,0.45,kg,95,,soya;gluten;lacteos;huevo,consome,365,0,medio,profeco_qqp,2026-07-31,71
+Pbb9008cb,"Consomé de pollo Riko Pollo · Caja 110 g, 10 cubos, caldo",Riko Pollo,Concentrado de Pollo,despensa,condimentos,0.11,kg,17,,soya;gluten;lacteos;huevo,consome,365,0,medio,profeco_qqp,2026-07-31,48
+Pec45d710,Polvo para hornear Rexal · Bote 100 g,Rexal,Polvo P/hornear,despensa,condimentos,0.1,kg,19,,,polvo para hornear,365,0,medio,profeco_qqp,2026-07-31,64
+P9c0d545e,Polvo para hornear Rexal · Bote 250 g,Rexal,Polvo P/hornear,despensa,condimentos,0.25,kg,27,,,polvo para hornear,365,0,medio,profeco_qqp,2026-07-31,60
+P3214a5dc,"Sal Great Value · Bote 1 kg, yodada fluorurada",Great Value,Sal Molida de Mesa,despensa,condimentos,1,kg,24,,,sal,365,0,medio,profeco_qqp,2026-07-31,70
+Pc353bf3e,"Sal La Fina · Bolsa 1 kg, natural",La Fina,Sal Molida de Mesa,despensa,condimentos,1,kg,29,,,sal,365,0,medio,profeco_qqp,2026-07-29,9
+Pd7cb2f4f,"Sal de Mar Sal Sol · Bolsa 1 kg, grano grueso",Sal Sol,Sal de Mar,despensa,condimentos,1,kg,17,,,sal,365,0,medio,profeco_qqp,2026-07-31,15
+Pfadfb13c,Catsup Clemente Jacques · Botella 340 g,Clemente Jacques,Salsa Catsup,despensa,enlatados_salsas,0.34,kg,16,,,catsup;tomate,365,0,economico,profeco_qqp,2026-07-31,79
+P4a86ebd3,"Catsup Heinz · Botella 397 g, plástico",Heinz,Salsa Catsup,despensa,enlatados_salsas,0.397,kg,29,,,catsup;tomate,365,0,medio,profeco_qqp,2026-07-31,84
+P97eee8ae,"Catsup La Costeña · Botella 320 g, plástico",La Costeña,Salsa Catsup,despensa,enlatados_salsas,0.32,kg,22,,,catsup;tomate,365,0,medio,profeco_qqp,2026-07-31,79
+P9cf53ae1,"Chiles en lata Clemente Jacques · Lata 220 g, jalapeños rajas",Clemente Jacques,Chiles,despensa,enlatados_salsas,0.22,kg,15,,,chile;enlatado,365,0,economico,profeco_qqp,2026-07-31,80
+Pe30b342e,"Chiles en lata Clemente Jacques · Lata 380 g, jalapeños rajas",Clemente Jacques,Chiles,despensa,enlatados_salsas,0.38,kg,27,,,chile;enlatado,365,0,medio,profeco_qqp,2026-07-31,38
+P84e1932f,"Chiles en lata La Costeña · Lata 220 g, chipotles adobados",La Costeña,Chiles,despensa,enlatados_salsas,0.22,kg,29,,,chile;enlatado,365,0,premium,profeco_qqp,2026-07-31,78
+P4e02acd4,"Chiles en lata La Costeña · Lata 220 g, jalapeño, enteros",La Costeña,Chiles,despensa,enlatados_salsas,0.22,kg,14,,,chile;enlatado,365,0,economico,profeco_qqp,2026-07-31,71
+P3801e33f,"Chiles en lata La Costeña · Lata 220 g, jalapeños rajas",La Costeña,Chiles,despensa,enlatados_salsas,0.22,kg,18,,,chile;enlatado,365,0,medio,profeco_qqp,2026-07-31,85
+P512aaa3c,"Chiles en lata La Costeña · Lata 220 g, serrano, enteros",La Costeña,Chiles,despensa,enlatados_salsas,0.22,kg,19,,,chile;enlatado,365,0,premium,profeco_qqp,2026-07-31,70
+Pc5dcf39c,"Chiles en lata La Costeña · Lata 380 g, jalapeños rajas",La Costeña,Chiles,despensa,enlatados_salsas,0.38,kg,25,,,chile;enlatado,365,0,economico,profeco_qqp,2026-07-31,79
+Pd65f6202,"Chiles en lata La Morena · Lata 380 g, jalapeños en escabeche",La Morena,Chiles,despensa,enlatados_salsas,0.38,kg,30,,,chile;enlatado,365,0,medio,profeco_qqp,2026-07-31,36
+P762cedf4,"Chiles en lata San Marcos · Lata 215 g, chipotles adobados",San Marcos,Chiles,despensa,enlatados_salsas,0.215,kg,33,,,chile;enlatado,365,0,premium,profeco_qqp,2026-07-31,66
+Pb4f78c22,"Chiles en lata San Marcos · Lata 215 g, jalapeños en escabeche",San Marcos,Chiles,despensa,enlatados_salsas,0.215,kg,16,,,chile;enlatado,365,0,medio,profeco_qqp,2026-07-31,32
+P5344016f,"Chiles en lata San Marcos · Lata 215 g, jalapeños rajas",San Marcos,Chiles,despensa,enlatados_salsas,0.215,kg,18,,,chile;enlatado,365,0,medio,profeco_qqp,2026-07-31,71
+P1025d0ce,Coctel de Frutas en Almíbar La Costeña · Lata 850 g,La Costeña,Coctel de Frutas en Almíbar,despensa,enlatados_salsas,0.85,kg,80,,,fruta en almibar,365,0,medio,profeco_qqp,2026-07-31,80
+Pd6b9e40a,"Duraznos en Almíbar La Costeña · Lata 820 g, mitades",La Costeña,Duraznos en Almíbar,despensa,enlatados_salsas,0.82,kg,65,,,durazno;fruta en almibar,365,0,medio,profeco_qqp,2026-07-31,82
+P3f8ea5de,Leche Condensada La Lechera Cero · Lata 385 g,La Lechera. Cero,Leche Condensada,despensa,enlatados_salsas,0.385,kg,33.5,lacteos,,leche condensada,365,0,medio,profeco_qqp,2026-07-30,16
+Pf5215007,"Leche Condensada La Lechera Original · Botella 335 g, (plástico)",La Lechera. Original,Leche Condensada,despensa,enlatados_salsas,0.335,kg,40,lacteos,,leche condensada,365,0,medio,profeco_qqp,2026-07-31,69
+P26bb6c52,Leche Condensada La Lechera Original · Lata 375 g,La Lechera. Original,Leche Condensada,despensa,enlatados_salsas,0.375,kg,26,lacteos,,leche condensada,365,0,economico,profeco_qqp,2026-07-31,75
+P01d1a237,"Leche Evaporada Carnation Clavel · Lata 360 g, evaporada parcialmente descremada",Carnation. Clavel,Leche Evaporada,despensa,enlatados_salsas,0.36,kg,24,lacteos,,leche evaporada,365,0,medio,profeco_qqp,2026-07-31,84
+Pa0b4c4f3,"Leche Evaporada Carnation Clavel · Lata 360 g, reducida en grasa",Carnation. Clavel,Leche Evaporada,despensa,enlatados_salsas,0.36,kg,24,lacteos,,leche evaporada,365,0,medio,profeco_qqp,2026-07-31,85
+P027aa3b1,"Mayonesa Hellmann´s Clásica · Frasco 190 g, reducida en grasa",Hellmann´s. Clásica,Mayonesa,despensa,enlatados_salsas,0.19,kg,25,huevo,soya,mayonesa,365,0,medio,profeco_qqp,2026-07-31,79
+Pb7c2807f,"Mayonesa Hellmann´s Clásica · Frasco 390 g, reducida en grasa",Hellmann´s. Clásica,Mayonesa,despensa,enlatados_salsas,0.39,kg,49,huevo,soya,mayonesa,365,0,medio,profeco_qqp,2026-07-31,13
+P6a0d2c23,"Mayonesa Hellmann´s Light · Frasco 395 g, aderezo de mayonesa",Hellmann´s. Light,Mayonesa,despensa,enlatados_salsas,0.395,kg,49,huevo,soya,mayonesa,365,0,medio,profeco_qqp,2026-07-31,80
+Pc16d9c9f,"Mayonesa Mc Cormick Light · Frasco 425 g, aderezo con jugo de limones",Mc Cormick. Light,Mayonesa,despensa,enlatados_salsas,0.425,kg,46,huevo,soya,mayonesa,365,0,economico,profeco_qqp,2026-07-31,78
+P1b6133ff,"Mayonesa Mc Cormick · Frasco 228 g, con jugo de limones",Mc Cormick,Mayonesa,despensa,enlatados_salsas,0.228,kg,33,huevo,soya,mayonesa,365,0,premium,profeco_qqp,2026-07-31,72
+Pfa6ecf42,"Mayonesa Mc Cormick · Frasco 390 g, con jugo de limones",Mc Cormick,Mayonesa,despensa,enlatados_salsas,0.39,kg,55,huevo,soya,mayonesa,365,0,premium,profeco_qqp,2026-07-31,86
+P95b8444a,"Mayonesa Mc Cormick · Frasco 420 g, aderezo de mayonesa",Mc Cormick,Mayonesa,despensa,enlatados_salsas,0.42,kg,43,huevo,soya,mayonesa,365,0,economico,profeco_qqp,2026-07-31,59
+Pa7166761,Mole en pasta Doña María · Vaso 235 g,Doña María,Mole Rojo en Pasta,despensa,enlatados_salsas,0.235,kg,52,cacahuate;ajonjoli,nueces;gluten;soya,mole,365,0,medio,profeco_qqp,2026-07-31,84
+P60b09043,Mole en pasta La Costeña · Vaso 235 g,La Costeña,Mole Rojo en Pasta,despensa,enlatados_salsas,0.235,kg,54,cacahuate;ajonjoli,nueces;gluten;soya,mole,365,0,medio,profeco_qqp,2026-07-31,86
+P42a37c76,Mostaza Mc Cormick · Frasco 250 g,Mc Cormick,Mostaza,despensa,enlatados_salsas,0.25,kg,21.5,,gluten,mostaza,365,0,medio,profeco_qqp,2026-07-31,66
+Pa91d616f,"Piña en Almíbar La Costeña · Lata 800 g, rebanada",La Costeña,Piña en Almíbar,despensa,enlatados_salsas,0.8,kg,75,,,pina;fruta en almibar,365,0,medio,profeco_qqp,2026-07-31,80
+P353a5c53,"Piña en Almíbar La Costeña · Lata 800 g, trocitos",La Costeña,Piña en Almíbar,despensa,enlatados_salsas,0.8,kg,72,,,pina;fruta en almibar,365,0,medio,profeco_qqp,2026-07-31,84
+P0544cc51,"Puré de Tomate Del Fuerte · Caja 1 kg, tomates molidos condimentados",Del Fuerte,Puré de Tomate,despensa,enlatados_salsas,1,kg,33,,,tomate;pure,365,0,medio,profeco_qqp,2026-07-31,83
+Pf657ba9e,"Puré de Tomate La Costeña · Caja 1 kg, condimentado",La Costeña,Puré de Tomate,despensa,enlatados_salsas,1,kg,36,,,tomate;pure,365,0,medio,profeco_qqp,2026-07-31,83
+Pc8e2daf0,Salsa Inglesa Worcestershire Crosse & Blackwell · Botella 145 ml,Worcestershire Crosse & Blackwell,Salsa Inglesa,despensa,enlatados_salsas,0.145,kg,37,pescado,soya;gluten,salsa inglesa;salsa,365,0,medio,profeco_qqp,2026-07-31,85
+P710c574e,Salsa Inglesa Worcestershire Crosse & Blackwell · Botella 290 ml,Worcestershire Crosse & Blackwell,Salsa Inglesa,despensa,enlatados_salsas,0.29,kg,65,pescado,soya;gluten,salsa inglesa;salsa,365,0,medio,profeco_qqp,2026-07-31,84
+Pf15f5835,"Salsa de Soya Maggi · Botella 140 ml, tradicional",Maggi,Salsa de Soya,despensa,enlatados_salsas,0.14,kg,25,soya;gluten,,salsa de soya;salsa,365,0,medio,profeco_qqp,2026-07-31,21
+Pf9c3a6db,"Salsa de Soya Pasa · Botella 175 ml, etiqueta roja",Pasa,Salsa de Soya,despensa,enlatados_salsas,0.175,kg,15,soya;gluten,,salsa de soya;salsa,365,0,medio,profeco_qqp,2026-07-31,61
+P6258c4f9,"Salsa picante Búfalo · Botella 150 g, clásica",Búfalo,Salsa Picante y Similares,despensa,enlatados_salsas,0.15,kg,14,,soya;gluten,salsa;picante;chile,365,0,medio,profeco_qqp,2026-07-31,84
+P42da0544,"Salsa picante Búfalo · Botella 380 g, (vidrio), clásica",Búfalo,Salsa Picante y Similares,despensa,enlatados_salsas,0.38,kg,28,,soya;gluten,salsa;picante;chile,365,0,economico,profeco_qqp,2026-07-31,81
+P05191522,"Salsa picante Clemente Jacques · Botella 220 g, chipotles adobados molidos",Clemente Jacques,Salsa Picante y Similares,despensa,enlatados_salsas,0.22,kg,29,,soya;gluten,salsa;picante;chile,365,0,medio,profeco_qqp,2026-07-31,81
+P9fdbdcbc,"Salsa picante Clemente Jacques · Botella 220 g, chipotles dulces, adobados molidos",Clemente Jacques,Salsa Picante y Similares,despensa,enlatados_salsas,0.22,kg,29,,soya;gluten,salsa;picante;chile,365,0,medio,profeco_qqp,2026-07-31,83
+P31395b75,"Salsa picante Clemente Jacques · Botella 220 g, habanero molido",Clemente Jacques,Salsa Picante y Similares,despensa,enlatados_salsas,0.22,kg,29,,soya;gluten,salsa;picante;chile,365,0,medio,profeco_qqp,2026-07-31,52
+P941f0dfb,Salsa picante Tabasco · Botella 60 ml,Tabasco,Salsa Picante y Similares,despensa,enlatados_salsas,0.06,kg,57,,soya;gluten,salsa;picante;chile,365,0,premium,profeco_qqp,2026-07-31,64
+P9f112167,"Salsa picante Tajín Clásico · Botella 142 g, tapa blanca, chile, en polvo con limón",Tajín. Clásico,Salsa Picante y Similares,despensa,enlatados_salsas,0.142,kg,42,,soya;gluten,salsa;picante;chile,365,0,premium,profeco_qqp,2026-07-31,11
+P7665985d,"Salsa picante Valentina · Botella 350 ml, etiqueta amarilla",Valentina,Salsa Picante y Similares,despensa,enlatados_salsas,0.35,kg,16,,soya;gluten,salsa;picante;chile,365,0,economico,profeco_qqp,2026-07-31,69
+Pf238a12e,"Vinagre Clemente Jacques · Botella 1 L, blanco alcohol cana",Clemente Jacques,Vinagre,despensa,enlatados_salsas,1,kg,15,,,vinagre,365,0,medio,profeco_qqp,2026-07-31,80
+P0fe41ab2,"Chía Wand´s · Envase 220 g, semilla",Wand´s,Chía,despensa,extras,1,pz,51,,,chia,365,0,medio,profeco_qqp,2026-07-31,39
+Pb4995998,"Empanizadores Bimbo · Bolsa 175 g, crujiente (galleta molida)",Bimbo,Empanizadores,despensa,extras,1,pz,32,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,pan molido,365,0,medio,profeco_qqp,2026-07-31,83
+P9a0071ba,"Empanizadores Bimbo · Bolsa 210 g, pan molido, clásico",Bimbo,Empanizadores,despensa,extras,1,pz,31,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,pan molido,365,0,economico,profeco_qqp,2026-07-31,72
+Pf0bd566b,"Empanizadores Kellogg´s · Caja 350 g, granulado, crunchy, corn flakes",Kellogg´s,Empanizadores,despensa,extras,1,pz,61,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,pan molido,365,0,medio,profeco_qqp,2026-07-31,75
+P6b8e2afa,"Fécula de maíz Maizena · Caja 425 g, fécula, natural",Maizena,Harina de Maíz,despensa,extras,1,pz,54,,,fecula;maiz,365,0,medio,profeco_qqp,2026-07-31,76
+P61f61a10,Harina de Arroz Tres Estrellas · Caja 500 g,Tres Estrellas,Harina de Arroz,despensa,extras,1,pz,34,,,harina;arroz,365,0,medio,profeco_qqp,2026-07-31,78
+Pf830e103,Harina de Trigo Great Value · Paquete 1 kg,Great Value,Harina de Trigo,despensa,extras,1,pz,12,gluten,,harina,365,0,economico,profeco_qqp,2026-07-31,70
+P18174a59,Harina de Trigo San Antonio Tres Estrellas · Paquete 1 kg,San Antonio. Tres Estrellas,Harina de Trigo,despensa,extras,1,pz,19,gluten,,harina,365,0,premium,profeco_qqp,2026-07-31,46
+P5db83791,"Harina de Trigo San Blas · Paquete 1 kg, ó 1.1 kg",San Blas,Harina de Trigo,despensa,extras,1,pz,13.5,gluten,,harina,365,0,medio,profeco_qqp,2026-07-31,69
+P35243765,Harina de Trigo Selecta · Paquete 1 kg,Selecta,Harina de Trigo,despensa,extras,1,pz,16,gluten,,harina,365,0,medio,profeco_qqp,2026-07-31,70
+Paf9cc459,Linaza Verde Valle · Bolsa 320 g,Verde Valle,Linaza,despensa,extras,1,pz,35,,,linaza,365,0,medio,profeco_qqp,2026-07-31,41
+Pa6f053fc,Tamarindo · Bolsa 500 g,,Tamarindo,despensa,extras,1,pz,70,,,tamarindo,365,0,medio,profeco_qqp,2026-07-31,25
+P157a3821,"Leche en Polvo Alpura Clásica · Bolsa 460 g, entera",Alpura. Clásica,Leche en Polvo,despensa,leche,3.45,L,98,lacteos,soya,leche;leche en polvo,365,0,medio,profeco_qqp,2026-07-31,82
+Pf638b66b,"Leche en Polvo Alpura Deslactosada · Bolsa 460 g, parcialmente descremada deslactosada",Alpura. Deslactosada,Leche en Polvo,despensa,leche,3.45,L,101,lacteos,soya,leche;leche en polvo,365,0,medio,profeco_qqp,2026-07-31,80
+Pc3e6ee58,Leche en Polvo Nido Entera Forticrece · Bolsa 480 g,Nido. Entera. Forticrece,Leche en Polvo,despensa,leche,3.6,L,99,lacteos,soya,leche;leche en polvo,365,0,medio,profeco_qqp,2026-07-31,84
+P1eb98404,"Leche en Polvo Nido Entera Forticrece · Lata, 1.08 kg",Nido. Entera. Forticrece,Leche en Polvo,despensa,leche,8.1,L,219,lacteos,soya,leche;leche en polvo,365,0,economico,profeco_qqp,2026-07-30,8
+Pf2f3adca,"Leche en Polvo Nido Kinder · Lata 1.5 kg, (alimento para niños...)",Nido. Kinder,Leche en Polvo,despensa,leche,11.25,L,264,lacteos,soya,leche;leche en polvo,365,0,economico,profeco_qqp,2026-07-31,76
+P7904bec4,"Leche en Polvo Nido Kinder · Lata 360 g, (alimento para niños...)",Nido. Kinder,Leche en Polvo,despensa,leche,2.7,L,92,lacteos,soya,leche;leche en polvo,365,0,premium,profeco_qqp,2026-07-31,88
+P6e885f3b,"Frijol Aurrera · Bolsa 900 g, negro",Aurrera,Frijol,despensa,leguminosas,0.9,kg,19,,,frijol,365,0,economico,profeco_qqp,2026-07-31,104
+P12ecbfd4,"Frijol La Merced · Bolsa 750 g, flor de mayo",La Merced,Frijol,despensa,leguminosas,0.75,kg,39,,,frijol,365,0,premium,profeco_qqp,2026-07-31,33
+P03206675,"Frijol La Merced · Bolsa 907 g, negro, querétaro",La Merced,Frijol,despensa,leguminosas,0.907,kg,26,,,frijol,365,0,economico,profeco_qqp,2026-07-31,63
+Pc1f227e6,"Frijol La Merced · Bolsa 907 g, pinto",La Merced,Frijol,despensa,leguminosas,0.907,kg,27,,,frijol,365,0,economico,profeco_qqp,2026-07-31,48
+P43d37588,"Frijol Schettino · Bolsa 907 g, negro, querétaro",Schettino,Frijol,despensa,leguminosas,0.907,kg,25,,,frijol,365,0,economico,profeco_qqp,2026-07-31,89
+P0472c3dc,"Frijol Schettino · Bolsa 907 g, pinto",Schettino,Frijol,despensa,leguminosas,0.907,kg,28,,,frijol,365,0,medio,profeco_qqp,2026-07-31,58
+Pd1497b41,"Frijol Verde Valle · Bolsa 1 kg, negro",Verde Valle,Frijol,despensa,leguminosas,1,kg,47,,,frijol,365,0,medio,profeco_qqp,2026-07-31,46
+Pb7388f6b,"Frijol Verde Valle · Bolsa 1 kg, negro, jamapa",Verde Valle,Frijol,despensa,leguminosas,1,kg,62,,,frijol,365,0,premium,profeco_qqp,2026-07-31,44
+P57a7b7db,"Frijol Verde Valle · Bolsa 1 kg, pinto",Verde Valle,Frijol,despensa,leguminosas,1,kg,43,,,frijol,365,0,medio,profeco_qqp,2026-07-31,52
+Pc76cf10c,"Frijol Verde Valle · Bolsa 900 g, flor de mayo",Verde Valle,Frijol,despensa,leguminosas,0.9,kg,53,,,frijol,365,0,premium,profeco_qqp,2026-07-31,62
+P0a064bf7,"Frijol Verde Valle · Bolsa 900 g, negro",Verde Valle,Frijol,despensa,leguminosas,0.9,kg,35,,,frijol,365,0,medio,profeco_qqp,2026-07-31,31
+P068afde1,"Frijol Verde Valle · Bolsa 900 g, negro, jamapa",Verde Valle,Frijol,despensa,leguminosas,0.9,kg,62,,,frijol,365,0,premium,profeco_qqp,2026-07-31,29
+P1e760282,"Frijol Verde Valle · Bolsa 900 g, pinto",Verde Valle,Frijol,despensa,leguminosas,0.9,kg,35,,,frijol,365,0,medio,profeco_qqp,2026-07-31,28
+Pe19cc101,"Frijoles preparados Isadora · Bolsa 430 g, refritos, negros",Isadora,Frijoles,despensa,leguminosas,0.1505,kg,17,,soya,frijol;enlatado,720,0,medio,profeco_qqp,2026-07-31,74
+Pd81a4168,"Frijoles preparados La Costeña · Lata 580 g, refritos, negro",La Costeña,Frijoles,despensa,leguminosas,0.203,kg,15,,soya,frijol;enlatado,720,0,economico,profeco_qqp,2026-07-31,49
+P27c62bdb,"Frijoles preparados La Sierra · Bolsa 430 g, refritos, bayos",La Sierra,Frijoles,despensa,leguminosas,0.1505,kg,17,,soya,frijol;enlatado,720,0,medio,profeco_qqp,2026-07-31,69
+Pe70d9e6c,"Frijoles preparados La Sierra · Lata 560 g, entero, bayo",La Sierra,Frijoles,despensa,leguminosas,0.196,kg,17,,soya,frijol;enlatado,720,0,medio,profeco_qqp,2026-07-31,73
+P6c70be0d,Garbanzo Verde Valle · Bolsa 500 g,Verde Valle,Garbanzo,despensa,leguminosas,0.5,kg,39,,,garbanzo,365,0,medio,profeco_qqp,2026-07-31,78
+Pc7d03486,"Haba La Merced · Bolsa 500 g, pelada",La Merced,Haba,despensa,leguminosas,0.5,kg,69,,,haba,365,0,medio,profeco_qqp,2026-07-31,79
+P7bde4c02,Lenteja La Merced · Bolsa 500 g,La Merced,Lenteja,despensa,leguminosas,0.5,kg,16,,,lenteja,365,0,medio,profeco_qqp,2026-07-31,67
+P85b3aa36,Lenteja Schettino · Bolsa 500 g,Schettino,Lenteja,despensa,leguminosas,0.5,kg,15,,,lenteja,365,0,economico,profeco_qqp,2026-07-31,69
+P6f27a2d6,Lenteja Verde Valle · Bolsa 500 g,Verde Valle,Lenteja,despensa,leguminosas,0.5,kg,25,,,lenteja,365,0,medio,profeco_qqp,2026-07-31,78
+Paa5f396a,Harina de Maíz Maseca · Paquete 1 kg,Maseca,Harina de Maíz,despensa,tortilla_pan,1.7,kg,19,,,harina;maiz;tortilla;hecho en casa,180,0,medio,profeco_qqp,2026-07-31,73
+P7608f052,Tostadas de Maíz Charras Original · Paquete 300 g,Charras. Original,Tostadas de Maíz,despensa,tortilla_pan,0.3,kg,41,,,tostada;maiz,60,0,medio,profeco_qqp,2026-07-31,26
+P76bc3bcf,"Tostadas de Maíz Milpa Real · Paquete 324 g, onduladas",Milpa Real,Tostadas de Maíz,despensa,tortilla_pan,0.324,kg,43,,,tostada;maiz,60,0,economico,profeco_qqp,2026-07-31,16
+P121e3709,"Tostadas de Maíz Saníssimo · Caja 240 g, horneadas sin grasa, maíz blanco",Saníssimo,Tostadas de Maíz,despensa,tortilla_pan,0.24,kg,43,,,tostada;maiz,60,0,medio,profeco_qqp,2026-07-31,71
+Pbc99ad76,"Ajo Mc Cormick · Frasco 77 g, en polvo",Mc Cormick,Ajo,frutas_verduras,condimentos,0.077,kg,45,,,ajo,60,0,medio,profeco_qqp,2026-07-31,57
+Pa4f2eb57,"Ciruela · 1 kg, granel, roja moscatel",,Ciruela,frutas_verduras,frutas,1,kg,66,,,,6,0,medio,profeco_qqp,2026-07-30,9
+P7d480b34,"Durazno · 1 kg, granel, melocotón",,Durazno,frutas_verduras,frutas,1,kg,70,,,,5,0,medio,profeco_qqp,2026-07-31,17
+Pce663e77,Fresa · Paquete o canastilla 454 g,,Fresa,frutas_verduras,frutas,0.454,kg,74,,,,4,0,medio,profeco_qqp,2026-07-31,47
+P7252743e,"Guayaba · 1 kg, granel",,Guayaba,frutas_verduras,frutas,1,kg,50,,,,7,0,medio,profeco_qqp,2026-07-31,55
+P8369020d,"Kiwi · 1 kg, granel",,Kiwi,frutas_verduras,frutas,1,kg,74,,,,14,0,medio,profeco_qqp,2026-07-31,60
+P4bc2f0e5,"Limón · 1 kg, agrio con semilla o colima, upc 4306, en malla",,Limón,frutas_verduras,frutas,1,kg,32,,,limon,20,0,economico,profeco_qqp,2026-07-31,76
+P88820135,"Limón · 1 kg, granel, agrio con semilla o colima",,Limón,frutas_verduras,frutas,1,kg,35,,,limon,20,0,medio,profeco_qqp,2026-07-31,67
+Pdb321fb0,"Limón · 1 kg, granel, agrio sin semilla o persa",,Limón,frutas_verduras,frutas,1,kg,35,,,limon,20,0,medio,profeco_qqp,2026-07-31,123
+P9849e657,"Mamey · 1 kg, granel",,Mamey,frutas_verduras,frutas,1,kg,47.9,,,,5,0,medio,profeco_qqp,2026-07-31,25
+Pcce1229f,"Mandarina · 1 kg, granel",,Mandarina,frutas_verduras,frutas,1,kg,45,,,,10,0,medio,profeco_qqp,2026-07-31,31
+Pe8f3d281,"Mango · 1 kg, granel, ataulfo",,Mango,frutas_verduras,frutas,1,kg,40,,,,6,0,medio,profeco_qqp,2026-07-31,55
+P70b50fa5,"Mango · 1 kg, granel, paraiso petacón",,Mango,frutas_verduras,frutas,1,kg,24,,,,6,0,medio,profeco_qqp,2026-07-31,68
+Pf84c5a45,"Manzana Marketside · 1 kg, red delicious",Marketside,Manzana,frutas_verduras,frutas,1,kg,34,,,,21,0,economico,profeco_qqp,2026-07-31,84
+P5e224915,"Manzana · 1 kg, granel, granny smith",,Manzana,frutas_verduras,frutas,1,kg,53,,,,21,0,medio,profeco_qqp,2026-07-31,80
+P4745f27b,"Manzana · 1 kg, granel, red delicious/roja/roja mediana/roja americana",,Manzana,frutas_verduras,frutas,1,kg,38,,,,21,0,medio,profeco_qqp,2026-07-31,178
+Pae69d508,"Manzana · 1 kg, granel, royal gala",,Manzana,frutas_verduras,frutas,1,kg,54,,,,21,0,premium,profeco_qqp,2026-07-31,82
+P81bde0b0,"Melón · 1 kg, granel, chino",,Melón,frutas_verduras,frutas,1,kg,32,,,,7,0,medio,profeco_qqp,2026-07-31,76
+Padc5f173,Naranja · 1 kg,,Naranja,frutas_verduras,frutas,1,kg,40,,,,14,0,medio,profeco_qqp,2026-07-31,11
+P18b5e043,"Naranja · 1 kg, granel, valencia",,Naranja,frutas_verduras,frutas,1,kg,40,,,,14,0,medio,profeco_qqp,2026-07-31,58
+Pdbbfda31,"Papaya · 1 kg, granel, maradol",,Papaya,frutas_verduras,frutas,1,kg,39,,,,5,0,medio,profeco_qqp,2026-07-31,77
+P236f0a1a,"Pera · 1 kg, granel, d´anjou",,Pera,frutas_verduras,frutas,1,kg,48,,,,14,0,medio,profeco_qqp,2026-07-31,64
+Pc3102af8,"Perón · 1 kg, granel, golden",,Perón,frutas_verduras,frutas,1,kg,57,,,,14,0,medio,profeco_qqp,2026-07-31,61
+P437f519f,"Piña · 1 kg, granel, miel",,Piña,frutas_verduras,frutas,1,kg,20,,,,7,0,medio,profeco_qqp,2026-07-31,73
+Pd4403e35,"Plátano · 1 kg, granel, macho",,Plátano,frutas_verduras,frutas,1,kg,38.9,,,platano,6,0,medio,profeco_qqp,2026-07-31,66
+P80dc482d,"Plátano · 1 kg, granel, tabasco/chiapas/roatán/portalimón",,Plátano,frutas_verduras,frutas,1,kg,23,,,platano,6,0,medio,profeco_qqp,2026-07-31,176
+P9dc7ce20,"Sandía · 1 kg, granel, charleston, rayada o roja",,Sandía,frutas_verduras,frutas,1,kg,12,,,,7,0,medio,profeco_qqp,2026-07-31,78
+P406e27e2,"Toronja · 1 kg, granel, o toronja sangría",,Toronja,frutas_verduras,frutas,1,kg,32,,,,14,0,medio,profeco_qqp,2026-07-31,64
+P5b054e3e,"Tuna · 1 kg, granel, o tuna blanca",,Tuna,frutas_verduras,frutas,1,kg,39.9,,,,6,0,medio,profeco_qqp,2026-07-31,16
+Pebc5fa8c,"Uva · 1 kg, granel, globo o red globo",,Uva,frutas_verduras,frutas,1,kg,44,,,,7,0,economico,profeco_qqp,2026-07-31,22
+P66189222,"Uva · 1 kg, granel, roja sin semilla",,Uva,frutas_verduras,frutas,1,kg,59,,,,7,0,medio,profeco_qqp,2026-07-30,9
+P33cab5a0,"Uva · 1 kg, granel, thompson, blanca sin semilla",,Uva,frutas_verduras,frutas,1,kg,97,,,,7,0,medio,profeco_qqp,2026-07-30,8
+P2ff395c1,Acelga · Manojo,,Acelga,frutas_verduras,verduras,0.3,kg,12.9,,,,4,0,medio,profeco_qqp,2026-07-31,57
+P9a045c8e,"Aguacate · 1 kg, granel, hass",,Aguacate,frutas_verduras,verduras,1,kg,59,,,,5,0,medio,profeco_qqp,2026-07-31,77
+Pc0cabe9c,"Apio · 1 kg, granel",,Apio,frutas_verduras,verduras,1,kg,38.9,,,,10,0,medio,profeco_qqp,2026-07-31,73
+Pf3851ed3,"Betabel · 1 kg, granel",,Betabel,frutas_verduras,verduras,1,kg,38.9,,,,21,0,medio,profeco_qqp,2026-07-31,68
+P58615e08,"Brócoli · 1 kg, granel",,Brócoli,frutas_verduras,verduras,1,kg,62,,,,5,0,medio,profeco_qqp,2026-07-31,80
+P7f71dd5f,"Calabacita · 1 kg, granel, italiana/japonesa (larga)",,Calabaza,frutas_verduras,verduras,1,kg,34.9,,,calabacita,7,0,medio,profeco_qqp,2026-07-31,68
+Pba89742d,"Cebolla · 1 kg, granel, blanca sin rabo",,Cebolla,frutas_verduras,verduras,1,kg,40,,,cebolla,21,0,medio,profeco_qqp,2026-07-31,181
+Pf60ef64b,"Cebolla · 1 kg, granel, blanca sin rabo, en malla",,Cebolla,frutas_verduras,verduras,1,kg,31,,,cebolla,21,0,economico,profeco_qqp,2026-07-31,97
+P72584c29,"Cebolla · 1 kg, granel, morada",,Cebolla,frutas_verduras,verduras,1,kg,44,,,cebolla,21,0,medio,profeco_qqp,2026-07-31,69
+P19bada2f,"Cebolla · Manojo, cambray",,Cebolla,frutas_verduras,verduras,0.15,kg,16.9,,,cebolla,21,0,premium,profeco_qqp,2026-07-31,65
+P6e30c854,"Champiñones · 1 kg, granel",,Champiñones,frutas_verduras,verduras,1,kg,99,,,champinon,5,0,medio,profeco_qqp,2026-07-31,47
+P8d622034,"Chayote · 1 kg, granel, sin espinas",,Chayote,frutas_verduras,verduras,1,kg,38.9,,,,14,0,medio,profeco_qqp,2026-07-31,71
+P158a00a6,"Chile · 1 kg, granel, de árbol verde",,Chile Fresco,frutas_verduras,verduras,1,kg,194,,,chile,10,0,premium,profeco_qqp,2026-07-31,33
+Pd2500d8b,"Chile · 1 kg, granel, habanero",,Chile Fresco,frutas_verduras,verduras,1,kg,129,,,chile,10,0,medio,profeco_qqp,2026-07-31,59
+P9f6aa183,"Chile · 1 kg, granel, jalapeño o cuaresmeño",,Chile Fresco,frutas_verduras,verduras,1,kg,20,,,chile,10,0,economico,profeco_qqp,2026-07-31,174
+P863032e7,"Chile · 1 kg, granel, poblano o para rellenar",,Chile Fresco,frutas_verduras,verduras,1,kg,54,,,chile,10,0,medio,profeco_qqp,2026-07-31,75
+P0e9a8d50,"Chile · 1 kg, granel, serrano",,Chile Fresco,frutas_verduras,verduras,1,kg,54,,,chile,10,0,medio,profeco_qqp,2026-07-31,80
+Pe0d33cf8,Cilantro · Manojo,,Cilantro,frutas_verduras,verduras,0.08,kg,10,,,,5,0,medio,profeco_qqp,2026-07-31,74
+P74609f07,"Col · 1 kg, granel, blanca o repollo",,Col,frutas_verduras,verduras,1,kg,29.9,,,,14,0,medio,profeco_qqp,2026-07-31,71
+Pef7a8e1a,"Col · 1 kg, granel, morada",,Col,frutas_verduras,verduras,1,kg,59,,,,14,0,medio,profeco_qqp,2026-07-31,58
+P85e69f5f,Coliflor · Pieza,,Coliflor,frutas_verduras,verduras,1,kg,62,,,,7,0,medio,profeco_qqp,2026-07-31,68
+P02f1e10a,"Ejote · 1 kg, granel, verde",,Ejote,frutas_verduras,verduras,1,kg,64,,,,6,0,medio,profeco_qqp,2026-07-31,58
+P73f4d6cf,"Elote Del Monte · Lata 225 g, en grano",Del Monte,Elote,frutas_verduras,verduras,0.225,kg,10,,,,4,0,economico,profeco_qqp,2026-07-31,69
+P127f178a,"Elote Del Monte · Lata 400 g, en grano",Del Monte,Elote,frutas_verduras,verduras,0.4,kg,18,,,,4,0,medio,profeco_qqp,2026-07-31,74
+Pd016266c,"Elote Herdez · Lata 220 g, en grano",Herdez,Elote,frutas_verduras,verduras,0.22,kg,13.5,,,,4,0,premium,profeco_qqp,2026-07-31,84
+P68f27ae0,"Elote Herdez · Lata 400 g, en grano",Herdez,Elote,frutas_verduras,verduras,0.4,kg,18,,,,4,0,medio,profeco_qqp,2026-07-31,84
+Pe32b6c98,"Elote La Costeña · Lata 220 g, en grano",La Costeña,Elote,frutas_verduras,verduras,0.22,kg,11,,,,4,0,medio,profeco_qqp,2026-07-31,83
+Pb8b57627,Elote · Pieza,,Elote,frutas_verduras,verduras,0.25,kg,13.9,,,,4,0,medio,profeco_qqp,2026-07-31,57
+P26a8fec3,Espinacas · Manojo,,Espinacas,frutas_verduras,verduras,0.3,kg,13.9,,,espinaca,4,0,medio,profeco_qqp,2026-07-31,69
+Pc3eb1503,"Jitomate · 1 kg, granel, bola/sinaloa o tomate bola",,Jitomate,frutas_verduras,verduras,1,kg,38.9,,,jitomate;tomate,7,0,medio,profeco_qqp,2026-07-30,32
+Pf59eecec,"Jitomate · 1 kg, granel, saladette/huaje o tomate saladette/huaje",,Jitomate,frutas_verduras,verduras,1,kg,15,,,jitomate;tomate,7,0,medio,profeco_qqp,2026-07-31,181
+P1d91bc6d,"Jícama · 1 kg, granel",,Jícama,frutas_verduras,verduras,1,kg,25,,,,14,0,medio,profeco_qqp,2026-07-31,68
+P0c3a4bb3,"Lechuga · Pieza, orejona o larga",,Lechuga,frutas_verduras,verduras,0.5,kg,24.9,,,,6,0,medio,profeco_qqp,2026-07-31,33
+P2c97c5d1,"Lechuga · Pieza, romana",,Lechuga,frutas_verduras,verduras,0.5,kg,22,,,,6,0,medio,profeco_qqp,2026-07-31,78
+Pe2fc03ef,"Nopal · 1 kg, granel, sin espinas",,Nopal,frutas_verduras,verduras,1,kg,39.9,,,,7,0,medio,profeco_qqp,2026-07-31,41
+Pa40d647a,"Papa · 1 kg, granel, alfa/blanca",,Papa,frutas_verduras,verduras,1,kg,65,,,papa,30,0,medio,profeco_qqp,2026-07-31,172
+P71c3496a,"Papa · 1 kg, granel, alfa/blanca, en malla",,Papa,frutas_verduras,verduras,1,kg,45,,,papa,30,0,medio,profeco_qqp,2026-07-31,94
+P877c435d,"Pepino · 1 kg, granel",,Pepino,frutas_verduras,verduras,1,kg,22,,,,7,0,medio,profeco_qqp,2026-07-31,75
+P0f009086,"Pimiento · 1 kg, granel, morrón verde",,Pimiento,frutas_verduras,verduras,1,kg,80,,,,10,0,medio,profeco_qqp,2026-07-31,66
+Pe3096c79,"Rábano · Bolsa, cambray",,Rábano,frutas_verduras,verduras,0.25,kg,24.9,,,,7,0,medio,profeco_qqp,2026-07-31,50
+P7d284595,"Tomate verde · 1 kg, granel, verde sin cáscara",,Tomate,frutas_verduras,verduras,1,kg,36.9,,,tomate verde,10,0,medio,profeco_qqp,2026-07-31,74
+P77ab17da,"Zanahoria · 1 kg, granel, grande",,Zanahoria,frutas_verduras,verduras,1,kg,15.5,,,,21,0,medio,profeco_qqp,2026-07-31,26
+Pb948204f,"Zanahoria · 1 kg, granel, mediana",,Zanahoria,frutas_verduras,verduras,1,kg,15.5,,,,21,0,medio,profeco_qqp,2026-07-31,173
+P58f0e30f,"Desodorante Axe · Barra 45 g, black, para caballero",Axe,Desodorante,higiene,desodorante,1,pz,68,,,desodorante,1000,0,medio,profeco_qqp,2026-07-28,14
+Pfcdb3533,"Desodorante Dove · Barra 45 g, tapa azul, original, antitranspirante, para dama",Dove,Desodorante,higiene,desodorante,1,pz,75,,,desodorante,1000,0,medio,profeco_qqp,2026-07-31,77
+P2855c916,"Desodorante Dove · Caja con bote 150 ml, (aerosol) men+care, clinical expert, cuidado total, para caballero",Dove,Desodorante,higiene,desodorante,1,pz,103,,,desodorante,1000,0,premium,profeco_qqp,2026-07-31,70
+Pf0a8391c,"Desodorante Dove · Caja con bote 150 ml, (aerosol), clinical expert, original clean, para dama",Dove,Desodorante,higiene,desodorante,1,pz,102,,,desodorante,1000,0,premium,profeco_qqp,2026-07-30,14
+P5b915def,"Desodorante Gillette · Barra 82 g, specialized, cool wave, gel antitranspirante, para caballero",Gillette,Desodorante,higiene,desodorante,1,pz,96,,,desodorante,1000,0,premium,profeco_qqp,2026-07-31,37
+Pe30ae355,"Desodorante Lady Speed Stick · Barra 45 g, invisible, floral, para dama",Lady Speed Stick,Desodorante,higiene,desodorante,1,pz,69,,,desodorante,1000,0,medio,profeco_qqp,2026-07-31,23
+P6441a95b,"Desodorante Nivea · Roll on 50 ml, black and white, invisible clear, para dama",Nivea,Desodorante,higiene,desodorante,1,pz,35,,,desodorante,1000,0,economico,profeco_qqp,2026-07-31,80
+P3006ee82,"Desodorante Nivea · Roll on 50 ml, men, black and white, invisible, original, para caballero",Nivea,Desodorante,higiene,desodorante,1,pz,35,,,desodorante,1000,0,economico,profeco_qqp,2026-07-31,77
+Pb2020c23,"Desodorante Nivea · Roll on 50 ml, men, invisible, antitranspirante, para caballero",Nivea,Desodorante,higiene,desodorante,1,pz,35,,,desodorante,1000,0,economico,profeco_qqp,2026-07-31,32
+Pf5d538e9,"Desodorante Nivea · Roll on 50 ml, tono natural, para dama",Nivea,Desodorante,higiene,desodorante,1,pz,35,,,desodorante,1000,0,economico,profeco_qqp,2026-07-31,56
+P10ce461a,"Desodorante Obao Active · Roll on 65 ml, fragancia intensa, para caballero",Obao. Active,Desodorante,higiene,desodorante,1,pz,44,,,desodorante,1000,0,medio,profeco_qqp,2026-07-31,62
+P6c31fb93,"Desodorante Obao · Roll on 65 g, frescura suave, para dama",Obao,Desodorante,higiene,desodorante,1,pz,44,,,desodorante,1000,0,medio,profeco_qqp,2026-07-31,81
+P64aa9018,"Desodorante Old Spice · Barra 50 g, fresh, para caballero",Old Spice,Desodorante,higiene,desodorante,1,pz,79,,,desodorante,1000,0,premium,profeco_qqp,2026-07-31,82
+P27d5a66b,"Desodorante Palmolive · Roll on 65 ml, neutro balance (botella transparente), para dama",Palmolive,Desodorante,higiene,desodorante,1,pz,35,,,desodorante,1000,0,economico,profeco_qqp,2026-07-31,74
+P84c6681e,"Desodorante Rexona · Barra 45 g, active dry, antitranspirante, para caballero",Rexona,Desodorante,higiene,desodorante,1,pz,69,,,desodorante,1000,0,medio,profeco_qqp,2026-07-31,64
+P829438d5,"Desodorante Rexona · Barra 45 g, powder, dry, antitranspirante, para dama",Rexona,Desodorante,higiene,desodorante,1,pz,70,,,desodorante,1000,0,medio,profeco_qqp,2026-07-31,83
+Pa90c8166,"Desodorante Rexona · Caja con barra 58 g, clinical men, clean, para caballero",Rexona,Desodorante,higiene,desodorante,1,pz,121,,,desodorante,1000,0,premium,profeco_qqp,2026-07-31,58
+P94da7e41,"Desodorante Rexona · Caja con barra 58 g, clinical, clasic, para dama",Rexona,Desodorante,higiene,desodorante,1,pz,120,,,desodorante,1000,0,premium,profeco_qqp,2026-07-31,67
+P44b51af4,"Desodorante Rexona · Roll on 50 ml, powder dry, para dama",Rexona,Desodorante,higiene,desodorante,1,pz,41,,,desodorante,1000,0,economico,profeco_qqp,2026-07-31,81
+Pc44534e8,"Desodorante Speed Stick · Barra 60 g, fresh, para caballero",Speed Stick,Desodorante,higiene,desodorante,1,pz,69,,,desodorante,1000,0,medio,profeco_qqp,2026-07-31,71
+Pb3e4517e,"Desodorante Stefano · Barra 60 g, spazio, para caballero",Stefano,Desodorante,higiene,desodorante,1,pz,69,,,desodorante,1000,0,medio,profeco_qqp,2026-07-31,69
+Pf4d35f9a,"Acondicionador Caprice · Botella 720 ml, especialidades, fuerza acti-ceramidas",Caprice,Acondicionador y Enjuague,higiene,extras,1,pz,48,,,acondicionador,365,0,economico,profeco_qqp,2026-07-31,17
+P8a281e08,"Acondicionador Garnier Fructis · Botella 650 ml, stop caída",Garnier. Fructis,Acondicionador y Enjuague,higiene,extras,1,pz,65,,,acondicionador,365,0,medio,profeco_qqp,2026-07-30,9
+P3072b934,"Acondicionador Herbal Essences · Botella 600 ml, lavanda & aceite de almendras",Herbal Essences,Acondicionador y Enjuague,higiene,extras,1,pz,115,,,acondicionador,365,0,premium,profeco_qqp,2026-07-31,74
+P976618d9,"Acondicionador Pantene · Botella 400 ml, control caída",Pantene,Acondicionador y Enjuague,higiene,extras,1,pz,105,,,acondicionador,365,0,medio,profeco_qqp,2026-07-31,64
+Paf2700d5,"Acondicionador Pantene · Botella 700 ml, restauración",Pantene,Acondicionador y Enjuague,higiene,extras,1,pz,163,,,acondicionador,365,0,premium,profeco_qqp,2026-07-31,84
+Pa9583f33,"Acondicionador Pert · Botella 360 ml, granada + aceite de aguacate/palta",Pert,Acondicionador y Enjuague,higiene,extras,1,pz,45,,,acondicionador,365,0,economico,profeco_qqp,2026-07-30,11
+P6ea68983,"Acondicionador Sedal · Botella 620 ml, ceramidas",Sedal,Acondicionador y Enjuague,higiene,extras,1,pz,90,,,acondicionador,365,0,medio,profeco_qqp,2026-07-31,77
+P744b6ed0,"Cepillo Dental Oral-b Complete · Blister 2 piezas, mediano 40",Oral-b. Complete,Cepillo Dental,higiene,extras,1,pz,35,,,cepillo dental,365,0,economico,profeco_qqp,2026-07-31,50
+P57439563,Cepillo Dental Oral-b Indicator Medio 40 · Blister 2 piezas,Oral-b. Indicator. Medio 40,Cepillo Dental,higiene,extras,1,pz,41,,,cepillo dental,365,0,medio,profeco_qqp,2026-07-31,49
+P6129b6dc,"Cepillo Dental Pro · Blister 3 piezas, doble acción, mediano",Pro,Cepillo Dental,higiene,extras,1,pz,49,,,cepillo dental,365,0,medio,profeco_qqp,2026-07-31,64
+Pbd7a296d,Crema Sólida Atrix Intensive · Frasco 200 ml,Atrix. Intensive,Crema Sólida,higiene,extras,1,pz,123,,,crema,365,0,medio,profeco_qqp,2026-07-31,76
+P60aae73f,Crema Sólida Nivea · Envase 100 ml,Nivea,Crema Sólida,higiene,extras,1,pz,69,,,crema,365,0,economico,profeco_qqp,2026-07-31,40
+P281ba025,Crema Sólida Nivea · Frasco 400 ml,Nivea,Crema Sólida,higiene,extras,1,pz,180,,,crema,365,0,premium,profeco_qqp,2026-07-31,76
+P8629577b,"Crema Sólida Pond´s Clarant B3 · Frasco 400 g, piel balanceada a seca",Pond´s. Clarant B3,Crema Sólida,higiene,extras,1,pz,135,,,crema,365,0,medio,profeco_qqp,2026-07-31,74
+P8ab93c58,"Crema Sólida Pond´s Rejuveness · Frasco 400 g, contra arrugas",Pond´s. Rejuveness,Crema Sólida,higiene,extras,1,pz,135,,,crema,365,0,medio,profeco_qqp,2026-07-31,72
+Pc0a26ba6,Crema Sólida Pond´s S · Frasco 200 g,Pond´s. S,Crema Sólida,higiene,extras,1,pz,95,,,crema,365,0,economico,profeco_qqp,2026-07-31,78
+Pfe2f866a,"Crema corporal Dove · Botella 400 ml, pro-ceramidas, piel seca",Dove,Crema Líquida,higiene,extras,1,pz,145,,,crema corporal,365,0,premium,profeco_qqp,2026-07-31,69
+P3306d598,Crema corporal Goicoechea Diabet Tx · Botella 400 ml,Goicoechea. Diabet Tx,Crema Líquida,higiene,extras,1,pz,155,,,crema corporal,365,0,premium,profeco_qqp,2026-07-31,75
+P6754a8cc,"Crema corporal Johnson´s Baby · Botella 200 ml, para bebé, hidratante, con glicerina",Johnson´s Baby,Crema Líquida,higiene,extras,1,pz,96,,,crema corporal,365,0,economico,profeco_qqp,2026-07-31,49
+P59a00590,"Crema corporal Lubriderm · Botella 400 ml, humectación diaria, piel normal a seca",Lubriderm,Crema Líquida,higiene,extras,1,pz,140,,,crema corporal,365,0,medio,profeco_qqp,2026-07-31,86
+P1180ebd1,"Crema corporal Nivea · Botella 400 ml, express hidration, piel normal",Nivea,Crema Líquida,higiene,extras,1,pz,113,,,crema corporal,365,0,medio,profeco_qqp,2026-07-31,82
+P9e78c67c,"Crema corporal Nivea · Botella 400 ml, soft milk, piel seca",Nivea,Crema Líquida,higiene,extras,1,pz,110,,,crema corporal,365,0,medio,profeco_qqp,2026-07-31,87
+P3c1e6f71,"Crema corporal Palmolive Neutro Balance · Botella 400 ml, piel normal",Palmolive. Neutro Balance,Crema Líquida,higiene,extras,1,pz,75,,,crema corporal,365,0,economico,profeco_qqp,2026-07-31,73
+P14e2eec3,"Crema corporal Vasenol · Botella 400 ml, recuperación esencial",Vasenol,Crema Líquida,higiene,extras,1,pz,98,,,crema corporal,365,0,medio,profeco_qqp,2026-07-31,9
+P03b43aa2,"Espuma de Afeitar Gillette Foamy · Bote 175gr./179 ml, sensitive",Gillette. Foamy,Espuma de Afeitar,higiene,extras,1,pz,94,,,espuma de afeitar,365,0,medio,profeco_qqp,2026-07-31,64
+P1c88b50e,"Espuma de Afeitar Nivea Men · Bote 200 ml, sensitive",Nivea Men,Espuma de Afeitar,higiene,extras,1,pz,98,,,espuma de afeitar,365,0,medio,profeco_qqp,2026-07-31,55
+P680f90d8,"Gel Fijador Ego Black · Envase 220 ml, para caballero",Ego Black,Gel Fijador,higiene,extras,1,pz,25,,,gel,365,0,medio,profeco_qqp,2026-07-31,76
+P7039e2ce,"Gel Fijador Xtreme · Envase 230 ml, profesional (transparente)",Xtreme,Gel Fijador,higiene,extras,1,pz,25,,,gel,365,0,medio,profeco_qqp,2026-07-30,8
+P60c5db04,"Pantiprotectores Always · Caja 16 piezas, diarios, largo extra largos",Always,Pantiprotectores,higiene,extras,1,pz,40,,,pantiprotectores,365,0,medio,profeco_qqp,2026-07-31,57
+P85dd9128,"Pantiprotectores Kotex · Bolsa 92 piezas, largos",Kotex,Pantiprotectores,higiene,extras,1,pz,47,,,pantiprotectores,365,0,premium,profeco_qqp,2026-07-31,60
+P3ff3b240,"Pantiprotectores Saba · Bolsa 28 piezas, diarios multiestilos, ultradelgado",Saba,Pantiprotectores,higiene,extras,1,pz,30,,,pantiprotectores,365,0,medio,profeco_qqp,2026-07-31,67
+Pc8b3918a,"Pantiprotectores Saba · Bolsa 50 piezas, diarios, delicate, regular",Saba,Pantiprotectores,higiene,extras,1,pz,30,,,pantiprotectores,365,0,medio,profeco_qqp,2026-07-31,54
+P4d8077a2,"Protector Solar Banana Boat Dry Balance Sport · Envase 170 g, en spray, fps 50+",Banana Boat. Dry Balance Sport,Protector Solar,higiene,extras,1,pz,245,,,protector solar,365,0,economico,profeco_qqp,2026-07-31,40
+P7db7bf88,"Protector Solar Eclipsol · Caja 125 g, fps 50+",Eclipsol,Protector Solar,higiene,extras,1,pz,441,,,protector solar,365,0,premium,profeco_qqp,2026-07-31,31
+Pe149309b,"Protector Solar Eclipsol · Caja 60 g, fps 50+",Eclipsol,Protector Solar,higiene,extras,1,pz,274,,,protector solar,365,0,economico,profeco_qqp,2026-07-31,11
+P40f74213,"Protector Solar Hawaiian Tropic · Botella 180 ml, en spray, fps 50+",Hawaiian Tropic,Protector Solar,higiene,extras,1,pz,385,,,protector solar,365,0,premium,profeco_qqp,2026-07-31,49
+Pcfdd12fd,"Protector Solar Nivea Sun Babies & Kids · Botella 200 ml, protección & piel sensible, fps 50+",Nivea Sun. Babies & Kids,Protector Solar,higiene,extras,1,pz,299,,,protector solar,365,0,medio,profeco_qqp,2026-07-31,61
+P83f2bba9,"Protector Solar Nivea Sun Kids Swim & Play · Envase 150 ml, hidratante, ultra resistente al agua, fps 50+",Nivea Sun. Kids. Swim & Play,Protector Solar,higiene,extras,1,pz,319,,,protector solar,365,0,premium,profeco_qqp,2026-07-31,46
+Pa9e1696e,"Protector Solar Nivea Sun · Botella 125 ml, fps 50+",Nivea Sun,Protector Solar,higiene,extras,1,pz,176,,,protector solar,365,0,economico,profeco_qqp,2026-07-31,35
+Pdcb0e3ff,"Protector Solar Nivea Sun · Botella 200 ml, especial para piel sensible, fps 50+",Nivea Sun,Protector Solar,higiene,extras,1,pz,299,,,protector solar,365,0,medio,profeco_qqp,2026-07-31,48
+P702895d3,"Protector Solar Nivea Sun · Botella 200 ml, fps 50+",Nivea Sun,Protector Solar,higiene,extras,1,pz,297,,,protector solar,365,0,medio,profeco_qqp,2026-07-31,37
+P9d09a277,"Protector Solar Nivea Sun · Botella 200 ml, sport, rápida absorción, fps 50",Nivea Sun,Protector Solar,higiene,extras,1,pz,297,,,protector solar,365,0,medio,profeco_qqp,2026-07-31,42
+P349e3f5c,"Rastrillos Bic · Paquete con 4, comfort 3, advance",Bic,Rastrillos Desechables,higiene,extras,1,pz,97,,,rastrillos,365,0,medio,profeco_qqp,2026-07-31,50
+P6e4fd71a,"Rastrillos Gillette · Paquete con 2, presto barba 3 (rosa)",Gillette,Rastrillos Desechables,higiene,extras,1,pz,50,,,rastrillos,365,0,economico,profeco_qqp,2026-07-31,56
+P6272c49c,"Rastrillos Gillette · Paquete con 2, presto barba 3, comfort gel, sensitive",Gillette,Rastrillos Desechables,higiene,extras,1,pz,94,,,rastrillos,365,0,medio,profeco_qqp,2026-07-31,37
+P9bfd7e39,"Rastrillos Gillette · Paquete con 2, presto barba 3, comfortgel",Gillette,Rastrillos Desechables,higiene,extras,1,pz,85,,,rastrillos,365,0,medio,profeco_qqp,2026-07-31,65
+P9d46ec36,"Rastrillos Gillette · Paquete con 2, presto barba, 2",Gillette,Rastrillos Desechables,higiene,extras,1,pz,42,,,rastrillos,365,0,economico,profeco_qqp,2026-07-31,57
+P03868e90,"Rastrillos Gillette · Paquete con 2, presto barba, ultra grip, 2",Gillette,Rastrillos Desechables,higiene,extras,1,pz,64,,,rastrillos,365,0,medio,profeco_qqp,2026-07-31,56
+P151b0d3b,"Rastrillos Gillette · Paquete con 2, venus, sensitive",Gillette,Rastrillos Desechables,higiene,extras,1,pz,154,,,rastrillos,365,0,premium,profeco_qqp,2026-07-31,58
+P835f2545,"Rastrillos Gillette · Paquete con 4, presto barba 3, (rosa)",Gillette,Rastrillos Desechables,higiene,extras,1,pz,119,,,rastrillos,365,0,premium,profeco_qqp,2026-07-31,60
+P9ae32aed,"Rastrillos Gillette · Paquete con 4, presto barba 3, comfort gel, movil",Gillette,Rastrillos Desechables,higiene,extras,1,pz,119,,,rastrillos,365,0,premium,profeco_qqp,2026-07-31,60
+P57141673,Rastrillos Perma Sharp Ii · Paquete con 2,Perma Sharp Ii,Rastrillos Desechables,higiene,extras,1,pz,27,,,rastrillos,365,0,economico,profeco_qqp,2026-07-31,48
+Pa3b0d602,"Talco Mexsana · Botella 80 g, desodorante",Mexsana,Talco,higiene,extras,1,pz,77,,,talco,365,0,medio,profeco_qqp,2026-07-31,42
+P5ed506a7,"Talco Rexona Efficient · Botella 100 g, desodorante, original",Rexona. Efficient,Talco,higiene,extras,1,pz,46,,,talco,365,0,medio,profeco_qqp,2026-07-31,62
+Pbf010554,"Tampones Kotex · Caja 12 piezas, unika, regular, flujo moderado",Kotex,Tampones,higiene,extras,1,pz,40,,,tampones,365,0,economico,profeco_qqp,2026-07-31,63
+Pbaf7eb29,"Tampones Kotex · Caja 12 piezas, unika, súper plus, flujo súper abundante",Kotex,Tampones,higiene,extras,1,pz,42,,,tampones,365,0,medio,profeco_qqp,2026-07-31,84
+P51e7f309,"Tampones Kotex · Caja 12 piezas, unika, súper, flujo abundante",Kotex,Tampones,higiene,extras,1,pz,40,,,tampones,365,0,economico,profeco_qqp,2026-07-31,71
+P7c772b53,"Tampones Saba · Caja 10 piezas, regular flujo moderado v-compact",Saba,Tampones,higiene,extras,1,pz,49,,,tampones,365,0,medio,profeco_qqp,2026-07-31,65
+Pdb0d2f57,"Tampones Saba · Caja 10 piezas, super flujo abundante v-compact",Saba,Tampones,higiene,extras,1,pz,54,,,tampones,365,0,premium,profeco_qqp,2026-07-31,67
+P06477097,"Tampones Tampax · Caja 10 piezas, super plus",Tampax,Tampones,higiene,extras,1,pz,56,,,tampones,365,0,premium,profeco_qqp,2026-07-31,67
+P7ba8485b,"Tampones Tampax · Caja 8 piezas, pearl, súper absorción",Tampax,Tampones,higiene,extras,1,pz,45,,,tampones,365,0,medio,profeco_qqp,2026-07-31,54
+P2de92292,"Jabón de Tocador Aurrera · Barra 135 g, aloe vera",Aurrera,Jabón de Tocador,higiene,jabon_corporal,1,pz,5,,,jabon,1000,0,economico,profeco_qqp,2026-07-31,101
+P6a336d8c,Jabón de Tocador Bali Dreams · Barra 135 g,Bali Dreams,Jabón de Tocador,higiene,jabon_corporal,1,pz,5,,,jabon,1000,0,economico,profeco_qqp,2026-07-31,23
+P2b8b13eb,"Jabón de Tocador Dove · Caja con barra 135 g, original",Dove,Jabón de Tocador,higiene,jabon_corporal,1,pz,33,,,jabon,1000,0,premium,profeco_qqp,2026-07-31,88
+P61865f8b,"Jabón de Tocador Escudo · Barra 135 g, antibacterial, (rosa)",Escudo,Jabón de Tocador,higiene,jabon_corporal,1,pz,18,,,jabon,1000,0,medio,profeco_qqp,2026-07-31,71
+P9e4c6910,"Jabón de Tocador Grisi · Caja c/barra 200 g, neutro",Grisi,Jabón de Tocador,higiene,jabon_corporal,1,pz,30,,,jabon,1000,0,premium,profeco_qqp,2026-07-31,87
+P5c1197cf,"Jabón de Tocador Palmolive Naturals · Barra 120 g, sensación humectante, oliva y aloe",Palmolive. Naturals,Jabón de Tocador,higiene,jabon_corporal,1,pz,17,,,jabon,1000,0,medio,profeco_qqp,2026-07-31,79
+P169dae7d,"Jabón de Tocador Palmolive Neutro Balance · Barra 120 g, dermolimpiador",Palmolive. Neutro Balance,Jabón de Tocador,higiene,jabon_corporal,1,pz,28,,,jabon,1000,0,medio,profeco_qqp,2026-07-31,77
+Pd262e099,"Jabón de Tocador Zest · Barra 135 g, aqua",Zest,Jabón de Tocador,higiene,jabon_corporal,1,pz,15,,,jabon,1000,0,medio,profeco_qqp,2026-07-31,82
+Pfcbe1c6e,"Pasta dental Colgate Máxima Protección Anticaries · Tubo 135 ml, sabor original",Colgate. Máxima Protección Anticaries,Crema Dental,higiene,pasta_dental,1.35,pz,40,,,pasta dental,1000,0,economico,profeco_qqp,2026-07-31,66
+P2e79e95a,"Pasta dental Colgate Máxima Protección Anticaries · Tubo 90 ml, sabor original",Colgate. Máxima Protección Anticaries,Crema Dental,higiene,pasta_dental,0.9,pz,27,,,pasta dental,1000,0,medio,profeco_qqp,2026-07-31,80
+Pd8d69484,"Pasta dental Colgate Sensitive · Tubo 73 ml, encías",Colgate. Sensitive,Crema Dental,higiene,pasta_dental,0.73,pz,108,,,pasta dental,1000,0,premium,profeco_qqp,2026-07-31,44
+P6a6d6dc8,"Pasta dental Colgate Triple Acción · Tubo 100 ml, menta original",Colgate. Triple Acción,Crema Dental,higiene,pasta_dental,1,pz,30,,,pasta dental,1000,0,medio,profeco_qqp,2026-07-31,48
+Pbc8a946e,"Pasta dental Colgate · Tubo 75 ml, smiles, liga de la justicia",Colgate,Crema Dental,higiene,pasta_dental,0.75,pz,55,,,pasta dental,1000,0,medio,profeco_qqp,2026-07-31,70
+Pd51e9ddf,"Pasta dental Colgate · Tubo 75 ml, smiles, para niños, mi villano favorito, minions",Colgate,Crema Dental,higiene,pasta_dental,0.75,pz,55,,,pasta dental,1000,0,medio,profeco_qqp,2026-07-31,72
+P976d54b4,"Shampoo Caprice Naturals · Botella 760 ml, aceite herbal",Caprice Naturals,Shampoo,higiene,shampoo,0.76,L,48,,,shampoo,1000,0,economico,profeco_qqp,2026-07-31,82
+Paac28d45,"Shampoo Caprice · Botella 750 ml, especialidades, fuerza acti-ceramidas",Caprice,Shampoo,higiene,shampoo,0.75,L,48,,,shampoo,1000,0,economico,profeco_qqp,2026-07-31,71
+P8812e5a5,"Shampoo Elvive · Botella 680 g, reparación total 5, cabello dañado",Elvive,Shampoo,higiene,shampoo,0.68,L,162,,,shampoo,1000,0,premium,profeco_qqp,2026-07-31,67
+Pa7870138,"Shampoo Folicuré · Botella 700 ml, extra",Folicuré,Shampoo,higiene,shampoo,0.7,L,126,,,shampoo,1000,0,medio,profeco_qqp,2026-07-31,47
+P16f9360e,"Shampoo Folicuré · Botella 700 ml, hidratante, 2 en 1",Folicuré,Shampoo,higiene,shampoo,0.7,L,126,,,shampoo,1000,0,medio,profeco_qqp,2026-07-31,13
+P7e54e65d,"Shampoo Garnier · Botella 650 ml, fructis, fortificante, stop caída",Garnier,Shampoo,higiene,shampoo,0.65,L,65,,,shampoo,1000,0,economico,profeco_qqp,2026-07-31,69
+P9f1b8075,"Shampoo Grisi · Botella 400 ml, manzanilla, aceite de ricino",Grisi,Shampoo,higiene,shampoo,0.4,L,99,,,shampoo,1000,0,premium,profeco_qqp,2026-07-31,77
+P4e040e40,"Shampoo Grisi · Botella 400 ml, manzanilla, gold, cúrcuma",Grisi,Shampoo,higiene,shampoo,0.4,L,103,,,shampoo,1000,0,premium,profeco_qqp,2026-07-31,80
+P4a776420,"Shampoo Head & Shoulders · Botella 375 ml, protección caída",Head & Shoulders,Shampoo,higiene,shampoo,0.375,L,110,,,shampoo,1000,0,premium,profeco_qqp,2026-07-31,79
+P43ef901e,"Shampoo Herbal Essences · Botella 600 ml, lavanda & aceite de almendras",Herbal Essences,Shampoo,higiene,shampoo,0.6,L,121,,,shampoo,1000,0,medio,profeco_qqp,2026-07-31,74
+P2ff1c3f4,"Shampoo Mennen · Botella 700 ml, con proteina, con acondicionador, suave",Mennen,Shampoo,higiene,shampoo,0.7,L,105,,,shampoo,1000,0,medio,profeco_qqp,2026-07-31,74
+P8adc8566,"Shampoo Palmolive Optims · Botella 700 ml, 4, acondicionamiento extra intensivo",Palmolive Optims,Shampoo,higiene,shampoo,0.7,L,74,,,shampoo,1000,0,medio,profeco_qqp,2026-07-31,84
+P8aefa13a,"Shampoo Pantene · Botella 400 ml, control caída",Pantene,Shampoo,higiene,shampoo,0.4,L,105,,,shampoo,1000,0,premium,profeco_qqp,2026-07-31,60
+P3e5551d5,"Shampoo Pantene · Botella 700 ml, restauración",Pantene,Shampoo,higiene,shampoo,0.7,L,163,,,shampoo,1000,0,medio,profeco_qqp,2026-07-31,84
+P6d8436a9,"Shampoo Pert · Botella 650 ml, aceite de oliva",Pert,Shampoo,higiene,shampoo,0.65,L,45,,,shampoo,1000,0,economico,profeco_qqp,2026-07-31,78
+P77e8c9af,"Shampoo Savilé · Botella 700 ml, 2 en 1, hidratación (pulpa de sábila y aguacate)",Savilé,Shampoo,higiene,shampoo,0.7,L,40,,,shampoo,1000,0,economico,profeco_qqp,2026-07-30,12
+P8ed1f82f,"Shampoo Sedal · Botella 620 ml, ceramidas",Sedal,Shampoo,higiene,shampoo,0.62,L,90,,,shampoo,1000,0,medio,profeco_qqp,2026-07-31,82
+P4a4adf18,"Shampoo Vanart · Botella 750 ml, clásico, hierbas",Vanart,Shampoo,higiene,shampoo,0.75,L,35,,,shampoo,1000,0,economico,profeco_qqp,2026-07-31,70
+P0718d48f,"Toallas femeninas Always · Bolsa 22 piezas, seda-sec, extra largas con alas, flujo súper abundante",Always,Toalla Femenina,higiene,toallas_femeninas,22,pz,80,,,toallas femeninas,1000,0,premium,profeco_qqp,2026-07-31,25
+P9d42ab3a,"Toallas femeninas Always · Bolsa 22 piezas, suave, extra largas con alas, flujo súper abundante",Always,Toalla Femenina,higiene,toallas_femeninas,22,pz,80,,,toallas femeninas,1000,0,premium,profeco_qqp,2026-07-31,23
+Peee664ea,"Toallas femeninas Kotex · Bolsa 10 piezas, maxi nocturna, extra larga con alas, flujo maxi abundante",Kotex,Toalla Femenina,higiene,toallas_femeninas,10,pz,37,,,toallas femeninas,1000,0,premium,profeco_qqp,2026-07-31,68
+P0917f87c,"Toallas femeninas Kotex · Bolsa 10 piezas, nocturna, extra larga con alas, flujo súper abundante",Kotex,Toalla Femenina,higiene,toallas_femeninas,10,pz,27,,,toallas femeninas,1000,0,medio,profeco_qqp,2026-07-31,61
+P91a658da,"Toallas femeninas Kotex · Bolsa 10 piezas, unika, nocturna, con alas, flujo súper abundante",Kotex,Toalla Femenina,higiene,toallas_femeninas,10,pz,26,,,toallas femeninas,1000,0,medio,profeco_qqp,2026-07-31,76
+P301482b4,"Toallas femeninas Kotex · Bolsa 16 piezas, regular con alas, flujo abundante",Kotex,Toalla Femenina,higiene,toallas_femeninas,16,pz,25,,,toallas femeninas,1000,0,economico,profeco_qqp,2026-07-31,77
+P87e4ca28,"Toallas femeninas Kotex · Bolsa 40 piezas, regular con alas, flujo abundante",Kotex,Toalla Femenina,higiene,toallas_femeninas,40,pz,67,,,toallas femeninas,1000,0,economico,profeco_qqp,2026-07-31,53
+Pa1363fa9,"Toallas femeninas Naturella · Bolsa 32 piezas, nocturna, extra largas, flujo super abundante",Naturella,Toalla Femenina,higiene,toallas_femeninas,32,pz,55,,,toallas femeninas,1000,0,economico,profeco_qqp,2026-07-31,28
+P10aba0c3,"Toallas femeninas Naturella · Bolsa 32 piezas, regulares con alas, flujo abundante",Naturella,Toalla Femenina,higiene,toallas_femeninas,32,pz,76,,,toallas femeninas,1000,0,medio,profeco_qqp,2026-07-31,20
+P81164206,"Toallas femeninas Naturella · Bolsa 32 piezas, regulares sin alas, flujo abundante",Naturella,Toalla Femenina,higiene,toallas_femeninas,32,pz,76,,,toallas femeninas,1000,0,medio,profeco_qqp,2026-07-31,71
+P35e2e4da,"Toallas femeninas Saba · Bolsa 10 piezas, buenas noches, ultra invisible, nocturna, extra largas con alas, flujo súper abundante",Saba,Toalla Femenina,higiene,toallas_femeninas,10,pz,30,,,toallas femeninas,1000,0,premium,profeco_qqp,2026-07-31,68
+Pe5fd2c8d,"Toallas femeninas Saba · Bolsa 12 piezas, ultra invisible, ultradelgada, larga con alas, flujo abundante",Saba,Toalla Femenina,higiene,toallas_femeninas,12,pz,35,,,toallas femeninas,1000,0,medio,profeco_qqp,2026-07-31,78
+P7322ee56,"Toallas femeninas Saba · Bolsa 12 piezas, v-sport, ultra delgada larga, con alas flujo abundante",Saba,Toalla Femenina,higiene,toallas_femeninas,12,pz,45,,,toallas femeninas,1000,0,premium,profeco_qqp,2026-07-31,77
+P799cf68f,"Toallas femeninas Saba · Bolsa 14 piezas, intima clip, regular con alas, flujo abundante",Saba,Toalla Femenina,higiene,toallas_femeninas,14,pz,29,,,toallas femeninas,1000,0,medio,profeco_qqp,2026-07-31,63
+Pbbcc8701,"Toallas femeninas Saba · Bolsa 14 piezas, invisible, delgada con alas, flujo abundante",Saba,Toalla Femenina,higiene,toallas_femeninas,14,pz,29,,,toallas femeninas,1000,0,medio,profeco_qqp,2026-07-31,87
+Pcd330eab,"Toallas femeninas Saba · Bolsa 14 piezas, ultra invisible, ultradelgada con alas, flujo abundante",Saba,Toalla Femenina,higiene,toallas_femeninas,14,pz,37,,,toallas femeninas,1000,0,medio,profeco_qqp,2026-07-31,78
+Pb7e84b23,"Toallas femeninas Saba · Bolsa 32 piezas, invisible, delgada con alas, flujo abundante",Saba,Toalla Femenina,higiene,toallas_femeninas,32,pz,60,,,toallas femeninas,1000,0,economico,profeco_qqp,2026-07-31,79
+P840d561b,"Mantequilla Alpura · Barra 220 g, sin sal",Alpura,Mantequilla,lacteos_huevo,aceite,0.22,L,52,lacteos,,mantequilla,60,0,economico,profeco_qqp,2026-07-31,53
+P64063bd7,"Mantequilla Alpura · Barra 90 g, sin sal",Alpura,Mantequilla,lacteos_huevo,aceite,0.09,L,22,lacteos,,mantequilla,60,0,medio,profeco_qqp,2026-07-31,51
+P947749ac,"Mantequilla Gloria · Barra 225 g, sin sal",Gloria,Mantequilla,lacteos_huevo,aceite,0.225,L,68,lacteos,,mantequilla,60,0,medio,profeco_qqp,2026-07-31,62
+P2d5ebcc0,"Mantequilla Gloria · Barra 90 g, sin sal",Gloria,Mantequilla,lacteos_huevo,aceite,0.09,L,30,lacteos,,mantequilla,60,0,premium,profeco_qqp,2026-07-31,79
+P13100912,"Mantequilla Great Value · Barra 90 g, sin sal",Great Value,Mantequilla,lacteos_huevo,aceite,0.09,L,21,lacteos,,mantequilla,60,0,economico,profeco_qqp,2026-07-31,55
+Pc2c8de0e,"Mantequilla Lala · Barra 90 g, sin sal",Lala,Mantequilla,lacteos_huevo,aceite,0.09,L,28,lacteos,,mantequilla,60,0,medio,profeco_qqp,2026-07-31,66
+Pddeb5461,"Margarina Aurrera · Barra 90 g, sin sal",Aurrera,Margarina,lacteos_huevo,aceite,0.09,L,11.5,,lacteos;soya,margarina,90,0,economico,profeco_qqp,2026-07-31,50
+P3ea4379f,"Margarina Iberia 5 en 1 · Barra 245 g, sin sal",Iberia. 5 en 1,Margarina,lacteos_huevo,aceite,0.245,L,35,,lacteos;soya,margarina,90,0,medio,profeco_qqp,2026-07-31,68
+Pc249ef62,"Margarina Iberia 5 en 1 · Barra 90 g, sin sal",Iberia. 5 en 1,Margarina,lacteos_huevo,aceite,0.09,L,16,,lacteos;soya,margarina,90,0,medio,profeco_qqp,2026-07-31,74
+Pbd15cab1,"Margarina La Villita · Barra 90 g, sin sal",La Villita,Margarina,lacteos_huevo,aceite,0.09,L,12,,lacteos;soya,margarina,90,0,economico,profeco_qqp,2026-07-31,16
+P4f9180f4,"Margarina Lala 4 en 1 · Barra 90 g, sin sal",Lala. 4 en 1,Margarina,lacteos_huevo,aceite,0.09,L,17,,lacteos;soya,margarina,90,0,medio,profeco_qqp,2026-07-29,8
+P3f3528d7,"Margarina Primavera Chantilly · Caja plástico 190 g, con sal",Primavera Chantilly,Margarina,lacteos_huevo,aceite,0.19,L,45,,lacteos;soya,margarina,90,0,premium,profeco_qqp,2026-07-31,77
+P1b4f24cb,"Margarina Primavera Chantilly · Caja plástico 190 g, sin sal",Primavera Chantilly,Margarina,lacteos_huevo,aceite,0.19,L,45,,lacteos;soya,margarina,90,0,premium,profeco_qqp,2026-07-31,68
+Pb2f5e53b,"Margarina Primavera Chantilly · Caja plástico 400 g, sin sal",Primavera Chantilly,Margarina,lacteos_huevo,aceite,0.4,L,85,,lacteos;soya,margarina,90,0,medio,profeco_qqp,2026-07-31,80
+P0c5f3d9c,"Crema Batida Chantilly · Bote 500 ml, vegetal",Chantilly,Crema Batida,lacteos_huevo,extras,1,pz,32,,lacteos;soya,crema batida,365,0,medio,profeco_qqp,2026-07-31,65
+P723a3758,Huevo Aurrera · Paquete c/12 blanco,Aurrera,Huevo,lacteos_huevo,huevo,12,pz,26,huevo,,huevo,30,0,economico,profeco_qqp,2026-07-31,64
+P65e7269e,Huevo Aurrera · Paquete c/18 blanco,Aurrera,Huevo,lacteos_huevo,huevo,18,pz,43,huevo,,huevo,30,0,medio,profeco_qqp,2026-07-31,157
+P0a8ccd1e,Huevo Bachoco · Paquete c/12 blanco,Bachoco,Huevo,lacteos_huevo,huevo,12,pz,28,huevo,,huevo,30,0,medio,profeco_qqp,2026-07-31,59
+Pf964bafb,Huevo Bachoco · Paquete c/12 rojo,Bachoco,Huevo,lacteos_huevo,huevo,12,pz,39,huevo,,huevo,30,0,premium,profeco_qqp,2026-07-31,28
+P7d94baf3,Huevo Bachoco · Paquete c/18 blanco,Bachoco,Huevo,lacteos_huevo,huevo,18,pz,40,huevo,,huevo,30,0,economico,profeco_qqp,2026-07-31,143
+Pd5142dae,Huevo Bachoco · Paquete c/18 rojo,Bachoco,Huevo,lacteos_huevo,huevo,18,pz,55,huevo,,huevo,30,0,premium,profeco_qqp,2026-07-31,28
+P20c48870,Huevo El Calvario · Paquete c/12 blanco,El Calvario,Huevo,lacteos_huevo,huevo,12,pz,27,huevo,,huevo,30,0,medio,profeco_qqp,2026-07-31,47
+Pfe53b84b,Huevo El Calvario · Paquete c/18 blanco,El Calvario,Huevo,lacteos_huevo,huevo,18,pz,37,huevo,,huevo,30,0,economico,profeco_qqp,2026-07-31,54
+Pc6568722,Huevo El Calvario · Paquete c/30 blanco,El Calvario,Huevo,lacteos_huevo,huevo,30,pz,67,huevo,,huevo,30,0,economico,profeco_qqp,2026-07-31,50
+P55170b78,Huevo Guadalupe · Paquete c/12 blanco,Guadalupe,Huevo,lacteos_huevo,huevo,12,pz,34,huevo,,huevo,30,0,premium,profeco_qqp,2026-07-31,32
+P0a9928e6,Huevo Guadalupe · Paquete c/18 blanco,Guadalupe,Huevo,lacteos_huevo,huevo,18,pz,47,huevo,,huevo,30,0,premium,profeco_qqp,2026-07-31,37
+P2889b4c1,Huevo Ojai · Paquete c/18 blanco,Ojai,Huevo,lacteos_huevo,huevo,18,pz,59,huevo,,huevo,30,0,premium,profeco_qqp,2026-07-29,8
+P6de09ef9,Huevo San Juan · Paquete c/12 blanco,San Juan,Huevo,lacteos_huevo,huevo,12,pz,27,huevo,,huevo,30,0,medio,profeco_qqp,2026-07-31,69
+Pc889d7e8,Huevo San Juan · Paquete c/18 blanco,San Juan,Huevo,lacteos_huevo,huevo,18,pz,42,huevo,,huevo,30,0,medio,profeco_qqp,2026-07-31,147
+P4673f37c,Huevo San Juan · Paquete c/30 blanco,San Juan,Huevo,lacteos_huevo,huevo,30,pz,59,huevo,,huevo,30,0,economico,profeco_qqp,2026-07-31,62
+P88bc1e90,Huevo Tehuacán · Paquete c/12 blanco,Tehuacán,Huevo,lacteos_huevo,huevo,12,pz,26,huevo,,huevo,30,0,economico,profeco_qqp,2026-07-31,27
+P9b396728,Huevo Tehuacán · Paquete c/18 blanco,Tehuacán,Huevo,lacteos_huevo,huevo,18,pz,41,huevo,,huevo,30,0,medio,profeco_qqp,2026-07-31,28
+Pabf7261b,Huevo Tehuacán · Paquete c/30 blanco,Tehuacán,Huevo,lacteos_huevo,huevo,30,pz,70,huevo,,huevo,30,0,medio,profeco_qqp,2026-07-31,25
+P19fcf6f7,"Leche Alpura Clásica · Caja 1 L, parcialmente descremada, azul",Alpura. Clásica,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,32,lacteos,,leche,90,0,medio,profeco_qqp,2026-07-31,85
+Pf25139ce,"Leche Alpura Clásica · Caja 200 ml, parcialmente descremada",Alpura. Clásica,Leche Ultrapasteurizada,lacteos_huevo,leche,0.2,L,9,lacteos,,leche,90,0,premium,profeco_qqp,2026-07-31,78
+P287cfe9e,"Leche Alpura Vaquitas · Caja 200 ml, semidescremada, chocopower, sabor chocolate",Alpura. Vaquitas,Leche Ultrapasteurizada,lacteos_huevo,leche,0.2,L,9.5,lacteos,,leche,90,0,premium,profeco_qqp,2026-07-30,11
+Pe9a3f39d,"Leche Alpura · Caja 1 L, parcialmente descremada, light",Alpura,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,32,lacteos,,leche,90,0,medio,profeco_qqp,2026-07-31,85
+P677192ec,"Leche Alpura · Caja 1 L, parcialmente descremada, semi",Alpura,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,32,lacteos,,leche,90,0,medio,profeco_qqp,2026-07-31,79
+P19efbf9c,"Leche Great Value · Envase o caja 1 L, entera",Great Value,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,20,lacteos,,leche,90,0,economico,profeco_qqp,2026-07-31,94
+Pc3f95542,"Leche Lala · Caja 1 L, entera",Lala,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,29,lacteos,,leche,90,0,medio,profeco_qqp,2026-07-31,189
+Pfb959f6f,"Leche Lala · Caja 1 L, parcialmente descremada, light, baja en grasa",Lala,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,29,lacteos,,leche,90,0,medio,profeco_qqp,2026-07-31,69
+P418843ff,"Leche Lala · Caja 1 L, semidescremada, reducida en grasa",Lala,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,29,lacteos,,leche,90,0,medio,profeco_qqp,2026-07-31,88
+P60bf1277,"Leche San Marcos · Caja 1 L, entera",San Marcos,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,28,lacteos,,leche,90,0,economico,profeco_qqp,2026-07-31,62
+Pfb9f4803,"Leche San Marcos · Caja 1 L, semidescremada",San Marcos,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,28,lacteos,,leche,90,0,economico,profeco_qqp,2026-07-30,25
+P9794ddce,"Leche Santa Clara · Caja 1 L, entera",Santa Clara,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,36,lacteos,,leche,90,0,premium,profeco_qqp,2026-07-31,190
+P6d5da8eb,"Leche Santa Clara · Caja 1 L, light",Santa Clara,Leche Ultrapasteurizada,lacteos_huevo,leche,1,L,36,lacteos,,leche,90,0,premium,profeco_qqp,2026-07-31,73
+P98436024,"Leche fresca Alpura Clásica · Envase o caja 1 L, entera",Alpura. Clásica,Leche Pasteurizada,lacteos_huevo,leche,1,L,27,lacteos,,leche,10,0,economico,profeco_qqp,2026-07-31,20
+P0516dab2,"Leche fresca Lala · Caja 1 L, entera",Lala,Leche Pasteurizada,lacteos_huevo,leche,1,L,33,lacteos,,leche,10,0,medio,profeco_qqp,2026-07-31,46
+P8ea782e8,"Leche fresca Lala · Caja 1 L, semidescremada, deslactosada",Lala,Leche Pasteurizada,lacteos_huevo,leche,1,L,35,lacteos,,leche,10,0,medio,profeco_qqp,2026-07-31,18
+Padba68e9,"Producto Lácteo Nutri · Caja 1 L, ultrapasteurizada, con grasa vegetal, clásica",Nutri,Producto Lácteo,lacteos_huevo,leche,1,L,19,lacteos,soya,leche;producto lacteo,90,0,medio,profeco_qqp,2026-07-31,80
+P3651eb49,Crema Alpura · Bote 426 ml,Alpura,Crema,lacteos_huevo,queso_yogur,0.426,kg,42,lacteos,,crema,20,0,medio,profeco_qqp,2026-07-31,69
+P2310e7d6,"Crema Alpura · Bote 426 ml, reducida en grasa",Alpura,Crema,lacteos_huevo,queso_yogur,0.426,kg,47,lacteos,,crema,20,0,medio,profeco_qqp,2026-07-31,10
+P4c910bf8,Crema Alpura · Bote 450 ml,Alpura,Crema,lacteos_huevo,queso_yogur,0.45,kg,42,lacteos,,crema,20,0,economico,profeco_qqp,2026-07-31,14
+P7433549d,Crema Alpura · Vaso 200 ml,Alpura,Crema,lacteos_huevo,queso_yogur,0.2,kg,24,lacteos,,crema,20,0,premium,profeco_qqp,2026-07-31,30
+P685766b6,Crema Lala · Bote 417 g,Lala,Crema,lacteos_huevo,queso_yogur,0.417,kg,41,lacteos,,crema,20,0,economico,profeco_qqp,2026-07-31,88
+P20d11a2f,"Crema Lala · Bote 417 g, reducida en grasa",Lala,Crema,lacteos_huevo,queso_yogur,0.417,kg,45,lacteos,,crema,20,0,medio,profeco_qqp,2026-07-31,75
+P00b9aaad,Crema Lala · Vaso 196 g,Lala,Crema,lacteos_huevo,queso_yogur,0.196,kg,24,lacteos,,crema,20,0,premium,profeco_qqp,2026-07-31,82
+P2b63fcfc,Queso Americano Fud · Paquete 140 g,Fud,Queso Americano,lacteos_huevo,queso_yogur,0.14,kg,30,lacteos,,queso,30,0,medio,profeco_qqp,2026-07-31,46
+Pc76cab27,"Queso Americano Kraft Singles · Paquete 144 g, 8 rebanadas",Kraft. Singles,Queso Americano,lacteos_huevo,queso_yogur,0.144,kg,35,lacteos,,queso,30,0,medio,profeco_qqp,2026-07-31,65
+P30f3d3b5,"Queso Americano La Villita · Paquete 175 g, 10 rebanadas, imitación queso americano",La Villita,Queso Americano,lacteos_huevo,queso_yogur,0.175,kg,23,lacteos,soya,queso;imitacion,30,0,economico,profeco_qqp,2026-07-31,71
+P16dd940d,"Queso Americano Lala · Paquete 144 g, 8 rebanadas",Lala,Queso Americano,lacteos_huevo,queso_yogur,0.144,kg,35,lacteos,,queso,30,0,medio,profeco_qqp,2026-07-31,75
+Pf2cbf083,"Queso Americano Nutri · Paquete 140 g, 8 rebanadas, imitación queso americano",Nutri,Queso Americano,lacteos_huevo,queso_yogur,0.14,kg,23,lacteos,soya,queso;imitacion,30,0,economico,profeco_qqp,2026-07-31,65
+P0b41cbff,"Queso Americano Zwan · Paquete 144 g, queso procesado",Zwan,Queso Americano,lacteos_huevo,queso_yogur,0.144,kg,31,lacteos,,queso,30,0,medio,profeco_qqp,2026-07-29,10
+P8ade27d7,"Queso Fresco La Villita · 1 kg, granel, imitación queso fresco",La Villita,Queso Fresco,lacteos_huevo,queso_yogur,1,kg,221,lacteos,soya,queso;imitacion,12,0,medio,profeco_qqp,2026-07-31,21
+Pc6d85ec9,Queso Fresco Zwan Premium · Paquete 360 g,Zwan. Premium,Queso Fresco,lacteos_huevo,queso_yogur,0.36,kg,63,lacteos,,queso,12,0,medio,profeco_qqp,2026-07-31,49
+Pbee6a09f,"Queso Manchego Caperucita · 1 kg, granel",Caperucita,Queso Manchego,lacteos_huevo,queso_yogur,1,kg,260,lacteos,,queso,20,0,medio,profeco_qqp,2026-07-31,24
+P92069199,"Queso Manchego El Ciervo · 1 kg, granel",El Ciervo,Queso Manchego,lacteos_huevo,queso_yogur,1,kg,223,lacteos,,queso,20,0,economico,profeco_qqp,2026-07-31,35
+Pdf821ee2,"Queso Manchego Esmeralda · 1 kg, granel",Esmeralda,Queso Manchego,lacteos_huevo,queso_yogur,1,kg,284,lacteos,,queso,20,0,premium,profeco_qqp,2026-07-31,44
+P8a063919,"Queso Manchego La Villita · 1 kg, granel",La Villita,Queso Manchego,lacteos_huevo,queso_yogur,1,kg,244,lacteos,,queso,20,0,medio,profeco_qqp,2026-07-31,54
+P77087a5f,"Queso Manchego La Villita · Paquete 400 g, rebanado",La Villita,Queso Manchego,lacteos_huevo,queso_yogur,0.4,kg,88,lacteos,,queso,20,0,economico,profeco_qqp,2026-07-31,73
+Pd72b4da7,Queso Manchego Lala · Paquete 400 g,Lala,Queso Manchego,lacteos_huevo,queso_yogur,0.4,kg,125,lacteos,,queso,20,0,premium,profeco_qqp,2026-07-31,56
+P471f03f1,"Queso Manchego Lala · Paquete 400 g, rebanado",Lala,Queso Manchego,lacteos_huevo,queso_yogur,0.4,kg,94,lacteos,,queso,20,0,medio,profeco_qqp,2026-07-31,50
+P4afc1000,Queso Manchego Noche Buena · Paquete 400 g,Noche Buena,Queso Manchego,lacteos_huevo,queso_yogur,0.4,kg,116,lacteos,,queso,20,0,premium,profeco_qqp,2026-07-31,51
+Peedfe43a,"Queso Manchego Noche Buena · Paquete 400 g, rebanado",Noche Buena,Queso Manchego,lacteos_huevo,queso_yogur,0.4,kg,105,lacteos,,queso,20,0,medio,profeco_qqp,2026-07-31,62
+Pc2518b26,"Queso Manchego Zwan Premium · Paquete 400 g, rebanado",Zwan. Premium,Queso Manchego,lacteos_huevo,queso_yogur,0.4,kg,88,lacteos,,queso,20,0,economico,profeco_qqp,2026-07-31,56
+Pb173f0df,"Queso Oaxaca El Ciervo · 1 kg, granel",El Ciervo,Queso Oaxaca,lacteos_huevo,queso_yogur,1,kg,245,lacteos,,queso,20,0,medio,profeco_qqp,2026-07-31,28
+P18e78cca,"Queso Oaxaca Esmeralda · 1 kg, granel",Esmeralda,Queso Oaxaca,lacteos_huevo,queso_yogur,1,kg,274,lacteos,,queso,20,0,premium,profeco_qqp,2026-07-31,33
+Pe30af14b,Queso Oaxaca Esmeralda · Paquete 400 g,Esmeralda,Queso Oaxaca,lacteos_huevo,queso_yogur,0.4,kg,102,lacteos,,queso,20,0,premium,profeco_qqp,2026-07-31,52
+P3fefec9a,"Queso Oaxaca Franja · 1 kg, granel, imitación queso oaxaca",Franja,Queso Oaxaca,lacteos_huevo,queso_yogur,1,kg,204,lacteos,soya,queso;imitacion,20,0,medio,profeco_qqp,2026-07-31,39
+P6e79207c,Queso Oaxaca Fud · Paquete 400 g,Fud,Queso Oaxaca,lacteos_huevo,queso_yogur,0.4,kg,80,lacteos,,queso,20,0,economico,profeco_qqp,2026-07-31,44
+P7524646c,"Queso Oaxaca La Villita · 1 kg, granel, imitación queso oaxaca",La Villita,Queso Oaxaca,lacteos_huevo,queso_yogur,1,kg,204,lacteos,soya,queso;imitacion,20,0,medio,profeco_qqp,2026-07-31,28
+P6689e518,Queso Oaxaca La Villita · Paquete 400 g,La Villita,Queso Oaxaca,lacteos_huevo,queso_yogur,0.4,kg,75,lacteos,,queso,20,0,economico,profeco_qqp,2026-07-31,70
+Pae8f098a,Queso Oaxaca Lala · Paquete 400 g,Lala,Queso Oaxaca,lacteos_huevo,queso_yogur,0.4,kg,89,lacteos,,queso,20,0,medio,profeco_qqp,2026-07-31,61
+Pe6df173d,Queso Oaxaca Los Volcanes · Bote 400 g,Los Volcanes,Queso Oaxaca,lacteos_huevo,queso_yogur,0.4,kg,89,lacteos,,queso,20,0,medio,profeco_qqp,2026-07-31,30
+P13cd6f7d,Queso Oaxaca Zwan · Paquete 400 g,Zwan,Queso Oaxaca,lacteos_huevo,queso_yogur,0.4,kg,99,lacteos,,queso,20,0,premium,profeco_qqp,2026-07-31,53
+P53026371,"Queso Panela Caperucita · 1 kg, granel",Caperucita,Queso Panela,lacteos_huevo,queso_yogur,1,kg,311,lacteos,,queso,15,0,premium,profeco_qqp,2026-07-31,15
+P4e14accc,"Queso Panela El Ciervo · 1 kg, granel",El Ciervo,Queso Panela,lacteos_huevo,queso_yogur,1,kg,202,lacteos,,queso,15,0,medio,profeco_qqp,2026-07-31,24
+P18fe848c,"Queso Panela Esmeralda · 1 kg, granel",Esmeralda,Queso Panela,lacteos_huevo,queso_yogur,1,kg,230,lacteos,,queso,15,0,premium,profeco_qqp,2026-07-31,33
+Pfc5ac882,Queso Panela Esmeralda · Paquete 400 g,Esmeralda,Queso Panela,lacteos_huevo,queso_yogur,0.4,kg,79,lacteos,,queso,15,0,medio,profeco_qqp,2026-07-31,69
+P97271473,"Queso Panela Fud · 1 kg, granel",Fud,Queso Panela,lacteos_huevo,queso_yogur,1,kg,212,lacteos,,queso,15,0,medio,profeco_qqp,2026-07-31,32
+P91a91a89,Queso Panela Fud · Paquete 400 g,Fud,Queso Panela,lacteos_huevo,queso_yogur,0.4,kg,77,lacteos,,queso,15,0,economico,profeco_qqp,2026-07-31,63
+Pfd81d328,"Queso Panela La Villita · 1 kg, granel, imitación queso panela canasto",La Villita,Queso Panela,lacteos_huevo,queso_yogur,1,kg,184,lacteos,soya,queso;imitacion,15,0,economico,profeco_qqp,2026-07-31,37
+P720b8262,"Queso Panela La Villita · Paquete 400 g, (2 pack)",La Villita,Queso Panela,lacteos_huevo,queso_yogur,0.4,kg,70,lacteos,,queso,15,0,economico,profeco_qqp,2026-07-31,65
+P0c41512a,Queso Panela Lala · Paquete 400 g,Lala,Queso Panela,lacteos_huevo,queso_yogur,0.4,kg,90,lacteos,,queso,15,0,premium,profeco_qqp,2026-07-31,8
+P6de6cbe9,Queso Panela Los Volcanes · Bote 400 g,Los Volcanes,Queso Panela,lacteos_huevo,queso_yogur,0.4,kg,86,lacteos,,queso,15,0,medio,profeco_qqp,2026-07-31,37
+P4197c1d3,Queso Panela Zwan Premium · Paquete 400 g,Zwan. Premium,Queso Panela,lacteos_huevo,queso_yogur,0.4,kg,83,lacteos,,queso,15,0,medio,profeco_qqp,2026-07-31,57
+P4fa97809,"Yogur Alpura · Bote 900 g, fresa",Alpura,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,45,lacteos,nueces;gluten;soya,yogur,20,0,medio,profeco_qqp,2026-07-31,66
+Pc5618b57,"Yogur Alpura · Bote 900 g, natural, sin azúcar",Alpura,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,50,lacteos,nueces;gluten;soya,yogur,20,0,medio,profeco_qqp,2026-07-31,45
+P686b740b,"Yogur Alpura · Envase 220 g, bebible, fresa",Alpura,Yoghurt,lacteos_huevo,queso_yogur,0.22,kg,12.5,lacteos,nueces;gluten;soya,yogur,20,0,medio,profeco_qqp,2026-07-31,68
+Pae5ac527,"Yogur Alpura · Vaso 120 g, fresa",Alpura,Yoghurt,lacteos_huevo,queso_yogur,0.12,kg,8,lacteos,nueces;gluten;soya,yogur,20,0,premium,profeco_qqp,2026-07-31,63
+P384c8237,"Yogur Danone Activia · Bote 900 g, ciruela pasa, deslactosado",Danone. Activia,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,67,lacteos,nueces;gluten;soya,yogur,20,0,premium,profeco_qqp,2026-07-31,72
+Pf4c3adf1,"Yogur Danone · Bote 900 g, frutas selectas, con trozos de fresa",Danone,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,56,lacteos,nueces;gluten;soya,yogur,20,0,medio,profeco_qqp,2026-07-31,63
+Pb4da1c52,"Yogur Danone · Bote 900 g, natural, sin azúcar añadida",Danone,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,49,lacteos,nueces;gluten;soya,yogur,20,0,medio,profeco_qqp,2026-07-31,53
+P40949666,"Yogur Danone · Bote 900 g, sabor fresa, sin trozos",Danone,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,42,lacteos,nueces;gluten;soya,yogur,20,0,economico,profeco_qqp,2026-07-31,73
+Pc54d1191,"Yogur Danone · Envase 220 g, bebible, fresa",Danone,Yoghurt,lacteos_huevo,queso_yogur,0.22,kg,13,lacteos,nueces;gluten;soya,yogur,20,0,medio,profeco_qqp,2026-07-31,83
+P77ec6b0d,"Yogur Lala · Bote 900 g, fresa",Lala,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,39,lacteos,nueces;gluten;soya,yogur,20,0,economico,profeco_qqp,2026-07-31,72
+Pcfd8d3a3,"Yogur Lala · Bote 900 g, natural, sin azúcar",Lala,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,54,lacteos,nueces;gluten;soya,yogur,20,0,medio,profeco_qqp,2026-07-31,59
+Pe3fbfa25,"Yogur Lala · Envase 220 g, bebible, fresa",Lala,Yoghurt,lacteos_huevo,queso_yogur,0.22,kg,9,lacteos,nueces;gluten;soya,yogur,20,0,economico,profeco_qqp,2026-07-31,80
+Pfc1ad4f5,"Yogur Lala · Vaso 120 g, fresa",Lala,Yoghurt,lacteos_huevo,queso_yogur,0.12,kg,6,lacteos,nueces;gluten;soya,yogur,20,0,medio,profeco_qqp,2026-07-31,70
+Pe96fbc94,"Yogur Lala · Vaso 120 g, natural endulzado, griego",Lala,Yoghurt,lacteos_huevo,queso_yogur,0.12,kg,13,lacteos,nueces;gluten;soya,yogur,20,0,premium,profeco_qqp,2026-07-31,65
+P2cc2a83d,"Yogur Lala · Vaso 120 g, natural, endulzado",Lala,Yoghurt,lacteos_huevo,queso_yogur,0.12,kg,6,lacteos,nueces;gluten;soya,yogur,20,0,medio,profeco_qqp,2026-07-31,37
+P9b4bec31,"Yogur Nutri · Bote 900 g, fresa",Nutri,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,36,lacteos,nueces;gluten;soya,yogur,20,0,economico,profeco_qqp,2026-07-31,72
+P0c6abcd4,"Yogur Nutri · Vaso 120 g, fresa",Nutri,Yoghurt,lacteos_huevo,queso_yogur,0.12,kg,4.5,lacteos,nueces;gluten;soya,yogur,20,0,economico,profeco_qqp,2026-07-31,8
+P8558a041,"Yogur Oikos · Bote 900 g, natural con endulzantes, griego",Oikos,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,85,lacteos,nueces;gluten;soya,yogur,20,0,premium,profeco_qqp,2026-07-31,67
+P3bbb39a0,"Yogur Oikos · Bote 900 g, natural, deslactosado, sin azúcar añadida, griego",Oikos,Yoghurt,lacteos_huevo,queso_yogur,0.9,kg,95,lacteos,nueces;gluten;soya,yogur,20,0,premium,profeco_qqp,2026-07-31,62
+Pf9abac02,"Yogur Yoplait · Bote 1 kg, fresa",Yoplait,Yoghurt,lacteos_huevo,queso_yogur,1,kg,43.5,lacteos,nueces;gluten;soya,yogur,20,0,economico,profeco_qqp,2026-07-30,17
+P562013df,"Yogur Yoplait · Bote 1 kg, natural, bajo en grasa, 0% azúcar añadida, griego",Yoplait,Yoghurt,lacteos_huevo,queso_yogur,1,kg,95,lacteos,nueces;gluten;soya,yogur,20,0,premium,profeco_qqp,2026-07-31,54
+P407cb243,"Yogur Yoplait · Bote 1 kg, sabor natural",Yoplait,Yoghurt,lacteos_huevo,queso_yogur,1,kg,47,lacteos,nueces;gluten;soya,yogur,20,0,economico,profeco_qqp,2026-07-31,54
+Pd1e42343,"Yogur Yoplait · Bote de 1 kg, natural, bajo en grasa, griego",Yoplait,Yoghurt,lacteos_huevo,queso_yogur,1,kg,93,lacteos,nueces;gluten;soya,yogur,20,0,premium,profeco_qqp,2026-07-31,48
+P2794aba1,"Yogur Yoplait · Envase 220 g, bebible, fresa",Yoplait,Yoghurt,lacteos_huevo,queso_yogur,0.22,kg,9.5,lacteos,nueces;gluten;soya,yogur,20,0,economico,profeco_qqp,2026-07-31,76
+P8430faa8,"Yogur Yoplait · Vaso 125 g, fresa",Yoplait,Yoghurt,lacteos_huevo,queso_yogur,0.125,kg,8.5,lacteos,nueces;gluten;soya,yogur,20,0,premium,profeco_qqp,2026-07-31,77
+P4e7c4924,"Yogur Yoplait · Vaso 125 g, sabor natural con endulzantes",Yoplait,Yoghurt,lacteos_huevo,queso_yogur,0.125,kg,6.5,lacteos,nueces;gluten;soya,yogur,20,0,medio,profeco_qqp,2026-07-31,58
+P73de1bcb,"Detergente multiusos Roma · Bolsa 1 kg, polvo",Roma,Detergente P/ropa y Trastes,limpieza,detergente_ropa,1,kg,35,,,detergente,1000,0,medio,profeco_qqp,2026-07-31,78
+P2a949546,"Detergente multiusos Roma · Bolsa 5 kg, polvo",Roma,Detergente P/ropa y Trastes,limpieza,detergente_ropa,5,kg,225,,,detergente,1000,0,medio,profeco_qqp,2026-07-31,78
+P9761164b,"Detergente para ropa Ace · Bolsa 3.564 g, polvo, oxigeno activo",Ace,Detergente P/ropa,limpieza,detergente_ropa,3.564,kg,148,,,detergente,1000,0,medio,profeco_qqp,2026-07-31,73
+P7f6442ef,"Detergente para ropa Ace · Bolsa 756 g, polvo, oxigeno activo",Ace,Detergente P/ropa,limpieza,detergente_ropa,0.756,kg,35,,,detergente,1000,0,premium,profeco_qqp,2026-07-31,77
+P58341625,"Detergente para ropa Blanca Nieves · Bolsa 1 kg, polvo",Blanca Nieves,Detergente P/ropa,limpieza,detergente_ropa,1,kg,45,,,detergente,1000,0,medio,profeco_qqp,2026-07-31,80
+P137d7252,"Detergente para ropa Bold 3 · Bolsa 850 g, polvo, aromas de primavera",Bold 3,Detergente P/ropa,limpieza,detergente_ropa,0.85,kg,27,,,detergente,1000,0,economico,profeco_qqp,2026-07-31,66
+P21481d4b,"Detergente para ropa Foca · Bolsa 1 kg, polvo",Foca,Detergente P/ropa,limpieza,detergente_ropa,1,kg,45,,,detergente,1000,0,medio,profeco_qqp,2026-07-31,77
+Pdda62c1b,"Detergente para ropa Maestro Limpio · Bolsa 1 kg, polvo, multiusos",Maestro Limpio,Detergente P/ropa,limpieza,detergente_ropa,1,kg,24,,,detergente,1000,0,economico,profeco_qqp,2026-07-31,43
+P6fda8249,"Detergente para ropa Mas Color · Botella 1.83 L, liquido",Mas Color,Detergente P/ropa,limpieza,detergente_ropa,1.83,kg,90,,,detergente,1000,0,premium,profeco_qqp,2026-07-31,10
+P16cd9cfe,"Detergente para ropa Mas Oscura · Botella 3 L, líquido",Mas Oscura,Detergente P/ropa,limpieza,detergente_ropa,3,kg,115,,,detergente,1000,0,medio,profeco_qqp,2026-07-31,46
+P4418dd0f,"Detergente para ropa Persil · Bolsa 900 g, polvo, universal",Persil,Detergente P/ropa,limpieza,detergente_ropa,0.9,kg,32.5,,,detergente,1000,0,economico,profeco_qqp,2026-07-31,8
+P4f813692,"Detergente para ropa Vel Rosita · Botella 1.36 L, liquido, delicada",Vel Rosita,Detergente P/ropa,limpieza,detergente_ropa,1.36,kg,107,,,detergente,1000,0,premium,profeco_qqp,2026-07-31,78
+P854caeb9,"Jabón de lavandería Carisma · Barra 400 g, con envoltura, frescura agradable",Carisma,Jabón de Pasta,limpieza,detergente_ropa,0.4,kg,30,,,jabon de pasta,1000,0,premium,profeco_qqp,2026-07-31,60
+P3bac3b50,"Jabón de lavandería Lirio · Barra 400 g, con envoltura, lavanderia",Lirio,Jabón de Pasta,limpieza,detergente_ropa,0.4,kg,25,,,jabon de pasta,1000,0,medio,profeco_qqp,2026-07-31,73
+P0091f03e,"Jabón de lavandería Tepeyac · Barra 400 g, con envoltura, (amarillo)",Tepeyac,Jabón de Pasta,limpieza,detergente_ropa,0.4,kg,29,,,jabon de pasta,1000,0,medio,profeco_qqp,2026-07-31,52
+P9c81761c,"Jabón de lavandería Zote · Barra 200 g, (blanco)",Zote,Jabón de Pasta,limpieza,detergente_ropa,0.2,kg,14,,,jabon de pasta,1000,0,medio,profeco_qqp,2026-07-31,85
+Peefd7622,"Jabón de lavandería Zote · Barra 400 g, con envoltura, (rosa)",Zote,Jabón de Pasta,limpieza,detergente_ropa,0.4,kg,25,,,jabon de pasta,1000,0,medio,profeco_qqp,2026-07-31,88
+P81c9b2b3,"Cerillos Flama · Paquete 10 cajas, 50 piezas c/u",Flama,Cerillos,limpieza,extras,1,pz,23,,,cerillos,365,0,medio,profeco_qqp,2026-07-31,77
+P70e098d6,"Cerillos La Central Clásicos · Paquete 10 cajas, 50 piezas c/u",La Central. Clásicos,Cerillos,limpieza,extras,1,pz,24,,,cerillos,365,0,medio,profeco_qqp,2026-07-31,81
+Pd66b154a,"Desinfectante de verduras Microdyn · Blister con envase de 17 ml, (desinfecta agua y alimentos)",Microdyn,Microbicida,limpieza,extras,1,pz,35,,,desinfectante de verduras,365,0,medio,profeco_qqp,2026-07-31,46
+P6f1c9171,"Fibra para Cocina Scotch Brite 3m · Pieza grande, (80 mm, x 120 mm, x 25 mm.) (verde)",Scotch Brite. 3m,Fibra para Cocina,limpieza,extras,1,pz,40,,,fibra,365,0,medio,profeco_qqp,2026-07-31,71
+Pf2474911,"Insecticida Aerosol Baygon Casa y Jardin · Bote 351 g./460 ml, o 305 g./400 ml, base agua",Baygon. Casa y Jardin,Insecticida Aerosol,limpieza,extras,1,pz,61,,,insecticida,365,0,economico,profeco_qqp,2026-07-31,79
+Pf82ccb8f,"Insecticida Aerosol Baygon Total 1 · Bote 302 g./460 ml, (con promoción) o bote 305 g./400 ml",Baygon. Total 1,Insecticida Aerosol,limpieza,extras,1,pz,63,,,insecticida,365,0,medio,profeco_qqp,2026-07-31,34
+P901d4ab9,"Insecticida Aerosol Baygon Ultra Verde · Bote 338 g./400 ml, cucarachas y escopriones",Baygon. Ultra Verde,Insecticida Aerosol,limpieza,extras,1,pz,82,,,insecticida,365,0,medio,profeco_qqp,2026-07-31,83
+P151f738c,"Insecticida Aerosol H-24 Casa y Jardin · Bote 309 g, (sin promoción) o bote 372 g, (con promoción)",H-24. Casa y Jardin,Insecticida Aerosol,limpieza,extras,1,pz,65,,,insecticida,365,0,medio,profeco_qqp,2026-07-31,78
+P8170bd65,"Insecticida Aerosol H-24 Doméstico · Bote 372 g, (con promoción)",H-24. Doméstico,Insecticida Aerosol,limpieza,extras,1,pz,59,,,insecticida,365,0,economico,profeco_qqp,2026-07-31,73
+P01c89173,"Insecticida Aerosol H-24 Poder Fulminante Ultra Eficaz · Bote 285 g, (sin promoción) o bote 342 g, (con promoción)",H-24. Poder Fulminante. Ultra Eficaz,Insecticida Aerosol,limpieza,extras,1,pz,88,,,insecticida,365,0,medio,profeco_qqp,2026-07-31,78
+Pcca3994b,"Insecticida Aerosol Raid Casa y Jardin · Bote 305 g./400 ml, base de agua",Raid. Casa y Jardin,Insecticida Aerosol,limpieza,extras,1,pz,97,,,insecticida,365,0,premium,profeco_qqp,2026-07-31,79
+P5c4e1520,Insecticida Aerosol Raid Max · Bote 338 g./400 ml,Raid. Max,Insecticida Aerosol,limpieza,extras,1,pz,110,,,insecticida,365,0,premium,profeco_qqp,2026-07-31,83
+Pcc443d57,"Pilas Duracell · Paquete con 2, d, dura más",Duracell,Pilas Eléctricas,limpieza,extras,1,pz,190,,,pilas,365,0,premium,profeco_qqp,2026-07-31,32
+Pf4071f68,"Pilas Duracell · Paquete con 6, aa, 10 x más duración",Duracell,Pilas Eléctricas,limpieza,extras,1,pz,189,,,pilas,365,0,medio,profeco_qqp,2026-07-31,37
+P9fce1aab,"Pilas Energizer Max · Paquete con 6, aa",Energizer Max,Pilas Eléctricas,limpieza,extras,1,pz,169,,,pilas,365,0,medio,profeco_qqp,2026-07-31,19
+P72141cac,"Pilas Energizer Max · Paquete con 6, aaa",Energizer Max,Pilas Eléctricas,limpieza,extras,1,pz,157,,,pilas,365,0,medio,profeco_qqp,2026-07-31,18
+P3a3bcd86,"Pilas Eveready Gold · Paquete con 6, aa",Eveready. Gold,Pilas Eléctricas,limpieza,extras,1,pz,115,,,pilas,365,0,economico,profeco_qqp,2026-07-31,23
+P8b90887b,"Pilas Eveready Gold · Paquete con 6, aaa",Eveready. Gold,Pilas Eléctricas,limpieza,extras,1,pz,115,,,pilas,365,0,economico,profeco_qqp,2026-07-31,17
+P35a21118,"Toallitas Desinfectantes Lysol · Bote con 80 toallitas húmedas, lemon & lime blossom",Lysol,Toallitas Desinfectantes,limpieza,extras,1,pz,120,,,toallitas desinfectantes,365,0,medio,profeco_qqp,2026-07-31,66
+Pff4d8325,"Lavatrastes Axion · Botella 750 ml, liquido, limon",Axion,Detergente P/trastes,limpieza,jabon_trastes,0.75,L,38,,,lavatrastes,1000,0,economico,profeco_qqp,2026-07-31,76
+Pe77ba3f2,"Lavatrastes Salvo · Bolsa 720 g, polvo, (verde)",Salvo,Detergente P/trastes,limpieza,jabon_trastes,0.72,L,39,,,lavatrastes,1000,0,medio,profeco_qqp,2026-07-31,69
+P6fe27b8f,"Lavatrastes Salvo · Botella 750 ml, liquido (verde), limon",Salvo,Detergente P/trastes,limpieza,jabon_trastes,0.75,L,48,,,lavatrastes,1000,0,medio,profeco_qqp,2026-07-31,11
+Pa6acd86f,"Blanqueador Cloralex · Botella 950 ml, el rendidor",Cloralex,Blanqueador,limpieza,limpieza_hogar,0.95,L,20,,,cloro,1000,0,medio,profeco_qqp,2026-07-31,85
+P6e7faa87,"Limpiador multiusos Ajax Amonia · Botella 1 L, multiusos",Ajax Amonia,Limpiador Líquido P/piso,limpieza,limpieza_hogar,1,L,48.5,,,limpiador,1000,0,medio,profeco_qqp,2026-07-31,82
+P93cc31cf,"Limpiador multiusos Fabuloso · Botella 1 L, multiusos, fresca lavanda",Fabuloso,Limpiador Líquido P/piso,limpieza,limpieza_hogar,1,L,30,,,limpiador,1000,0,medio,profeco_qqp,2026-07-31,9
+P09205cbf,"Limpiador multiusos Pinol el Original · Botella 1 L, multiusos pino",Pinol. el Original,Limpiador Líquido P/piso,limpieza,limpieza_hogar,1,L,27,,,limpiador,1000,0,economico,profeco_qqp,2026-07-31,83
+Pd858a318,"Spray Desinfectante Lysol · Bote 400 ml./475 g, antibacterial",Lysol,Spray Desinfectante,limpieza,limpieza_hogar,0.475,L,169,,,desinfectante,1000,0,medio,profeco_qqp,2026-07-31,71
+Pbb801f41,"Papel Higiénico Lys · Paquete 4 rollos, 195 hojas dobles",Lys,Papel Higiénico,limpieza,papel_higienico,4,rollo,8,,,papel,1000,0,economico,profeco_qqp,2026-07-31,101
+P3ea5b2c9,"Papel Higiénico Regio Luxury · Paquete 4 rollos, xxl hojas dobles",Regio. Luxury,Papel Higiénico,limpieza,papel_higienico,4,rollo,40,,,papel,1000,0,medio,profeco_qqp,2026-07-31,71
+P802ac2ea,"Papel Higiénico Suavel · Paquete 32 rollos, 200 hojas dobles",Suavel,Papel Higiénico,limpieza,papel_higienico,32,rollo,129,,,papel,1000,0,medio,profeco_qqp,2026-07-31,82
+P2325f2c7,Servilletas Fancy · Paquete 360 hojas,Fancy,Servilletas de Papel Blanco,limpieza,servitoallas,1.8,rollo,30,,,papel;servilletas,1000,0,economico,profeco_qqp,2026-07-31,74
+Pa3197f06,Servilletas Great Value Premium · Paquete 250 hojas,Great Value. Premium,Servilletas de Papel Blanco,limpieza,servitoallas,1.25,rollo,33,,,papel;servilletas,1000,0,premium,profeco_qqp,2026-07-31,70
+P14b97280,Servilletas Pétalo Práctica · Paquete 200 hojas,Pétalo. Práctica,Servilletas de Papel Blanco,limpieza,servitoallas,1,rollo,20,,,papel;servilletas,1000,0,medio,profeco_qqp,2026-07-31,56
+Pe4f5cecd,Servilletas Pétalo · Paquete 420 hojas,Pétalo,Servilletas de Papel Blanco,limpieza,servitoallas,2.1,rollo,50,,,papel;servilletas,1000,0,medio,profeco_qqp,2026-07-31,83
+P4ce5666d,Servilletas Suavel · Paquete 380 hojas,Suavel,Servilletas de Papel Blanco,limpieza,servitoallas,1.9,rollo,47,,,papel;servilletas,1000,0,medio,profeco_qqp,2026-07-31,11
+Pfc66d304,"Toallas de papel Great Value Multicorte · Paquete 1 rollo, 160 hojas dobles",Great Value. Multicorte,Toalla de Papel,limpieza,servitoallas,1,rollo,20,,,papel;servitoalla,1000,0,medio,profeco_qqp,2026-07-31,54
+P8507dbba,"Toallas de papel Pétalo Decorada · Paquete 3 rollos, 60 hojas dobles",Pétalo. Decorada,Toalla de Papel,limpieza,servitoallas,3,rollo,44,,,papel;servitoalla,1000,0,medio,profeco_qqp,2026-07-31,80
+P0978ba71,Toallas de papel Vogue · Paquete 3 rollos 60 hojas dobles,Vogue,Toalla de Papel,limpieza,servitoallas,3,rollo,31.5,,,papel;servitoalla,1000,0,economico,profeco_qqp,2026-07-30,8
+P5c44245e,"Suavizante Downy · Botella 1.4 L, acondicionador de telas, intense floral",Downy,Suavizante P/ropa,limpieza,suavizante,1.4,L,58,,,suavizante,1000,0,premium,profeco_qqp,2026-07-31,85
+P0cab16b0,"Suavizante Downy · Botella 700 ml, acondicionador de telas, intense floral",Downy,Suavizante P/ropa,limpieza,suavizante,0.7,L,25,,,suavizante,1000,0,medio,profeco_qqp,2026-07-31,82
+P190641e3,"Suavizante Ensueño · Botella 850 ml, max x2, enjuague, frescura primaveral",Ensueño,Suavizante P/ropa,limpieza,suavizante,0.85,L,24,,,suavizante,1000,0,economico,profeco_qqp,2026-07-30,11
+P8078ce5a,"Suavizante Suavitel · Bolsa 1.3 L, (ahorrapack), cuidado superior, fresca primavera",Suavitel,Suavizante P/ropa,limpieza,suavizante,1.3,L,39,,,suavizante,1000,0,medio,profeco_qqp,2026-07-31,62
+P0ddbe398,"Suavizante Suavitel · Botella 740ml, cuidado superior, fresca primavera",Suavitel,Suavizante P/ropa,limpieza,suavizante,0.74,L,23,,,suavizante,1000,0,medio,profeco_qqp,2026-07-31,11
+P5d67d3cc,"Pan Dulce · Bisquet, pieza de 68 a 90 g, (11 cm, de diámetro aprox.)",,Pan Dulce,panaderia_tortilleria,botanas_galletas,0.09,kg,8,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce,3,0,medio,profeco_qqp,2026-07-31,63
+Pb70d9b4a,"Pan Dulce · Concha, pieza de 68 a 90 g, (12 cm, de diámetro aprox.)",,Pan Dulce,panaderia_tortilleria,botanas_galletas,0.09,kg,8,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce,3,0,medio,profeco_qqp,2026-07-31,70
+Pb5c8705e,"Pan Dulce · Cuerno, pieza de 68 a 90 g, (13 cm, de diámetro aprox.)",,Pan Dulce,panaderia_tortilleria,botanas_galletas,0.09,kg,8,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce,3,0,medio,profeco_qqp,2026-07-31,67
+Pd2f52e4d,"Pan Dulce · Dona cubierta de chocolate, pieza de 68 a 82 g, (12 cm, de diámetro aprox.)",,Pan Dulce,panaderia_tortilleria,botanas_galletas,0.082,kg,10,gluten;lacteos;huevo,soya;nueces;cacahuate;ajonjoli,pan dulce,3,0,premium,profeco_qqp,2026-07-31,54
+P06464bf3,Bolillo · Pieza,,Pan Blanco Bolillo,panaderia_tortilleria,tortilla_pan,0.06,kg,1.9,gluten,lacteos;huevo;soya,pan;bolillo,2,1,medio,profeco_qqp,2026-07-31,77
+P07c48df1,"Pan de Caja Aurrera · Paquete grande 624 g, rebanado blanco",Aurrera,Pan de Caja,panaderia_tortilleria,tortilla_pan,0.624,kg,15,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,pan,7,1,economico,profeco_qqp,2026-07-31,98
+P65b2a34b,"Pan de Caja Bimbo · Paquete 210 g, tostado, clásico",Bimbo,Pan de Caja,panaderia_tortilleria,tortilla_pan,0.21,kg,39,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,pan,7,1,premium,profeco_qqp,2026-07-31,87
+Pd7f1374a,"Pan de Caja Bimbo · Paquete chico 350 g, rebanado blanco",Bimbo,Pan de Caja,panaderia_tortilleria,tortilla_pan,0.35,kg,34,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,pan,7,1,medio,profeco_qqp,2026-07-31,79
+Pc702c1ec,"Pan de Caja Bimbo · Paquete chico 350 g, rebanado integral",Bimbo,Pan de Caja,panaderia_tortilleria,tortilla_pan,0.35,kg,35,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,pan,7,1,medio,profeco_qqp,2026-07-31,76
+Pacc2aaf1,"Pan de Caja Bimbo · Paquete grande 620 g, rebanado blanco",Bimbo,Pan de Caja,panaderia_tortilleria,tortilla_pan,0.62,kg,54,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,pan,7,1,economico,profeco_qqp,2026-07-31,86
+Pd536bf7e,"Pan de Caja Bimbo · Paquete grande 620 g, rebanado integral",Bimbo,Pan de Caja,panaderia_tortilleria,tortilla_pan,0.62,kg,58,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,pan,7,1,medio,profeco_qqp,2026-07-31,89
+P34aca646,"Pan de Caja Oroweat Granos Enteros · Paquete grande 680 g, rebanado integral, con masa madre",Oroweat. Granos Enteros,Pan de Caja,panaderia_tortilleria,tortilla_pan,0.68,kg,92,gluten,lacteos;huevo;soya;nueces;cacahuate;ajonjoli,pan,7,1,premium,profeco_qqp,2026-07-31,49
+Pc1ae9c96,"Tortilla de Maíz · 1 kg, granel",,Tortilla de Maíz,panaderia_tortilleria,tortilla_pan,1,kg,13.5,,,tortilla;maiz,4,0,medio,profeco_qqp,2026-07-31,169
+P69b511e1,"Tortilla de harina Tortillinas Tia Rosa · Bolsa 20+2 piezas, 561 g",Tortillinas Tia Rosa,Tortilla de Harina de Trigo,panaderia_tortilleria,tortilla_pan,0.561,kg,35,gluten,lacteos;soya,tortilla;harina,30,1,medio,profeco_qqp,2026-07-31,66
+P096dbc43,"Tortilla de harina Tortillinas Tía Rosa · Bolsa 15 piezas, 382.5 g",Tortillinas Tía Rosa,Tortilla de Harina de Trigo,panaderia_tortilleria,tortilla_pan,0.3825,kg,28,gluten,lacteos;soya,tortilla;harina,30,1,medio,profeco_qqp,2026-07-31,65
+Pcb2c1927,"Basa · 1 kg, granel, filete, blanco, congelado",,Basa,pescados,carne_aves,1,kg,80.5,pescado,,pescado,3,1,medio,profeco_qqp,2026-07-28,12
+P12a4840a,"Mojarra · 1 kg, granel, entero, tilapia grande, congelado",,Mojarra,pescados,carne_aves,1,kg,80,pescado,,pescado,3,1,medio,profeco_qqp,2026-07-29,9
+Pd8e6c1b4,"Tilapia · 1 kg, granel, filete, congelado",,Tilapia,pescados,carne_aves,1,kg,99,pescado,,pescado,3,1,medio,profeco_qqp,2026-07-29,11
+Pe39e37ec,"Cerdo Alpino · 1 kg, granel, longaniza",Alpino,Carne Cerdo,salchichoneria,carne_aves,1,kg,172,,soya;gluten;lacteos;huevo,carne;embutido;cerdo,20,1,premium,profeco_qqp,2026-07-31,20
+P93b94dfd,"Cerdo · 1 kg, granel, chuleta ahumada o entrecot ahumado",,Carne Cerdo,salchichoneria,carne_aves,1,kg,130,,soya;gluten;lacteos;huevo,carne;embutido;cerdo,20,1,medio,profeco_qqp,2026-07-31,82
+P6a02e4df,"Cerdo · 1 kg, granel, longaniza",,Carne Cerdo,salchichoneria,carne_aves,1,kg,117,,soya;gluten;lacteos;huevo,carne;embutido;cerdo,20,1,medio,profeco_qqp,2026-07-31,45
+P787a246b,"Chorizo Fud · 1 kg, granel, cantimpalo",Fud,Chorizo,salchichoneria,carne_aves,1,kg,236,,soya;gluten;lacteos;huevo,carne;embutido;cerdo;chorizo,20,1,economico,profeco_qqp,2026-07-31,43
+P3f0bd1fa,"Chorizo Parma Campestre · 1 kg, granel, ranchero",Parma. Campestre,Chorizo,salchichoneria,carne_aves,1,kg,276,,soya;gluten;lacteos;huevo,carne;embutido;cerdo;chorizo,20,1,medio,profeco_qqp,2026-07-31,40
+Pdacfd142,"Chorizo San Rafael · 1 kg, granel, espanol",San Rafael,Chorizo,salchichoneria,carne_aves,1,kg,285,,soya;gluten;lacteos;huevo,carne;embutido;cerdo;chorizo,20,1,premium,profeco_qqp,2026-07-31,27
+P6e38f654,"Chorizo Zwan · 1 kg, granel, cantimpalo",Zwan,Chorizo,salchichoneria,carne_aves,1,kg,268,,soya;gluten;lacteos;huevo,carne;embutido;cerdo;chorizo,20,1,medio,profeco_qqp,2026-07-31,33
+P78797c5e,"Jamón Alpino · 1 kg, granel, de pavo y cerdo, nápoles",Alpino,Jamón,salchichoneria,carne_aves,1,kg,170,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,economico,profeco_qqp,2026-07-31,34
+Pae381a78,"Jamón Bafar · 1 kg, granel, de pavo, virginia",Bafar,Jamón,salchichoneria,carne_aves,1,kg,160,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,economico,profeco_qqp,2026-07-31,54
+Pc45bfef0,"Jamón Capistrano · 1 kg, granel, de pavo y cerdo, california",Capistrano,Jamón,salchichoneria,carne_aves,1,kg,152,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,economico,profeco_qqp,2026-07-31,41
+P5a7782f8,"Jamón Capistrano · 1 kg, granel, de pavo, virginia",Capistrano,Jamón,salchichoneria,carne_aves,1,kg,222,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,premium,profeco_qqp,2026-07-31,55
+P96363ed5,"Jamón Capistrano · 1 kg, granel, jamón de pavo y cerdo, americano, especial",Capistrano,Jamón,salchichoneria,carne_aves,1,kg,196,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,29
+Pf1acac8b,"Jamón Capistrano · Paquete 250 g, de pavo, virginia",Capistrano,Jamón,salchichoneria,carne_aves,0.25,kg,55,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,41
+Pe8d40028,"Jamón Capistrano · Paquete 250 g, de pierna, tipo york",Capistrano,Jamón,salchichoneria,carne_aves,0.25,kg,80,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,premium,profeco_qqp,2026-07-31,38
+P676a8b84,"Jamón Chimex · 1 kg, granel, de pavo, clásico",Chimex,Jamón,salchichoneria,carne_aves,1,kg,152,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,economico,profeco_qqp,2026-07-31,66
+Paf63cd0b,"Jamón Fud · 1 kg, granel, de pavo, virginia",Fud,Jamón,salchichoneria,carne_aves,1,kg,180,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,68
+P48a7fd90,"Jamón Fud · 1 kg, granel, de pierna, horneado",Fud,Jamón,salchichoneria,carne_aves,1,kg,148,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,economico,profeco_qqp,2026-07-31,57
+Pd1b4487e,"Jamón Fud · 1 kg, granel, de pierna, horneado especial",Fud,Jamón,salchichoneria,carne_aves,1,kg,148,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,economico,profeco_qqp,2026-07-30,14
+P78ff9571,"Jamón Fud · 1 kg, granel, de pierna, york",Fud,Jamón,salchichoneria,carne_aves,1,kg,312,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,premium,profeco_qqp,2026-07-31,38
+P6697bc96,"Jamón Fud · Paquete 290 g, de pavo y cerdo, virginia",Fud,Jamón,salchichoneria,carne_aves,0.29,kg,50,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,economico,profeco_qqp,2026-07-31,67
+Pd33fe775,"Jamón Fud · Paquete 290 g, de pavo, virginia",Fud,Jamón,salchichoneria,carne_aves,0.29,kg,54,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,68
+Pbb1df419,"Jamón Ibero Barcelona · 1 kg, granel, con pavo y cerdo",Ibero. Barcelona,Jamón,salchichoneria,carne_aves,1,kg,176,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,48
+P2dfc33f2,"Jamón Ibero · 1 kg, granel, de pavo, barcelona",Ibero,Jamón,salchichoneria,carne_aves,1,kg,210,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,43
+P21778902,"Jamón Kir · 1 kg, granel, de pavo, virginia",Kir,Jamón,salchichoneria,carne_aves,1,kg,222,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,premium,profeco_qqp,2026-07-31,50
+P343aeb55,"Jamón Kir · 1 kg, granel, de pierna (mandolina)",Kir,Jamón,salchichoneria,carne_aves,1,kg,178,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,35
+P2bed1268,"Jamón Kir · 1 kg, granel, de pierna, tradicional",Kir,Jamón,salchichoneria,carne_aves,1,kg,130,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,economico,profeco_qqp,2026-07-31,63
+P3eddefdd,"Jamón Kir · Paquete 250 g, de pavo, virginia",Kir,Jamón,salchichoneria,carne_aves,0.25,kg,44,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,62
+Pb31d4ab8,"Jamón Parma Campestre · 1 kg, granel, de pierna",Parma. Campestre,Jamón,salchichoneria,carne_aves,1,kg,160,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,economico,profeco_qqp,2026-07-31,47
+Paf9be799,"Jamón Parma Sabori · 1 kg, granel, de pavo, virginia",Parma. Sabori,Jamón,salchichoneria,carne_aves,1,kg,192,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,51
+P718dec00,"Jamón San Rafael Real · 1 kg, granel, de pavo",San Rafael. Real,Jamón,salchichoneria,carne_aves,1,kg,434,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,premium,profeco_qqp,2026-07-31,19
+P5514fc13,"Jamón San Rafael Real · 1 kg, granel, de pierna",San Rafael. Real,Jamón,salchichoneria,carne_aves,1,kg,360,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,premium,profeco_qqp,2026-07-31,45
+P7fab6e80,"Jamón San Rafael · 1 kg, granel, de pavo, virginia",San Rafael,Jamón,salchichoneria,carne_aves,1,kg,262,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,premium,profeco_qqp,2026-07-31,59
+P7e7cc0ca,"Jamón San Rafael · Paquete 300 g, de pierna real",San Rafael,Jamón,salchichoneria,carne_aves,0.3,kg,92,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,premium,profeco_qqp,2026-07-31,60
+P80da8b02,"Jamón Zwan Premium · 1 kg, granel, de pavo, natural",Zwan. Premium,Jamón,salchichoneria,carne_aves,1,kg,278,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,premium,profeco_qqp,2026-07-31,14
+P28a7c68b,"Jamón Zwan Premium · 1 kg, granel, de pierna",Zwan. Premium,Jamón,salchichoneria,carne_aves,1,kg,340,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,premium,profeco_qqp,2026-07-31,45
+P2f68b751,"Jamón Zwan Premium · Paquete 250 g, de pavo, virginia",Zwan. Premium,Jamón,salchichoneria,carne_aves,0.25,kg,48,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,64
+Pf2cae609,"Jamón Zwan · 1 kg, granel, de cerdo y pavo, virginia",Zwan,Jamón,salchichoneria,carne_aves,1,kg,200,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,37
+P8760e2a5,"Jamón Zwan · 1 kg, granel, de pavo, virginia",Zwan,Jamón,salchichoneria,carne_aves,1,kg,220,,soya;gluten;lacteos;huevo,carne;embutido;jamon;cerdo,20,1,medio,profeco_qqp,2026-07-31,67
+P629a7a96,"Mortadela Fud · 1 kg, granel",Fud,Mortadela,salchichoneria,carne_aves,1,kg,146,,soya;gluten;lacteos;huevo,carne;embutido;mortadela;cerdo,20,1,medio,profeco_qqp,2026-07-31,31
+P00b10d60,"Mortadela Kir · 1 kg, granel",Kir,Mortadela,salchichoneria,carne_aves,1,kg,114,,soya;gluten;lacteos;huevo,carne;embutido;mortadela;cerdo,20,1,medio,profeco_qqp,2026-07-31,29
+P4fd52adf,"Pastel Pimiento Duby · 1 kg, granel",Duby,Pastel Pimiento,salchichoneria,carne_aves,1,kg,134,,soya;gluten;lacteos;huevo,carne;embutido;cerdo,20,1,medio,profeco_qqp,2026-07-31,35
+P5274404e,"Pastel Pimiento Fud · 1 kg, granel",Fud,Pastel Pimiento,salchichoneria,carne_aves,1,kg,178,,soya;gluten;lacteos;huevo,carne;embutido;cerdo,20,1,medio,profeco_qqp,2026-07-31,45
+Paa68c21b,"Pechuga de Pavo Fud · 1 kg, granel, virginia",Fud,Pechuga de Pavo,salchichoneria,carne_aves,1,kg,246,,soya;gluten;lacteos;huevo,carne;embutido;pavo,20,1,medio,profeco_qqp,2026-07-31,41
+Pef15ba5f,"Queso de Puerco Alpino · 1 kg, granel",Alpino,Queso de Puerco,salchichoneria,carne_aves,1,kg,218,,soya;gluten;lacteos;huevo,carne;embutido;cerdo,20,1,economico,profeco_qqp,2026-07-31,55
+P509634f5,"Queso de Puerco Fud · 1 kg, granel",Fud,Queso de Puerco,salchichoneria,carne_aves,1,kg,304,,soya;gluten;lacteos;huevo,carne;embutido;cerdo,20,1,medio,profeco_qqp,2026-07-31,54
+Pefce01a4,"Queso de Puerco Parma Campestre · 1 kg, granel",Parma. Campestre,Queso de Puerco,salchichoneria,carne_aves,1,kg,270,,soya;gluten;lacteos;huevo,carne;embutido;cerdo,20,1,medio,profeco_qqp,2026-07-31,50
+P3edcf49d,"Salchicha Alpino Pavino · Paquete 500 g, frankfurt",Alpino. Pavino,Salchicha,salchichoneria,carne_aves,0.5,kg,39,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,economico,profeco_qqp,2026-07-31,69
+P513774cc,"Salchicha Bafar · Paquete 500 g, con pavo, frankfort",Bafar,Salchicha,salchichoneria,carne_aves,0.5,kg,40,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,economico,profeco_qqp,2026-07-31,59
+P79bfdf0a,"Salchicha Capistrano · Paquete 500 g, con pavo",Capistrano,Salchicha,salchichoneria,carne_aves,0.5,kg,52,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,medio,profeco_qqp,2026-07-31,42
+P5d402437,"Salchicha Fud · 1 kg, granel, de pavo, hot dog",Fud,Salchicha,salchichoneria,carne_aves,1,kg,122,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,medio,profeco_qqp,2026-07-31,30
+P733d5706,"Salchicha Fud · 1 kg, granel, hot dog",Fud,Salchicha,salchichoneria,carne_aves,1,kg,128,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,premium,profeco_qqp,2026-07-31,22
+Pc48f7c1b,"Salchicha Fud · Paquete 500 g, con pavo",Fud,Salchicha,salchichoneria,carne_aves,0.5,kg,50,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,medio,profeco_qqp,2026-07-31,77
+P7030418d,"Salchicha Fud · Paquete 500 g, con pavo, cocktail",Fud,Salchicha,salchichoneria,carne_aves,0.5,kg,86,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,premium,profeco_qqp,2026-07-31,61
+Pcb6efd31,"Salchicha Fud · Paquete 500 g, con pavo, para hot dog",Fud,Salchicha,salchichoneria,carne_aves,0.5,kg,46,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,economico,profeco_qqp,2026-07-31,69
+P673b42ba,"Salchicha Fud · Paquete 500 g, para hot dog",Fud,Salchicha,salchichoneria,carne_aves,0.5,kg,50,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,medio,profeco_qqp,2026-07-31,73
+P8f4fa152,"Salchicha Kir · Paquete 500 g, con pavo",Kir,Salchicha,salchichoneria,carne_aves,0.5,kg,39,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,economico,profeco_qqp,2026-07-31,58
+Pf969a537,"Salchicha San Rafael · Paquete 500 g, de pavo",San Rafael,Salchicha,salchichoneria,carne_aves,0.5,kg,49,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,medio,profeco_qqp,2026-07-31,64
+P44c5ef87,"Salchicha Zwan Premium · 1 kg, granel, con pavo",Zwan. Premium,Salchicha,salchichoneria,carne_aves,1,kg,126,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,premium,profeco_qqp,2026-07-31,26
+P52bbfe86,"Salchicha Zwan Premium · Paquete 500 g, cocktail",Zwan. Premium,Salchicha,salchichoneria,carne_aves,0.5,kg,92,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,premium,profeco_qqp,2026-07-31,67
+P067df7c7,"Salchicha Zwan Premium · Paquete 520 g, con pavo",Zwan. Premium,Salchicha,salchichoneria,carne_aves,0.52,kg,48,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,economico,profeco_qqp,2026-07-31,64
+P00e020c1,"Salchicha Zwan · Paquete 500 g, vienesa",Zwan,Salchicha,salchichoneria,carne_aves,0.5,kg,56,,soya;gluten;lacteos;huevo,carne;embutido;salchicha;cerdo,20,1,medio,profeco_qqp,2026-07-31,39
+P6d19689b,Tocino ahumado Fud · Paquete 250 g,Fud,Tocino Ahumado,salchichoneria,carne_aves,0.25,kg,82,,soya;gluten;lacteos;huevo,carne;embutido;tocino;cerdo,20,1,medio,profeco_qqp,2026-07-31,76
+P68080503,"Tocino ahumado Kir · Paquete 250 g, rebanado",Kir,Tocino Ahumado,salchichoneria,carne_aves,0.25,kg,82,,soya;gluten;lacteos;huevo,carne;embutido;tocino;cerdo,20,1,medio,profeco_qqp,2026-07-31,59
+Pabe0ee53,"Tocino ahumado Parma Sabori · Paquete 200 g, de cerdo",Parma. Sabori,Tocino Ahumado,salchichoneria,carne_aves,0.2,kg,79,,soya;gluten;lacteos;huevo,carne;embutido;tocino;cerdo,20,1,medio,profeco_qqp,2026-07-31,45
+P79e705f5,Tocino ahumado San Rafael · Paquete 340 g,San Rafael,Tocino Ahumado,salchichoneria,carne_aves,0.34,kg,204,,soya;gluten;lacteos;huevo,carne;embutido;tocino;cerdo,20,1,premium,profeco_qqp,2026-07-31,46
+P7fcaaeb7,Tocino ahumado Zwan · Paquete 340 g,Zwan,Tocino Ahumado,salchichoneria,carne_aves,0.34,kg,172,,soya;gluten;lacteos;huevo,carne;embutido;tocino;cerdo,20,1,medio,profeco_qqp,2026-07-31,43

@@ -42,38 +42,46 @@ class Necesidad:
     # Básicos que no deben faltar: etiqueta de producto -> fracción mínima de la necesidad
     # (ej. jitomate >= 20% de las verduras). Solo aplica si hay productos compatibles.
     basicos: dict[str, float] = field(default_factory=dict)
+    # Topes por etiqueta: fracción máxima de la necesidad (ej. embutidos <= 20% de las carnes).
+    limites: dict[str, float] = field(default_factory=dict)
+    # Máxima fracción que puede cubrir un mismo tipo de producto (todo el pollo, todos los yogures).
+    variedad_tipo_max: float = 1.0
 
 
 _NECESIDADES = [
     # --- Alimentos ---
     Necesidad("carne_aves", "Carnes y aves", "kg", 1, por_edad(0.5, 2.5, 4.5, 4.0, 3.2), variedad_max=0.45,
-              basicos={"pollo": 0.3, "res": 0.15}),
+              basicos={"pollo": 0.3, "res": 0.15},
+              limites={"embutido": 0.2, "pescado": 0.25, "mariscos": 0.15, "enlatado": 0.15}, variedad_tipo_max=0.6),
     Necesidad("huevo", "Huevo", "pz", 1, por_edad(6, 18, 28, 25, 22)),
-    Necesidad("leche", "Leche", "L", 1, por_edad(0, 12, 10, 7, 6)),
+    Necesidad("leche", "Leche", "L", 1, por_edad(0, 12, 10, 7, 6), limites={"producto lacteo": 0.25, "leche en polvo": 0.15}),
     Necesidad("queso_yogur", "Quesos, yogur y crema", "kg", 2, por_edad(0.8, 2.0, 2.0, 1.8, 1.5), variedad_max=0.6,
-              basicos={"queso": 0.2}),
+              basicos={"queso": 0.2}, limites={"imitacion": 0.15, "crema": 0.1}, variedad_tipo_max=0.5),
     Necesidad("leguminosas", "Leguminosas (frijol, lenteja...)", "kg", 1, por_edad(0.2, 0.7, 1.3, 1.2, 1.0), variedad_max=0.7,
               basicos={"frijol": 0.6}),
     Necesidad("tortilla_pan", "Tortilla y pan", "kg", 1, por_edad(0.3, 3.5, 7.0, 6.5, 5.0), variedad_max=0.75,
-              basicos={"tortilla": 0.6, "pan": 0.1}),
+              basicos={"tortilla": 0.6, "pan": 0.1}, variedad_tipo_max=0.8),
     Necesidad("arroz_pasta", "Arroz y pasta", "kg", 1, por_edad(0.3, 1.0, 1.5, 1.3, 1.0), variedad_max=0.7,
-              basicos={"arroz": 0.4, "pasta": 0.2}),
-    Necesidad("cereal_desayuno", "Cereal y avena", "kg", 2, por_edad(0.3, 1.0, 1.0, 0.6, 0.6), variedad_max=0.7),
+              basicos={"arroz": 0.4, "pasta": 0.2}, variedad_tipo_max=0.7),
+    Necesidad("cereal_desayuno", "Cereal y avena", "kg", 2, por_edad(0.3, 1.0, 1.0, 0.6, 0.6), variedad_max=0.7,
+              variedad_tipo_max=0.5),
     Necesidad("frutas", "Frutas", "kg", 1, por_edad(3.0, 6.0, 8.0, 7.5, 7.0), variedad_max=0.35,
-              basicos={"platano": 0.2, "limon": 0.05}),
+              basicos={"platano": 0.2, "limon": 0.05}, variedad_tipo_max=0.3),
     Necesidad("verduras", "Verduras", "kg", 1, por_edad(2.0, 5.0, 9.0, 9.0, 8.5), variedad_max=0.25,
-              basicos={"jitomate": 0.2, "cebolla": 0.1, "papa": 0.12, "chile": 0.03}),
-    Necesidad("aceite", "Aceite", "L", 1, por_edad(0, 0.4, 0.8, 0.75, 0.6)),
-    Necesidad("azucar", "Azúcar y endulzantes", "kg", 2, por_edad(0, 0.6, 0.9, 0.9, 0.6)),
-    Necesidad("cafe_te", "Café y té", "kg", 2, por_edad(0, 0, 0, 0.25, 0.25)),
-    Necesidad("enlatados_salsas", "Enlatados, salsas y aderezos", "kg", 2, por_edad(0, 0.5, 1.0, 1.0, 0.8), variedad_max=0.5),
+              basicos={"jitomate": 0.2, "cebolla": 0.1, "papa": 0.12, "chile": 0.03}, variedad_tipo_max=0.25),
+    Necesidad("aceite", "Aceites y grasas", "L", 1, por_edad(0, 0.4, 0.8, 0.75, 0.6)),
+    Necesidad("azucar", "Azúcar, miel y untables", "kg", 2, por_edad(0, 0.6, 0.9, 0.9, 0.6)),
+    Necesidad("cafe_te", "Café y chocolate", "kg", 2, por_edad(0, 0, 0, 0.25, 0.25), basicos={"cafe": 0.6}),
+    Necesidad("enlatados_salsas", "Enlatados, salsas y aderezos", "kg", 2, por_edad(0, 0.5, 1.0, 1.0, 0.8), variedad_max=0.5,
+              limites={"vinagre": 0.12}, variedad_tipo_max=0.3),
     Necesidad("condimentos", "Sal, consomé y especias", "kg", 2, por_edad(0, 0.06, 0.12, 0.12, 0.12), variedad_max=0.6,
               basicos={"sal": 0.2, "consome": 0.1}),
-    Necesidad("botanas_galletas", "Botanas y galletas", "kg", 3, por_edad(0.2, 1.0, 1.2, 0.8, 0.5), variedad_max=0.6),
-    Necesidad("bebidas", "Jugos y refrescos", "L", 3, por_edad(0, 5, 7, 6, 4)),
+    Necesidad("botanas_galletas", "Botanas, galletas y postres", "kg", 3, por_edad(0.2, 1.0, 1.2, 0.8, 0.5), variedad_max=0.4,
+              variedad_tipo_max=0.3),
+    Necesidad("bebidas", "Bebidas (agua, jugos, refrescos)", "L", 3, por_edad(0, 5, 7, 6, 4), variedad_max=0.5),
     # --- Limpieza del hogar ---
     Necesidad("papel_higienico", "Papel higiénico", "rollo", 1, por_edad(1, 5, 5, 5, 5)),
-    Necesidad("servitoallas", "Toallas de papel", "rollo", 2, por_edad(0, 0.3, 0.3, 0.3, 0.3), base_hogar=2),
+    Necesidad("servitoallas", "Toallas de papel y servilletas", "rollo", 2, por_edad(0, 0.3, 0.3, 0.3, 0.3), base_hogar=2),
     Necesidad("jabon_trastes", "Lavatrastes", "L", 1, por_edad(0.1, 0.15, 0.15, 0.15, 0.15), base_hogar=0.5),
     Necesidad("detergente_ropa", "Detergente para ropa", "kg", 1, por_edad(1.0, 0.8, 0.8, 0.8, 0.8), base_hogar=1),
     Necesidad("suavizante", "Suavizante", "L", 3, por_edad(0.3, 0.3, 0.3, 0.3, 0.3), base_hogar=0.5),
@@ -92,13 +100,54 @@ _NECESIDADES = [
     Necesidad("croquetas_perro", "Alimento para perro", "kg", 1),
     Necesidad("croquetas_gato", "Alimento para gato", "kg", 1),
     Necesidad("arena_gato", "Arena para gato", "kg", 2),
+    # Solo se pide si el hogar la eligió como antojo (ver ANTOJOS).
+    Necesidad("cerveza", "Cerveza", "pz", 3),
+    # Productos que la app no calcula; el usuario los agrega a mano desde el buscador.
+    Necesidad("extras", "Otros productos", "pz", 3),
 ]
 
 NECESIDADES: dict[str, Necesidad] = {n.clave: n for n in _NECESIDADES}
 
+
+
+@dataclass(frozen=True)
+class Antojo:
+    """Gusto que no es necesario (refrescos, botanas...): solo se incluye si el hogar lo pide."""
+    clave: str
+    nombre: str
+    # Necesidad a la que se suma, y etiquetas de los productos que cuentan como este antojo.
+    necesidad: str
+    etiquetas: frozenset[str]
+    # Cantidad mensual por persona según grupo de edad, en la unidad de su necesidad.
+    por_persona: dict[str, float]
+
+
+_ANTOJOS = [
+    Antojo("refrescos", "Refrescos", "bebidas", frozenset({"refresco"}), por_edad(0, 2, 4, 4, 2)),
+    Antojo("jugos", "Jugos y bebidas", "bebidas", frozenset({"jugo", "bebida hidratante", "te"}), por_edad(0, 3, 3, 2, 2)),
+    Antojo("botanas", "Papas y botanas", "botanas_galletas", frozenset({"botana"}), por_edad(0, 0.2, 0.3, 0.25, 0.15)),
+    Antojo("dulces", "Chocolates y pastelitos", "botanas_galletas", frozenset({"chocolate", "pastelito"}),
+           por_edad(0, 0.15, 0.2, 0.15, 0.1)),
+    Antojo("galletas", "Galletas", "botanas_galletas", frozenset({"galleta"}), por_edad(0, 0.3, 0.3, 0.25, 0.2)),
+    Antojo("postres", "Helado y postres", "botanas_galletas", frozenset({"postre"}), por_edad(0, 0.3, 0.3, 0.25, 0.2)),
+    # Piezas: casi todas las presentaciones son de 6 botellas o latas.
+    Antojo("cerveza", "Cerveza", "cerveza", frozenset({"cerveza"}), por_edad(0, 0, 0, 2, 1)),
+]
+ANTOJOS: dict[str, Antojo] = {a.clave: a for a in _ANTOJOS}
+
 # Peso de cada prioridad en el optimizador: dejar sin cubrir algo esencial cuesta
 # 10 veces más que algo importante y 100 veces más que algo opcional.
 PESO_PRIORIDAD = {1: 100.0, 2: 10.0, 3: 1.0}
+# Nivel de marcas: qué fracción del sobrante se puede usar para subir de marca, y cuántos
+# puntos de calidad da cada nivel de producto (economico / medio / premium).
+NIVELES = {"ahorro": "Ahorro", "equilibrado": "Equilibrado", "premium": "Marcas líderes"}
+NIVEL_DEFAULT = "equilibrado"
+HOLGURA_POR_NIVEL = {"ahorro": 0.0, "equilibrado": 0.4, "premium": 1.0}
+CALIDAD_POR_NIVEL = {
+    "equilibrado": {"economico": 0.0, "medio": 1.0, "premium": 1.0},
+    "premium": {"economico": 0.0, "medio": 1.0, "premium": 2.0},
+}
+
 # No cubrir la proporción de un básico pesa esta fracción de lo que pesa su necesidad.
 PESO_BASICO = 0.2
 
@@ -124,6 +173,53 @@ ALIAS_ALERGENOS = {
     "nueces": "nueces", "nuez": "nueces", "almendra": "nueces", "almendras": "nueces",
     "soya": "soya", "soja": "soya",
     "ajonjoli": "ajonjoli", "sesamo": "ajonjoli",
+}
+
+TIENDAS = {
+    "walmart": "Walmart",
+    "bodega_aurrera": "Bodega Aurrerá",
+    "soriana": "Soriana",
+    "chedraui": "Chedraui",
+    "la_comer": "La Comer",
+    "heb": "H-E-B",
+}
+TIENDA_DEFAULT = "walmart"
+
+# Nombres de los estados tal como los escribe Profeco.
+ESTADOS = [
+    "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua",
+    "Ciudad de México", "Coahuila", "Colima", "Durango", "Estado de México", "Guanajuato", "Guerrero",
+    "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla",
+    "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas",
+    "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas",
+]
+# Cadenas con sucursales en los 32 estados. Las demás solo se ofrecen donde Profeco les
+# registró precios (ver catalogo.tiendas_en) o en los estados de PRESENCIA_EXTRA.
+CADENAS_NACIONALES = {"walmart", "bodega_aurrera", "soriana", "chedraui"}
+# Estados donde la cadena tiene sucursales aunque Profeco no le haya levantado precios.
+PRESENCIA_EXTRA: dict[str, set[str]] = {
+    "heb": {"Aguascalientes", "Querétaro"},
+    "la_comer": {"Guanajuato", "Jalisco", "Morelos", "Puebla"},
+}
+
+# Nombres para mostrar en la app.
+NOMBRES_ALERGENOS = {
+    "pescado": "Pescado",
+    "mariscos": "Mariscos",
+    "lacteos": "Lácteos",
+    "huevo": "Huevo",
+    "gluten": "Gluten (trigo)",
+    "cacahuate": "Cacahuate",
+    "nueces": "Nueces y almendras",
+    "soya": "Soya",
+    "ajonjoli": "Ajonjolí",
+}
+NOMBRES_DIETAS = {"vegetariana": "Vegetariana", "pescetariana": "Pescetariana", "sin_cerdo": "Sin cerdo"}
+NOMBRES_TAMANOS_PERRO = {
+    "chico": "Chico (hasta 10 kg)",
+    "mediano": "Mediano (10 a 25 kg)",
+    "grande": "Grande (25 a 45 kg)",
+    "gigante": "Gigante (más de 45 kg)",
 }
 
 # Dietas predefinidas: etiquetas de producto que excluyen.

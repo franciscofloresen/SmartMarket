@@ -2,11 +2,14 @@
 from itertools import groupby
 
 from .planificador import Plan
+from .reglas import TIENDAS
 
 DEPARTAMENTOS = {
     "bebe": "Bebé",
     "bebidas": "Bebidas",
     "carnes": "Carnes y aves",
+    "salchichoneria": "Salchichonería",
+    "pescados": "Pescados y mariscos",
     "congelados": "Congelados",
     "despensa": "Despensa",
     "frutas_verduras": "Frutas y verduras",
@@ -26,7 +29,7 @@ def formatear(plan: Plan) -> str:
     h = plan.hogar
     personas = ", ".join(f"{m.nombre or m.grupo} ({m.edad})" for m in h.miembros)
     out = [
-        f"DESPENSA INTELIGENTE · Walmart Supercenter · {h.nombre or 'Mi hogar'}",
+        f"DESPENSA INTELIGENTE · {TIENDAS[h.tienda]}{' · ' + h.estado if h.estado else ''} · {h.nombre or 'Mi hogar'}",
         f"Hogar: {personas}",
     ]
     if h.mascotas:
@@ -67,6 +70,11 @@ def formatear(plan: Plan) -> str:
         out.append("Notas:")
         out.extend(f"  • {n}" for n in plan.notas)
 
+    if plan.consejos:
+        out.append("")
+        out.append("Consejos:")
+        out.extend(f"  💡 {c}" for c in plan.consejos)
+
     if plan.excluidos:
         out.append("")
         out.append(f"Productos excluidos por sus restricciones ({len(plan.excluidos)}):")
@@ -76,5 +84,11 @@ def formatear(plan: Plan) -> str:
             out.append("  ⚠ Revisa siempre la etiqueta: la información de alérgenos del catálogo puede no estar completa.")
 
     out.append("")
-    out.append("Precios de referencia aproximados; pueden variar por sucursal y fecha.")
+    de_profeco = [l for l in plan.lineas if l.producto.fuente_precio == "profeco_qqp"]
+    fecha = max((l.producto.fecha_precio for l in de_profeco), default="")
+    out.append(
+        f"Precios: {len(de_profeco)} de {len(plan.lineas)} productos con precio de referencia de Profeco"
+        + (f" (al {fecha})" if fecha else "")
+        + "; el resto son estimados. Pueden variar por sucursal."
+    )
     return "\n".join(out)

@@ -2,10 +2,12 @@ from pathlib import Path
 
 import pytest
 
-from despensa.catalogo import cargar_catalogo, coincide_exclusion, filtrar
+from despensa.catalogo import cargar_catalogo, coincide_exclusion, estados_de, filtrar, tiendas_en
 from despensa.necesidades import calcular_necesidades
 from despensa.perfil import PerfilInvalido, cargar_hogar, hogar_desde_dict
 from despensa.planificador import planear
+from despensa.reglas import NECESIDADES, TIENDAS
+from despensa.texto import normalizar
 
 PERFILES = Path(__file__).resolve().parent.parent / "perfiles"
 
@@ -15,8 +17,9 @@ def catalogo():
     return cargar_catalogo()
 
 
-def _producto(catalogo, pid):
-    return next(p for p in catalogo if p.id == pid)
+def _producto(catalogo, *palabras):
+    """Primer producto cuyo nombre contiene todas las palabras (sin acentos ni mayúsculas)."""
+    return next(p for p in catalogo if all(normalizar(w) in normalizar(p.nombre) for w in palabras))
 
 
 def _hogar(**extra):
@@ -70,37 +73,65 @@ def test_perfil_invalido(datos):
 
 # --- Catálogo y filtros ---
 
-def test_catalogo_carga_y_es_consistente(catalogo):
-    assert len(catalogo) > 100
+@pytest.mark.parametrize("tienda", list(TIENDAS))
+def test_catalogos_cargan_y_son_grandes(tienda):
+    productos = cargar_catalogo(tienda)
+    assert len(productos) > 500
+    # Toda necesidad que el motor calcula tiene al menos un producto en cada tienda.
+    cubiertas = {p.necesidad for p in productos}
+    assert set(NECESIDADES) - cubiertas == set(), tienda
 
 
-def test_alergia_excluye_ingredientes_ocultos(catalogo):
+def test_precios_por_estado():
+    assert "Jalisco" in estados_de("walmart")
+    nacional = {p.id: p.precio for p in cargar_catalogo("walmart")}
+    jalisco = {p.id: p.precio for p in cargar_catalogo("walmart", "Jalisco")}
+    assert nacional.keys() == jalisco.keys()
+    assert any(nacional[i] != jalisco[i] for i in nacional)
+    # Un estado sin datos usa la mediana nacional.
+    assert {p.id: p.precio for p in cargar_catalogo("walmart", "Atlántida")} == nacional
+
+
+def test_alergia_excluye_lo_que_contiene_y_lo_que_puede_contener(catalogo):
     aptos, excluidos = filtrar(catalogo, _hogar(alergias=["Pescado"]))
-    ids_excluidos = {p.id for p, _ in excluidos}
-    assert {"C013", "C014", "E007", "E008"} <= ids_excluidos  # tilapia, atún, salsa inglesa, César
-    assert all("pescado" not in p.alergenos for p in aptos)
+    motivos = {p.id: m for p, m in excluidos}
+    for palabras in (["tilapia"], ["atun", "lata"], ["salsa", "inglesa"]):  # el pescado oculto incluido
+        assert motivos[_producto(catalogo, *palabras).id] == "alergia: pescado"
+    assert motivos[_producto(catalogo, "surimi").id] == "alergia: pescado"
+    assert all("pescado" not in p.alergenos | p.posibles for p in aptos)
+
+    # Las galletas no declaran nuez, pero no se puede descartar: se excluyen por precaución.
+    _, excluidos = filtrar(catalogo, _hogar(alergias=["nueces"]))
+    assert {p.id: m for p, m in excluidos}[_producto(catalogo, "galletas", "dulces").id] == "puede contener: nueces"
 
 
 def test_exclusion_tolera_plurales_y_acentos(catalogo):
-    assert coincide_exclusion("chiles", _producto(catalogo, "V008"))        # Chile serrano
-    assert coincide_exclusion("brócoli", _producto(catalogo, "V006"))
-    assert coincide_exclusion("limones", _producto(catalogo, "F010"))
-    assert coincide_exclusion("tomate verde", _producto(catalogo, "V015"))
-    assert not coincide_exclusion("tomate verde", _producto(catalogo, "V001"))  # jitomate
+    assert coincide_exclusion("chiles", _producto(catalogo, "chile", "serrano"))
+    assert coincide_exclusion("brócoli", _producto(catalogo, "brocoli", "granel"))
+    assert coincide_exclusion("limones", _producto(catalogo, "limon"))
+    assert coincide_exclusion("tomate verde", _producto(catalogo, "tomate verde"))
+    assert not coincide_exclusion("tomate verde", _producto(catalogo, "jitomate"))
 
 
 def test_exclusion_no_confunde_palabras_parecidas(catalogo):
-    assert coincide_exclusion("pan", _producto(catalogo, "T004"))
-    assert not coincide_exclusion("pan", _producto(catalogo, "Q001"))   # queso panela
-    assert not coincide_exclusion("pan", _producto(catalogo, "N001"))   # pañales
-    assert not coincide_exclusion("sal", _producto(catalogo, "E004"))   # salsa
+    assert coincide_exclusion("pan", _producto(catalogo, "pan de caja"))
+    assert not coincide_exclusion("pan", _producto(catalogo, "queso panela"))
+    assert not coincide_exclusion("pan", _producto(catalogo, "panales"))
+    assert not coincide_exclusion("sal", _producto(catalogo, "salsa picante"))
+
+
+def test_exclusion_alcanza_productos_mixtos(catalogo):
+    # La mezcla California congelada trae brócoli: excluir brócoli debe quitarla.
+    _, excluidos = filtrar(catalogo, _hogar(excluir=["brócoli"]))
+    assert _producto(catalogo, "mezcla california").id in {p.id for p, _ in excluidos}
 
 
 def test_harina_para_tortilla_solo_si_las_hacen_en_casa(catalogo):
+    maseca = _producto(catalogo, "harina de maiz", "maseca").id
     aptos, _ = filtrar(catalogo, _hogar())
-    assert "T002" not in {p.id for p in aptos}
+    assert maseca not in {p.id for p in aptos}
     aptos, _ = filtrar(catalogo, _hogar(tortillas_caseras=True))
-    assert "T002" in {p.id for p in aptos}
+    assert maseca in {p.id for p in aptos}
 
 
 # --- Plan completo ---
@@ -155,3 +186,71 @@ def test_alergia_a_lacteos_usa_bebidas_vegetales(catalogo):
 def test_plan_serializa_a_dict(catalogo):
     datos = planear(_hogar(), catalogo).a_dict()
     assert datos["total"] == pytest.approx(sum(l["subtotal"] for l in datos["lineas"]))
+
+
+def test_plan_tiene_variedad_y_sentido_comun(catalogo):
+    plan = planear(cargar_hogar(PERFILES / "familia_4_perro.json"), catalogo)
+    def kg(necesidad, filtro):
+        return sum(l.producto.contenido * l.paquetes for l in plan.lineas if l.producto.necesidad == necesidad and filtro(l.producto))
+    requerido = {c.clave: c.requerido for c in plan.cobertura}
+    # El pollo no acapara la carne, los embutidos son minoría y la leche es leche.
+    assert kg("carne_aves", lambda p: "pollo" in p.etiquetas) <= 0.6 * requerido["carne_aves"] + 2
+    assert kg("carne_aves", lambda p: "res" in p.etiquetas) >= 0.15 * requerido["carne_aves"]
+    assert kg("carne_aves", lambda p: "embutido" in p.etiquetas) <= 0.2 * requerido["carne_aves"] + 1
+    assert kg("leche", lambda p: "producto lacteo" in p.etiquetas) <= 0.25 * requerido["leche"] + 1
+    # Ningún tipo de verdura pasa de la cuarta parte (más un paquete).
+    por_tipo = {}
+    for l in plan.lineas:
+        if l.producto.necesidad == "verduras":
+            por_tipo[l.producto.tipo] = por_tipo.get(l.producto.tipo, 0) + l.producto.contenido * l.paquetes
+    assert max(por_tipo.values()) <= 0.25 * requerido["verduras"] + 1.01
+    assert len(por_tipo) >= 4
+
+
+def test_otra_tienda_y_estado_dan_otro_total():
+    hogar = cargar_hogar(PERFILES / "familia_4_perro.json")
+    totales = set()
+    for tienda, estado in [("walmart", None), ("bodega_aurrera", None), ("walmart", "Jalisco")]:
+        hogar.tienda, hogar.estado = tienda, estado
+        plan = planear(hogar, cargar_catalogo(tienda, estado))
+        assert 0 < plan.total <= hogar.presupuesto
+        totales.add(plan.total)
+    assert len(totales) == 3
+
+
+# --- Antojos ---
+
+def test_sin_antojos_no_hay_refresco_ni_cerveza(catalogo):
+    plan = planear(_hogar(), catalogo, tiempo_limite=10)
+    assert not any({"refresco", "cerveza"} & l.producto.etiquetas for l in plan.lineas)
+
+
+def test_antojos_agregan_ese_tipo_de_producto(catalogo):
+    base = planear(_hogar(), catalogo, tiempo_limite=10)
+    plan = planear(_hogar(antojos=["refrescos", "cerveza"]), catalogo, tiempo_limite=10)
+    refresco = sum(l.producto.contenido * l.paquetes for l in plan.lineas if "refresco" in l.producto.etiquetas)
+    assert refresco >= 8  # 2 adultos × 4 L
+    assert any("cerveza" in l.producto.etiquetas for l in plan.lineas)
+    cobertura = {c.clave: c for c in plan.cobertura}
+    assert cobertura["bebidas"].requerido > next(c.requerido for c in base.cobertura if c.clave == "bebidas")
+    assert "antojo de refrescos" in cobertura["bebidas"].explicacion
+
+
+def test_antojo_respeta_alergias(catalogo):
+    plan = planear(_hogar(antojos=["cerveza"], alergias=["gluten"]), catalogo, tiempo_limite=10)
+    assert not any("cerveza" in l.producto.etiquetas for l in plan.lineas)
+    assert any("Cerveza" in n for n in plan.notas)
+
+
+def test_antojo_desconocido_es_perfil_invalido():
+    with pytest.raises(PerfilInvalido):
+        _hogar(antojos=["caviar"])
+
+
+# --- Tiendas por estado ---
+
+def test_tiendas_regionales_solo_donde_tienen_sucursales():
+    assert "heb" not in tiendas_en("Jalisco")
+    assert "heb" in tiendas_en("Nuevo León")
+    assert set(tiendas_en("Hidalgo")) >= {"walmart", "bodega_aurrera", "soriana", "chedraui"}
+    assert tiendas_en(None) == list(TIENDAS)
