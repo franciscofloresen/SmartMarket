@@ -42,8 +42,12 @@ def optimizar(
     tiempo_limite: int = 30,
     fijos: dict[str, int] | None = None,
     nivel: str = "ahorro",
+    minimos: list[tuple[str, frozenset[str], float]] | None = None,
 ) -> ResultadoOptimizacion:
     """`fijos` son cantidades de paquetes que el usuario fijó (id -> paquetes); se respetan tal cual.
+
+    `minimos` son antojos: (necesidad, etiquetas, cantidad) que debe venir de productos con alguna
+    de esas etiquetas. La cantidad ya debe estar sumada a la demanda de su necesidad.
 
     `nivel` decide qué hacer con el dinero que sobra después de cubrir todo al menor costo:
     "ahorro" lo deja, "equilibrado" usa una parte en mejores marcas y "premium" lo usa todo.
@@ -137,6 +141,15 @@ def optimizar(
                 f"basico_{clave}_{etiqueta.replace(' ', '_')}",
             )
             sin_basico.append(peso * falta / minimo)
+
+    # Antojos: castigar que falte la cantidad pedida de ese tipo de producto.
+    for n, (clave, etiquetas, minimo) in enumerate(minimos or []):
+        con_etiqueta = [p for p in por_necesidad.get(clave, []) if etiquetas & p.etiquetas]
+        if not con_etiqueta or minimo <= 0:
+            continue
+        falta = prob.add_variable(f"sin_antojo_{n}", 0, minimo)
+        prob += pulp.lpSum(p.contenido * x[p.id] for p in con_etiqueta) + falta >= minimo, f"antojo_{n}"
+        sin_basico.append(PESO_PRIORIDAD[NECESIDADES[clave].prioridad] * falta / minimo)
 
     # Fase 1: minimizar la fracción faltante ponderada por prioridad.
     penalizacion = pulp.lpSum(

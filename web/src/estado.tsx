@@ -15,12 +15,22 @@ const OPCIONES_RESPALDO: Opciones = {
     fecha_precio_mas_reciente: null,
   },
   tiendas: [
-    { clave: "walmart", nombre: "Walmart", productos: 0, estados: [] },
-    { clave: "bodega_aurrera", nombre: "Bodega Aurrerá", productos: 0, estados: [] },
-    { clave: "soriana", nombre: "Soriana", productos: 0, estados: [] },
-    { clave: "chedraui", nombre: "Chedraui", productos: 0, estados: [] },
-    { clave: "la_comer", nombre: "La Comer", productos: 0, estados: [] },
-    { clave: "heb", nombre: "H-E-B", productos: 0, estados: [] },
+    { clave: "walmart", nombre: "Walmart", productos: 0, estados: [], presencia: [] },
+    { clave: "bodega_aurrera", nombre: "Bodega Aurrerá", productos: 0, estados: [], presencia: [] },
+    { clave: "soriana", nombre: "Soriana", productos: 0, estados: [], presencia: [] },
+    { clave: "chedraui", nombre: "Chedraui", productos: 0, estados: [], presencia: [] },
+    { clave: "la_comer", nombre: "La Comer", productos: 0, estados: [], presencia: [] },
+    { clave: "heb", nombre: "H-E-B", productos: 0, estados: [], presencia: [] },
+  ],
+  estados: [],
+  antojos: [
+    { clave: "refrescos", nombre: "Refrescos" },
+    { clave: "jugos", nombre: "Jugos y bebidas" },
+    { clave: "botanas", nombre: "Papas y botanas" },
+    { clave: "dulces", nombre: "Chocolates y pastelitos" },
+    { clave: "galletas", nombre: "Galletas" },
+    { clave: "postres", nombre: "Helado y postres" },
+    { clave: "cerveza", nombre: "Cerveza" },
   ],
   alergias: [
     { clave: "pescado", nombre: "Pescado" },
@@ -91,7 +101,7 @@ export function ProveedorEstado({ children }: { children: ReactNode }) {
   useEffect(() => guardar(datos), [datos]);
 
   useEffect(() => {
-    api.opciones().then(setOpciones).catch(() => {
+    api.opciones().then((o) => setOpciones({ ...OPCIONES_RESPALDO, ...o })).catch(() => {
       /* se queda con el respaldo */
     });
   }, []);

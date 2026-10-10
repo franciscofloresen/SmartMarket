@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from despensa.catalogo import cargar_catalogo, coincide_exclusion, estados_de, filtrar
+from despensa.catalogo import cargar_catalogo, coincide_exclusion, estados_de, filtrar, tiendas_en
 from despensa.necesidades import calcular_necesidades
 from despensa.perfil import PerfilInvalido, cargar_hogar, hogar_desde_dict
 from despensa.planificador import planear
@@ -216,3 +216,41 @@ def test_otra_tienda_y_estado_dan_otro_total():
         assert 0 < plan.total <= hogar.presupuesto
         totales.add(plan.total)
     assert len(totales) == 3
+
+
+# --- Antojos ---
+
+def test_sin_antojos_no_hay_refresco_ni_cerveza(catalogo):
+    plan = planear(_hogar(), catalogo, tiempo_limite=10)
+    assert not any({"refresco", "cerveza"} & l.producto.etiquetas for l in plan.lineas)
+
+
+def test_antojos_agregan_ese_tipo_de_producto(catalogo):
+    base = planear(_hogar(), catalogo, tiempo_limite=10)
+    plan = planear(_hogar(antojos=["refrescos", "cerveza"]), catalogo, tiempo_limite=10)
+    refresco = sum(l.producto.contenido * l.paquetes for l in plan.lineas if "refresco" in l.producto.etiquetas)
+    assert refresco >= 8  # 2 adultos × 4 L
+    assert any("cerveza" in l.producto.etiquetas for l in plan.lineas)
+    cobertura = {c.clave: c for c in plan.cobertura}
+    assert cobertura["bebidas"].requerido > next(c.requerido for c in base.cobertura if c.clave == "bebidas")
+    assert "antojo de refrescos" in cobertura["bebidas"].explicacion
+
+
+def test_antojo_respeta_alergias(catalogo):
+    plan = planear(_hogar(antojos=["cerveza"], alergias=["gluten"]), catalogo, tiempo_limite=10)
+    assert not any("cerveza" in l.producto.etiquetas for l in plan.lineas)
+    assert any("Cerveza" in n for n in plan.notas)
+
+
+def test_antojo_desconocido_es_perfil_invalido():
+    with pytest.raises(PerfilInvalido):
+        _hogar(antojos=["caviar"])
+
+
+# --- Tiendas por estado ---
+
+def test_tiendas_regionales_solo_donde_tienen_sucursales():
+    assert "heb" not in tiendas_en("Jalisco")
+    assert "heb" in tiendas_en("Nuevo León")
+    assert set(tiendas_en("Hidalgo")) >= {"walmart", "bodega_aurrera", "soriana", "chedraui"}
+    assert tiendas_en(None) == list(TIENDAS)

@@ -99,7 +99,7 @@ export default function Compra() {
                         <input type="checkbox" className="peer sr-only" checked={hecho} onChange={() => alternarComprado(l.id)} />
                         <span
                           className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-lg font-bold transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-nopal ${
-                            hecho ? "border-nopal bg-nopal text-white" : "border-linea text-transparent"
+                            hecho ? "border-nopal bg-nopal text-sobre" : "border-linea text-transparent"
                           }`}
                           aria-hidden="true"
                         >

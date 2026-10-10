@@ -83,7 +83,7 @@ export default function Inicio() {
               </Link>
               <Link
                 to="/compra"
-                className="flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-nopal font-titulo text-lg font-semibold text-white shadow-boton active:translate-y-1 active:shadow-none"
+                className="flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-nopal font-titulo text-lg font-semibold text-sobre shadow-boton active:translate-y-1 active:shadow-none"
               >
                 🛒 {comprados.length > 0 ? `Seguir (${comprados.length}/${plan.lineas.length})` : "Ir de compras"}
               </Link>
@@ -96,11 +96,10 @@ export default function Inicio() {
             ))}
 
             <div className="grid grid-cols-3 gap-3">
-              <Atajo emoji="🏪" fondo="bg-cielo-tenue" texto="Comparar tiendas" onClick={() => setHoja("comparar")} />
-              <Atajo emoji="🏠" fondo="bg-maiz-tenue" texto="Ya tengo en casa" onClick={() => setHoja("en_casa")} />
+              <Atajo emoji="🏪" texto="Comparar tiendas" onClick={() => setHoja("comparar")} />
+              <Atajo emoji="🏠" texto="Ya tengo en casa" onClick={() => setHoja("en_casa")} />
               <Atajo
                 emoji="📤"
-                fondo="bg-rosa-tenue"
                 texto="Compartir lista"
                 onClick={async () => {
                   if ((await compartirLista(plan, hogar)) === "copiado") setAviso("Lista copiada. Pégala en WhatsApp o donde quieras.");
@@ -150,9 +149,9 @@ export default function Inicio() {
   );
 }
 
-function Atajo({ emoji, fondo, texto, onClick }: { emoji: string; fondo: string; texto: string; onClick: () => void }) {
+function Atajo({ emoji, texto, onClick }: { emoji: string; texto: string; onClick: () => void }) {
   return (
-    <button type="button" onClick={onClick} className={`flex min-h-24 flex-col items-center justify-center gap-1 rounded-3xl p-2 text-center active:scale-95 ${fondo}`}>
+    <button type="button" onClick={onClick} className="flex min-h-24 flex-col items-center justify-center gap-1 rounded-3xl bg-tarjeta p-2 text-center shadow-suave ring-1 ring-linea/60 active:scale-95 active:bg-hundido">
       <span className="text-3xl" aria-hidden="true">
         {emoji}
       </span>

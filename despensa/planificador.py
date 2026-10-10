@@ -3,10 +3,10 @@ import math
 from dataclasses import asdict, dataclass, field
 
 from .catalogo import Producto, filtrar
-from .necesidades import aplicar_sustitutos, calcular_necesidades, explicar_necesidades
+from .necesidades import aplicar_sustitutos, calcular_antojos, calcular_necesidades, explicar_necesidades
 from .optimizador import optimizar
 from .perfil import Hogar
-from .reglas import NECESIDADES
+from .reglas import ANTOJOS, NECESIDADES
 
 # Máximo de visitas sugeridas para productos frescos dentro del periodo.
 MAX_VISITAS = 4
@@ -154,9 +154,21 @@ def planear(
     excluidos += [(p, MOTIVO_QUITADO) for p in aptos if p.id in quitados]
     aptos = [p for p in aptos if p.id not in quitados]
 
+    # Antojos: se suman a la demanda de su necesidad y deben venir de productos de ese tipo.
+    notas: list[str] = []
+    minimos: dict[str, float] = {}
+    for clave, cantidad in calcular_antojos(hogar).items():
+        antojo = ANTOJOS[clave]
+        if any(p.necesidad == antojo.necesidad and antojo.etiquetas & p.etiquetas for p in aptos):
+            demandas[antojo.necesidad] = round(demandas.get(antojo.necesidad, 0.0) + cantidad, 3)
+            minimos[clave] = cantidad
+        else:
+            notas.append(f"{antojo.nombre}: no hay productos compatibles con sus restricciones; no se incluye.")
+
     con_opciones = {p.necesidad for p in aptos}
     sin_opciones = {clave for clave in demandas if clave not in con_opciones}
-    demandas, notas = aplicar_sustitutos(demandas, sin_opciones)
+    demandas, notas_sustitutos = aplicar_sustitutos(demandas, sin_opciones)
+    notas += notas_sustitutos
     # Un sustituto puede no tener tampoco opciones; esos se reportan pero no se optimizan.
     demandas = {k: v for k, v in demandas.items() if k in con_opciones}
 
@@ -164,8 +176,13 @@ def planear(
     en_casa = {k: f for k, f in ajustes.en_casa.items() if k in demandas and f > 0}
     demandas = {k: round(v * (1 - en_casa.get(k, 0.0)), 3) for k, v in demandas.items()}
     demandas = {k: v for k, v in demandas.items() if v > 0}
+    minimos_antojos = [
+        (ANTOJOS[clave].necesidad, ANTOJOS[clave].etiquetas, round(cantidad * (1 - en_casa.get(ANTOJOS[clave].necesidad, 0.0)), 3))
+        for clave, cantidad in minimos.items()
+        if ANTOJOS[clave].necesidad in demandas
+    ]
 
-    resultado = optimizar(aptos, demandas, hogar.presupuesto, tiempo_limite, fijos, hogar.nivel)
+    resultado = optimizar(aptos, demandas, hogar.presupuesto, tiempo_limite, fijos, hogar.nivel, minimos_antojos)
     if resultado.estado != "Optimal":
         notas.append("El optimizador alcanzó el tiempo límite; la lista es buena pero puede no ser la óptima.")
 
@@ -176,7 +193,7 @@ def planear(
     ]
     lineas.sort(key=lambda l: (l.producto.departamento, l.producto.necesidad, l.producto.nombre))
 
-    explicaciones = explicar_necesidades(hogar)
+    explicaciones = explicar_necesidades(hogar, set(minimos))
     cobertura = []
     for clave, requerido in demandas.items():
         nec = NECESIDADES[clave]
@@ -195,7 +212,7 @@ def planear(
             f"Quedan por debajo del 95%: {', '.join(c.nombre for c in faltantes)}."
         )
     plan = Plan(hogar, lineas, cobertura, excluidos, notas)
-    _aconsejar(plan, bool(faltantes), aptos, demandas, fijos, tiempo_limite)
+    _aconsejar(plan, bool(faltantes), aptos, demandas, fijos, tiempo_limite, minimos_antojos)
     return plan
 
 
@@ -208,11 +225,11 @@ def _redondear_arriba(valor: float, multiplo: int = 50) -> int:
     return int(math.ceil(valor / multiplo) * multiplo)
 
 
-def _aconsejar(plan: Plan, falta_cobertura: bool, aptos, demandas, fijos, tiempo_limite: int) -> None:
+def _aconsejar(plan: Plan, falta_cobertura: bool, aptos, demandas, fijos, tiempo_limite: int, minimos=None) -> None:
     """Consejos sobre el presupuesto: cuánto falta para cubrir todo, o cuánto se puede bajar."""
     presupuesto = plan.hogar.presupuesto
     if falta_cobertura:
-        completo = optimizar(aptos, demandas, 10 * presupuesto + 100_000, tiempo_limite, fijos, "ahorro")
+        completo = optimizar(aptos, demandas, 10 * presupuesto + 100_000, tiempo_limite, fijos, "ahorro", minimos)
         plan.costo_completo = completo.costo
         extra = _redondear_arriba(completo.costo - presupuesto)
         if extra > 0:

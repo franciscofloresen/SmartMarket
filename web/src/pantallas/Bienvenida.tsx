@@ -3,9 +3,9 @@ import { Burbuja } from "../componentes/ui";
 import { useApp } from "../estado";
 
 const VENTAJAS: [string, string, string, string][] = [
-  ["👨‍👩‍👧‍👦", "bg-rosa-tenue", "A la medida", "Cantidades según edades, mascotas y días."],
-  ["🛡️", "bg-cielo-tenue", "Sin lo que no va", "Fuera alergias y lo que no les gusta."],
-  ["💰", "bg-maiz-tenue", "Dentro del presupuesto", "Con precios reales de Profeco en 6 tiendas."],
+  ["👨‍👩‍👧‍👦", "bg-nopal-tenue", "A la medida", "Cantidades según edades, mascotas y días."],
+  ["🛡️", "bg-nopal-tenue", "Sin lo que no va", "Fuera alergias y lo que no les gusta."],
+  ["💰", "bg-nopal-tenue", "Dentro del presupuesto", "Con precios de Profeco en las tiendas de tu estado."],
 ];
 const FLOTANTES = ["🥑", "🍅", "🥚", "🌽", "🍌", "🧀", "🥛", "🥕"];
 
@@ -57,7 +57,7 @@ export default function Bienvenida() {
       </div>
       <Link
         to="/hogar"
-        className="mb-2 flex min-h-14 items-center justify-center rounded-2xl bg-nopal font-titulo text-xl font-semibold text-white shadow-boton active:translate-y-1 active:shadow-none"
+        className="mb-2 flex min-h-14 items-center justify-center rounded-2xl bg-nopal font-titulo text-xl font-semibold text-sobre shadow-boton active:translate-y-1 active:shadow-none"
       >
         Empezar
       </Link>

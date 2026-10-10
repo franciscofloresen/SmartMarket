@@ -18,6 +18,11 @@ export function partirNombre(nombre: string): { titulo: string; detalle: string 
   return { titulo, detalle: resto.join(" · ") };
 }
 
+/** ¿La tienda tiene sucursales en el estado? Sin estado, o sin datos de presencia, se asume que sí. */
+export function hayTiendaEn(tienda: { presencia?: string[] }, estado: string | null): boolean {
+  return !estado || !tienda.presencia?.length || tienda.presencia.includes(estado);
+}
+
 export function nombrePeriodo(dias: number): string {
   return dias === 30 ? "el mes" : dias === 15 ? "la quincena" : dias === 7 ? "la semana" : `${dias} días`;
 }

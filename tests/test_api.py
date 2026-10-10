@@ -210,3 +210,24 @@ def test_reporte_de_ticket(cliente):
     cuerpo = {"tipo": "ticket", "tienda": "walmart", "total_estimado": 7500, "total_real": 7812.4}
     assert cliente.post("/api/reporte", json=cuerpo).status_code == 201
     assert cliente.post("/api/reporte", json={"tipo": "ticket", "total_estimado": 7500}).status_code == 422
+
+
+def test_comparar_omite_tiendas_sin_sucursales_en_el_estado(cliente, perfil):
+    tiendas = cliente.post("/api/comparar", json={"perfil": {**perfil, "estado": "Jalisco"}}).json()["tiendas"]
+    claves = {t["clave"] for t in tiendas}
+    assert "heb" not in claves and {"walmart", "soriana"} <= claves
+
+
+def test_opciones_incluye_antojos_y_presencia(cliente):
+    datos = cliente.get("/api/opciones").json()
+    assert {"refrescos", "dulces"} <= {a["clave"] for a in datos["antojos"]}
+    assert len(datos["estados"]) == 32
+    heb = next(t for t in datos["tiendas"] if t["clave"] == "heb")
+    assert "Jalisco" not in heb["presencia"] and "Nuevo León" in heb["presencia"]
+
+
+def test_plan_con_antojos(cliente, perfil):
+    plan = cliente.post("/api/plan", json={"perfil": {**perfil, "antojos": ["refrescos"]}}).json()
+    assert any(l["tipo"] == "Refresco" for l in plan["lineas"])
+    r = cliente.post("/api/plan", json={"perfil": {**perfil, "antojos": ["caviar"]}})
+    assert r.status_code == 422

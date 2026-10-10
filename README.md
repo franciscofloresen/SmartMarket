@@ -36,14 +36,18 @@ Por la red local (HTTP) no hay modo sin conexión: Safari solo lo permite con HT
 
 ### Qué hace la app
 
-- **Asistente del hogar** en 5 pasos: personas, mascotas, restricciones, tienda y estado,
-  presupuesto y nivel de marcas.
+- **Asistente del hogar** en 6 pasos: personas, mascotas, restricciones, antojos (refrescos,
+  botanas, chocolates, cerveza...), estado y tienda, presupuesto y nivel de marcas.
+- **Tiendas de tu estado**: el estado se elige de la lista o con "Usar mi ubicación" (las
+  coordenadas no salen del teléfono). Solo se ofrecen y comparan las cadenas con sucursales ahí:
+  en Jalisco no aparece H-E-B.
 - **Inicio**: presupuesto usado, gasto por departamento, consejos y accesos rápidos.
 - **Lista**: por departamento; cambiar cantidades, cambiar un producto por una alternativa (con la
   diferencia de precio), quitar lo que no gusta, buscar y agregar cualquier producto, marcar lo
   que ya hay en casa, comparar la despensa entre tiendas y compartirla.
 - **Modo compra**: lista para marcar; al terminar se anota el total del ticket.
-- **Más**: editar hogar, historial de compras, gustos recordados, respaldo y borrar datos.
+- **Más**: editar hogar, historial de compras, gustos recordados, apariencia (clara por defecto,
+  oscura o automática), respaldo y borrar datos.
 
 Todo se guarda en el teléfono (`localStorage`); el servidor no guarda perfiles.
 
@@ -95,7 +99,8 @@ curl -H "Authorization: Bearer $REPORTES_TOKEN" https://TU-DOMINIO.up.railway.ap
   "tortillas_caseras": false,
   "tienda": "walmart",
   "estado": "Jalisco",
-  "nivel": "equilibrado"
+  "nivel": "equilibrado",
+  "antojos": ["refrescos", "botanas"]
 }
 ```
 
@@ -106,7 +111,8 @@ curl -H "Authorization: Bearer $REPORTES_TOKEN" https://TU-DOMINIO.up.railway.ap
 | `dieta` | `vegetariana`, `pescetariana`, `sin_cerdo` |
 | `mascotas` | perro (`chico`, `mediano`, `grande`, `gigante`) o gato |
 | `tienda` | `walmart`, `bodega_aurrera`, `soriana`, `chedraui`, `la_comer`, `heb` |
-| `estado` | opcional; usa los precios que Profeco registró en ese estado, o el promedio nacional si no hay |
+| `estado` | opcional; usa los precios que Profeco registró en ese estado, o el promedio nacional si no hay. También limita la comparación a las tiendas con sucursales ahí |
+| `antojos` | opcional: `refrescos`, `jugos`, `botanas`, `dulces`, `galletas`, `postres`, `cerveza`. Se suman a la lista con prioridad opcional: si el presupuesto no alcanza, es lo primero que se recorta |
 | `nivel` | `ahorro` (lo más barato), `equilibrado` (parte del sobrante en mejores marcas), `premium` (todo el presupuesto) |
 
 ## Cómo funciona el motor
@@ -142,6 +148,9 @@ perfil ──► necesidades ──► filtro ──► optimizador ──► li
   datos abiertos de Profeco ("Quién es Quién en los Precios", segunda quincena de julio 2026).
   El precio es la mediana nacional de lo que Profeco registró en esa cadena.
 - `data/precios_estado/<tienda>.csv`: la mediana por estado, donde hay al menos 3 registros.
+- Qué cadenas hay en cada estado sale de esos precios por estado; Walmart, Bodega Aurrerá, Soriana
+  y Chedraui se consideran nacionales, y `PRESENCIA_EXTRA` (`despensa/reglas.py`) agrega estados
+  donde H-E-B o La Comer tienen sucursales pero Profeco no les levantó precios.
 - `data/catalogo_manual.csv`: lo que Profeco no levanta (alimento y arena para mascotas, bolsas
   de basura, bebidas vegetales). **Sus precios son estimados** y hay que verificarlos a mano.
 

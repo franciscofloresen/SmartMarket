@@ -59,7 +59,13 @@ export function normalizar(datos: unknown): Guardado {
   if (!datos || typeof datos !== "object") throw new Error("Respaldo inválido");
   const d = datos as Partial<Guardado>;
   const hogar = d.hogar
-    ? { ...d.hogar, tienda: d.hogar.tienda ?? "walmart", estado: d.hogar.estado ?? null, nivel: d.hogar.nivel ?? "equilibrado" }
+    ? {
+        ...d.hogar,
+        tienda: d.hogar.tienda ?? "walmart",
+        estado: d.hogar.estado ?? null,
+        nivel: d.hogar.nivel ?? "equilibrado",
+        antojos: d.hogar.antojos ?? [],
+      }
     : null;
   // Un plan guardado con el formato anterior no trae los campos nuevos: se descarta y se regenera.
   const plan = d.plan && Array.isArray(d.plan.consejos) ? d.plan : null;

@@ -3,7 +3,7 @@ import math
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
 
-from .catalogo import Producto, cargar_catalogo, catalogo_de, filtrar
+from .catalogo import Producto, cargar_catalogo, catalogo_de, filtrar, tiendas_en
 from .perfil import Hogar
 from .planificador import Ajustes, Plan, planear
 from .reglas import NECESIDADES, TIENDAS
@@ -83,7 +83,7 @@ def alternativas(hogar: Hogar, producto_id: str, paquetes: int = 1) -> list[dict
 
 
 def comparar_tiendas(hogar: Hogar, ajustes: Ajustes | None = None, tiempo_limite: int = 10) -> list[dict]:
-    """La misma despensa en cada tienda, de la más barata a la más cara.
+    """La misma despensa en cada tienda con sucursales en el estado del hogar, de la más barata a la más cara.
 
     Los productos fijados solo se respetan en la tienda del hogar: en otra tienda pueden no existir.
     """
@@ -112,8 +112,10 @@ def comparar_tiendas(hogar: Hogar, ajustes: Ajustes | None = None, tiempo_limite
         }
 
     # El solver suelta el GIL mientras resuelve, así que las tiendas se calculan en paralelo.
-    with ThreadPoolExecutor(max_workers=len(TIENDAS)) as ejecutor:
-        filas = list(ejecutor.map(calcular, TIENDAS))
+    cercanas = tiendas_en(hogar.estado)
+    tiendas = [t for t in TIENDAS if t in cercanas or t == hogar.tienda]
+    with ThreadPoolExecutor(max_workers=len(tiendas)) as ejecutor:
+        filas = list(ejecutor.map(calcular, tiendas))
     # Con cobertura incompleta el total no es comparable: esas tiendas van al final.
     filas.sort(key=lambda f: (not f["cobertura_completa"], f["total"]))
     return filas

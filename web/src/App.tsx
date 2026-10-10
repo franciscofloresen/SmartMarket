@@ -60,7 +60,7 @@ function BarraInferior() {
                   </span>
                   {p.texto}
                   {p.ruta === "/compra" && datos.comprados.length > 0 && pendientes > 0 && (
-                    <span className="tabular absolute right-[calc(50%-1.9rem)] top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-rosa px-1 text-[11px] font-bold text-white">
+                    <span className="tabular absolute right-[calc(50%-1.9rem)] top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-rosa px-1 text-[11px] font-bold text-sobre">
                       {pendientes}
                     </span>
                   )}

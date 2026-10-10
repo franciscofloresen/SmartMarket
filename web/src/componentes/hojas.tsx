@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api, ErrorApi } from "../api";
 import { useApp } from "../estado";
-import { cantidad, dinero, fechaCorta, partirNombre } from "../formato";
+import { cantidad, dinero, fechaCorta, hayTiendaEn, partirNombre } from "../formato";
 import { departamento, iconoProducto } from "../iconos";
 import type { Alternativa, Linea, Menu, ProductoResumen, TiendaComparada } from "../tipos";
 import { Aviso, Boton, Burbuja, Campo, claseEntrada, Hoja, Segmentado, Stepper } from "./ui";
@@ -359,7 +359,7 @@ function Buscador({ onCerrar }: { onCerrar: () => void }) {
                   <button
                     type="button"
                     onClick={() => agregar(p)}
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-nopal text-2xl font-bold text-white active:scale-90"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-nopal text-2xl font-bold text-sobre active:scale-90"
                     aria-label={`Agregar ${titulo}`}
                   >
                     +
@@ -445,8 +445,11 @@ export function HojaComparar({ abierta, onCerrar }: { abierta: boolean; onCerrar
 }
 
 function Comparador({ onCerrar }: { onCerrar: () => void }) {
-  const { datos, cambiarTienda } = useApp();
+  const { datos, opciones, cambiarTienda } = useApp();
   const { datos: tiendas, error } = useCarga<TiendaComparada[]>(() => api.comparar(datos.hogar!, datos.ajustes));
+  const estado = datos.hogar!.estado;
+  const sinSucursal = opciones.tiendas.filter((t) => !hayTiendaEn(t, estado) && t.clave !== datos.hogar!.tienda);
+  const cuantas = opciones.tiendas.length - sinSucursal.length;
   // Las diferencias entre tiendas son de pocos puntos porcentuales: la barra arranca cerca del
   // total más bajo para que se noten.
   const totales = tiendas?.map((t) => t.total) ?? [1];
@@ -460,8 +463,10 @@ function Comparador({ onCerrar }: { onCerrar: () => void }) {
       {error && <Aviso tono="error">{error}</Aviso>}
       {!tiendas && !error && (
         <>
-          <p className="text-sm text-suave">Armando la misma despensa en 6 tiendas… tarda unos segundos.</p>
-          <Esqueleto filas={6} />
+          <p className="text-sm text-suave">
+            Armando la misma despensa en {cuantas} tiendas{estado ? ` de ${estado}` : ""}… tarda unos segundos.
+          </p>
+          <Esqueleto filas={cuantas} />
         </>
       )}
       {tiendas && actual && mejor && (
@@ -495,7 +500,7 @@ function Comparador({ onCerrar }: { onCerrar: () => void }) {
                   {!t.actual && (
                     <button
                       type="button"
-                      className="min-h-9 rounded-full bg-nopal px-3 text-sm font-semibold text-white active:scale-95"
+                      className="min-h-9 rounded-full bg-nopal px-3 text-sm font-semibold text-sobre active:scale-95"
                       onClick={() => {
                         onCerrar();
                         void cambiarTienda(t.clave);
@@ -508,6 +513,11 @@ function Comparador({ onCerrar }: { onCerrar: () => void }) {
               </li>
             ))}
           </ul>
+          {sinSucursal.length > 0 && (
+            <p className="text-center text-xs text-suave">
+              No comparamos {sinSucursal.map((t) => t.nombre).join(" ni ")}: no {sinSucursal.length === 1 ? "tiene" : "tienen"} sucursales en {estado}.
+            </p>
+          )}
           <p className="text-center text-xs text-suave">
             Precios de referencia de Profeco. Cada tienda maneja marcas distintas, así que los productos pueden cambiar.
           </p>

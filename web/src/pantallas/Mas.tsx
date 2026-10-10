@@ -2,9 +2,10 @@ import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { api, ErrorApi } from "../api";
 import { normalizar } from "../almacen";
-import { Aviso, Boton, Burbuja, claseEntrada, Encabezado, Tarjeta } from "../componentes/ui";
+import { Aviso, Boton, Burbuja, claseEntrada, Encabezado, Segmentado, Tarjeta } from "../componentes/ui";
 import { useApp } from "../estado";
 import { dinero, dineroEntero, fechaCorta, nombrePeriodo } from "../formato";
+import { guardarTema, temaGuardado, type Tema } from "../tema";
 
 export default function Mas() {
   const { datos, opciones, restaurar, borrarTodo, olvidarGustos, regenerar } = useApp();
@@ -12,6 +13,7 @@ export default function Mas() {
   const archivo = useRef<HTMLInputElement>(null);
   const [mensaje, setMensaje] = useState<{ tono: "info" | "error"; texto: string } | null>(null);
   const { hogar, historial, noMeGusta } = datos;
+  const [tema, setTema] = useState<Tema>(temaGuardado);
 
   function descargarRespaldo() {
     const blob = new Blob([JSON.stringify(datos, null, 2)], { type: "application/json" });
@@ -55,13 +57,15 @@ export default function Mas() {
                 </p>
               </div>
             </div>
-            {(hogar.alergias.length > 0 || hogar.excluir.length > 0 || hogar.dieta) && (
+            {(hogar.alergias.length > 0 || hogar.excluir.length > 0 || hogar.dieta || hogar.antojos.length > 0) && (
               <p className="mt-3 text-sm text-suave">
                 {[
                   hogar.alergias.length > 0 &&
                     `Alergias: ${hogar.alergias.map((a) => opciones.alergias.find((o) => o.clave === a)?.nombre ?? a).join(", ")}`,
                   hogar.dieta && `Dieta ${opciones.dietas.find((d) => d.clave === hogar.dieta)?.nombre.toLowerCase() ?? hogar.dieta}`,
                   hogar.excluir.length > 0 && `Sin ${hogar.excluir.join(", ")}`,
+                  hogar.antojos.length > 0 &&
+                    `Antojos: ${hogar.antojos.map((a) => opciones.antojos.find((o) => o.clave === a)?.nombre.toLowerCase() ?? a).join(", ")}`,
                 ]
                   .filter(Boolean)
                   .join(" · ")}
@@ -133,6 +137,23 @@ export default function Mas() {
         </Tarjeta>
 
         <Comentario />
+
+        <Tarjeta>
+          <h2 className="mb-3 text-lg font-semibold">🎨 Apariencia</h2>
+          <Segmentado
+            etiqueta="Apariencia"
+            valor={tema}
+            onCambio={(t) => {
+              setTema(t);
+              guardarTema(t);
+            }}
+            opciones={[
+              { valor: "claro", texto: "Clara" },
+              { valor: "oscuro", texto: "Oscura" },
+              { valor: "auto", texto: "Automática" },
+            ]}
+          />
+        </Tarjeta>
 
         <Tarjeta>
           <h2 className="text-lg font-semibold">📲 Instálala en tu iPhone</h2>

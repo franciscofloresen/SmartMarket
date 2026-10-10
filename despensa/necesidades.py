@@ -33,6 +33,20 @@ def calcular_necesidades(hogar: Hogar) -> dict[str, float]:
     return {clave: round(cant * escala, 3) for clave, cant in mensual.items() if cant > 0}
 
 
+def _antojos_mensuales(hogar: Hogar) -> dict[str, float]:
+    mensual = {
+        clave: sum(reglas.ANTOJOS[clave].por_persona.get(m.grupo, 0.0) for m in hogar.miembros)
+        for clave in hogar.antojos
+    }
+    return {clave: cant for clave, cant in mensual.items() if cant > 0}
+
+
+def calcular_antojos(hogar: Hogar) -> dict[str, float]:
+    """Cantidad de cada antojo que el hogar pidió (en la unidad de su necesidad) para el periodo."""
+    escala = hogar.periodo_dias / 30
+    return {clave: round(cant * escala, 3) for clave, cant in _antojos_mensuales(hogar).items()}
+
+
 def aplicar_sustitutos(demandas: dict[str, float], sin_opciones: set[str]) -> tuple[dict[str, float], list[str]]:
     """Pasa la cantidad de necesidades sin productos compatibles a sus sustitutos.
 
@@ -77,8 +91,17 @@ def _cantidad(valor: float, unidad: str) -> str:
     return f"{valor:.1f}".rstrip("0").rstrip(".") + f" {unidad}"
 
 
-def explicar_necesidades(hogar: Hogar) -> dict[str, str]:
-    """Por qué se pide cada cantidad, en palabras: '2 adultos × 7 L + 2 niños × 12 L al mes'."""
+def explicar_necesidades(hogar: Hogar, antojos: set[str] | None = None) -> dict[str, str]:
+    """Por qué se pide cada cantidad, en palabras: '2 adultos × 7 L + 2 niños × 12 L al mes'.
+
+    `antojos` son los que sí se sumaron a la lista; si no se indica, todos los que pidió el hogar.
+    """
+    antojos_por_necesidad: dict[str, list[str]] = defaultdict(list)
+    for clave, cant in _antojos_mensuales(hogar).items():
+        antojo = reglas.ANTOJOS[clave]
+        if antojos is None or clave in antojos:
+            unidad = reglas.NECESIDADES[antojo.necesidad].unidad
+            antojos_por_necesidad[antojo.necesidad].append(f"antojo de {antojo.nombre.lower()}: {_cantidad(cant, unidad)}")
     grupos: dict[str, int] = defaultdict(int)
     for m in hogar.miembros:
         grupos[m.grupo] += 1
@@ -93,6 +116,7 @@ def explicar_necesidades(hogar: Hogar) -> dict[str, str]:
             if n and por_persona:
                 singular, plural = _NOMBRES_GRUPO[grupo]
                 partes.append(f"{n} {singular if n == 1 else plural} × {_cantidad(por_persona, nec.unidad)}")
+        partes += antojos_por_necesidad.get(clave, [])
         if partes:
             textos[clave] = " + ".join(partes) + " al mes"
 

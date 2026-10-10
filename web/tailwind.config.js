@@ -14,6 +14,8 @@ export default {
         linea: v("linea"),
         tinta: v("tinta"),
         suave: v("suave"),
+        // Texto encima de un color sólido (botones, insignias).
+        sobre: v("sobre"),
         nopal: { DEFAULT: v("nopal"), fuerte: v("nopal-fuerte"), tenue: v("nopal-tenue") },
         maiz: { DEFAULT: v("maiz"), tenue: v("maiz-tenue") },
         rosa: { DEFAULT: v("rosa"), tenue: v("rosa-tenue") },
@@ -26,8 +28,8 @@ export default {
       },
       boxShadow: {
         // Sombra "sólida" que da sensación de botón físico.
-        boton: "0 4px 0 0 rgb(var(--nopal-fuerte))",
-        suave: "0 6px 24px -8px rgb(var(--sombra) / 0.25)",
+        boton: "0 3px 0 0 rgb(var(--nopal-fuerte))",
+        suave: "0 1px 2px 0 rgb(var(--sombra) / 0.05), 0 10px 24px -14px rgb(var(--sombra) / 0.18)",
       },
       keyframes: {
         aparecer: { from: { opacity: "0", transform: "translateY(8px)" }, to: { opacity: "1", transform: "none" } },

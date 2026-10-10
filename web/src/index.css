@@ -13,51 +13,55 @@
 
 @layer base {
   :root {
-    /* Mercado mexicano: crema cálido, verde nopal y acentos de fruta. Valores R G B. */
-    --fondo: 255 248 236;
+    /* Neutros claros con un solo color de marca (verde nopal). Los acentos comparten
+       luminosidad y saturación para que combinen entre sí. Valores R G B. */
+    --fondo: 246 247 244;
     --tarjeta: 255 255 255;
-    --hundido: 247 238 222;
-    --linea: 236 224 204;
-    --tinta: 38 30 24;
-    --suave: 122 108 94;
-    --sombra: 120 80 20;
-    --nopal: 14 138 92;
-    --nopal-fuerte: 8 99 66;
-    --nopal-tenue: 219 244 230;
-    --maiz: 245 176 20;
-    --maiz-tenue: 255 239 196;
-    --rosa: 226 44 110;
-    --rosa-tenue: 255 222 234;
-    --papaya: 245 110 40;
-    --papaya-tenue: 255 228 208;
-    --cielo: 36 132 214;
-    --cielo-tenue: 218 236 252;
-    --uva: 124 76 200;
-    --uva-tenue: 234 224 250;
+    --hundido: 236 239 234;
+    --linea: 224 228 221;
+    --tinta: 23 32 27;
+    --suave: 96 107 100;
+    --sobre: 255 255 255;
+    --sombra: 23 43 32;
+    --nopal: 21 128 61;
+    --nopal-fuerte: 15 95 45;
+    --nopal-tenue: 225 243 231;
+    --maiz: 180 118 9;
+    --maiz-tenue: 252 241 212;
+    --rosa: 201 56 78;
+    --rosa-tenue: 252 230 233;
+    --papaya: 204 96 32;
+    --papaya-tenue: 253 234 220;
+    --cielo: 37 110 184;
+    --cielo-tenue: 224 237 250;
+    --uva: 110 86 190;
+    --uva-tenue: 236 232 250;
+    color-scheme: light;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --fondo: 24 20 17;
-      --tarjeta: 38 32 28;
-      --hundido: 50 43 38;
-      --linea: 66 57 50;
-      --tinta: 250 242 230;
-      --suave: 176 162 146;
-      --sombra: 0 0 0;
-      --nopal: 40 178 124;
-      --nopal-fuerte: 20 120 82;
-      --nopal-tenue: 22 60 46;
-      --maiz: 250 190 50;
-      --maiz-tenue: 74 56 14;
-      --rosa: 244 92 146;
-      --rosa-tenue: 80 26 46;
-      --papaya: 250 134 72;
-      --papaya-tenue: 82 42 20;
-      --cielo: 88 168 236;
-      --cielo-tenue: 20 50 80;
-      --uva: 164 124 232;
-      --uva-tenue: 52 36 86;
-    }
+  /* El tema oscuro es opcional: tema.ts pone data-tema según lo elegido en "Más". */
+  :root[data-tema="oscuro"] {
+    --fondo: 15 19 17;
+    --tarjeta: 25 31 28;
+    --hundido: 36 43 39;
+    --linea: 50 59 54;
+    --tinta: 236 241 237;
+    --suave: 152 164 156;
+    --sobre: 12 24 17;
+    --sombra: 0 0 0;
+    --nopal: 74 201 124;
+    --nopal-fuerte: 40 146 84;
+    --nopal-tenue: 24 54 38;
+    --maiz: 232 180 76;
+    --maiz-tenue: 62 48 18;
+    --rosa: 240 124 140;
+    --rosa-tenue: 70 30 37;
+    --papaya: 238 150 96;
+    --papaya-tenue: 68 40 22;
+    --cielo: 112 176 236;
+    --cielo-tenue: 24 46 70;
+    --uva: 168 150 236;
+    --uva-tenue: 44 38 78;
+    color-scheme: dark;
   }
   html {
     -webkit-text-size-adjust: 100%;

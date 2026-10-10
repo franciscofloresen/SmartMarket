@@ -5,6 +5,7 @@ from pathlib import Path
 
 from .reglas import (
     ALIAS_ALERGENOS,
+    ANTOJOS,
     CROQUETAS_PERRO_DIA,
     DIETAS,
     NIVEL_DEFAULT,
@@ -55,6 +56,8 @@ class Hogar:
     # ahorro | equilibrado | premium: qué tanto del sobrante se usa en mejores marcas.
     nivel: str = NIVEL_DEFAULT
     nombre: str = ""
+    # Gustos no necesarios que sí quieren en la lista (claves de reglas.ANTOJOS).
+    antojos: list[str] = field(default_factory=list)
 
     @property
     def terminos_excluidos(self) -> list[str]:
@@ -119,6 +122,11 @@ def hogar_desde_dict(datos: dict) -> Hogar:
     if nivel not in NIVELES:
         raise PerfilInvalido(f"Nivel de marcas no reconocido: {nivel}. Opciones: {', '.join(NIVELES)}")
 
+    antojos = list(dict.fromkeys(datos.get("antojos") or []))
+    desconocidos = [a for a in antojos if a not in ANTOJOS]
+    if desconocidos:
+        raise PerfilInvalido(f"Antojo no reconocido: {', '.join(map(str, desconocidos))}. Opciones: {', '.join(ANTOJOS)}")
+
     return Hogar(
         miembros=miembros,
         presupuesto=presupuesto,
@@ -132,6 +140,7 @@ def hogar_desde_dict(datos: dict) -> Hogar:
         estado=estado,
         nivel=nivel,
         nombre=datos.get("nombre", ""),
+        antojos=antojos,
     )
 
 

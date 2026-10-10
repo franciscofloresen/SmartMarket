@@ -43,7 +43,7 @@ export default function Lista() {
             <button
               type="button"
               onClick={() => setHoja("buscar")}
-              className="mb-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-nopal text-2xl font-bold text-white shadow-boton active:translate-y-1 active:shadow-none"
+              className="mb-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-nopal text-2xl font-bold text-sobre shadow-boton active:translate-y-1 active:shadow-none"
               aria-label="Agregar un producto"
             >
               +
@@ -181,7 +181,7 @@ export default function Lista() {
         <div className="fixed inset-x-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-10 px-4">
           <Link
             to="/compra"
-            className="mx-auto flex min-h-14 max-w-lg items-center justify-center gap-2 rounded-2xl bg-nopal font-titulo text-xl font-semibold text-white shadow-boton active:translate-y-1 active:shadow-none"
+            className="mx-auto flex min-h-14 max-w-lg items-center justify-center gap-2 rounded-2xl bg-nopal font-titulo text-xl font-semibold text-sobre shadow-boton active:translate-y-1 active:shadow-none"
           >
             Ir de compras 🛒
           </Link>

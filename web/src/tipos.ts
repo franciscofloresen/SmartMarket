@@ -30,6 +30,8 @@ export interface Perfil {
   tienda: string;
   estado: string | null;
   nivel: Nivel;
+  /** Gustos no necesarios que sí quieren en la lista (refrescos, botanas...). */
+  antojos: string[];
 }
 
 export interface Ajustes {
@@ -99,12 +101,17 @@ export interface Opcion {
 
 export interface Tienda extends Opcion {
   productos: number;
+  /** Estados donde la tienda tiene precios propios. */
   estados: string[];
+  /** Estados donde la tienda tiene sucursales; vacío si no se sabe. */
+  presencia: string[];
 }
 
 export interface Opciones {
   catalogo: InfoCatalogo;
   tiendas: Tienda[];
+  estados: string[];
+  antojos: Opcion[];
   alergias: Opcion[];
   dietas: Opcion[];
   niveles: Opcion[];

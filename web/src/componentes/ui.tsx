@@ -5,7 +5,7 @@ type Variante = "primario" | "secundario" | "peligro" | "texto";
 const VARIANTES: Record<Variante, string> = {
   // El primario se "hunde" al presionarlo: pierde la sombra sólida y baja 4px.
   primario:
-    "bg-nopal text-white shadow-boton active:translate-y-1 active:shadow-none disabled:bg-linea disabled:text-suave disabled:shadow-none disabled:translate-y-0",
+    "bg-nopal text-sobre shadow-boton active:translate-y-1 active:shadow-none disabled:bg-linea disabled:text-suave disabled:shadow-none disabled:translate-y-0",
   secundario: "bg-tarjeta text-tinta ring-2 ring-linea active:bg-hundido disabled:opacity-50",
   peligro: "bg-tarjeta text-rosa ring-2 ring-rosa-tenue active:bg-rosa-tenue",
   texto: "text-nopal active:bg-nopal-tenue",
@@ -27,7 +27,7 @@ export function Boton({
 }
 
 export function Tarjeta({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <section className={`rounded-3xl bg-tarjeta p-4 shadow-suave ${className}`}>{children}</section>;
+  return <section className={`rounded-3xl bg-tarjeta p-4 shadow-suave ring-1 ring-linea/60 ${className}`}>{children}</section>;
 }
 
 /** Emoji dentro de un círculo de color. */
@@ -55,7 +55,7 @@ export function Chip({
       aria-pressed={activo}
       onClick={onClick}
       className={`min-h-11 rounded-full px-4 text-sm font-semibold transition-colors active:scale-95 ${
-        activo ? "bg-nopal text-white" : "bg-tarjeta text-tinta ring-2 ring-linea"
+        activo ? "bg-nopal text-sobre" : "bg-tarjeta text-tinta ring-2 ring-linea"
       }`}
     >
       {children}
@@ -84,7 +84,7 @@ export function Segmentado<T extends string | number>({
           aria-checked={o.valor === valor}
           onClick={() => onCambio(o.valor)}
           className={`min-h-11 flex-1 rounded-xl px-2 text-sm font-semibold transition-colors ${
-            o.valor === valor ? "bg-nopal text-white shadow-sm" : "text-suave"
+            o.valor === valor ? "bg-nopal text-sobre shadow-sm" : "text-suave"
           }`}
         >
           {o.texto}
@@ -127,7 +127,7 @@ export function Stepper({
       </span>
       <button
         type="button"
-        className={`${boton} bg-nopal text-white`}
+        className={`${boton} bg-nopal text-sobre`}
         aria-label={`Más ${etiqueta}`}
         disabled={valor >= max}
         onClick={() => onCambio(valor + 1)}

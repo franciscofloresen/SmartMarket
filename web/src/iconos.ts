@@ -16,13 +16,13 @@ export const DEPARTAMENTOS: Departamento[] = [
   { clave: "frutas_verduras", nombre: "Frutas y verduras", emoji: "🥑", fondo: "bg-nopal-tenue", texto: "text-nopal-fuerte", barra: "bg-nopal" },
   { clave: "carnes", nombre: "Carnes y aves", emoji: "🥩", fondo: "bg-rosa-tenue", texto: "text-rosa", barra: "bg-rosa" },
   { clave: "pescados", nombre: "Pescados y mariscos", emoji: "🐟", fondo: "bg-cielo-tenue", texto: "text-cielo", barra: "bg-cielo" },
-  { clave: "salchichoneria", nombre: "Salchichonería", emoji: "🌭", fondo: "bg-papaya-tenue", texto: "text-papaya", barra: "bg-papaya" },
-  { clave: "lacteos_huevo", nombre: "Lácteos y huevo", emoji: "🥛", fondo: "bg-cielo-tenue", texto: "text-cielo", barra: "bg-cielo" },
-  { clave: "panaderia_tortilleria", nombre: "Panadería y tortillería", emoji: "🫓", fondo: "bg-maiz-tenue", texto: "text-maiz", barra: "bg-maiz" },
-  { clave: "despensa", nombre: "Despensa", emoji: "🥫", fondo: "bg-papaya-tenue", texto: "text-papaya", barra: "bg-papaya" },
+  { clave: "salchichoneria", nombre: "Salchichonería", emoji: "🌭", fondo: "bg-rosa-tenue", texto: "text-rosa", barra: "bg-rosa" },
+  { clave: "lacteos_huevo", nombre: "Lácteos y huevo", emoji: "🥛", fondo: "bg-maiz-tenue", texto: "text-maiz", barra: "bg-maiz" },
+  { clave: "panaderia_tortilleria", nombre: "Panadería y tortillería", emoji: "🫓", fondo: "bg-papaya-tenue", texto: "text-papaya", barra: "bg-papaya" },
+  { clave: "despensa", nombre: "Despensa", emoji: "🥫", fondo: "bg-uva-tenue", texto: "text-uva", barra: "bg-uva" },
   { clave: "congelados", nombre: "Congelados", emoji: "🧊", fondo: "bg-cielo-tenue", texto: "text-cielo", barra: "bg-cielo" },
-  { clave: "bebidas", nombre: "Bebidas", emoji: "🧃", fondo: "bg-uva-tenue", texto: "text-uva", barra: "bg-uva" },
-  { clave: "limpieza", nombre: "Limpieza", emoji: "🧽", fondo: "bg-nopal-tenue", texto: "text-nopal-fuerte", barra: "bg-nopal" },
+  { clave: "bebidas", nombre: "Bebidas", emoji: "🧃", fondo: "bg-papaya-tenue", texto: "text-papaya", barra: "bg-papaya" },
+  { clave: "limpieza", nombre: "Limpieza", emoji: "🧽", fondo: "bg-cielo-tenue", texto: "text-cielo", barra: "bg-cielo" },
   { clave: "higiene", nombre: "Higiene personal", emoji: "🧴", fondo: "bg-uva-tenue", texto: "text-uva", barra: "bg-uva" },
   { clave: "bebe", nombre: "Bebé", emoji: "🍼", fondo: "bg-rosa-tenue", texto: "text-rosa", barra: "bg-rosa" },
   { clave: "mascotas", nombre: "Mascotas", emoji: "🐾", fondo: "bg-maiz-tenue", texto: "text-maiz", barra: "bg-maiz" },
@@ -82,12 +82,3 @@ export function iconoProducto(p: { tipo?: string; nombre: string; departamento: 
   }
   return icono;
 }
-
-export const TIENDAS_VISUAL: Record<string, { emoji: string; fondo: string }> = {
-  walmart: { emoji: "🟦", fondo: "bg-cielo-tenue" },
-  bodega_aurrera: { emoji: "🟩", fondo: "bg-nopal-tenue" },
-  soriana: { emoji: "🟥", fondo: "bg-rosa-tenue" },
-  chedraui: { emoji: "🟧", fondo: "bg-papaya-tenue" },
-  la_comer: { emoji: "🟨", fondo: "bg-maiz-tenue" },
-  heb: { emoji: "🟪", fondo: "bg-uva-tenue" },
-};

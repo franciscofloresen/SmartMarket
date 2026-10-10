@@ -27,11 +27,13 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from api import ia
-from despensa.catalogo import cargar_catalogo, catalogo_de, estados_de
+from despensa.catalogo import cargar_catalogo, catalogo_de, estados_de, presencia_de
 from despensa.consultas import alternativas, buscar, comparar_tiendas
 from despensa.perfil import PerfilInvalido, hogar_desde_dict
 from despensa.planificador import AjusteInvalido, Ajustes, planear
 from despensa.reglas import (
+    ANTOJOS,
+    ESTADOS,
     NECESIDADES,
     NIVEL_DEFAULT,
     NIVELES,
@@ -79,6 +81,7 @@ class PerfilIn(BaseModel):
     tienda: str = Field(TIENDA_DEFAULT, max_length=30)
     estado: str | None = Field(None, max_length=40)
     nivel: str = Field(NIVEL_DEFAULT, max_length=20)
+    antojos: list[Annotated[str, Field(max_length=30)]] = Field(default_factory=list, max_length=20)
 
 
 class AjustesIn(BaseModel):
@@ -175,9 +178,17 @@ def opciones() -> dict:
     return {
         "catalogo": _info_catalogo(),
         "tiendas": [
-            {"clave": clave, "nombre": nombre, "productos": len(cargar_catalogo(clave)), "estados": estados_de(clave)}
+            {
+                "clave": clave,
+                "nombre": nombre,
+                "productos": len(cargar_catalogo(clave)),
+                "estados": estados_de(clave),      # con precios propios
+                "presencia": presencia_de(clave),  # con sucursales
+            }
             for clave, nombre in TIENDAS.items()
         ],
+        "estados": ESTADOS,
+        "antojos": [{"clave": a.clave, "nombre": a.nombre} for a in ANTOJOS.values()],
         "alergias": [{"clave": k, "nombre": v} for k, v in NOMBRES_ALERGENOS.items()],
         "dietas": [{"clave": k, "nombre": v} for k, v in NOMBRES_DIETAS.items()],
         "niveles": [{"clave": k, "nombre": v} for k, v in NIVELES.items()],

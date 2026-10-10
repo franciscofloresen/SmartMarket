@@ -3,21 +3,31 @@ import { useNavigate } from "react-router-dom";
 import { Aviso, Boton, Burbuja, Campo, Chip, claseEntrada, Segmentado, Stepper, Tarjeta } from "../componentes/ui";
 import { api, ErrorApi } from "../api";
 import { useApp } from "../estado";
-import { dineroEntero } from "../formato";
-import { TIENDAS_VISUAL } from "../iconos";
+import { dineroEntero, hayTiendaEn } from "../formato";
+import { ubicar } from "../ubicacion";
 import type { HogarSugerido, Mascota, Miembro, Nivel, Perfil, Sexo, TamanoPerro } from "../tipos";
 
 const PASOS = [
   { titulo: "¿Quiénes viven en casa?", ayuda: "Con eso calculamos cuánto come cada quien." },
   { titulo: "¿Tienen mascotas?", ayuda: "Incluimos su alimento (y arena para gatos)." },
   { titulo: "¿Qué no debe llevar?", ayuda: "Alergias, dieta y lo que no les gusta." },
-  { titulo: "¿Dónde compran?", ayuda: "Usamos precios reales de Profeco para esa tienda." },
+  { titulo: "¿Algún antojo?", ayuda: "No son necesarios, pero si los quieren, los agregamos." },
+  { titulo: "¿Dónde compran?", ayuda: "Solo te mostramos tiendas que hay en tu estado." },
   { titulo: "¿Cuánto quieren gastar?", ayuda: "Armamos la lista sin pasarnos de esa cantidad." },
 ] as const;
 
 const EXCLUSIONES_SUGERIDAS = ["brócoli", "coliflor", "chile", "cerdo", "champiñones", "aguacate", "refresco", "embutidos"];
 const EMOJI_ALERGIA: Record<string, string> = {
   pescado: "🐟", mariscos: "🦐", lacteos: "🥛", huevo: "🥚", gluten: "🌾", cacahuate: "🥜", nueces: "🌰", soya: "🫘", ajonjoli: "⚪",
+};
+const ANTOJOS_VISUAL: Record<string, { emoji: string; ejemplo: string }> = {
+  refrescos: { emoji: "🥤", ejemplo: "Cola, naranja, toronja…" },
+  jugos: { emoji: "🧃", ejemplo: "Jugos, té frío, hidratantes" },
+  botanas: { emoji: "🍟", ejemplo: "Papas, frituras, cacahuates" },
+  dulces: { emoji: "🍫", ejemplo: "Barras, gansitos, donitas" },
+  galletas: { emoji: "🍪", ejemplo: "Dulces y saladas" },
+  postres: { emoji: "🍨", ejemplo: "Helado, flan, gelatina" },
+  cerveza: { emoji: "🍺", ejemplo: "Solo para los adultos" },
 };
 const EMOJI_DIETA: Record<string, string> = { vegetariana: "🥗", pescetariana: "🐟", sin_cerdo: "🚫🐖" };
 const NIVELES: { valor: Nivel; emoji: string; titulo: string; texto: string }[] = [
@@ -59,6 +69,7 @@ const PERFIL_NUEVO: Perfil = {
   tienda: "walmart",
   estado: null,
   nivel: "equilibrado",
+  antojos: [],
 };
 
 export default function Hogar() {
@@ -68,12 +79,15 @@ export default function Hogar() {
   const [perfil, setPerfil] = useState<Perfil>(datos.hogar ?? PERFIL_NUEVO);
   const [paso, setPaso] = useState(0);
   // Cada paso empieza arriba, aunque el anterior se haya quedado desplazado.
-  useEffect(() => window.scrollTo(0, 0), [paso]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [paso]);
 
   const cambiar = (parcial: Partial<Perfil>) => setPerfil((p) => ({ ...p, ...parcial }));
   const edadesValidas = perfil.miembros.every((m) => Number.isInteger(m.edad) && m.edad >= 0 && m.edad <= 120);
   const puedeAvanzar = [
     perfil.miembros.length > 0 && edadesValidas,
+    true,
     true,
     true,
     true,
@@ -113,8 +127,9 @@ export default function Hogar() {
         {paso === 0 && <PasoPersonas miembros={perfil.miembros} onCambio={(miembros) => cambiar({ miembros })} />}
         {paso === 1 && <PasoMascotas mascotas={perfil.mascotas} onCambio={(mascotas) => cambiar({ mascotas })} />}
         {paso === 2 && <PasoAlimentacion perfil={perfil} onCambio={cambiar} />}
-        {paso === 3 && <PasoTienda perfil={perfil} onCambio={cambiar} />}
-        {paso === 4 && <PasoPresupuesto perfil={perfil} onCambio={cambiar} />}
+        {paso === 3 && <PasoAntojos antojos={perfil.antojos} onCambio={(antojos) => cambiar({ antojos })} />}
+        {paso === 4 && <PasoTienda perfil={perfil} onCambio={cambiar} />}
+        {paso === 5 && <PasoPresupuesto perfil={perfil} onCambio={cambiar} />}
         {error && ultimo && <Aviso tono="error">{error}</Aviso>}
       </main>
 
@@ -234,7 +249,7 @@ function PasoPersonas({ miembros, onCambio }: { miembros: Miembro[]; onCambio: (
             <div
               key={c.clave}
               className={`flex flex-col items-center gap-2 rounded-3xl p-3 text-center transition-colors ${
-                n > 0 ? "bg-nopal-tenue ring-2 ring-nopal" : "bg-tarjeta shadow-suave"
+                n > 0 ? "bg-nopal-tenue ring-2 ring-nopal" : "bg-tarjeta shadow-suave ring-1 ring-linea"
               }`}
             >
               <span className="text-4xl" aria-hidden="true">
@@ -333,7 +348,7 @@ function PasoMascotas({ mascotas, onCambio }: { mascotas: Mascota[]; onCambio: (
             <div
               key={t.nombre}
               className={`flex flex-col items-center gap-2 rounded-3xl p-3 text-center transition-colors ${
-                n > 0 ? "bg-maiz-tenue ring-2 ring-maiz" : "bg-tarjeta shadow-suave"
+                n > 0 ? "bg-nopal-tenue ring-2 ring-nopal" : "bg-tarjeta shadow-suave ring-1 ring-linea"
               }`}
             >
               <span className="text-4xl" aria-hidden="true">
@@ -414,7 +429,7 @@ function PasoAlimentacion({ perfil, onCambio }: { perfil: Perfil; onCambio: (p: 
             <button
               key={x}
               type="button"
-              className="min-h-11 animate-rebote rounded-full bg-rosa px-4 text-sm font-semibold text-white"
+              className="min-h-11 animate-rebote rounded-full bg-rosa px-4 text-sm font-semibold text-sobre"
               onClick={() => onCambio({ excluir: perfil.excluir.filter((y) => y !== x) })}
               aria-label={`Quitar ${x}`}
             >
@@ -472,50 +487,92 @@ function PasoAlimentacion({ perfil, onCambio }: { perfil: Perfil; onCambio: (p: 
   );
 }
 
-function PasoTienda({ perfil, onCambio }: { perfil: Perfil; onCambio: (p: Partial<Perfil>) => void }) {
+function PasoAntojos({ antojos, onCambio }: { antojos: string[]; onCambio: (a: string[]) => void }) {
   const { opciones } = useApp();
-  const tienda = opciones.tiendas.find((t) => t.clave === perfil.tienda);
-  // Todos los estados donde alguna tienda tiene precios; se avisa si la elegida no tiene.
-  const estados = [...new Set(opciones.tiendas.flatMap((t) => t.estados))].sort((a, b) => a.localeCompare(b, "es"));
-  const sinPreciosLocales = perfil.estado !== null && tienda !== undefined && !tienda.estados.includes(perfil.estado);
-
   return (
     <>
       <div className="grid grid-cols-2 gap-3">
-        {opciones.tiendas.map((t) => {
-          const activa = t.clave === perfil.tienda;
-          const visual = TIENDAS_VISUAL[t.clave] ?? { emoji: "🏬", fondo: "bg-hundido" };
+        {opciones.antojos.map((a) => {
+          const activo = antojos.includes(a.clave);
+          const visual = ANTOJOS_VISUAL[a.clave] ?? { emoji: "🍬", ejemplo: "" };
           return (
             <button
-              key={t.clave}
+              key={a.clave}
               type="button"
-              aria-pressed={activa}
-              onClick={() => onCambio({ tienda: t.clave })}
-              className={`flex min-h-24 flex-col items-start justify-between rounded-3xl p-4 text-left transition-all active:scale-95 ${
-                activa ? "bg-nopal text-white shadow-boton" : `${visual.fondo}`
+              aria-pressed={activo}
+              onClick={() => onCambio(activo ? antojos.filter((x) => x !== a.clave) : [...antojos, a.clave])}
+              className={`relative flex min-h-32 flex-col items-center justify-center gap-1 rounded-3xl p-3 text-center transition-colors active:scale-95 ${
+                activo ? "bg-nopal-tenue ring-2 ring-nopal" : "bg-tarjeta shadow-suave ring-1 ring-linea"
               }`}
             >
-              <span className="font-titulo text-xl font-bold leading-tight">{t.nombre}</span>
-              <span className={`text-xs ${activa ? "text-white/80" : "text-suave"}`}>
-                {t.productos > 0 ? `${t.productos.toLocaleString("es-MX")} productos` : " "}
-                {activa && " ✓"}
+              {activo && (
+                <span className="absolute right-3 top-3 flex h-6 w-6 animate-rebote items-center justify-center rounded-full bg-nopal text-sm font-bold text-sobre" aria-hidden="true">
+                  ✓
+                </span>
+              )}
+              <span className="text-4xl" aria-hidden="true">
+                {visual.emoji}
               </span>
+              <span className="font-titulo text-lg font-semibold leading-tight">{a.nombre}</span>
+              <span className="text-xs text-suave">{visual.ejemplo}</span>
             </button>
           );
         })}
       </div>
-      <p className="text-center text-sm text-suave">Después podrás comparar cuánto cuesta tu despensa en cada tienda.</p>
+      <p className="text-center text-sm text-suave">
+        {antojos.length === 0
+          ? "¿Ninguno? Sigue al siguiente paso."
+          : "Si el presupuesto no alcanza, es lo primero que recortamos. Luego puedes cambiar cantidades en tu lista."}
+      </p>
+    </>
+  );
+}
 
+function PasoTienda({ perfil, onCambio }: { perfil: Perfil; onCambio: (p: Partial<Perfil>) => void }) {
+  const { opciones } = useApp();
+  const [ubicando, setUbicando] = useState(false);
+  const [mensaje, setMensaje] = useState<{ tono: "info" | "alerta"; texto: string } | null>(null);
+  // Sin conexión no llega la lista completa: se usan los estados que conozcan las tiendas.
+  const estados = opciones.estados.length
+    ? opciones.estados
+    : [...new Set(opciones.tiendas.flatMap((t) => t.estados))].sort((a, b) => a.localeCompare(b, "es"));
+  const cercanas = opciones.tiendas.filter((t) => hayTiendaEn(t, perfil.estado));
+  const lejanas = opciones.tiendas.filter((t) => !hayTiendaEn(t, perfil.estado));
+  const tienda = opciones.tiendas.find((t) => t.clave === perfil.tienda);
+  const sinPreciosLocales = perfil.estado !== null && tienda !== undefined && tienda.estados.length > 0 && !tienda.estados.includes(perfil.estado);
+
+  // Si la tienda elegida no existe en el estado nuevo, se pasa a la primera que sí.
+  function elegirEstado(estado: string | null) {
+    const disponibles = opciones.tiendas.filter((t) => hayTiendaEn(t, estado));
+    const sigue = disponibles.some((t) => t.clave === perfil.tienda);
+    onCambio({ estado, tienda: sigue || disponibles.length === 0 ? perfil.tienda : disponibles[0].clave });
+  }
+
+  async function usarUbicacion() {
+    setUbicando(true);
+    setMensaje(null);
+    try {
+      const lugar = await ubicar();
+      if (estados.includes(lugar.estado)) {
+        elegirEstado(lugar.estado);
+        setMensaje({ tono: "info", texto: `Estás cerca de ${lugar.ciudad}, ${lugar.estado}.` });
+      } else {
+        setMensaje({ tono: "alerta", texto: "No reconocimos tu estado. Elígelo de la lista." });
+      }
+    } catch (e) {
+      setMensaje({ tono: "alerta", texto: e instanceof Error ? e.message : "No pudimos obtener tu ubicación." });
+    } finally {
+      setUbicando(false);
+    }
+  }
+
+  return (
+    <>
       <Tarjeta>
-        <Campo etiqueta="Tu estado (opcional)" ayuda="Si lo eliges, usamos los precios que Profeco registró ahí.">
+        <Campo etiqueta="¿En qué estado vives?" ayuda="Tu ubicación no sale de tu teléfono: solo guardamos el estado.">
           {(id) => (
-            <select
-              id={id}
-              className={claseEntrada}
-              value={perfil.estado ?? ""}
-              onChange={(e) => onCambio({ estado: e.target.value || null })}
-            >
-              <option value="">Precio promedio nacional</option>
+            <select id={id} className={claseEntrada} value={perfil.estado ?? ""} onChange={(e) => elegirEstado(e.target.value || null)}>
+              <option value="">Sin estado (precio nacional)</option>
               {estados.map((e) => (
                 <option key={e} value={e}>
                   {e}
@@ -524,14 +581,58 @@ function PasoTienda({ perfil, onCambio }: { perfil: Perfil; onCambio: (p: Partia
             </select>
           )}
         </Campo>
-        {sinPreciosLocales && (
+        <Boton variante="secundario" ancho className="mt-3" disabled={ubicando} onClick={usarUbicacion}>
+          {ubicando ? "Buscando…" : "📍 Usar mi ubicación"}
+        </Boton>
+        {mensaje && (
           <div className="mt-3">
-            <Aviso tono="alerta">
-              {tienda.nombre} no tiene precios registrados en {perfil.estado}; usaremos el promedio nacional.
-            </Aviso>
+            <Aviso tono={mensaje.tono}>{mensaje.texto}</Aviso>
           </div>
         )}
       </Tarjeta>
+
+      <div>
+        <h2 className="mb-2 px-1 text-xl font-semibold">{perfil.estado ? `Tiendas en ${perfil.estado}` : "Elige tu tienda"}</h2>
+        <div className="grid grid-cols-2 gap-3">
+          {cercanas.map((t) => {
+            const activa = t.clave === perfil.tienda;
+            return (
+              <button
+                key={t.clave}
+                type="button"
+                aria-pressed={activa}
+                onClick={() => onCambio({ tienda: t.clave })}
+                className={`flex min-h-24 flex-col items-start justify-between rounded-3xl p-4 text-left transition-colors active:scale-95 ${
+                  activa ? "bg-nopal-tenue ring-2 ring-nopal" : "bg-tarjeta shadow-suave ring-1 ring-linea"
+                }`}
+              >
+                <span className="flex w-full items-start justify-between gap-2">
+                  <span className="font-titulo text-xl font-bold leading-tight">{t.nombre}</span>
+                  {activa && (
+                    <span className="flex h-6 w-6 shrink-0 animate-rebote items-center justify-center rounded-full bg-nopal text-sm font-bold text-sobre" aria-hidden="true">
+                      ✓
+                    </span>
+                  )}
+                </span>
+                <span className="text-xs text-suave">{t.productos > 0 ? `${t.productos.toLocaleString("es-MX")} productos` : " "}</span>
+              </button>
+            );
+          })}
+        </div>
+        {lejanas.length > 0 && (
+          <p className="mt-3 px-1 text-sm text-suave">
+            Sin sucursales en {perfil.estado}: {lejanas.map((t) => t.nombre).join(", ")}.
+          </p>
+        )}
+        {sinPreciosLocales && (
+          <div className="mt-3">
+            <Aviso tono="alerta">
+              Profeco no registró precios de {tienda.nombre} en {perfil.estado}; usaremos su promedio nacional.
+            </Aviso>
+          </div>
+        )}
+        <p className="mt-3 text-center text-sm text-suave">Después podrás comparar cuánto cuesta tu despensa en cada una.</p>
+      </div>
     </>
   );
 }
@@ -601,7 +702,7 @@ function PasoPresupuesto({ perfil, onCambio }: { perfil: Perfil; onCambio: (p: P
                 aria-checked={activo}
                 onClick={() => onCambio({ nivel: n.valor })}
                 className={`flex items-center gap-3 rounded-3xl p-3 text-left transition-colors active:scale-[0.98] ${
-                  activo ? "bg-nopal-tenue ring-2 ring-nopal" : "bg-tarjeta shadow-suave"
+                  activo ? "bg-nopal-tenue ring-2 ring-nopal" : "bg-tarjeta shadow-suave ring-1 ring-linea"
                 }`}
               >
                 <Burbuja emoji={n.emoji} fondo={activo ? "bg-tarjeta" : "bg-hundido"} />

@@ -100,11 +100,40 @@ _NECESIDADES = [
     Necesidad("croquetas_perro", "Alimento para perro", "kg", 1),
     Necesidad("croquetas_gato", "Alimento para gato", "kg", 1),
     Necesidad("arena_gato", "Arena para gato", "kg", 2),
+    # Solo se pide si el hogar la eligió como antojo (ver ANTOJOS).
+    Necesidad("cerveza", "Cerveza", "pz", 3),
     # Productos que la app no calcula; el usuario los agrega a mano desde el buscador.
     Necesidad("extras", "Otros productos", "pz", 3),
 ]
 
 NECESIDADES: dict[str, Necesidad] = {n.clave: n for n in _NECESIDADES}
+
+
+
+@dataclass(frozen=True)
+class Antojo:
+    """Gusto que no es necesario (refrescos, botanas...): solo se incluye si el hogar lo pide."""
+    clave: str
+    nombre: str
+    # Necesidad a la que se suma, y etiquetas de los productos que cuentan como este antojo.
+    necesidad: str
+    etiquetas: frozenset[str]
+    # Cantidad mensual por persona según grupo de edad, en la unidad de su necesidad.
+    por_persona: dict[str, float]
+
+
+_ANTOJOS = [
+    Antojo("refrescos", "Refrescos", "bebidas", frozenset({"refresco"}), por_edad(0, 2, 4, 4, 2)),
+    Antojo("jugos", "Jugos y bebidas", "bebidas", frozenset({"jugo", "bebida hidratante", "te"}), por_edad(0, 3, 3, 2, 2)),
+    Antojo("botanas", "Papas y botanas", "botanas_galletas", frozenset({"botana"}), por_edad(0, 0.2, 0.3, 0.25, 0.15)),
+    Antojo("dulces", "Chocolates y pastelitos", "botanas_galletas", frozenset({"chocolate", "pastelito"}),
+           por_edad(0, 0.15, 0.2, 0.15, 0.1)),
+    Antojo("galletas", "Galletas", "botanas_galletas", frozenset({"galleta"}), por_edad(0, 0.3, 0.3, 0.25, 0.2)),
+    Antojo("postres", "Helado y postres", "botanas_galletas", frozenset({"postre"}), por_edad(0, 0.3, 0.3, 0.25, 0.2)),
+    # Piezas: casi todas las presentaciones son de 6 botellas o latas.
+    Antojo("cerveza", "Cerveza", "cerveza", frozenset({"cerveza"}), por_edad(0, 0, 0, 2, 1)),
+]
+ANTOJOS: dict[str, Antojo] = {a.clave: a for a in _ANTOJOS}
 
 # Peso de cada prioridad en el optimizador: dejar sin cubrir algo esencial cuesta
 # 10 veces más que algo importante y 100 veces más que algo opcional.
@@ -155,6 +184,23 @@ TIENDAS = {
     "heb": "H-E-B",
 }
 TIENDA_DEFAULT = "walmart"
+
+# Nombres de los estados tal como los escribe Profeco.
+ESTADOS = [
+    "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua",
+    "Ciudad de México", "Coahuila", "Colima", "Durango", "Estado de México", "Guanajuato", "Guerrero",
+    "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla",
+    "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas",
+    "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas",
+]
+# Cadenas con sucursales en los 32 estados. Las demás solo se ofrecen donde Profeco les
+# registró precios (ver catalogo.tiendas_en) o en los estados de PRESENCIA_EXTRA.
+CADENAS_NACIONALES = {"walmart", "bodega_aurrera", "soriana", "chedraui"}
+# Estados donde la cadena tiene sucursales aunque Profeco no le haya levantado precios.
+PRESENCIA_EXTRA: dict[str, set[str]] = {
+    "heb": {"Aguascalientes", "Querétaro"},
+    "la_comer": {"Guanajuato", "Jalisco", "Morelos", "Puebla"},
+}
 
 # Nombres para mostrar en la app.
 NOMBRES_ALERGENOS = {

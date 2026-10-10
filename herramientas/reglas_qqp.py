@@ -281,7 +281,8 @@ REGLAS: dict[str, list[Regla]] = {
                                        nombre="Bebida en polvo")],
     "Jamaica": [extra("despensa", "jamaica")],
     "Tamarindo": [extra("despensa", "tamarindo")],
-    "Cerveza": [extra("bebidas", "cerveza;alcohol", alergenos="gluten")],
+    # Con necesidad propia: solo entra a la lista si el hogar la pide como antojo.
+    "Cerveza": [Regla("cerveza", "bebidas", UNIDAD, "cerveza;alcohol", alergenos="gluten", vida=365)],
     "Brandy": [extra("bebidas", "alcohol")], "Ron": [extra("bebidas", "alcohol")],
     "Tequila": [extra("bebidas", "alcohol")], "Whisky": [extra("bebidas", "alcohol")],
     # ---------------- Limpieza ----------------

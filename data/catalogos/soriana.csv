@@ -114,22 +114,22 @@ P2f01f55c,"Refresco Squirt · Botella 3 L, no retornable",Squirt,Refresco,bebida
 P0cdf87dc,"Té preparado Fuze Tea · Botella 600 ml, té, verde, sabor limón",Fuze Tea,Té Preparado,bebidas,bebidas,0.6,L,21.9,,,te,180,0,medio,profeco_qqp,2026-07-31,22
 P429c5364,Brandy Azteca de Oro · Botella 700 ml,Azteca de Oro,Brandy,bebidas,extras,1,pz,239,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,127
 P672582f5,Brandy Torres 10 · Botella 700 ml,Torres 10,Brandy,bebidas,extras,1,pz,449,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,127
-P8ceee765,Cerveza Barrilito · Canasta con 6 botellas de 325 ml,Barrilito,Cerveza,bebidas,extras,1,pz,66,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,142
-P30f5232e,"Cerveza Bohemia Pilsner · Canasta con 6 botellas de 355 ml, no retornable (clara)",Bohemia. Pilsner,Cerveza,bebidas,extras,1,pz,129,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,132
-P95dbdeba,"Cerveza Corona · Botella 940 ml, retornable, familiar",Corona,Cerveza,bebidas,extras,1,pz,49,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,86
-P4a4563c6,"Cerveza Dos Equis Lager Especial · Canasta con 6 botellas de 355 ml, no retornable",Dos Equis Lager. Especial,Cerveza,bebidas,extras,1,pz,89,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,122
-Pd42164d9,"Cerveza Dos Equis Lager Especial · Paquete, con 12 latas de 355 ml, c/u",Dos Equis Lager. Especial,Cerveza,bebidas,extras,1,pz,227,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,118
-P7c36191f,"Cerveza Heineken 0.0 · Canasta con 6 botellas de 250 ml, sin alcohol",Heineken 0.0,Cerveza,bebidas,extras,1,pz,115,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-21,13
-Pfa059b7c,"Cerveza Heineken 0.0 · Lata 355 ml, sin alcohol",Heineken 0.0,Cerveza,bebidas,extras,1,pz,21.9,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-22,18
-Pe5c9ed16,"Cerveza Heineken · Canasta con 6 botellas de 355 ml, no retornable",Heineken,Cerveza,bebidas,extras,1,pz,147,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,139
-P25a3a1d5,"Cerveza Indio · Canasta con 6 botellas de 355 ml, no retornable",Indio,Cerveza,bebidas,extras,1,pz,137,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,135
-Pbc6f30ef,Cerveza Indio · Paquete con 12 latas de 355 ml,Indio,Cerveza,bebidas,extras,1,pz,165,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,120
-P9792c5ee,"Cerveza Michelob Ultra · Canasta con 6 botellas de 355 ml, no retornable",Michelob Ultra,Cerveza,bebidas,extras,1,pz,120,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,128
-Pb60a9813,"Cerveza Modelo Especial · Paquete con 12 latas de 355 ml, c/u",Modelo Especial,Cerveza,bebidas,extras,1,pz,255,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,96
-P3b7787c9,"Cerveza Negra Modelo · Canasta con 6 botellas de 355 ml, no retornable",Negra Modelo,Cerveza,bebidas,extras,1,pz,147,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,122
-Pfbc824fa,Cerveza Tecate · Paquete con 12 latas de 355 ml,Tecate,Cerveza,bebidas,extras,1,pz,206,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,141
-P8d65407d,"Cerveza Victoria · Botella 1.2 L, retornable",Victoria,Cerveza,bebidas,extras,1,pz,49,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,126
-Pb450b17b,"Cerveza Victoria · Caja con 12 botellas de 355 ml, no retornable",Victoria,Cerveza,bebidas,extras,1,pz,250,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,81
+P8ceee765,Cerveza Barrilito · Canasta con 6 botellas de 325 ml,Barrilito,Cerveza,bebidas,cerveza,1,pz,66,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,142
+P30f5232e,"Cerveza Bohemia Pilsner · Canasta con 6 botellas de 355 ml, no retornable (clara)",Bohemia. Pilsner,Cerveza,bebidas,cerveza,1,pz,129,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,132
+P95dbdeba,"Cerveza Corona · Botella 940 ml, retornable, familiar",Corona,Cerveza,bebidas,cerveza,1,pz,49,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,86
+P4a4563c6,"Cerveza Dos Equis Lager Especial · Canasta con 6 botellas de 355 ml, no retornable",Dos Equis Lager. Especial,Cerveza,bebidas,cerveza,1,pz,89,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,122
+Pd42164d9,"Cerveza Dos Equis Lager Especial · Paquete, con 12 latas de 355 ml, c/u",Dos Equis Lager. Especial,Cerveza,bebidas,cerveza,1,pz,227,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,118
+P7c36191f,"Cerveza Heineken 0.0 · Canasta con 6 botellas de 250 ml, sin alcohol",Heineken 0.0,Cerveza,bebidas,cerveza,1,pz,115,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-21,13
+Pfa059b7c,"Cerveza Heineken 0.0 · Lata 355 ml, sin alcohol",Heineken 0.0,Cerveza,bebidas,cerveza,1,pz,21.9,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-22,18
+Pe5c9ed16,"Cerveza Heineken · Canasta con 6 botellas de 355 ml, no retornable",Heineken,Cerveza,bebidas,cerveza,1,pz,147,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,139
+P25a3a1d5,"Cerveza Indio · Canasta con 6 botellas de 355 ml, no retornable",Indio,Cerveza,bebidas,cerveza,1,pz,137,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,135
+Pbc6f30ef,Cerveza Indio · Paquete con 12 latas de 355 ml,Indio,Cerveza,bebidas,cerveza,1,pz,165,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,120
+P9792c5ee,"Cerveza Michelob Ultra · Canasta con 6 botellas de 355 ml, no retornable",Michelob Ultra,Cerveza,bebidas,cerveza,1,pz,120,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,128
+Pb60a9813,"Cerveza Modelo Especial · Paquete con 12 latas de 355 ml, c/u",Modelo Especial,Cerveza,bebidas,cerveza,1,pz,255,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,96
+P3b7787c9,"Cerveza Negra Modelo · Canasta con 6 botellas de 355 ml, no retornable",Negra Modelo,Cerveza,bebidas,cerveza,1,pz,147,gluten,,cerveza;alcohol,365,0,medio,profeco_qqp,2026-07-31,122
+Pfbc824fa,Cerveza Tecate · Paquete con 12 latas de 355 ml,Tecate,Cerveza,bebidas,cerveza,1,pz,206,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,141
+P8d65407d,"Cerveza Victoria · Botella 1.2 L, retornable",Victoria,Cerveza,bebidas,cerveza,1,pz,49,gluten,,cerveza;alcohol,365,0,economico,profeco_qqp,2026-07-31,126
+Pb450b17b,"Cerveza Victoria · Caja con 12 botellas de 355 ml, no retornable",Victoria,Cerveza,bebidas,cerveza,1,pz,250,gluten,,cerveza;alcohol,365,0,premium,profeco_qqp,2026-07-31,81
 Pe5f01de3,Ron Bacardí Añejo · Botella 980 ml,Bacardí. Añejo,Ron,bebidas,extras,1,pz,509,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,114
 Pef05c9ed,Ron Bacardí Solera · Botella 750 ml,Bacardí. Solera,Ron,bebidas,extras,1,pz,609,,,alcohol,365,0,medio,profeco_qqp,2026-07-31,101
 P3aedee98,"Tequila Cazadores · Botella 950 ml, reposado 100% de agave",Cazadores,Tequila,bebidas,extras,1,pz,525,,,alcohol,365,0,premium,profeco_qqp,2026-07-31,105

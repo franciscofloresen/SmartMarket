@@ -6,7 +6,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from .perfil import Hogar
-from .reglas import NECESIDADES, TIENDA_DEFAULT, TIENDAS
+from .reglas import CADENAS_NACIONALES, ESTADOS, NECESIDADES, PRESENCIA_EXTRA, TIENDA_DEFAULT, TIENDAS
 from .texto import formas, normalizar, palabras
 
 DATOS = Path(__file__).resolve().parent.parent / "data"
@@ -92,6 +92,20 @@ def _precios_por_estado(tienda: str) -> dict[str, dict[str, float]]:
 def estados_de(tienda: str) -> list[str]:
     """Estados donde la tienda tiene precios propios."""
     return sorted(_precios_por_estado(tienda))
+
+
+def presencia_de(tienda: str) -> list[str]:
+    """Estados donde la cadena tiene sucursales."""
+    if tienda in CADENAS_NACIONALES:
+        return list(ESTADOS)
+    return sorted(set(estados_de(tienda)) | PRESENCIA_EXTRA.get(tienda, set()))
+
+
+def tiendas_en(estado: str | None) -> list[str]:
+    """Cadenas con sucursales en el estado; sin estado (o si no se reconoce), todas."""
+    if estado not in ESTADOS:
+        return list(TIENDAS)
+    return [t for t in TIENDAS if estado in presencia_de(t)]
 
 
 @lru_cache(maxsize=None)
