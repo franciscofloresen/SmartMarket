@@ -32,6 +32,26 @@ Las llamadas a `/api` se reenvían a la API local.
 **Producción.** `npm run build` genera `web/dist`, y la API la sirve en `/` (misma URL). El
 `Dockerfile` hace las dos cosas en una sola imagen.
 
+### Publicar la beta (Railway)
+
+`railway.json` le indica a Railway que construya el `Dockerfile` y revise `/api/salud`.
+
+1. En https://railway.com crea un proyecto con **Deploy from GitHub repo** y elige este repositorio
+   (en *Settings → Source* elige la rama que quieres publicar).
+2. Agrega un **Volume** al servicio, montado en `/data`. Ahí se guardan los reportes de los testers
+   y no se borran entre despliegues.
+3. En **Variables** define:
+   - `REPORTES_PATH=/data/reportes.jsonl`
+   - `REPORTES_TOKEN=<una clave larga>`. Genera una con `openssl rand -hex 24`.
+4. En *Settings → Networking* usa **Generate Domain**. Comparte esa URL. En el iPhone se abre en
+   Safari y se instala con Compartir → *Agregar a pantalla de inicio*.
+
+Para descargar los reportes (precios, productos y comentarios):
+
+```bash
+curl -H "Authorization: Bearer $REPORTES_TOKEN" https://TU-DOMINIO.up.railway.app/api/reportes > reportes.jsonl
+```
+
 Pantallas:
 - Bienvenida
 - Asistente del hogar (personas, mascotas, alimentación, presupuesto)
@@ -124,7 +144,7 @@ ellas dependen los filtros.
 ## Pendientes sugeridos
 
 - Verificar a mano los 43 precios estimados (mascotas, bolsas, toallas de cocina...).
-- Publicar la beta (Render, Railway o Fly.io) y compartir con familias de prueba.
+- Compartir la beta con familias de prueba y revisar sus reportes.
 - Modo "aprovechar presupuesto": usar el sobrante en marcas preferidas o productos de mejor
   calidad (requiere una calificación por producto).
 - Fórmula infantil, etapas de pañal por edad y más tipos de mascota.

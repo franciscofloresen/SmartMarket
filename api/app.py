@@ -4,8 +4,10 @@ Desarrollo:  .venv/bin/uvicorn api.app:app --reload
 Variables de entorno:
   CORS_ORIGINS   orígenes permitidos separados por coma (default: el dev server de Vite)
   REPORTES_PATH  archivo JSONL donde se guardan los reportes de testers
+  REPORTES_TOKEN clave para descargar los reportes en GET /api/reportes (sin ella, el endpoint no existe)
   WEB_DIST       carpeta con la web app compilada para servirla en "/" (default: web/dist)
 """
+import hmac
 import json
 import os
 import threading
@@ -13,10 +15,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Annotated, Literal
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -32,6 +34,7 @@ TIEMPO_LIMITE_SOLVER = 10
 CATALOGO = cargar_catalogo()
 CATALOGO_IDS = {p.id for p in CATALOGO}
 REPORTES_PATH = Path(os.environ.get("REPORTES_PATH", RAIZ / "data" / "reportes" / "reportes.jsonl"))
+REPORTES_TOKEN = os.environ.get("REPORTES_TOKEN", "")
 _reportes_lock = threading.Lock()
 
 
@@ -160,6 +163,17 @@ def reporte(entrada: ReporteIn) -> dict:
         with open(REPORTES_PATH, "a", encoding="utf-8") as f:
             f.write(json.dumps(registro, ensure_ascii=False) + "\n")
     return {"ok": True}
+
+
+@app.get("/api/reportes", response_class=PlainTextResponse)
+def reportes(authorization: Annotated[str, Header()] = "") -> str:
+    """Descarga los reportes (JSONL). Requiere `Authorization: Bearer <REPORTES_TOKEN>`."""
+    if not REPORTES_TOKEN:
+        raise HTTPException(status_code=404)
+    if not hmac.compare_digest(authorization.encode(), f"Bearer {REPORTES_TOKEN}".encode()):
+        raise HTTPException(status_code=401, detail="Clave inválida.")
+    with _reportes_lock:
+        return REPORTES_PATH.read_text(encoding="utf-8") if REPORTES_PATH.exists() else ""
 
 
 # La web app compilada se sirve desde la misma URL (se monta al final para no tapar /api).

@@ -108,3 +108,15 @@ def test_reporte_de_precio_se_guarda(cliente):
 ])
 def test_reporte_invalido(cliente, cuerpo):
     assert cliente.post("/api/reporte", json=cuerpo).status_code == 422
+
+
+def test_descargar_reportes_requiere_clave(cliente, monkeypatch):
+    assert cliente.get("/api/reportes").status_code == 404  # sin REPORTES_TOKEN no existe
+    monkeypatch.setattr(api_app, "REPORTES_TOKEN", "secreta")
+    assert cliente.get("/api/reportes").status_code == 401
+    assert cliente.get("/api/reportes", headers={"Authorization": "Bearer otra"}).status_code == 401
+
+    cliente.post("/api/reporte", json={"tipo": "comentario", "comentario": "Muy útil"})
+    r = cliente.get("/api/reportes", headers={"Authorization": "Bearer secreta"})
+    assert r.status_code == 200
+    assert json.loads(r.text.splitlines()[-1])["comentario"] == "Muy útil"
