@@ -1,6 +1,6 @@
-import type { Ajustes, Opciones, Perfil, Plan } from "./tipos";
+import type { Ajustes, Alternativa, Opciones, Perfil, Plan, ProductoResumen, TiendaComparada } from "./tipos";
 
-const TIEMPO_LIMITE_MS = 20_000;
+const TIEMPO_LIMITE_MS = 30_000;
 
 export class ErrorApi extends Error {
   constructor(mensaje: string, readonly estado: number | null) {
@@ -8,13 +8,14 @@ export class ErrorApi extends Error {
   }
 }
 
-async function pedir<T>(ruta: string, init?: RequestInit): Promise<T> {
+async function pedir<T>(ruta: string, cuerpo?: unknown): Promise<T> {
   const control = new AbortController();
   const temporizador = setTimeout(() => control.abort(), TIEMPO_LIMITE_MS);
   let respuesta: Response;
   try {
     respuesta = await fetch(ruta, {
-      ...init,
+      method: cuerpo === undefined ? "GET" : "POST",
+      body: cuerpo === undefined ? undefined : JSON.stringify(cuerpo),
       headers: { "Content-Type": "application/json" },
       signal: control.signal,
     });
@@ -29,23 +30,28 @@ async function pedir<T>(ruta: string, init?: RequestInit): Promise<T> {
     clearTimeout(temporizador);
   }
 
-  const cuerpo = await respuesta.json().catch(() => null);
+  const datos = await respuesta.json().catch(() => null);
   if (!respuesta.ok) {
-    const detalle = typeof cuerpo?.detail === "string" ? cuerpo.detail : "Ocurrió un error inesperado.";
+    const detalle = typeof datos?.detail === "string" ? datos.detail : "Ocurrió un error inesperado.";
     throw new ErrorApi(detalle, respuesta.status);
   }
-  return cuerpo as T;
+  return datos as T;
 }
 
 export const api = {
   opciones: () => pedir<Opciones>("/api/opciones"),
-  plan: (perfil: Perfil, ajustes: Ajustes) =>
-    pedir<Plan>("/api/plan", { method: "POST", body: JSON.stringify({ perfil, ajustes }) }),
+  plan: (perfil: Perfil, ajustes: Ajustes) => pedir<Plan>("/api/plan", { perfil, ajustes }),
+  buscar: (perfil: Perfil, texto: string) =>
+    pedir<{ resultados: ProductoResumen[] }>("/api/buscar", { perfil, texto }).then((r) => r.resultados),
+  alternativas: (perfil: Perfil, producto_id: string, paquetes: number) =>
+    pedir<{ alternativas: Alternativa[] }>("/api/alternativas", { perfil, producto_id, paquetes }).then(
+      (r) => r.alternativas,
+    ),
+  comparar: (perfil: Perfil, ajustes: Ajustes) =>
+    pedir<{ tiendas: TiendaComparada[] }>("/api/comparar", { perfil, ajustes }).then((r) => r.tiendas),
   reportarPrecio: (producto_id: string, precio_reportado: number, sucursal: string) =>
-    pedir<{ ok: true }>("/api/reporte", {
-      method: "POST",
-      body: JSON.stringify({ tipo: "precio", producto_id, precio_reportado, sucursal }),
-    }),
-  comentar: (comentario: string) =>
-    pedir<{ ok: true }>("/api/reporte", { method: "POST", body: JSON.stringify({ tipo: "comentario", comentario }) }),
+    pedir<{ ok: true }>("/api/reporte", { tipo: "precio", producto_id, precio_reportado, sucursal }),
+  reportarTicket: (tienda: string, total_estimado: number, total_real: number) =>
+    pedir<{ ok: true }>("/api/reporte", { tipo: "ticket", tienda, total_estimado, total_real }),
+  comentar: (comentario: string) => pedir<{ ok: true }>("/api/reporte", { tipo: "comentario", comentario }),
 };

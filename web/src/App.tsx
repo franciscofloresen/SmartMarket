@@ -1,5 +1,6 @@
 import { HashRouter, NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { ProveedorEstado, useApp } from "./estado";
+import Bienvenida from "./pantallas/Bienvenida";
 import Compra from "./pantallas/Compra";
 import Hogar from "./pantallas/Hogar";
 import Inicio from "./pantallas/Inicio";
@@ -12,7 +13,8 @@ export default function App() {
     <ProveedorEstado>
       <HashRouter>
         <Routes>
-          <Route path="/" element={<Inicio />} />
+          <Route path="/" element={<Bienvenida />} />
+          <Route path="/inicio" element={<Inicio />} />
           <Route path="/hogar" element={<Hogar />} />
           <Route path="/lista" element={<Lista />} />
           <Route path="/compra" element={<Compra />} />
@@ -26,6 +28,7 @@ export default function App() {
 }
 
 const PESTANAS = [
+  { ruta: "/inicio", texto: "Inicio", icono: "🏡" },
   { ruta: "/lista", texto: "Lista", icono: "📝" },
   { ruta: "/compra", texto: "Compra", icono: "🛒" },
   { ruta: "/mas", texto: "Más", icono: "⚙️" },
@@ -35,27 +38,34 @@ function BarraInferior() {
   const { datos } = useApp();
   const { pathname } = useLocation();
   if (!datos.hogar || !PESTANAS.some((p) => p.ruta === pathname)) return null;
+  const pendientes = datos.plan ? datos.plan.lineas.length - datos.comprados.length : 0;
 
   return (
-    <nav
-      aria-label="Secciones"
-      className="pb-seguro fixed inset-x-0 bottom-0 z-30 border-t border-stone-200 bg-white/95 backdrop-blur dark:border-stone-800 dark:bg-stone-900/95"
-    >
+    <nav aria-label="Secciones" className="pb-seguro fixed inset-x-0 bottom-0 z-30 border-t border-linea bg-tarjeta/95 backdrop-blur">
       <ul className="mx-auto flex max-w-lg">
         {PESTANAS.map((p) => (
           <li key={p.ruta} className="flex-1">
             <NavLink
               to={p.ruta}
               className={({ isActive }) =>
-                `flex min-h-14 flex-col items-center justify-center gap-0.5 text-xs font-medium ${
-                  isActive ? "text-marca-700 dark:text-marca-500" : "text-stone-500 dark:text-stone-400"
+                `relative flex min-h-16 flex-col items-center justify-center gap-0.5 text-xs font-semibold transition-colors ${
+                  isActive ? "text-nopal" : "text-suave"
                 }`
               }
             >
-              <span className="text-xl" aria-hidden="true">
-                {p.icono}
-              </span>
-              {p.texto}
+              {({ isActive }) => (
+                <>
+                  <span className={`flex h-8 w-14 items-center justify-center rounded-full text-xl transition-colors ${isActive ? "bg-nopal-tenue" : ""}`} aria-hidden="true">
+                    {p.icono}
+                  </span>
+                  {p.texto}
+                  {p.ruta === "/compra" && datos.comprados.length > 0 && pendientes > 0 && (
+                    <span className="tabular absolute right-[calc(50%-1.9rem)] top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-rosa px-1 text-[11px] font-bold text-white">
+                      {pendientes}
+                    </span>
+                  )}
+                </>
+              )}
             </NavLink>
           </li>
         ))}

@@ -204,3 +204,9 @@ def test_comparar_tiendas(cliente, perfil):
     assert sum(t["actual"] for t in tiendas) == 1
     completas = [t["total"] for t in tiendas if t["cobertura_completa"]]
     assert completas == sorted(completas) and len(completas) >= 4
+
+
+def test_reporte_de_ticket(cliente):
+    cuerpo = {"tipo": "ticket", "tienda": "walmart", "total_estimado": 7500, "total_real": 7812.4}
+    assert cliente.post("/api/reporte", json=cuerpo).status_code == 201
+    assert cliente.post("/api/reporte", json={"tipo": "ticket", "total_estimado": 7500}).status_code == 422

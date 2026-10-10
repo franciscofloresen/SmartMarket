@@ -102,11 +102,15 @@ class AlternativasIn(BaseModel):
 
 
 class ReporteIn(BaseModel):
-    tipo: Literal["precio", "producto", "comentario"]
-    producto_id: str | None = Field(None, max_length=10)
+    tipo: Literal["precio", "producto", "comentario", "ticket"]
+    producto_id: str | None = Field(None, max_length=12)
     precio_reportado: float | None = Field(None, gt=0, le=100_000)
     sucursal: str = Field("", max_length=100)
     comentario: str = Field("", max_length=1000)
+    # tipo "ticket": lo que la app estimó contra lo que el usuario pagó en caja.
+    tienda: str = Field("", max_length=30)
+    total_estimado: float | None = Field(None, gt=0, le=1_000_000)
+    total_real: float | None = Field(None, gt=0, le=1_000_000)
 
 
 # --- App ---
@@ -218,6 +222,8 @@ def reporte(entrada: ReporteIn) -> dict:
         raise HTTPException(status_code=422, detail="Indica el precio que viste en la tienda.")
     if entrada.tipo == "comentario" and not entrada.comentario.strip():
         raise HTTPException(status_code=422, detail="El comentario está vacío.")
+    if entrada.tipo == "ticket" and (entrada.total_estimado is None or entrada.total_real is None):
+        raise HTTPException(status_code=422, detail="Indica cuánto pagaste en caja.")
 
     registro = {"fecha": datetime.now(timezone.utc).isoformat(timespec="seconds"), **entrada.model_dump()}
     with _reportes_lock:

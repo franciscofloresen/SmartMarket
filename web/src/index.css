@@ -1,16 +1,77 @@
+/* Solo el subconjunto latino de Baloo 2 (cubre el español); el paquete completo trae alfabetos que no usamos. */
+@font-face {
+  font-family: "Baloo 2 Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 800;
+  src: url("@fontsource-variable/baloo-2/files/baloo-2-latin-wght-normal.woff2") format("woff2-variations");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Mercado mexicano: crema cálido, verde nopal y acentos de fruta. Valores R G B. */
+    --fondo: 255 248 236;
+    --tarjeta: 255 255 255;
+    --hundido: 247 238 222;
+    --linea: 236 224 204;
+    --tinta: 38 30 24;
+    --suave: 122 108 94;
+    --sombra: 120 80 20;
+    --nopal: 14 138 92;
+    --nopal-fuerte: 8 99 66;
+    --nopal-tenue: 219 244 230;
+    --maiz: 245 176 20;
+    --maiz-tenue: 255 239 196;
+    --rosa: 226 44 110;
+    --rosa-tenue: 255 222 234;
+    --papaya: 245 110 40;
+    --papaya-tenue: 255 228 208;
+    --cielo: 36 132 214;
+    --cielo-tenue: 218 236 252;
+    --uva: 124 76 200;
+    --uva-tenue: 234 224 250;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fondo: 24 20 17;
+      --tarjeta: 38 32 28;
+      --hundido: 50 43 38;
+      --linea: 66 57 50;
+      --tinta: 250 242 230;
+      --suave: 176 162 146;
+      --sombra: 0 0 0;
+      --nopal: 40 178 124;
+      --nopal-fuerte: 20 120 82;
+      --nopal-tenue: 22 60 46;
+      --maiz: 250 190 50;
+      --maiz-tenue: 74 56 14;
+      --rosa: 244 92 146;
+      --rosa-tenue: 80 26 46;
+      --papaya: 250 134 72;
+      --papaya-tenue: 82 42 20;
+      --cielo: 88 168 236;
+      --cielo-tenue: 20 50 80;
+      --uva: 164 124 232;
+      --uva-tenue: 52 36 86;
+    }
+  }
   html {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
   }
   body {
-    @apply bg-stone-50 text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-100;
+    @apply bg-fondo text-tinta antialiased;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
     overscroll-behavior-y: none;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-titulo;
   }
   /* 16px evita que Safari en iPhone haga zoom al enfocar un campo. */
   input,
@@ -19,7 +80,7 @@
     font-size: 16px;
   }
   :focus-visible {
-    @apply outline-none ring-2 ring-marca-600 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-950;
+    @apply outline-none ring-2 ring-nopal ring-offset-2 ring-offset-fondo;
   }
 }
 
@@ -33,6 +94,23 @@
   .tabular {
     font-variant-numeric: tabular-nums;
   }
+  .sin-barra {
+    scrollbar-width: none;
+  }
+  .sin-barra::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Deslizador de presupuesto */
+input[type="range"].deslizador {
+  @apply h-3 w-full cursor-pointer appearance-none rounded-full bg-hundido;
+}
+input[type="range"].deslizador::-webkit-slider-thumb {
+  @apply h-8 w-8 appearance-none rounded-full border-4 border-tarjeta bg-nopal shadow-suave;
+}
+input[type="range"].deslizador::-moz-range-thumb {
+  @apply h-7 w-7 rounded-full border-4 border-tarjeta bg-nopal;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -40,6 +118,7 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
   }
 }

@@ -10,31 +10,14 @@ export function fechaCorta(iso: string | null | undefined): string {
   return fecha.toLocaleDateString("es-MX", { day: "numeric", month: "short", year: "numeric" });
 }
 
-// Orden aproximado de recorrido en tienda: frescos primero, limpieza y mascotas al final.
-export const DEPARTAMENTOS: [string, string][] = [
-  ["frutas_verduras", "Frutas y verduras"],
-  ["carnes", "Carnes y aves"],
-  ["lacteos_huevo", "Lácteos y huevo"],
-  ["panaderia_tortilleria", "Panadería y tortillería"],
-  ["despensa", "Despensa"],
-  ["congelados", "Congelados"],
-  ["bebidas", "Bebidas"],
-  ["limpieza", "Limpieza"],
-  ["higiene", "Higiene personal"],
-  ["bebe", "Bebé"],
-  ["mascotas", "Mascotas"],
-];
+export const cantidad = (n: number) => (n >= 10 ? Math.round(n).toString() : n.toFixed(1).replace(/\.0$/, ""));
 
-export function agruparPorDepartamento<T extends { departamento: string }>(items: T[]): [string, T[]][] {
-  const grupos = new Map<string, T[]>();
-  for (const item of items) {
-    grupos.set(item.departamento, [...(grupos.get(item.departamento) ?? []), item]);
-  }
-  const conocidos = DEPARTAMENTOS.filter(([clave]) => grupos.has(clave)).map(
-    ([clave, nombre]) => [nombre, grupos.get(clave)!] as [string, T[]],
-  );
-  const otros = [...grupos.keys()]
-    .filter((k) => !DEPARTAMENTOS.some(([clave]) => clave === k))
-    .map((k) => [k, grupos.get(k)!] as [string, T[]]);
-  return [...conocidos, ...otros];
+/** "Frijol Great Value · Bolsa 900 g, negro" -> título y detalle por separado. */
+export function partirNombre(nombre: string): { titulo: string; detalle: string } {
+  const [titulo, ...resto] = nombre.split(" · ");
+  return { titulo, detalle: resto.join(" · ") };
+}
+
+export function nombrePeriodo(dias: number): string {
+  return dias === 30 ? "el mes" : dias === 15 ? "la quincena" : dias === 7 ? "la semana" : `${dias} días`;
 }

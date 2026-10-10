@@ -1,37 +1,63 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { api, ErrorApi } from "../api";
-import { Aviso, Boton, Campo, Cargando, claseEntrada, Encabezado, Hoja, Stepper, Tarjeta } from "../componentes/ui";
+import { compartirLista } from "../compartir";
+import { HojaBuscar, HojaComparar, HojaEnCasa, HojaProducto } from "../componentes/hojas";
+import { Aviso, Boton, Burbuja, Cargando, Encabezado, Tarjeta } from "../componentes/ui";
 import { useApp } from "../estado";
-import { agruparPorDepartamento, dinero, dineroEntero, fechaCorta } from "../formato";
-import type { Ajustes, Cobertura, Linea, Plan } from "../tipos";
+import { cantidad, dinero, dineroEntero, fechaCorta, nombrePeriodo, partirNombre } from "../formato";
+import { agruparPorDepartamento, iconoProducto } from "../iconos";
+import type { Cobertura, Linea, Plan } from "../tipos";
 
 const MOTIVO_QUITADO = "quitado por ti";
+type HojaAbierta = "buscar" | "en_casa" | "comparar" | null;
 
 export default function Lista() {
-  const { datos, cargando, error, limpiarError, aplicarAjustes, regenerar } = useApp();
+  const { datos, cargando, error, limpiarError, restaurarProducto, regenerar } = useApp();
   const [seleccionada, setSeleccionada] = useState<Linea | null>(null);
-  const { hogar, plan, ajustes } = datos;
+  const [hoja, setHoja] = useState<HojaAbierta>(null);
+  const [filtro, setFiltro] = useState<string | null>(null);
+  const [aviso, setAviso] = useState<string | null>(null);
+  const { hogar, plan } = datos;
 
   if (!hogar) return <Navigate to="/" replace />;
 
-  const periodo = hogar.periodo_dias === 30 ? "el mes" : hogar.periodo_dias === 15 ? "la quincena" : `${hogar.periodo_dias} días`;
   const quitados = plan?.excluidos.filter((e) => e.motivo === MOTIVO_QUITADO) ?? [];
   const porRestriccion = plan?.excluidos.filter((e) => e.motivo !== MOTIVO_QUITADO) ?? [];
+  const grupos = plan ? agruparPorDepartamento(plan.lineas) : [];
+  const visibles = filtro ? grupos.filter(([d]) => d.clave === filtro) : grupos;
+  const enCasa = Object.keys(datos.ajustes.en_casa).length;
 
-  const restaurar = (id: string) =>
-    aplicarAjustes({ ...ajustes, excluir_productos: ajustes.excluir_productos.filter((x) => x !== id) });
+  async function compartir() {
+    if (!plan) return;
+    const resultado = await compartirLista(plan, hogar!);
+    if (resultado === "copiado") setAviso("Lista copiada. Pégala en WhatsApp o donde quieras.");
+  }
 
   return (
     <div className="pb-44">
-      <Encabezado titulo="Tu despensa" subtitulo={`${hogar.nombre || "Mi hogar"} · para ${periodo}`} />
-      {cargando && <Cargando texto="Calculando tu lista…" />}
+      <Encabezado
+        titulo="Tu despensa"
+        subtitulo={plan ? `${plan.catalogo.tienda}${plan.catalogo.estado ? ` · ${plan.catalogo.estado}` : ""} · para ${nombrePeriodo(hogar.periodo_dias)}` : undefined}
+        accion={
+          plan && (
+            <button
+              type="button"
+              onClick={() => setHoja("buscar")}
+              className="mb-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-nopal text-2xl font-bold text-white shadow-boton active:translate-y-1 active:shadow-none"
+              aria-label="Agregar un producto"
+            >
+              +
+            </button>
+          )
+        }
+      />
+      {cargando && <Cargando texto="Armando tu lista…" />}
 
-      <main className="mx-auto flex max-w-lg flex-col gap-4 px-4 pt-4">
+      <main className="mx-auto flex max-w-lg flex-col gap-4 px-4 pt-2">
         {error && (
           <Aviso tono="error">
             <p>{error}</p>
-            <div className="mt-2 flex gap-2">
+            <div className="mt-2 flex gap-4">
               <button type="button" className="font-semibold underline" onClick={() => regenerar()}>
                 Reintentar
               </button>
@@ -41,53 +67,64 @@ export default function Lista() {
             </div>
           </Aviso>
         )}
+        {aviso && <Aviso>{aviso}</Aviso>}
 
         {!plan ? (
-          <Tarjeta className="flex flex-col items-center gap-3 text-center">
+          <Tarjeta className="flex flex-col items-center gap-3 py-8 text-center">
+            <span className="text-5xl" aria-hidden="true">
+              🧺
+            </span>
             <p>Aún no hay lista para este hogar.</p>
-            <Boton onClick={() => regenerar()}>Generar mi lista</Boton>
+            <Boton onClick={() => regenerar()}>Armar mi despensa</Boton>
           </Tarjeta>
         ) : (
           <>
             <Resumen plan={plan} />
+
+            <div className="sin-barra -mx-4 flex gap-2 overflow-x-auto px-4">
+              <Accion emoji="🏠" texto={enCasa ? `En casa (${enCasa})` : "Ya tengo en casa"} onClick={() => setHoja("en_casa")} />
+              <Accion emoji="🏪" texto="Comparar tiendas" onClick={() => setHoja("comparar")} />
+              <Accion emoji="📤" texto="Compartir" onClick={compartir} />
+            </div>
+
+            {plan.consejos.map((c) => (
+              <Aviso key={c} tono="consejo">
+                {c}
+              </Aviso>
+            ))}
             {plan.notas.map((n) => (
               <Aviso key={n} tono="alerta">
                 {n}
               </Aviso>
             ))}
 
-            {agruparPorDepartamento(plan.lineas).map(([departamento, lineas]) => (
-              <section key={departamento} aria-labelledby={`dep-${departamento}`}>
-                <div className="mb-2 flex items-baseline justify-between px-1">
-                  <h2 id={`dep-${departamento}`} className="text-sm font-semibold uppercase tracking-wide text-stone-500 dark:text-stone-400">
-                    {departamento}
+            {grupos.length > 1 && (
+              <div className="sin-barra -mx-4 flex gap-2 overflow-x-auto px-4" role="tablist" aria-label="Filtrar por departamento">
+                <FiltroDepto activo={filtro === null} onClick={() => setFiltro(null)} texto={`Todo · ${plan.lineas.length}`} />
+                {grupos.map(([d, lineas]) => (
+                  <FiltroDepto
+                    key={d.clave}
+                    activo={filtro === d.clave}
+                    onClick={() => setFiltro(filtro === d.clave ? null : d.clave)}
+                    texto={`${d.emoji} ${d.nombre.split(" ")[0]} · ${lineas.length}`}
+                  />
+                ))}
+              </div>
+            )}
+
+            {visibles.map(([d, lineas]) => (
+              <section key={d.clave} aria-labelledby={`dep-${d.clave}`} className="animate-aparecer">
+                <div className="mb-2 flex items-center gap-2 px-1">
+                  <Burbuja emoji={d.emoji} fondo={d.fondo} tam="sm" />
+                  <h2 id={`dep-${d.clave}`} className="flex-1 text-xl font-semibold">
+                    {d.nombre}
                   </h2>
-                  <span className="tabular text-sm text-stone-500 dark:text-stone-400">
-                    {dinero(lineas.reduce((s, l) => s + l.subtotal, 0))}
-                  </span>
+                  <span className="tabular text-sm font-semibold text-suave">{dinero(lineas.reduce((s, l) => s + l.subtotal, 0))}</span>
                 </div>
-                <ul className="divide-y divide-stone-100 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200 dark:divide-stone-800 dark:bg-stone-900 dark:ring-stone-800">
-                  {lineas.map((l) => (
-                    <li key={l.id}>
-                      <button
-                        type="button"
-                        onClick={() => setSeleccionada(l)}
-                        className="flex min-h-16 w-full items-center gap-3 px-4 py-3 text-left active:bg-stone-50 dark:active:bg-stone-800"
-                      >
-                        <span className="tabular flex h-9 min-w-9 items-center justify-center rounded-lg bg-marca-50 px-1.5 text-sm font-bold text-marca-800 dark:bg-marca-900/40 dark:text-marca-200">
-                          {l.paquetes}×
-                        </span>
-                        <span className="min-w-0 flex-1">
-                          <span className="block leading-snug">{l.nombre}</span>
-                          <span className="mt-0.5 flex flex-wrap gap-x-2 text-xs text-stone-500 dark:text-stone-400">
-                            <span className="tabular">{dinero(l.precio_unitario)} c/u</span>
-                            {l.fijado && <span className="font-medium text-marca-700 dark:text-marca-500">Cantidad fijada</span>}
-                            {l.visitas > 1 && <span>Compra en {l.visitas} visitas</span>}
-                            {l.fuente_precio === "estimado" && <span className="text-amber-700 dark:text-amber-400">Precio estimado</span>}
-                          </span>
-                        </span>
-                        <span className="tabular shrink-0 font-semibold">{dinero(l.subtotal)}</span>
-                      </button>
+                <ul className="overflow-hidden rounded-3xl bg-tarjeta shadow-suave">
+                  {lineas.map((l, i) => (
+                    <li key={l.id} className={i > 0 ? "border-t border-linea/60" : ""}>
+                      <Fila linea={l} fondo={d.fondo} onClick={() => setSeleccionada(l)} />
                     </li>
                   ))}
                 </ul>
@@ -96,14 +133,14 @@ export default function Lista() {
 
             {quitados.length > 0 && (
               <Tarjeta>
-                <h2 className="mb-2 font-semibold">Quitados por ti</h2>
-                <ul className="flex flex-col gap-1">
+                <h2 className="mb-1 text-lg font-semibold">👎 Quitados por ti</h2>
+                <ul className="flex flex-col">
                   {quitados.map((q) => (
                     <li key={q.id} className="flex min-h-11 items-center justify-between gap-3">
-                      <span className="text-stone-600 dark:text-stone-300">{q.nombre}</span>
-                      <Boton variante="texto" className="min-h-10 px-2 text-sm" onClick={() => restaurar(q.id)}>
+                      <span className="min-w-0 truncate text-sm text-suave">{partirNombre(q.nombre).titulo}</span>
+                      <button type="button" className="min-h-10 shrink-0 px-2 text-sm font-semibold text-nopal" onClick={() => restaurarProducto(q.id)}>
                         Restaurar
-                      </Boton>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -111,48 +148,109 @@ export default function Lista() {
             )}
 
             {porRestriccion.length > 0 && (
-              <details className="rounded-2xl bg-white p-4 ring-1 ring-stone-200 dark:bg-stone-900 dark:ring-stone-800">
+              <details className="rounded-3xl bg-tarjeta p-4 shadow-suave">
                 <summary className="min-h-8 cursor-pointer font-semibold">
-                  {porRestriccion.length} productos excluidos por tus restricciones
+                  🛡️ {porRestriccion.length} productos descartados por tus restricciones
                 </summary>
-                <ul className="mt-2 flex flex-col gap-1 text-sm text-stone-600 dark:text-stone-300">
-                  {porRestriccion.map((e) => (
+                <ul className="mt-2 flex flex-col gap-1 text-sm text-suave">
+                  {porRestriccion.slice(0, 60).map((e) => (
                     <li key={e.id}>
-                      {e.nombre} <span className="text-stone-400">· {e.motivo}</span>
+                      {partirNombre(e.nombre).titulo} <span className="opacity-70">· {e.motivo}</span>
                     </li>
                   ))}
+                  {porRestriccion.length > 60 && <li>…y {porRestriccion.length - 60} más.</li>}
                 </ul>
                 {hogar.alergias.length > 0 && (
-                  <p className="mt-3 text-xs text-amber-800 dark:text-amber-300">
-                    ⚠ Revisa siempre la etiqueta: nuestra información de alérgenos puede no estar completa.
-                  </p>
+                  <p className="mt-3 text-xs">⚠️ Revisa siempre la etiqueta: nuestra información de alérgenos puede no estar completa.</p>
                 )}
               </details>
             )}
 
-            <p className="px-1 text-xs text-stone-500 dark:text-stone-400">
-              {plan.catalogo.tienda}. Precios de referencia de Profeco
-              {plan.catalogo.fecha_precio_mas_reciente && ` al ${fechaCorta(plan.catalogo.fecha_precio_mas_reciente)}`}; los
-              marcados como estimados aún no están verificados. Pueden variar por sucursal.
+            <p className="px-1 text-center text-xs text-suave">
+              Precios de referencia de Profeco
+              {plan.catalogo.fecha_precio_mas_reciente && ` al ${fechaCorta(plan.catalogo.fecha_precio_mas_reciente)}`}. Pueden variar por
+              sucursal; los marcados como estimados no están verificados.
             </p>
           </>
         )}
       </main>
 
       {plan && plan.lineas.length > 0 && (
-        <div className="fixed inset-x-0 bottom-[calc(4.25rem+env(safe-area-inset-bottom))] z-10 px-4">
+        <div className="fixed inset-x-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-10 px-4">
           <Link
             to="/compra"
-            className="mx-auto flex min-h-12 max-w-lg items-center justify-center rounded-xl bg-marca-700 text-base font-semibold text-white shadow-lg active:bg-marca-800"
+            className="mx-auto flex min-h-14 max-w-lg items-center justify-center gap-2 rounded-2xl bg-nopal font-titulo text-xl font-semibold text-white shadow-boton active:translate-y-1 active:shadow-none"
           >
             Ir de compras 🛒
           </Link>
         </div>
       )}
 
-      <HojaLinea linea={seleccionada} ajustes={ajustes} onCerrar={() => setSeleccionada(null)} onAplicar={aplicarAjustes} />
+      <HojaProducto linea={seleccionada} onCerrar={() => setSeleccionada(null)} />
+      <HojaBuscar abierta={hoja === "buscar"} onCerrar={() => setHoja(null)} />
+      <HojaEnCasa abierta={hoja === "en_casa"} onCerrar={() => setHoja(null)} />
+      <HojaComparar abierta={hoja === "comparar"} onCerrar={() => setHoja(null)} />
     </div>
   );
+}
+
+function Accion({ emoji, texto, onClick }: { emoji: string; texto: string; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-tarjeta px-4 text-sm font-semibold shadow-suave active:scale-95"
+    >
+      <span aria-hidden="true">{emoji}</span>
+      {texto}
+    </button>
+  );
+}
+
+function FiltroDepto({ activo, texto, onClick }: { activo: boolean; texto: string; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      role="tab"
+      aria-selected={activo}
+      onClick={onClick}
+      className={`min-h-10 shrink-0 rounded-full px-3.5 text-sm font-semibold transition-colors ${
+        activo ? "bg-tinta text-fondo" : "bg-hundido text-suave"
+      }`}
+    >
+      {texto}
+    </button>
+  );
+}
+
+function Fila({ linea: l, fondo, onClick }: { linea: Linea; fondo: string; onClick: () => void }) {
+  const { titulo, detalle } = partirNombre(l.nombre);
+  return (
+    <button type="button" onClick={onClick} className="flex min-h-16 w-full items-center gap-3 px-3 py-2.5 text-left active:bg-hundido">
+      <span className="relative">
+        <Burbuja emoji={iconoProducto(l)} fondo={fondo} />
+        <span className="tabular absolute -bottom-1 -right-1 flex h-6 min-w-6 items-center justify-center rounded-full bg-tinta px-1 text-xs font-bold text-fondo">
+          {l.paquetes}
+        </span>
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block font-semibold leading-snug">{titulo}</span>
+        <span className="block truncate text-xs text-suave">{detalle}</span>
+        {(l.fijado || l.visitas > 1 || l.fuente_precio === "estimado") && (
+          <span className="mt-0.5 flex flex-wrap gap-1">
+            {l.fijado && <Etiqueta clase="bg-nopal-tenue text-nopal-fuerte">📌 fijado</Etiqueta>}
+            {l.visitas > 1 && <Etiqueta clase="bg-cielo-tenue text-cielo">🗓️ en {l.visitas} visitas</Etiqueta>}
+            {l.fuente_precio === "estimado" && <Etiqueta clase="bg-maiz-tenue text-tinta">precio estimado</Etiqueta>}
+          </span>
+        )}
+      </span>
+      <span className="tabular shrink-0 text-right font-titulo text-lg font-semibold">{dinero(l.subtotal)}</span>
+    </button>
+  );
+}
+
+function Etiqueta({ clase, children }: { clase: string; children: React.ReactNode }) {
+  return <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${clase}`}>{children}</span>;
 }
 
 function Resumen({ plan }: { plan: Plan }) {
@@ -166,35 +264,35 @@ function Resumen({ plan }: { plan: Plan }) {
     <Tarjeta>
       <div className="flex items-end justify-between gap-3">
         <div>
-          <p className="text-sm text-stone-500 dark:text-stone-400">Total estimado</p>
-          <p className="tabular text-3xl font-bold tracking-tight">{dinero(plan.total)}</p>
+          <p className="text-sm font-semibold text-suave">Total estimado</p>
+          <p className="tabular font-titulo text-4xl font-bold leading-none">{dinero(plan.total)}</p>
         </div>
-        <p className="tabular pb-1 text-right text-sm text-stone-500 dark:text-stone-400">
+        <p className="tabular text-right text-sm text-suave">
           de {dineroEntero(plan.presupuesto)}
           <br />
-          <span className="font-semibold text-marca-700 dark:text-marca-500">te sobran {dinero(plan.sobrante)}</span>
+          <span className="font-bold text-nopal">te sobran {dineroEntero(plan.sobrante)}</span>
         </p>
       </div>
       <div
-        className="mt-3 h-2.5 overflow-hidden rounded-full bg-stone-100 dark:bg-stone-800"
+        className="mt-3 h-3 overflow-hidden rounded-full bg-hundido"
         role="progressbar"
         aria-label="Uso del presupuesto"
         aria-valuenow={Math.round(uso)}
         aria-valuemin={0}
         aria-valuemax={100}
       >
-        <div className="h-full rounded-full bg-marca-600" style={{ width: `${uso}%` }} />
+        <div className="h-full rounded-full bg-nopal" style={{ width: `${uso}%`, transition: "width 500ms cubic-bezier(0.22, 1, 0.36, 1)" }} />
       </div>
       <button
         type="button"
         onClick={() => setVerCobertura(!verCobertura)}
         aria-expanded={verCobertura}
-        className="mt-3 flex min-h-11 w-full items-center justify-between rounded-xl bg-stone-50 px-3 text-left text-sm dark:bg-stone-800"
+        className={`mt-3 flex min-h-11 w-full items-center justify-between gap-2 rounded-2xl px-3 text-left text-sm font-semibold ${
+          completa ? "bg-nopal-tenue" : "bg-maiz-tenue"
+        }`}
       >
-        <span>
-          {completa ? "✅ Cubre todo lo que tu hogar necesita" : `⚠️ Lo esencial cubierto al ${Math.round(minimoEsencial)}% o más`}
-        </span>
-        <span className="text-stone-400">{verCobertura ? "Ocultar" : "Detalle"}</span>
+        <span>{completa ? "✅ Cubre todo lo que tu hogar necesita" : `⚠️ Lo esencial queda cubierto al ${Math.round(minimoEsencial)}% o más`}</span>
+        <span className="shrink-0 text-suave">{verCobertura ? "Ocultar" : "¿Por qué?"}</span>
       </button>
       {verCobertura && <TablaCobertura cobertura={plan.cobertura} />}
     </Tarjeta>
@@ -202,198 +300,30 @@ function Resumen({ plan }: { plan: Plan }) {
 }
 
 function TablaCobertura({ cobertura }: { cobertura: Cobertura[] }) {
-  const etiquetas = { 1: "Esencial", 2: "Importante", 3: "Opcional" } as const;
   return (
-    <ul className="mt-3 flex flex-col gap-2.5">
+    <ul className="mt-3 flex animate-aparecer flex-col gap-3">
       {cobertura.map((c) => (
         <li key={c.clave}>
           <div className="flex justify-between gap-2 text-sm">
-            <span>
-              {c.nombre} <span className="text-xs text-stone-400">· {etiquetas[c.prioridad]}</span>
-            </span>
-            <span className="tabular shrink-0 text-stone-500 dark:text-stone-400">
-              {formatoCantidad(c.cubierto)} / {formatoCantidad(c.requerido)} {c.unidad}
+            <span className="font-semibold">{c.nombre}</span>
+            <span className="tabular shrink-0 text-suave">
+              {cantidad(c.cubierto)} / {cantidad(c.requerido)} {c.unidad}
             </span>
           </div>
-          <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-stone-100 dark:bg-stone-800" aria-hidden="true">
+          <div className="mt-1 h-2 overflow-hidden rounded-full bg-hundido" aria-hidden="true">
             <div
-              className={`h-full rounded-full ${c.porcentaje >= 95 ? "bg-marca-500" : c.porcentaje >= 60 ? "bg-amber-500" : "bg-red-500"}`}
+              className={`h-full rounded-full ${c.porcentaje >= 95 ? "bg-nopal" : c.porcentaje >= 60 ? "bg-maiz" : "bg-rosa"}`}
               style={{ width: `${Math.min(100, c.porcentaje)}%` }}
             />
           </div>
+          {(c.explicacion || c.en_casa > 0) && (
+            <p className="mt-0.5 text-xs text-suave">
+              {c.explicacion}
+              {c.en_casa > 0 && ` · ya tienes ${Math.round(c.en_casa * 100)}% en casa`}
+            </p>
+          )}
         </li>
       ))}
     </ul>
-  );
-}
-
-const formatoCantidad = (n: number) => (n >= 10 ? Math.round(n).toString() : n.toFixed(1).replace(/\.0$/, ""));
-
-function HojaLinea({
-  linea,
-  ajustes,
-  onCerrar,
-  onAplicar,
-}: {
-  linea: Linea | null;
-  ajustes: Ajustes;
-  onCerrar: () => void;
-  onAplicar: (a: Ajustes) => Promise<boolean>;
-}) {
-  return (
-    <Hoja abierta={linea !== null} onCerrar={onCerrar} titulo={linea?.nombre ?? ""}>
-      {/* La key reinicia el estado interno cada vez que se abre otro producto. */}
-      {linea && <ContenidoHoja key={linea.id} linea={linea} ajustes={ajustes} onCerrar={onCerrar} onAplicar={onAplicar} />}
-    </Hoja>
-  );
-}
-
-function ContenidoHoja({
-  linea,
-  ajustes,
-  onCerrar,
-  onAplicar,
-}: {
-  linea: Linea;
-  ajustes: Ajustes;
-  onCerrar: () => void;
-  onAplicar: (a: Ajustes) => Promise<boolean>;
-}) {
-  const [cantidad, setCantidad] = useState(linea.paquetes);
-  const [reportando, setReportando] = useState(false);
-
-  const sinFijar = useMemo(() => {
-    const { [linea.id]: _omitido, ...resto } = ajustes.fijar;
-    return resto;
-  }, [ajustes.fijar, linea.id]);
-
-  const aplicar = async (nuevos: Ajustes) => {
-    onCerrar();
-    await onAplicar(nuevos);
-  };
-
-  return (
-    <div className="flex flex-col gap-4">
-      <p className="text-sm text-stone-500 dark:text-stone-400">
-        {dinero(linea.precio_unitario)} c/u ·{" "}
-        {linea.fuente_precio === "estimado"
-          ? "precio estimado"
-          : `precio Profeco${linea.fecha_precio ? ` al ${fechaCorta(linea.fecha_precio)}` : ""}`}
-      </p>
-
-      {!reportando ? (
-        <>
-          <div className="flex items-center justify-between gap-3 rounded-2xl bg-stone-50 p-3 dark:bg-stone-800">
-            <span className="font-medium">Cantidad</span>
-            <Stepper etiqueta="Cantidad de paquetes" valor={cantidad} onCambio={setCantidad} />
-          </div>
-          <p className="tabular text-sm text-stone-500 dark:text-stone-400">
-            Subtotal: {dinero(cantidad * linea.precio_unitario)}. Al cambiar la cantidad, ajustamos el resto de la lista para
-            respetar tu presupuesto.
-          </p>
-          <Boton
-            ancho
-            disabled={cantidad === linea.paquetes && linea.fijado}
-            onClick={() =>
-              aplicar(
-                cantidad === 0
-                  ? { excluir_productos: [...ajustes.excluir_productos, linea.id], fijar: sinFijar }
-                  : { ...ajustes, fijar: { ...ajustes.fijar, [linea.id]: cantidad } },
-              )
-            }
-          >
-            {cantidad === 0 ? "Quitar de la lista" : `Fijar ${cantidad} y recalcular`}
-          </Boton>
-          {linea.fijado && (
-            <Boton variante="secundario" ancho onClick={() => aplicar({ ...ajustes, fijar: sinFijar })}>
-              Que la app decida la cantidad
-            </Boton>
-          )}
-          {cantidad !== 0 && (
-            <Boton
-              variante="peligro"
-              ancho
-              onClick={() => aplicar({ excluir_productos: [...ajustes.excluir_productos, linea.id], fijar: sinFijar })}
-            >
-              No me gusta, quitarlo
-            </Boton>
-          )}
-          <Boton variante="texto" ancho onClick={() => setReportando(true)}>
-            ¿El precio está mal? Repórtalo
-          </Boton>
-        </>
-      ) : (
-        <ReportePrecio linea={linea} onListo={onCerrar} onCancelar={() => setReportando(false)} />
-      )}
-    </div>
-  );
-}
-
-function ReportePrecio({ linea, onListo, onCancelar }: { linea: Linea; onListo: () => void; onCancelar: () => void }) {
-  const [precio, setPrecio] = useState("");
-  const [sucursal, setSucursal] = useState("");
-  const [estado, setEstado] = useState<"editando" | "enviando" | "enviado">("editando");
-  const [error, setError] = useState<string | null>(null);
-  const valor = Number(precio.replace(",", "."));
-
-  if (estado === "enviado") {
-    return (
-      <div className="flex flex-col gap-3">
-        <Aviso>¡Gracias! Con tu reporte mejoramos los precios para todos.</Aviso>
-        <Boton ancho onClick={onListo}>
-          Listo
-        </Boton>
-      </div>
-    );
-  }
-
-  return (
-    <form
-      className="flex flex-col gap-3"
-      onSubmit={async (e) => {
-        e.preventDefault();
-        setEstado("enviando");
-        setError(null);
-        try {
-          await api.reportarPrecio(linea.id, valor, sucursal.trim());
-          setEstado("enviado");
-        } catch (err) {
-          setError(err instanceof ErrorApi ? err.message : "No se pudo enviar.");
-          setEstado("editando");
-        }
-      }}
-    >
-      <Campo etiqueta="¿Qué precio viste en la tienda?">
-        {(id) => (
-          <input
-            id={id}
-            className={`${claseEntrada} tabular`}
-            inputMode="decimal"
-            placeholder={String(linea.precio_unitario)}
-            value={precio}
-            onChange={(e) => setPrecio(e.target.value.replace(/[^\d.,]/g, ""))}
-          />
-        )}
-      </Campo>
-      <Campo etiqueta="Sucursal (opcional)">
-        {(id) => (
-          <input
-            id={id}
-            className={claseEntrada}
-            maxLength={100}
-            placeholder="Ej. Walmart Universidad, CDMX"
-            value={sucursal}
-            onChange={(e) => setSucursal(e.target.value)}
-          />
-        )}
-      </Campo>
-      {error && <Aviso tono="error">{error}</Aviso>}
-      <Boton type="submit" ancho disabled={!(valor > 0) || estado === "enviando"}>
-        {estado === "enviando" ? "Enviando…" : "Enviar reporte"}
-      </Boton>
-      <Boton variante="texto" ancho onClick={onCancelar}>
-        Volver
-      </Boton>
-    </form>
   );
 }

@@ -199,6 +199,11 @@ def planear(
     return plan
 
 
+def _pesos(valor: float) -> str:
+    """Pesos enteros, redondeando .5 hacia arriba como lo hace la app (no al par, como Python)."""
+    return f"{math.floor(valor + 0.5):,}"
+
+
 def _redondear_arriba(valor: float, multiplo: int = 50) -> int:
     return int(math.ceil(valor / multiplo) * multiplo)
 
@@ -217,10 +222,10 @@ def _aconsejar(plan: Plan, falta_cobertura: bool, aptos, demandas, fijos, tiempo
     elif plan.sobrante >= 0.1 * presupuesto:
         if plan.hogar.nivel == "ahorro":
             plan.consejos.append(
-                f"Te sobran ${plan.sobrante:,.0f}. Puedes subir a marcas de nivel equilibrado "
+                f"Te sobran ${_pesos(plan.sobrante)}. Puedes subir a marcas de nivel equilibrado "
                 f"o bajar tu presupuesto a ${_redondear_arriba(plan.total, 100):,}."
             )
         else:
             plan.consejos.append(
-                f"Te sobran ${plan.sobrante:,.0f}: podrías bajar tu presupuesto a ${_redondear_arriba(plan.total, 100):,}."
+                f"Te sobran ${_pesos(plan.sobrante)}: podrías bajar tu presupuesto a ${_redondear_arriba(plan.total, 100):,}."
             )
