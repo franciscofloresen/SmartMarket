@@ -1,6 +1,19 @@
-import type { Ajustes, Alternativa, Opciones, Perfil, Plan, ProductoResumen, TiendaComparada } from "./tipos";
+import type {
+  Ajustes,
+  Alternativa,
+  CambiosSugeridos,
+  HogarSugerido,
+  Menu,
+  Opciones,
+  Perfil,
+  Plan,
+  ProductoResumen,
+  TiendaComparada,
+} from "./tipos";
 
 const TIEMPO_LIMITE_MS = 30_000;
+// Las respuestas de la IA (sobre todo el menú) pueden tardar bastante más que el motor.
+const TIEMPO_LIMITE_IA_MS = 120_000;
 
 export class ErrorApi extends Error {
   constructor(mensaje: string, readonly estado: number | null) {
@@ -8,9 +21,9 @@ export class ErrorApi extends Error {
   }
 }
 
-async function pedir<T>(ruta: string, cuerpo?: unknown): Promise<T> {
+async function pedir<T>(ruta: string, cuerpo?: unknown, limiteMs = TIEMPO_LIMITE_MS): Promise<T> {
   const control = new AbortController();
-  const temporizador = setTimeout(() => control.abort(), TIEMPO_LIMITE_MS);
+  const temporizador = setTimeout(() => control.abort(), limiteMs);
   let respuesta: Response;
   try {
     respuesta = await fetch(ruta, {
@@ -54,4 +67,8 @@ export const api = {
   reportarTicket: (tienda: string, total_estimado: number, total_real: number) =>
     pedir<{ ok: true }>("/api/reporte", { tipo: "ticket", tienda, total_estimado, total_real }),
   comentar: (comentario: string) => pedir<{ ok: true }>("/api/reporte", { tipo: "comentario", comentario }),
+  iaHogar: (texto: string) => pedir<HogarSugerido>("/api/ia/hogar", { texto }, TIEMPO_LIMITE_IA_MS),
+  iaMenu: (perfil: Perfil, ajustes: Ajustes) => pedir<Menu>("/api/ia/menu", { perfil, ajustes }, TIEMPO_LIMITE_IA_MS),
+  iaCambios: (perfil: Perfil, ajustes: Ajustes, texto: string) =>
+    pedir<CambiosSugeridos>("/api/ia/cambios", { perfil, ajustes, texto }, TIEMPO_LIMITE_IA_MS),
 };

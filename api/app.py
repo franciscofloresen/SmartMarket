@@ -6,11 +6,15 @@ Variables de entorno:
   REPORTES_PATH  archivo JSONL donde se guardan los reportes de testers
   REPORTES_TOKEN clave para descargar los reportes en GET /api/reportes (sin ella, el endpoint no existe)
   WEB_DIST       carpeta con la web app compilada para servirla en "/" (default: web/dist)
+  ANTHROPIC_API_KEY  activa las funciones de IA (api/ia.py); sin ella responden 503
+  IA_LLAMADAS_POR_HORA  tope de llamadas de IA por dirección IP (default: 30)
 """
 import hmac
 import json
 import os
 import threading
+import time
+from collections import defaultdict, deque
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Annotated, Literal
@@ -22,6 +26,7 @@ from fastapi.responses import JSONResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
+from api import ia
 from despensa.catalogo import cargar_catalogo, catalogo_de, estados_de
 from despensa.consultas import alternativas, buscar, comparar_tiendas
 from despensa.perfil import PerfilInvalido, hogar_desde_dict
@@ -101,6 +106,14 @@ class AlternativasIn(BaseModel):
     paquetes: int = Field(1, ge=1, le=100)
 
 
+class TextoIn(BaseModel):
+    texto: str = Field(min_length=5, max_length=1500)
+
+
+class CambiosIn(PlanIn):
+    texto: str = Field(min_length=3, max_length=600)
+
+
 class ReporteIn(BaseModel):
     tipo: Literal["precio", "producto", "comentario", "ticket"]
     producto_id: str | None = Field(None, max_length=12)
@@ -172,6 +185,7 @@ def opciones() -> dict:
         "necesidades": [{"clave": n.clave, "nombre": n.nombre} for n in NECESIDADES.values() if n.clave != "extras"],
         "tamanos_perro": [{"clave": k, "nombre": v} for k, v in NOMBRES_TAMANOS_PERRO.items()],
         "periodo_dias": {"min": 1, "max": 62, "default": 30},
+        "ia": ia.disponible(),
     }
 
 
@@ -212,6 +226,107 @@ def comparar(entrada: PlanIn) -> dict:
     except AjusteInvalido as e:
         raise HTTPException(status_code=422, detail=str(e)) from e
     return {"tiendas": tiendas}
+
+
+# --- IA (opcional) ---
+
+IA_LLAMADAS_POR_HORA = int(os.environ.get("IA_LLAMADAS_POR_HORA", "30"))
+_llamadas_ia: dict[str, deque] = defaultdict(deque)
+_llamadas_ia_lock = threading.Lock()
+
+
+def _con_ia(request: Request, funcion, *args):
+    """Ejecuta una función de api/ia.py con tope de uso por IP y errores legibles.
+
+    Cada llamada cuesta dinero, así que un endpoint público necesita un límite aunque sea simple.
+    """
+    if not ia.disponible():
+        raise HTTPException(status_code=503, detail="La IA no está configurada en este servidor.")
+    ip = request.client.host if request.client else "desconocida"
+    ahora = time.monotonic()
+    with _llamadas_ia_lock:
+        recientes = _llamadas_ia[ip]
+        while recientes and ahora - recientes[0] > 3600:
+            recientes.popleft()
+        if len(recientes) >= IA_LLAMADAS_POR_HORA:
+            raise HTTPException(status_code=429, detail="Usaste mucho la IA en la última hora. Intenta más tarde.")
+        recientes.append(ahora)
+    try:
+        return funcion(*args)
+    except ia.IANoDisponible as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
+    except ia.IASinRespuesta as e:
+        raise HTTPException(status_code=422, detail=str(e)) from e
+
+
+def _planear(entrada: PlanIn):
+    try:
+        hogar = hogar_desde_dict(entrada.perfil.model_dump())
+        return hogar, planear(hogar, catalogo_de(hogar), entrada.ajustes.a_ajustes(), tiempo_limite=TIEMPO_LIMITE_SOLVER)
+    except (PerfilInvalido, AjusteInvalido) as e:
+        raise HTTPException(status_code=422, detail=str(e)) from e
+
+
+@app.post("/api/ia/hogar")
+def ia_hogar(entrada: TextoIn, request: Request) -> dict:
+    """Descripción libre del hogar -> datos para prellenar el asistente. El usuario los revisa antes de usarlos."""
+    sugerido = _con_ia(request, ia.interpretar_hogar, entrada.texto)
+    datos = sugerido.model_dump()
+    datos["miembros"] = [m for m in datos["miembros"] if 0 <= m["edad"] <= 120][:20]
+    datos["mascotas"] = datos["mascotas"][:10]
+    datos["excluir"] = [e.strip().lower()[:40] for e in datos["excluir"] if e.strip()][:30]
+    if datos["presupuesto"] is not None and not 0 < datos["presupuesto"] <= 1_000_000:
+        datos["presupuesto"] = None
+    return datos
+
+
+@app.post("/api/ia/menu")
+def ia_menu(entrada: PlanIn, request: Request) -> dict:
+    """Menú de una semana con lo que hay en la lista."""
+    _, plan = _planear(entrada)
+    return _con_ia(request, ia.sugerir_menu, plan).model_dump()
+
+
+@app.post("/api/ia/cambios")
+def ia_cambios(entrada: CambiosIn, request: Request) -> dict:
+    """Petición con palabras ("quita los refrescos") -> ajustes nuevos, validados contra la lista y el catálogo.
+
+    No recalcula: devuelve los ajustes para que la app los aplique con /api/plan.
+    """
+    hogar, plan = _planear(entrada)
+    cambios = _con_ia(request, ia.interpretar_cambios, entrada.texto, plan)
+
+    en_lista = {l.producto.id: l.paquetes for l in plan.lineas}
+    excluir = set(entrada.ajustes.excluir_productos)
+    fijar = dict(entrada.ajustes.fijar)
+    en_casa = dict(entrada.ajustes.en_casa)
+
+    for pid in cambios.quitar:
+        if pid in en_lista:  # el modelo solo puede quitar lo que de verdad está en la lista
+            excluir.add(pid)
+            fijar.pop(pid, None)
+    for cambio in cambios.cantidades:
+        if cambio.id in en_lista and cambio.id not in excluir:
+            fijar[cambio.id] = max(1, min(100, cambio.paquetes))
+    sin_encontrar = []
+    for pedido in cambios.agregar:
+        encontrado = next((r for r in buscar(hogar, pedido.busqueda) if r["compatible"] and r["id"] not in excluir), None)
+        if encontrado is None:
+            sin_encontrar.append(pedido.busqueda)
+            continue
+        actual = fijar.get(encontrado["id"], en_lista.get(encontrado["id"], 0))
+        fijar[encontrado["id"]] = min(100, actual + max(1, min(20, pedido.paquetes)))
+    for ya in cambios.en_casa:
+        if ya.necesidad in NECESIDADES and ya.necesidad != "extras":
+            en_casa[ya.necesidad] = 1.0 if ya.fraccion >= 0.75 else 0.5  # el modelo solo elige entre mitad y todo
+
+    ajustes = {"excluir_productos": sorted(excluir), "fijar": fijar, "en_casa": en_casa}
+    return {
+        "ajustes": ajustes,
+        "respuesta": cambios.respuesta,
+        "sin_encontrar": sin_encontrar,
+        "hubo_cambios": ajustes != {**entrada.ajustes.model_dump(), "excluir_productos": sorted(entrada.ajustes.excluir_productos)},
+    }
 
 
 @app.post("/api/reporte", status_code=201)

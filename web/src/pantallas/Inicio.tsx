@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { compartirLista } from "../compartir";
-import { HojaComparar, HojaEnCasa } from "../componentes/hojas";
+import { HojaComparar, HojaEnCasa, HojaMenu } from "../componentes/hojas";
 import { Anillo, Aviso, Boton, Cargando, Tarjeta } from "../componentes/ui";
 import { useApp } from "../estado";
 import { dinero, dineroEntero, fechaCorta, nombrePeriodo } from "../formato";
 import { agruparPorDepartamento } from "../iconos";
 
 export default function Inicio() {
-  const { datos, cargando, error, regenerar } = useApp();
+  const { datos, opciones, cargando, error, regenerar } = useApp();
   const navegar = useNavigate();
-  const [hoja, setHoja] = useState<"comparar" | "en_casa" | null>(null);
+  const [hoja, setHoja] = useState<"comparar" | "en_casa" | "menu" | null>(null);
   const [aviso, setAviso] = useState<string | null>(null);
   const { hogar, plan, comprados, historial } = datos;
   if (!hogar) return <Navigate to="/" replace />;
@@ -108,6 +108,23 @@ export default function Inicio() {
               />
             </div>
 
+            {opciones.ia && (
+              <button
+                type="button"
+                onClick={() => setHoja("menu")}
+                className="flex items-center gap-3 rounded-3xl bg-uva-tenue p-4 text-left active:scale-[0.98]"
+              >
+                <span className="text-4xl" aria-hidden="true">
+                  🍳
+                </span>
+                <span className="flex-1">
+                  <span className="block font-titulo text-lg font-semibold leading-tight">¿Qué cocino esta semana?</span>
+                  <span className="text-sm text-suave">Un menú con lo que hay en tu lista.</span>
+                </span>
+                <span aria-hidden="true">›</span>
+              </button>
+            )}
+
             {historial.length > 0 && (
               <Tarjeta>
                 <div className="flex items-baseline justify-between">
@@ -128,6 +145,7 @@ export default function Inicio() {
 
       <HojaComparar abierta={hoja === "comparar"} onCerrar={() => setHoja(null)} />
       <HojaEnCasa abierta={hoja === "en_casa"} onCerrar={() => setHoja(null)} />
+      <HojaMenu abierta={hoja === "menu"} onCerrar={() => setHoja(null)} />
     </div>
   );
 }

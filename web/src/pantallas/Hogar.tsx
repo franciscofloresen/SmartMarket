@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Aviso, Boton, Burbuja, Campo, Chip, claseEntrada, Segmentado, Stepper, Tarjeta } from "../componentes/ui";
+import { api, ErrorApi } from "../api";
 import { useApp } from "../estado";
 import { dineroEntero } from "../formato";
 import { TIENDAS_VISUAL } from "../iconos";
-import type { Mascota, Miembro, Nivel, Perfil, Sexo, TamanoPerro } from "../tipos";
+import type { HogarSugerido, Mascota, Miembro, Nivel, Perfil, Sexo, TamanoPerro } from "../tipos";
 
 const PASOS = [
   { titulo: "¿Quiénes viven en casa?", ayuda: "Con eso calculamos cuánto come cada quien." },
@@ -61,7 +62,7 @@ const PERFIL_NUEVO: Perfil = {
 };
 
 export default function Hogar() {
-  const { datos, guardarHogar, cargando, error } = useApp();
+  const { datos, opciones, guardarHogar, cargando, error } = useApp();
   const navegar = useNavigate();
   const editando = datos.hogar !== null;
   const [perfil, setPerfil] = useState<Perfil>(datos.hogar ?? PERFIL_NUEVO);
@@ -108,6 +109,7 @@ export default function Hogar() {
       </header>
 
       <main key={paso} className="mx-auto flex max-w-lg animate-aparecer flex-col gap-4 px-4 pt-2">
+        {paso === 0 && opciones.ia && <ConTusPalabras onEntendido={(s) => cambiar(aplicarSugerencia(perfil, s))} />}
         {paso === 0 && <PasoPersonas miembros={perfil.miembros} onCambio={(miembros) => cambiar({ miembros })} />}
         {paso === 1 && <PasoMascotas mascotas={perfil.mascotas} onCambio={(mascotas) => cambiar({ mascotas })} />}
         {paso === 2 && <PasoAlimentacion perfil={perfil} onCambio={cambiar} />}
@@ -135,6 +137,76 @@ export default function Hogar() {
         </div>
       </footer>
     </div>
+  );
+}
+
+/** Mezcla lo que la IA entendió con el perfil: solo pisa lo que la persona sí mencionó. */
+function aplicarSugerencia(perfil: Perfil, s: HogarSugerido): Partial<Perfil> {
+  return {
+    miembros: s.miembros.length > 0 ? s.miembros : perfil.miembros,
+    mascotas: s.mascotas.length > 0 ? s.mascotas.map((m) => ({ ...m, nombre: "" })) : perfil.mascotas,
+    alergias: [...new Set([...perfil.alergias, ...s.alergias])],
+    excluir: [...new Set([...perfil.excluir, ...s.excluir])],
+    dieta: s.dieta ?? perfil.dieta,
+    presupuesto: s.presupuesto ?? perfil.presupuesto,
+    periodo_dias: s.periodo_dias ?? perfil.periodo_dias,
+    tienda: s.tienda ?? perfil.tienda,
+    estado: s.estado ?? perfil.estado,
+    nivel: s.nivel ?? perfil.nivel,
+    tortillas_caseras: s.tortillas_caseras ?? perfil.tortillas_caseras,
+  };
+}
+
+function ConTusPalabras({ onEntendido }: { onEntendido: (s: HogarSugerido) => void }) {
+  const [texto, setTexto] = useState("");
+  const [estado, setEstado] = useState<"editando" | "pensando">("editando");
+  const [resultado, setResultado] = useState<HogarSugerido | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  async function enviar() {
+    setEstado("pensando");
+    setError(null);
+    try {
+      const sugerido = await api.iaHogar(texto.trim());
+      setResultado(sugerido);
+      onEntendido(sugerido);
+    } catch (e) {
+      setError(e instanceof ErrorApi ? e.message : "No se pudo interpretar.");
+    } finally {
+      setEstado("editando");
+    }
+  }
+
+  return (
+    <Tarjeta className="bg-uva-tenue">
+      <h2 className="text-xl font-semibold">✨ Cuéntanos con tus palabras</h2>
+      <p className="mb-3 text-sm text-suave">Opcional: escribe quiénes son y llenamos el formulario por ti. Después lo revisas.</p>
+      <textarea
+        className={`${claseEntrada} min-h-24 py-3`}
+        maxLength={1500}
+        value={texto}
+        onChange={(e) => setTexto(e.target.value)}
+        placeholder="Ej. Somos mi esposo y yo, dos hijos de 7 y 10 y un perro mediano. Mi hija es alérgica al pescado. Tenemos 10 mil al mes."
+        aria-label="Describe tu hogar"
+      />
+      {error && (
+        <div className="mt-3">
+          <Aviso tono="error">{error}</Aviso>
+        </div>
+      )}
+      {resultado && (
+        <div className="mt-3">
+          <Aviso>
+            <p>{resultado.resumen}</p>
+            {resultado.falta.length > 0 && <p className="mt-1 text-suave">Nos falta: {resultado.falta.join(", ")}.</p>}
+            <p className="mt-1 font-semibold">Revisa los datos en los siguientes pasos.</p>
+          </Aviso>
+        </div>
+      )}
+      <Boton variante="secundario" ancho className="mt-3" disabled={texto.trim().length < 5 || estado === "pensando"} onClick={enviar}>
+        {estado === "pensando" ? "Leyendo…" : "Llenar por mí"}
+      </Boton>
+    </Tarjeta>
   );
 }
 

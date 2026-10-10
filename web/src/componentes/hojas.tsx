@@ -3,7 +3,7 @@ import { api, ErrorApi } from "../api";
 import { useApp } from "../estado";
 import { cantidad, dinero, fechaCorta, partirNombre } from "../formato";
 import { departamento, iconoProducto } from "../iconos";
-import type { Alternativa, Linea, ProductoResumen, TiendaComparada } from "../tipos";
+import type { Alternativa, Linea, Menu, ProductoResumen, TiendaComparada } from "../tipos";
 import { Aviso, Boton, Burbuja, Campo, claseEntrada, Hoja, Segmentado, Stepper } from "./ui";
 
 /** Carga algo de la API al montar; se usa dentro de hojas, que se montan al abrirse. */
@@ -513,6 +513,188 @@ function Comparador({ onCerrar }: { onCerrar: () => void }) {
           </p>
         </>
       )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------- IA: pedir cambios con palabras
+
+export function HojaPedir({ abierta, onCerrar }: { abierta: boolean; onCerrar: () => void }) {
+  return (
+    <Hoja abierta={abierta} onCerrar={onCerrar} titulo="✨ Pídelo con tus palabras">
+      {abierta && <Pedir onCerrar={onCerrar} />}
+    </Hoja>
+  );
+}
+
+const EJEMPLOS_DE_PETICION = ["Quita los refrescos", "Agrega más fruta", "Ya tengo arroz y aceite", "Cambia el pollo por más res"];
+
+function Pedir({ onCerrar }: { onCerrar: () => void }) {
+  const { datos, aplicarAjustes } = useApp();
+  const [texto, setTexto] = useState("");
+  const [pensando, setPensando] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [sugerido, setSugerido] = useState<Awaited<ReturnType<typeof api.iaCambios>> | null>(null);
+
+  async function enviar() {
+    setPensando(true);
+    setError(null);
+    setSugerido(null);
+    try {
+      setSugerido(await api.iaCambios(datos.hogar!, datos.ajustes, texto.trim()));
+    } catch (e) {
+      setError(e instanceof ErrorApi ? e.message : "No se pudo interpretar.");
+    } finally {
+      setPensando(false);
+    }
+  }
+
+  return (
+    <div className="flex flex-col gap-3">
+      <textarea
+        className={`${claseEntrada} min-h-24 py-3`}
+        maxLength={600}
+        autoFocus
+        value={texto}
+        onChange={(e) => setTexto(e.target.value)}
+        placeholder="¿Qué quieres cambiar de tu lista?"
+        aria-label="Cambio que quieres hacer"
+      />
+      {!sugerido && (
+        <div className="flex flex-wrap gap-2">
+          {EJEMPLOS_DE_PETICION.map((e) => (
+            <button key={e} type="button" className="min-h-10 rounded-full bg-hundido px-4 text-sm font-medium active:scale-95" onClick={() => setTexto(e)}>
+              {e}
+            </button>
+          ))}
+        </div>
+      )}
+      {error && <Aviso tono="error">{error}</Aviso>}
+      {sugerido && (
+        <Aviso tono={sugerido.hubo_cambios ? "consejo" : "alerta"}>
+          <p>{sugerido.respuesta}</p>
+          {sugerido.sin_encontrar.length > 0 && (
+            <p className="mt-1 text-suave">No encontramos en esta tienda (o no es compatible con tu hogar): {sugerido.sin_encontrar.join(", ")}.</p>
+          )}
+        </Aviso>
+      )}
+      {sugerido?.hubo_cambios ? (
+        <Boton
+          ancho
+          onClick={() => {
+            onCerrar();
+            void aplicarAjustes(sugerido.ajustes);
+          }}
+        >
+          Aplicar y recalcular
+        </Boton>
+      ) : (
+        <Boton ancho disabled={texto.trim().length < 3 || pensando} onClick={enviar}>
+          {pensando ? "Pensando…" : "Enviar"}
+        </Boton>
+      )}
+      {sugerido?.hubo_cambios && (
+        <Boton variante="texto" ancho onClick={() => setSugerido(null)}>
+          Pedir otra cosa
+        </Boton>
+      )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------- IA: menú de la semana
+
+const CLAVE_MENU = "smartmarket:menu";
+
+function menuGuardado(planGeneradoEn: string | null): Menu | null {
+  try {
+    const guardado = JSON.parse(localStorage.getItem(CLAVE_MENU) ?? "null");
+    return guardado && guardado.plan === planGeneradoEn ? (guardado.menu as Menu) : null;
+  } catch {
+    return null;
+  }
+}
+
+export function HojaMenu({ abierta, onCerrar }: { abierta: boolean; onCerrar: () => void }) {
+  return (
+    <Hoja abierta={abierta} onCerrar={onCerrar} titulo="🍳 Menú de la semana">
+      {abierta && <MenuSemanal />}
+    </Hoja>
+  );
+}
+
+function MenuSemanal() {
+  const { datos } = useApp();
+  // El menú se guarda junto con la lista que lo originó: no se vuelve a pedir (ni a cobrar) al reabrir.
+  const [menu, setMenu] = useState<Menu | null>(() => menuGuardado(datos.planGeneradoEn));
+  const [pensando, setPensando] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function generar() {
+    setPensando(true);
+    setError(null);
+    try {
+      const nuevo = await api.iaMenu(datos.hogar!, datos.ajustes);
+      setMenu(nuevo);
+      try {
+        localStorage.setItem(CLAVE_MENU, JSON.stringify({ plan: datos.planGeneradoEn, menu: nuevo }));
+      } catch {
+        /* sin almacenamiento: el menú vive mientras la hoja esté abierta */
+      }
+    } catch (e) {
+      setError(e instanceof ErrorApi ? e.message : "No se pudo generar el menú.");
+    } finally {
+      setPensando(false);
+    }
+  }
+
+  if (!menu) {
+    return (
+      <div className="flex flex-col items-center gap-3 py-4 text-center">
+        <span className="text-6xl" aria-hidden="true">
+          👩‍🍳
+        </span>
+        <p className="text-suave">Armamos un menú de lunes a domingo usando solo lo que está en tu lista, respetando alergias y gustos.</p>
+        {error && <Aviso tono="error">{error}</Aviso>}
+        <Boton ancho disabled={pensando} onClick={generar}>
+          {pensando ? "Cocinando ideas… (tarda un momento)" : "Proponer menú"}
+        </Boton>
+      </div>
+    );
+  }
+
+  const tiempos = [
+    ["desayuno", "☀️ Desayuno"],
+    ["comida", "🍽️ Comida"],
+    ["cena", "🌙 Cena"],
+  ] as const;
+  return (
+    <div className="flex flex-col gap-3">
+      {menu.dias.map((d) => (
+        <section key={d.dia} className="rounded-3xl bg-tarjeta p-4 shadow-suave">
+          <h3 className="mb-2 text-xl font-semibold">{d.dia}</h3>
+          <ul className="flex flex-col gap-2.5">
+            {tiempos.map(([clave, titulo]) => (
+              <li key={clave}>
+                <p className="text-xs font-semibold uppercase tracking-wide text-suave">{titulo}</p>
+                <p className="font-semibold leading-snug">{d[clave].nombre}</p>
+                <p className="text-sm text-suave">{d[clave].preparacion}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+      {menu.consejos.map((c) => (
+        <Aviso key={c} tono="consejo">
+          {c}
+        </Aviso>
+      ))}
+      <p className="text-center text-xs text-suave">
+        Sugerencias generadas con IA. Revisa los ingredientes si en casa hay alergias.
+      </p>
+      <Boton variante="secundario" ancho disabled={pensando} onClick={generar}>
+        {pensando ? "Cocinando ideas…" : "🔄 Proponer otro menú"}
+      </Boton>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { compartirLista } from "../compartir";
-import { HojaBuscar, HojaComparar, HojaEnCasa, HojaProducto } from "../componentes/hojas";
+import { HojaBuscar, HojaComparar, HojaEnCasa, HojaMenu, HojaPedir, HojaProducto } from "../componentes/hojas";
 import { Aviso, Boton, Burbuja, Cargando, Encabezado, Tarjeta } from "../componentes/ui";
 import { useApp } from "../estado";
 import { cantidad, dinero, dineroEntero, fechaCorta, nombrePeriodo, partirNombre } from "../formato";
@@ -9,10 +9,10 @@ import { agruparPorDepartamento, iconoProducto } from "../iconos";
 import type { Cobertura, Linea, Plan } from "../tipos";
 
 const MOTIVO_QUITADO = "quitado por ti";
-type HojaAbierta = "buscar" | "en_casa" | "comparar" | null;
+type HojaAbierta = "buscar" | "en_casa" | "comparar" | "pedir" | "menu" | null;
 
 export default function Lista() {
-  const { datos, cargando, error, limpiarError, restaurarProducto, regenerar } = useApp();
+  const { datos, opciones, cargando, error, limpiarError, restaurarProducto, regenerar } = useApp();
   const [seleccionada, setSeleccionada] = useState<Linea | null>(null);
   const [hoja, setHoja] = useState<HojaAbierta>(null);
   const [filtro, setFiltro] = useState<string | null>(null);
@@ -82,6 +82,8 @@ export default function Lista() {
             <Resumen plan={plan} />
 
             <div className="sin-barra -mx-4 flex gap-2 overflow-x-auto px-4">
+              {opciones.ia && <Accion emoji="✨" texto="Pedir un cambio" onClick={() => setHoja("pedir")} />}
+              {opciones.ia && <Accion emoji="🍳" texto="Menú de la semana" onClick={() => setHoja("menu")} />}
               <Accion emoji="🏠" texto={enCasa ? `En casa (${enCasa})` : "Ya tengo en casa"} onClick={() => setHoja("en_casa")} />
               <Accion emoji="🏪" texto="Comparar tiendas" onClick={() => setHoja("comparar")} />
               <Accion emoji="📤" texto="Compartir" onClick={compartir} />
@@ -190,6 +192,8 @@ export default function Lista() {
       <HojaBuscar abierta={hoja === "buscar"} onCerrar={() => setHoja(null)} />
       <HojaEnCasa abierta={hoja === "en_casa"} onCerrar={() => setHoja(null)} />
       <HojaComparar abierta={hoja === "comparar"} onCerrar={() => setHoja(null)} />
+      <HojaPedir abierta={hoja === "pedir"} onCerrar={() => setHoja(null)} />
+      <HojaMenu abierta={hoja === "menu"} onCerrar={() => setHoja(null)} />
     </div>
   );
 }

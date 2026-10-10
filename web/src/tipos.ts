@@ -148,6 +148,41 @@ export interface TiendaComparada {
   actual: boolean;
 }
 
+/** Lo que la IA entendió de una descripción libre del hogar; lo que no dijeron viene en null. */
+export interface HogarSugerido {
+  miembros: Miembro[];
+  mascotas: { tipo: TipoMascota; tamano: TamanoPerro }[];
+  alergias: string[];
+  excluir: string[];
+  dieta: string | null;
+  presupuesto: number | null;
+  periodo_dias: number | null;
+  tienda: string | null;
+  estado: string | null;
+  nivel: Nivel | null;
+  tortillas_caseras: boolean | null;
+  falta: string[];
+  resumen: string;
+}
+
+export interface Comida {
+  nombre: string;
+  preparacion: string;
+  ingredientes: string[];
+}
+
+export interface Menu {
+  dias: { dia: string; desayuno: Comida; comida: Comida; cena: Comida }[];
+  consejos: string[];
+}
+
+export interface CambiosSugeridos {
+  ajustes: Ajustes;
+  respuesta: string;
+  sin_encontrar: string[];
+  hubo_cambios: boolean;
+}
+
 /** Una compra terminada, para el historial. */
 export interface CompraPasada {
   fecha: string; // ISO

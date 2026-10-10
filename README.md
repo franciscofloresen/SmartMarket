@@ -1,65 +1,84 @@
 # SmartMarket · Despensa inteligente
 
-Motor que arma la despensa de un hogar mexicano para un periodo (por defecto 30 días),
-ajustada a su presupuesto, alergias, alimentos excluidos, dieta y mascotas.
-Por ahora trabaja con un solo catálogo: **Walmart Supercenter** (el surtido más amplio
-de despensa, frescos, limpieza, bebé y mascotas, con presencia nacional).
+App que arma la despensa de un hogar mexicano para una semana, quincena o mes, ajustada a su
+presupuesto, alergias, gustos, dieta y mascotas, con precios de referencia de Profeco en seis
+cadenas: Walmart, Bodega Aurrerá, Soriana, Chedraui, La Comer y H-E-B.
+
+- `despensa/`: motor (necesidades, filtros, optimizador, consultas).
+- `api/`: API HTTP (FastAPI) y funciones opcionales de IA.
+- `web/`: app para el celular (React, instalable como PWA).
+- `herramientas/`: importador de precios de Profeco.
 
 ## Uso rápido
 
 ```bash
-uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r requirements.txt
+uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r requirements-dev.txt
 .venv/bin/python -m despensa perfiles/familia_4_perro.json
-.venv/bin/python -m despensa perfiles/familia_4_perro.json --presupuesto 5000
-.venv/bin/python -m despensa perfiles/pareja_con_bebe.json --json   # salida para la app/API
+.venv/bin/python -m despensa perfiles/familia_4_perro.json --tienda chedraui --estado Jalisco
+.venv/bin/python -m despensa perfiles/pareja_con_bebe.json --json
 .venv/bin/python -m pytest
 ```
 
-## Web app (beta)
+## Probar la app en tu iPhone
 
-La app para el celular está en `web/` (React + TypeScript + Vite + Tailwind, instalable como PWA).
-
-**Probar en tu iPhone (desarrollo).** La Mac y el iPhone deben estar en la misma red Wi-Fi:
+La Mac y el iPhone deben estar en la misma red Wi-Fi.
 
 ```bash
-.venv/bin/uvicorn api.app:app --port 8000          # terminal 1: API
-cd web && npm install && npm run dev                # terminal 2: web app
+cd web && npm install && npm run build && cd ..
+.venv/bin/uvicorn api.app:app --host 0.0.0.0 --port 8000
 ```
 
-Vite muestra una dirección `Network: http://192.168.x.x:5173`. Ábrela en Safari del iPhone.
-Las llamadas a `/api` se reenvían a la API local.
+Abre en Safari del iPhone `http://<ip-de-tu-mac>:8000` (la IP sale con `ipconfig getifaddr en0`).
+Para desarrollar con recarga en vivo, usa `npm run dev` en `web/` (puerto 5173; reenvía `/api`
+a la API local).
 
-**Producción.** `npm run build` genera `web/dist`, y la API la sirve en `/` (misma URL). El
-`Dockerfile` hace las dos cosas en una sola imagen.
+Por la red local (HTTP) no hay modo sin conexión: Safari solo lo permite con HTTPS.
 
-### Publicar la beta (Railway)
+### Qué hace la app
+
+- **Asistente del hogar** en 5 pasos: personas, mascotas, restricciones, tienda y estado,
+  presupuesto y nivel de marcas.
+- **Inicio**: presupuesto usado, gasto por departamento, consejos y accesos rápidos.
+- **Lista**: por departamento; cambiar cantidades, cambiar un producto por una alternativa (con la
+  diferencia de precio), quitar lo que no gusta, buscar y agregar cualquier producto, marcar lo
+  que ya hay en casa, comparar la despensa entre tiendas y compartirla.
+- **Modo compra**: lista para marcar; al terminar se anota el total del ticket.
+- **Más**: editar hogar, historial de compras, gustos recordados, respaldo y borrar datos.
+
+Todo se guarda en el teléfono (`localStorage`); el servidor no guarda perfiles.
+
+### IA (opcional)
+
+Con una clave de Anthropic, la app agrega tres funciones (`api/ia.py`):
+
+- Describir el hogar con palabras y prellenar el asistente.
+- Pedir cambios escribiendo ("quita los refrescos y agrega más fruta").
+- Menú de la semana con lo que hay en la lista.
+
+```bash
+ANTHROPIC_API_KEY=sk-ant-... .venv/bin/uvicorn api.app:app --host 0.0.0.0 --port 8000
+```
+
+Sin la clave, esas opciones no aparecen y lo demás funciona igual. Cada uso cuesta centavos de
+dólar; `IA_LLAMADAS_POR_HORA` (30 por defecto) limita el uso por dirección IP. La IA solo
+interpreta y redacta: cantidades, precios y compatibilidad con alergias los decide el motor, y
+todo lo que el modelo propone se valida contra el catálogo antes de aplicarse.
+
+### Publicar (Railway)
 
 `railway.json` le indica a Railway que construya el `Dockerfile` y revise `/api/salud`.
 
-1. En https://railway.com crea un proyecto con **Deploy from GitHub repo** y elige este repositorio
-   (en *Settings → Source* elige la rama que quieres publicar).
-2. Agrega un **Volume** al servicio, montado en `/data`. Ahí se guardan los reportes de los testers
-   y no se borran entre despliegues.
-3. En **Variables** define:
-   - `REPORTES_PATH=/data/reportes.jsonl`
-   - `REPORTES_TOKEN=<una clave larga>`. Genera una con `openssl rand -hex 24`.
-4. En *Settings → Networking* usa **Generate Domain**. Comparte esa URL. En el iPhone se abre en
-   Safari y se instala con Compartir → *Agregar a pantalla de inicio*.
+1. En https://railway.com crea un proyecto con **Deploy from GitHub repo** y elige este repositorio.
+2. Agrega un **Volume** montado en `/data`, para que los reportes de los testers no se borren.
+3. En **Variables** define `REPORTES_PATH=/data/reportes.jsonl`, `REPORTES_TOKEN=<clave larga>`
+   (`openssl rand -hex 24`) y, si quieres IA, `ANTHROPIC_API_KEY`.
+4. En *Settings → Networking* usa **Generate Domain** y comparte esa URL.
 
-Para descargar los reportes (precios, productos y comentarios):
+Para descargar los reportes (precios, tickets y comentarios):
 
 ```bash
 curl -H "Authorization: Bearer $REPORTES_TOKEN" https://TU-DOMINIO.up.railway.app/api/reportes > reportes.jsonl
 ```
-
-Pantallas:
-- Bienvenida
-- Asistente del hogar (personas, mascotas, alimentación, presupuesto)
-- Lista: quitar o fijar cantidades y recalcular, reportar precios
-- Modo compra: lista para marcar, funciona sin conexión
-- Más: editar hogar, comentarios, respaldo y borrar datos
-
-Todo se guarda en el teléfono (`localStorage`); el servidor no guarda perfiles.
 
 ## Perfil del hogar (JSON)
 
@@ -73,7 +92,10 @@ Todo se guarda en el teléfono (`localStorage`); el servidor no guarda perfiles.
   "alergias": ["pescado"],
   "excluir": ["brócoli", "coliflor"],
   "dieta": "vegetariana",
-  "tortillas_caseras": false
+  "tortillas_caseras": false,
+  "tienda": "walmart",
+  "estado": "Jalisco",
+  "nivel": "equilibrado"
 }
 ```
 
@@ -83,44 +105,45 @@ Todo se guarda en el teléfono (`localStorage`); el servidor no guarda perfiles.
 | `excluir` | cualquier alimento; tolera acentos y plurales ("chiles" excluye chile serrano, jalapeños, chipotles) |
 | `dieta` | `vegetariana`, `pescetariana`, `sin_cerdo` |
 | `mascotas` | perro (`chico`, `mediano`, `grande`, `gigante`) o gato |
+| `tienda` | `walmart`, `bodega_aurrera`, `soriana`, `chedraui`, `la_comer`, `heb` |
+| `estado` | opcional; usa los precios que Profeco registró en ese estado, o el promedio nacional si no hay |
+| `nivel` | `ahorro` (lo más barato), `equilibrado` (parte del sobrante en mejores marcas), `premium` (todo el presupuesto) |
 
-## Cómo funciona
+## Cómo funciona el motor
 
 ```
 perfil ──► necesidades ──► filtro ──► optimizador ──► lista de compra
-           (reglas.py)    (alergias,   (2 fases)       (cantidades, total,
-                           exclusiones)                 cobertura, notas)
+           (reglas.py)    (alergias,   (2 a 4 fases)   (cantidades, total,
+                           exclusiones)                 cobertura, consejos)
 ```
 
-1. **Necesidades** (`despensa/reglas.py`, `necesidades.py`): consumo mensual por persona según
-   grupo de edad (bebé, niño, adolescente, adulto, mayor) y reglas especiales: pañales,
-   toallas femeninas y alimento de mascotas. Todo es configurable en `reglas.py`.
-2. **Filtro** (`catalogo.py`): quita productos con alérgenos declarados (incluye ocultos como
-   salsa inglesa o aderezo César para pescado) y los excluidos por el usuario o su dieta.
-   Si una necesidad queda sin opciones (p. ej. carne en dieta vegetariana), su cantidad pasa
-   a sus sustitutos (leguminosas y huevo).
+1. **Necesidades** (`reglas.py`, `necesidades.py`): consumo mensual por persona según grupo de
+   edad, más pañales, toallas femeninas y alimento de mascotas. Cada cantidad lleva su
+   explicación ("2 niños × 12 L + 2 adultos × 7 L al mes"). Lo que el hogar dice tener ya en casa
+   se descuenta.
+2. **Filtro** (`catalogo.py`): con una alergia declarada se quita todo producto que la **contenga
+   o pueda contenerla**, además de lo excluido por gusto o dieta. Si una necesidad queda sin
+   opciones (carne en dieta vegetariana), su cantidad pasa a sus sustitutos.
 3. **Optimizador** (`optimizador.py`, programación lineal entera con PuLP + HiGHS):
-   - Fase 1: cubrir lo más posible dentro del presupuesto. El faltante se castiga por
-     prioridad (esencial ≫ importante ≫ opcional) y por tramos, para recortar un poco de varias
-     cosas en lugar de eliminar una. También castiga que falten básicos (jitomate, cebolla,
-     frijol, sal...) en su proporción mínima.
-   - Fase 2: con esa cobertura, la combinación más barata. Lo que sobra se reporta.
-   - Restricciones: paquetes enteros, tope de compra en exceso y variedad (ningún producto
-     puede cubrir toda la necesidad de frutas, verduras o carnes).
-4. **Frescos**: los productos que caducan antes del fin del periodo y no se congelan se marcan
-   para repartirse en varias compras.
+   - Fase 1: cubrir lo más posible dentro del presupuesto. El faltante se castiga por prioridad
+     (esencial ≫ importante ≫ opcional) y por tramos, para recortar un poco de varias cosas en
+     lugar de eliminar una.
+   - Fase 2: con esa cobertura, la combinación más barata, prefiriendo menos paquetes.
+   - Fases 3 y 4 (niveles `equilibrado` y `premium`): con parte del sobrante, subir de marca.
+   - Reglas de sentido común: básicos que no deben faltar (jitomate, frijol, sal...), variedad
+     por producto y por tipo, y topes a sustitutos baratos (embutidos, producto lácteo, quesos de
+     imitación).
+4. **Consultas** (`consultas.py`): buscar en el catálogo, alternativas a un producto y la misma
+   despensa en cada tienda.
 
 ## Datos
 
-`data/catalogo_walmart.csv`: 192 productos. Columnas: necesidad que cubren, contenido en la unidad
-de esa necesidad, precio, alérgenos, etiquetas, vida útil, si se congela, y de dónde sale el precio
-(`fuente_precio`, `fecha_precio`).
-
-**149 precios vienen de Profeco** ("Quién es Quién en los Precios", datos abiertos, cadena
-Wal-mart, segunda quincena de julio 2026): la mediana de lo que Profeco registró en tiendas
-Walmart de todo el país. **43 siguen estimados**, porque Profeco no los levanta: alimento y arena
-de mascotas, bolsas de basura, toallas de cocina, bebidas vegetales, toallitas húmedas y algunos
-condimentos. Esos hay que verificarlos a mano.
+- `data/catalogos/<tienda>.csv`: entre 860 y 1,170 productos por tienda, generados desde los
+  datos abiertos de Profeco ("Quién es Quién en los Precios", segunda quincena de julio 2026).
+  El precio es la mediana nacional de lo que Profeco registró en esa cadena.
+- `data/precios_estado/<tienda>.csv`: la mediana por estado, donde hay al menos 3 registros.
+- `data/catalogo_manual.csv`: lo que Profeco no levanta (alimento y arena para mascotas, bolsas
+  de basura, bebidas vegetales). **Sus precios son estimados** y hay que verificarlos a mano.
 
 ### Actualizar precios
 
@@ -128,23 +151,20 @@ condimentos. Esos hay que verificarlos a mano.
 2. Revisa el reporte y luego aplica:
 
 ```bash
-.venv/bin/python herramientas/precios_qqp.py RUTA/QQP_2026.zip            # solo reporte
-.venv/bin/python herramientas/precios_qqp.py RUTA/QQP_2026.zip --aplicar  # escribe el catálogo
+.venv/bin/python herramientas/importar_qqp.py RUTA/QQP_2026.zip            # solo reporte
+.venv/bin/python herramientas/importar_qqp.py RUTA/QQP_2026.zip --aplicar  # escribe los catálogos
 ```
 
-`data/mapeo_qqp.csv` asocia cada producto del catálogo con los registros de Profeco: producto
-exacto, expresiones regulares para presentación y marca, y un factor (ej. 6 bolillos = 6 × precio
-por pieza). El reporte marca para revisión los cambios de más del 50% y los productos con pocos
-registros. Si cambias el nombre de un producto, **revisa sus etiquetas y alérgenos**, porque de
-ellas dependen los filtros.
+`herramientas/reglas_qqp.py` define, para cada tipo de producto de Profeco, qué necesidad cubre,
+cómo se mide su presentación y qué alérgenos **contiene** o **puede contener**. Los alérgenos se
+asignan por tipo de producto, no por etiqueta: ante la duda, se agregan a "puede contener".
 
 > ⚠ Profeco publica precios de referencia; cada sucursal puede variar. La información de alérgenos
-> debe validarse con la etiqueta de cada producto.
+> no sustituye la lectura de la etiqueta de cada producto.
 
 ## Pendientes sugeridos
 
-- Verificar a mano los 43 precios estimados (mascotas, bolsas, toallas de cocina...).
-- Compartir la beta con familias de prueba y revisar sus reportes.
-- Modo "aprovechar presupuesto": usar el sobrante en marcas preferidas o productos de mejor
-  calidad (requiere una calificación por producto).
-- Fórmula infantil, etapas de pañal por edad y más tipos de mascota.
+- Probar la IA con una clave real (solo está probada con un modelo simulado).
+- Verificar los precios estimados del catálogo manual.
+- Fórmula infantil y etapas de pañal por edad como necesidades calculadas.
+- Fotos de producto (hoy cada producto se muestra con un emoji).
