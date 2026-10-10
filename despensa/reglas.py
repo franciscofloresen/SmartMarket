@@ -54,7 +54,7 @@ _NECESIDADES = [
               basicos={"pollo": 0.3, "res": 0.15},
               limites={"embutido": 0.2, "pescado": 0.25, "mariscos": 0.15, "enlatado": 0.15}, variedad_tipo_max=0.6),
     Necesidad("huevo", "Huevo", "pz", 1, por_edad(6, 18, 28, 25, 22)),
-    Necesidad("leche", "Leche", "L", 1, por_edad(0, 12, 10, 7, 6), limites={"producto lacteo": 0.25}),
+    Necesidad("leche", "Leche", "L", 1, por_edad(0, 12, 10, 7, 6), limites={"producto lacteo": 0.25, "leche en polvo": 0.15}),
     Necesidad("queso_yogur", "Quesos, yogur y crema", "kg", 2, por_edad(0.8, 2.0, 2.0, 1.8, 1.5), variedad_max=0.6,
               basicos={"queso": 0.2}, limites={"imitacion": 0.15, "crema": 0.1}, variedad_tipo_max=0.5),
     Necesidad("leguminosas", "Leguminosas (frijol, lenteja...)", "kg", 1, por_edad(0.2, 0.7, 1.3, 1.2, 1.0), variedad_max=0.7,
@@ -109,6 +109,16 @@ NECESIDADES: dict[str, Necesidad] = {n.clave: n for n in _NECESIDADES}
 # Peso de cada prioridad en el optimizador: dejar sin cubrir algo esencial cuesta
 # 10 veces más que algo importante y 100 veces más que algo opcional.
 PESO_PRIORIDAD = {1: 100.0, 2: 10.0, 3: 1.0}
+# Nivel de marcas: qué fracción del sobrante se puede usar para subir de marca, y cuántos
+# puntos de calidad da cada nivel de producto (economico / medio / premium).
+NIVELES = {"ahorro": "Ahorro", "equilibrado": "Equilibrado", "premium": "Marcas líderes"}
+NIVEL_DEFAULT = "equilibrado"
+HOLGURA_POR_NIVEL = {"ahorro": 0.0, "equilibrado": 0.4, "premium": 1.0}
+CALIDAD_POR_NIVEL = {
+    "equilibrado": {"economico": 0.0, "medio": 1.0, "premium": 1.0},
+    "premium": {"economico": 0.0, "medio": 1.0, "premium": 2.0},
+}
+
 # No cubrir la proporción de un básico pesa esta fracción de lo que pesa su necesidad.
 PESO_BASICO = 0.2
 

@@ -141,3 +141,66 @@ def test_plan_en_otra_tienda_con_precios_del_estado(cliente, perfil):
     assert datos["catalogo"]["tienda"] == "Soriana"
     assert datos["catalogo"]["estado"] == "Jalisco"
     assert 0 < datos["total"] <= 10000
+
+
+def test_niveles_de_marca_gastan_distinto(cliente, perfil):
+    totales = {}
+    for nivel in ("ahorro", "equilibrado", "premium"):
+        perfil["nivel"] = nivel
+        totales[nivel] = cliente.post("/api/plan", json={"perfil": perfil}).json()["total"]
+    assert totales["ahorro"] < totales["equilibrado"] < totales["premium"] <= 10000
+
+
+def test_ya_tengo_en_casa_descuenta_la_necesidad(cliente, perfil):
+    base = cliente.post("/api/plan", json={"perfil": perfil}).json()
+    r = cliente.post("/api/plan", json={"perfil": perfil, "ajustes": {"en_casa": {"leche": 0.5, "papel_higienico": 1}}})
+    datos = r.json()
+    leche = lambda d: next(c for c in d["cobertura"] if c["clave"] == "leche")
+    assert leche(datos)["requerido"] == pytest.approx(leche(base)["requerido"] / 2)
+    assert leche(datos)["en_casa"] == 0.5
+    assert "papel_higienico" not in {c["clave"] for c in datos["cobertura"]}
+    assert not any(l["necesidad"] == "papel_higienico" for l in datos["lineas"])
+    assert datos["total"] < base["total"]
+
+
+def test_cobertura_explica_las_cantidades(cliente, perfil):
+    datos = cliente.post("/api/plan", json={"perfil": perfil}).json()
+    leche = next(c for c in datos["cobertura"] if c["clave"] == "leche")
+    assert leche["explicacion"] == "2 niños × 12 L + 2 adultos × 7 L al mes"
+
+
+def test_consejo_cuando_no_alcanza_el_presupuesto(cliente, perfil):
+    perfil["presupuesto"] = 4000
+    datos = cliente.post("/api/plan", json={"perfil": perfil}).json()
+    assert datos["costo_completo"] > 4000
+    assert any("cubrirías todo" in c for c in datos["consejos"])
+
+
+def test_buscar_marca_incompatibles(cliente, perfil):
+    resultados = cliente.post("/api/buscar", json={"perfil": perfil, "texto": "atun"}).json()["resultados"]
+    assert resultados and all(not r["compatible"] and "pescado" in r["motivo"] for r in resultados)
+    resultados = cliente.post("/api/buscar", json={"perfil": perfil, "texto": "frijoles negros"}).json()["resultados"]
+    assert resultados and all(r["compatible"] for r in resultados)
+    assert all("negro" in r["nombre"].lower() for r in resultados)
+    # Los extras (no calculados) también se pueden buscar para agregarlos a mano.
+    extras = cliente.post("/api/buscar", json={"perfil": perfil, "texto": "rastrillos"}).json()["resultados"]
+    assert extras and extras[0]["necesidad"] == "extras"
+
+
+def test_alternativas_del_mismo_tipo_primero(cliente, perfil):
+    leche = _id("leche", "lala", "1 l", "entera")
+    r = cliente.post("/api/alternativas", json={"perfil": perfil, "producto_id": leche, "paquetes": 10})
+    opciones = r.json()["alternativas"]
+    assert opciones and opciones[0]["mismo_tipo"]
+    assert all(o["necesidad"] == "leche" and o["compatible"] for o in opciones)
+    primera = opciones[0]
+    assert primera["paquetes_equivalentes"] * primera["contenido"] >= 10 - 1e-6
+
+
+def test_comparar_tiendas(cliente, perfil):
+    perfil["nivel"] = "ahorro"
+    tiendas = cliente.post("/api/comparar", json={"perfil": perfil}).json()["tiendas"]
+    assert len(tiendas) == 6
+    assert sum(t["actual"] for t in tiendas) == 1
+    completas = [t["total"] for t in tiendas if t["cobertura_completa"]]
+    assert completas == sorted(completas) and len(completas) >= 4

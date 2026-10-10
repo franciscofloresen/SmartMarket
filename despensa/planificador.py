@@ -3,7 +3,7 @@ import math
 from dataclasses import asdict, dataclass, field
 
 from .catalogo import Producto, filtrar
-from .necesidades import aplicar_sustitutos, calcular_necesidades
+from .necesidades import aplicar_sustitutos, calcular_necesidades, explicar_necesidades
 from .optimizador import optimizar
 from .perfil import Hogar
 from .reglas import NECESIDADES
@@ -22,6 +22,8 @@ class Ajustes:
     """Cambios del usuario sobre una lista ya generada, para recalcularla."""
     excluir_productos: set[str] = field(default_factory=set)
     fijar: dict[str, int] = field(default_factory=dict)  # id -> paquetes
+    # Lo que ya hay en casa: necesidad -> fracción del periodo que ya está cubierta (0 a 1).
+    en_casa: dict[str, float] = field(default_factory=dict)
 
 
 @dataclass
@@ -45,6 +47,8 @@ class CoberturaNecesidad:
     prioridad: int
     requerido: float
     cubierto: float
+    explicacion: str = ""   # por qué esa cantidad
+    en_casa: float = 0.0    # fracción que el hogar dijo tener ya
 
     @property
     def porcentaje(self) -> float:
@@ -58,6 +62,9 @@ class Plan:
     cobertura: list[CoberturaNecesidad]
     excluidos: list[tuple[Producto, str]]
     notas: list[str] = field(default_factory=list)
+    consejos: list[str] = field(default_factory=list)
+    # Lo que costaría cubrir todo al menor precio; solo se calcula si el presupuesto no alcanzó.
+    costo_completo: float | None = None
 
     @property
     def total(self) -> float:
@@ -80,6 +87,10 @@ class Plan:
                     "nombre": l.producto.nombre,
                     "departamento": l.producto.departamento,
                     "necesidad": l.producto.necesidad,
+                    "tipo": l.producto.tipo,
+                    "nivel": l.producto.nivel,
+                    "contenido": l.producto.contenido,
+                    "unidad": l.producto.unidad,
                     "paquetes": l.paquetes,
                     "precio_unitario": l.producto.precio,
                     "subtotal": l.subtotal,
@@ -95,6 +106,8 @@ class Plan:
             ],
             "excluidos": [{"id": p.id, "nombre": p.nombre, "motivo": m} for p, m in self.excluidos],
             "notas": self.notas,
+            "consejos": self.consejos,
+            "costo_completo": self.costo_completo,
         }
 
 
@@ -107,7 +120,8 @@ def _visitas(producto: Producto, periodo_dias: int) -> int:
 def _validar_ajustes(ajustes: Ajustes, catalogo: list[Producto], aptos: list[Producto], presupuesto: float) -> None:
     por_id = {p.id: p for p in catalogo}
     aptos_ids = {p.id for p in aptos}
-    desconocidos = sorted((ajustes.excluir_productos | ajustes.fijar.keys()) - por_id.keys())
+    # Los ids quitados que no existen se ignoran: vienen de gustos guardados con otra tienda.
+    desconocidos = sorted(ajustes.fijar.keys() - por_id.keys())
     if desconocidos:
         raise AjusteInvalido(f"Productos que no existen en el catálogo: {', '.join(desconocidos)}")
     for pid, n in ajustes.fijar.items():
@@ -115,6 +129,9 @@ def _validar_ajustes(ajustes: Ajustes, catalogo: list[Producto], aptos: list[Pro
             raise AjusteInvalido(f"La cantidad fijada de {por_id[pid].nombre} no puede ser negativa.")
         if pid not in aptos_ids:
             raise AjusteInvalido(f"{por_id[pid].nombre} no es compatible con las restricciones del hogar.")
+    for clave, fraccion in ajustes.en_casa.items():
+        if clave not in NECESIDADES or not 0 <= fraccion <= 1:
+            raise AjusteInvalido(f"'Ya tengo en casa' inválido: {clave}={fraccion}")
     costo_fijo = sum(por_id[pid].precio * n for pid, n in ajustes.fijar.items())
     if costo_fijo > presupuesto:
         raise AjusteInvalido(
@@ -143,7 +160,12 @@ def planear(
     # Un sustituto puede no tener tampoco opciones; esos se reportan pero no se optimizan.
     demandas = {k: v for k, v in demandas.items() if k in con_opciones}
 
-    resultado = optimizar(aptos, demandas, hogar.presupuesto, tiempo_limite, fijos)
+    # Lo que ya hay en casa se descuenta; con 100% la necesidad sale de la lista.
+    en_casa = {k: f for k, f in ajustes.en_casa.items() if k in demandas and f > 0}
+    demandas = {k: round(v * (1 - en_casa.get(k, 0.0)), 3) for k, v in demandas.items()}
+    demandas = {k: v for k, v in demandas.items() if v > 0}
+
+    resultado = optimizar(aptos, demandas, hogar.presupuesto, tiempo_limite, fijos, hogar.nivel)
     if resultado.estado != "Optimal":
         notas.append("El optimizador alcanzó el tiempo límite; la lista es buena pero puede no ser la óptima.")
 
@@ -154,11 +176,15 @@ def planear(
     ]
     lineas.sort(key=lambda l: (l.producto.departamento, l.producto.necesidad, l.producto.nombre))
 
+    explicaciones = explicar_necesidades(hogar)
     cobertura = []
     for clave, requerido in demandas.items():
         nec = NECESIDADES[clave]
         cobertura.append(
-            CoberturaNecesidad(clave, nec.nombre, nec.unidad, nec.prioridad, requerido, resultado.cubierto.get(clave, 0.0))
+            CoberturaNecesidad(
+                clave, nec.nombre, nec.unidad, nec.prioridad, requerido, resultado.cubierto.get(clave, 0.0),
+                explicaciones.get(clave, ""), en_casa.get(clave, 0.0),
+            )
         )
     cobertura.sort(key=lambda c: (c.prioridad, c.nombre))
 
@@ -168,4 +194,33 @@ def planear(
             "El presupuesto no alcanza para cubrir todo; se priorizó lo esencial. "
             f"Quedan por debajo del 95%: {', '.join(c.nombre for c in faltantes)}."
         )
-    return Plan(hogar, lineas, cobertura, excluidos, notas)
+    plan = Plan(hogar, lineas, cobertura, excluidos, notas)
+    _aconsejar(plan, bool(faltantes), aptos, demandas, fijos, tiempo_limite)
+    return plan
+
+
+def _redondear_arriba(valor: float, multiplo: int = 50) -> int:
+    return int(math.ceil(valor / multiplo) * multiplo)
+
+
+def _aconsejar(plan: Plan, falta_cobertura: bool, aptos, demandas, fijos, tiempo_limite: int) -> None:
+    """Consejos sobre el presupuesto: cuánto falta para cubrir todo, o cuánto se puede bajar."""
+    presupuesto = plan.hogar.presupuesto
+    if falta_cobertura:
+        completo = optimizar(aptos, demandas, 10 * presupuesto + 100_000, tiempo_limite, fijos, "ahorro")
+        plan.costo_completo = completo.costo
+        extra = _redondear_arriba(completo.costo - presupuesto)
+        if extra > 0:
+            plan.consejos.append(
+                f"Con ${extra:,} más (${_redondear_arriba(completo.costo):,} en total) cubrirías todo lo que tu hogar necesita."
+            )
+    elif plan.sobrante >= 0.1 * presupuesto:
+        if plan.hogar.nivel == "ahorro":
+            plan.consejos.append(
+                f"Te sobran ${plan.sobrante:,.0f}. Puedes subir a marcas de nivel equilibrado "
+                f"o bajar tu presupuesto a ${_redondear_arriba(plan.total, 100):,}."
+            )
+        else:
+            plan.consejos.append(
+                f"Te sobran ${plan.sobrante:,.0f}: podrías bajar tu presupuesto a ${_redondear_arriba(plan.total, 100):,}."
+            )

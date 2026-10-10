@@ -70,6 +70,11 @@ def formatear(plan: Plan) -> str:
         out.append("Notas:")
         out.extend(f"  • {n}" for n in plan.notas)
 
+    if plan.consejos:
+        out.append("")
+        out.append("Consejos:")
+        out.extend(f"  💡 {c}" for c in plan.consejos)
+
     if plan.excluidos:
         out.append("")
         out.append(f"Productos excluidos por sus restricciones ({len(plan.excluidos)}):")

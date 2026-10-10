@@ -23,9 +23,19 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from despensa.catalogo import cargar_catalogo, catalogo_de, estados_de
+from despensa.consultas import alternativas, buscar, comparar_tiendas
 from despensa.perfil import PerfilInvalido, hogar_desde_dict
 from despensa.planificador import AjusteInvalido, Ajustes, planear
-from despensa.reglas import NOMBRES_ALERGENOS, NOMBRES_DIETAS, NOMBRES_TAMANOS_PERRO, TIENDA_DEFAULT, TIENDAS
+from despensa.reglas import (
+    NECESIDADES,
+    NIVEL_DEFAULT,
+    NIVELES,
+    NOMBRES_ALERGENOS,
+    NOMBRES_DIETAS,
+    NOMBRES_TAMANOS_PERRO,
+    TIENDA_DEFAULT,
+    TIENDAS,
+)
 
 RAIZ = Path(__file__).resolve().parent.parent
 TIEMPO_LIMITE_SOLVER = 10
@@ -63,16 +73,32 @@ class PerfilIn(BaseModel):
     tortillas_caseras: bool = False
     tienda: str = Field(TIENDA_DEFAULT, max_length=30)
     estado: str | None = Field(None, max_length=40)
+    nivel: str = Field(NIVEL_DEFAULT, max_length=20)
 
 
 class AjustesIn(BaseModel):
-    excluir_productos: list[str] = Field(default_factory=list, max_length=200)
+    excluir_productos: list[str] = Field(default_factory=list, max_length=500)
     fijar: dict[str, Annotated[int, Field(ge=0, le=100)]] = Field(default_factory=dict, max_length=200)
+    en_casa: dict[str, Annotated[float, Field(ge=0, le=1)]] = Field(default_factory=dict, max_length=60)
+
+    def a_ajustes(self) -> Ajustes:
+        return Ajustes(set(self.excluir_productos), dict(self.fijar), dict(self.en_casa))
 
 
 class PlanIn(BaseModel):
     perfil: PerfilIn
     ajustes: AjustesIn = Field(default_factory=AjustesIn)
+
+
+class BuscarIn(BaseModel):
+    perfil: PerfilIn
+    texto: str = Field(min_length=2, max_length=60)
+
+
+class AlternativasIn(BaseModel):
+    perfil: PerfilIn
+    producto_id: str = Field(max_length=12)
+    paquetes: int = Field(1, ge=1, le=100)
 
 
 class ReporteIn(BaseModel):
@@ -137,6 +163,9 @@ def opciones() -> dict:
         ],
         "alergias": [{"clave": k, "nombre": v} for k, v in NOMBRES_ALERGENOS.items()],
         "dietas": [{"clave": k, "nombre": v} for k, v in NOMBRES_DIETAS.items()],
+        "niveles": [{"clave": k, "nombre": v} for k, v in NIVELES.items()],
+        # Categorías que el usuario puede marcar como "ya tengo en casa".
+        "necesidades": [{"clave": n.clave, "nombre": n.nombre} for n in NECESIDADES.values() if n.clave != "extras"],
         "tamanos_perro": [{"clave": k, "nombre": v} for k, v in NOMBRES_TAMANOS_PERRO.items()],
         "periodo_dias": {"min": 1, "max": 62, "default": 30},
     }
@@ -147,14 +176,38 @@ def plan(entrada: PlanIn) -> dict:
     # Función síncrona a propósito: FastAPI la corre en un hilo y el solver no bloquea el servidor.
     try:
         hogar = hogar_desde_dict(entrada.perfil.model_dump())
-        ajustes = Ajustes(
-            excluir_productos=set(entrada.ajustes.excluir_productos),
-            fijar=dict(entrada.ajustes.fijar),
-        )
-        resultado = planear(hogar, catalogo_de(hogar), ajustes, tiempo_limite=TIEMPO_LIMITE_SOLVER)
+        resultado = planear(hogar, catalogo_de(hogar), entrada.ajustes.a_ajustes(), tiempo_limite=TIEMPO_LIMITE_SOLVER)
     except (PerfilInvalido, AjusteInvalido) as e:
         raise HTTPException(status_code=422, detail=str(e)) from e
     return {**resultado.a_dict(), "catalogo": _info_catalogo(hogar.tienda, hogar.estado)}
+
+
+def _hogar(perfil: PerfilIn):
+    try:
+        return hogar_desde_dict(perfil.model_dump())
+    except PerfilInvalido as e:
+        raise HTTPException(status_code=422, detail=str(e)) from e
+
+
+@app.post("/api/buscar")
+def buscar_productos(entrada: BuscarIn) -> dict:
+    """Busca en el catálogo de la tienda del hogar; marca lo que no es compatible con sus restricciones."""
+    return {"resultados": buscar(_hogar(entrada.perfil), entrada.texto)}
+
+
+@app.post("/api/alternativas")
+def alternativas_de(entrada: AlternativasIn) -> dict:
+    return {"alternativas": alternativas(_hogar(entrada.perfil), entrada.producto_id, entrada.paquetes)}
+
+
+@app.post("/api/comparar")
+def comparar(entrada: PlanIn) -> dict:
+    """Total de la misma despensa en cada tienda."""
+    try:
+        tiendas = comparar_tiendas(_hogar(entrada.perfil), entrada.ajustes.a_ajustes(), TIEMPO_LIMITE_SOLVER)
+    except AjusteInvalido as e:
+        raise HTTPException(status_code=422, detail=str(e)) from e
+    return {"tiendas": tiendas}
 
 
 @app.post("/api/reporte", status_code=201)

@@ -12,7 +12,7 @@ from dataclasses import dataclass
 import pulp
 
 from .catalogo import Producto
-from .reglas import NECESIDADES, PESO_BASICO, PESO_PRIORIDAD
+from .reglas import CALIDAD_POR_NIVEL, HOLGURA_POR_NIVEL, NECESIDADES, PESO_BASICO, PESO_PRIORIDAD
 
 # Se permite comprar hasta 25% de más, más un paquete del producto más grande disponible,
 # porque se vende en paquetes enteros (1 kg de sal aunque se usen 400 g). Comprar de más
@@ -41,8 +41,13 @@ def optimizar(
     presupuesto: float,
     tiempo_limite: int = 30,
     fijos: dict[str, int] | None = None,
+    nivel: str = "ahorro",
 ) -> ResultadoOptimizacion:
-    """`fijos` son cantidades de paquetes que el usuario fijó (id -> paquetes); se respetan tal cual."""
+    """`fijos` son cantidades de paquetes que el usuario fijó (id -> paquetes); se respetan tal cual.
+
+    `nivel` decide qué hacer con el dinero que sobra después de cubrir todo al menor costo:
+    "ahorro" lo deja, "equilibrado" usa una parte en mejores marcas y "premium" lo usa todo.
+    """
     fijos = fijos or {}
     por_necesidad: dict[str, list[Producto]] = defaultdict(list)
     # Productos fijados cuya necesidad no hace falta en este hogar: solo suman al costo.
@@ -149,6 +154,31 @@ def optimizar(
     prob.setObjective(costo + PENALIZACION_PAQUETE * pulp.lpSum(libres))
     estado = _resolver(prob, tiempo_limite)
 
+    holgura = HOLGURA_POR_NIVEL[nivel]
+    if holgura > 0 and por_necesidad:
+        # Fase 3: con parte del sobrante, subir de marca. La calidad de cada necesidad se mide
+        # como cobertura ponderada por nivel y se satura, para que no convenga comprar de más.
+        costo_minimo = pulp.value(costo) or 0.0
+        prob += costo <= costo_minimo + holgura * (presupuesto - costo_minimo) + 0.01, "tope_de_mejora"
+        puntos = CALIDAD_POR_NIVEL[nivel]
+        maximo = max(puntos.values())
+        calidad = []
+        for clave, ps in por_necesidad.items():
+            c = prob.add_variable(f"calidad_{clave}", 0, maximo)
+            prob += (
+                c <= pulp.lpSum(puntos[p.nivel] * p.contenido * x[p.id] for p in ps) / demandas[clave],
+                f"calidad_de_{clave}",
+            )
+            calidad.append(c)
+        prob.setObjective(-pulp.lpSum(calidad))
+        _resolver(prob, tiempo_limite)
+        mejor_calidad = sum(c.value() or 0.0 for c in calidad)
+
+        # Fase 4: esa misma calidad, al menor costo.
+        prob += pulp.lpSum(calidad) >= mejor_calidad - 1e-3, "calidad_fase_3"
+        prob.setObjective(costo + PENALIZACION_PAQUETE * pulp.lpSum(libres))
+        estado = _resolver(prob, tiempo_limite)
+
     paquetes = {pid: int(round(v.value() or 0)) for pid, v in x.items()}
     paquetes = {pid: n for pid, n in paquetes.items() if n > 0}
     por_id = {p.id: p for p in candidatos}
@@ -161,10 +191,11 @@ def optimizar(
 
 def _solver(tiempo_limite: int) -> pulp.LpSolver:
     # HiGHS tiene binarios nativos para Apple Silicon; el CBC que trae PuLP es solo x86.
-    highs = pulp.HiGHS(msg=False, timeLimit=tiempo_limite)
+    # Una brecha de 0.2% es imperceptible en una despensa y evita afinar centavos durante segundos.
+    highs = pulp.HiGHS(msg=False, timeLimit=tiempo_limite, gapRel=0.002)
     if highs.available():
         return highs
-    return pulp.PULP_CBC_CMD(msg=False, timeLimit=tiempo_limite)
+    return pulp.PULP_CBC_CMD(msg=False, timeLimit=tiempo_limite, gapRel=0.002)
 
 
 def _resolver(prob: pulp.LpProblem, tiempo_limite: int) -> str:
